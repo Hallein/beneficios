@@ -1,6 +1,6 @@
 <?php
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';	// tesis/public/api
 
 $config['displayErrorDetails'] = true;
 

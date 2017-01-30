@@ -1,3 +1,3 @@
 <?php
 
-	define('CLIENTES', '../app/clientes/cliente.partials');
+	define('CLIENTES', '../../app/clientes/cliente.partials');
