@@ -38,5 +38,7 @@ require 'partials.php';
 require 'models.php';
 require 'controllers.php';
 require 'routes.php';
+require 'container.php';
+
 
 $app->run();

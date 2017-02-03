@@ -1,10 +1,10 @@
 <?php
 
-$app->group('/clientes', function(){
+$app->group('/proveedores', function(){
 
 	$this->get('', function ($request, $response, $args) {
 
-		$json = $this->clientes->index();
+		$json = $this->proveedores->index();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -13,7 +13,7 @@ $app->group('/clientes', function(){
 	$this->get('/show/{id}', function ($request, $response, $args) {
 
 		$id = $args['id'];
-		$json = $this->clientes->show($id);
+		$json = $this->proveedores->show($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -21,7 +21,7 @@ $app->group('/clientes', function(){
 
 	$this->get('/create', function ($request, $response, $args) {
 
-		$json = $this->clientes->create();
+		$json = $this->proveedores->create();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -30,7 +30,7 @@ $app->group('/clientes', function(){
 	$this->post('/store', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->clientes->store($data);
+		$json = $this->proveedores->store($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -38,7 +38,7 @@ $app->group('/clientes', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-		$json = $this->clientes->edit($id);
+		$json = $this->proveedores->edit($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -47,7 +47,7 @@ $app->group('/clientes', function(){
 	$this->post('/update', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->clientes->update($data);
+		$json = $this->proveedores->update($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -56,7 +56,7 @@ $app->group('/clientes', function(){
 	$this->post('/destroy/{id}', function ($request, $response, $args) {
 		
 		$id = $args['id'];
-		$json = $this->clientes->destroy($id);
+		$json = $this->proveedores->destroy($id);
 
 		$response->write(json_encode($json));
 		return $response;
