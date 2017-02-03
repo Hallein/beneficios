@@ -10,8 +10,9 @@ function MostrarClientes(var0){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	$('#d-content').html(resultado.html);
-	    	$('#example').DataTable( {
+	    	$('#d-content').html(resultado.html);	
+	    	$('[data-toggle="tooltip"]').tooltip();    	
+	    	$('#listado_clientes').DataTable( {
     			responsive: true,
 		        columnDefs: [
 		            {

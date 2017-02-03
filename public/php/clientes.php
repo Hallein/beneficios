@@ -13,28 +13,6 @@ switch ($option) {
 			</div>
 		</div>
 		<div class="mdl-card__supporting-text">
-			<div class="row">
-				<div class="col-md-2">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
-						Nuevo Cliente
-					</button>
-				</div>
-				<div class="col-md-2">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
-						Opciones
-					</button>
-				</div>
-				<div class="col-md-2">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
-						Opciones
-					</button>
-				</div>
-				<div class="col-md-2">
-					<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
-						Opciones
-					</button>
-				</div>
-			</div>
 			<table id="example" class="mdl-data-table" width="100%" cellspacing="0">
 		        <thead>
 		            <tr>
@@ -113,7 +91,7 @@ switch ($option) {
 		            </tr>
 		        </tbody>
 		    </table>
-			</div>
+			</div> 
 			</div>';
 			echo $html;
 		break;

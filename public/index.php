@@ -30,37 +30,37 @@
 		<div class="d-nav-content">
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-1-crumb d-active d-active-crumb" onclick="MostrarInicio('<?php echo base64_encode('INI_1');?>');">Inicio</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-1-crumb d-active d-active-crumb" onclick="MostrarInicio();">Inicio</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarClientes('<?php echo base64_encode('CLI_1');?>');">Clientes</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarClientes();">Clientes</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarServicios('<?php echo base64_encode('SER_1');?>');">Servicios</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarServicios();">Servicios</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarInsumos('<?php echo base64_encode('INS_1');?>');">Insumos</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarInsumos();">Insumos</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarFacturas('<?php echo base64_encode('FAC_1');?>');">Facturas</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarFacturas();">Facturas</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarPagos('<?php echo base64_encode('PAG_1');?>');">Pagos</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarPagos();">Pagos</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarProveedores('<?php echo base64_encode('PRO_1');?>');">Proveedores</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarProveedores();">Proveedores</li>
 				</ul>
 			</div>
 		</div>
@@ -71,7 +71,7 @@
 				<div class="mdl-card">
 					<div class="d-canvas">
 						<div class="d-canvas-container">
-							<div class="d-canvas-top-title d-clientes-plus">
+							<div class="d-canvas-top-title d-new_user-icon">
 								Nuevos clientes
 							</div>
 							<div class="d-canvas-middle-title">
@@ -89,7 +89,7 @@
 				<div class="mdl-card">
 					<div class="d-canvas">
 						<div class="d-canvas-container">
-							<div class="d-canvas-top-title d-clientes-plus">
+							<div class="d-canvas-top-title d-new_user-icon">
 								Nuevos clientes
 							</div>
 							<div class="d-canvas-middle-title">
@@ -112,6 +112,7 @@
 		<div id="loader"></div>
 	</div>
 	<script src="js/libraries/jquery.min.js"></script>
+	<script src="js/libraries/bootstrap.min.js"></script>
 	<script src="js/libraries/material.min.js"></script>
 	<script src="js/libraries/getmdl-select.min.js"></script>
 	<script src="js/libraries/jquery.dataTables.min.js"></script>
