@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->cliente->getAll();
+			$datos = $this->cliente->getAll();
 
 			ob_start();
 			include CLIENTES . '/getall.php';
