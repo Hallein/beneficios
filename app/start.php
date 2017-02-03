@@ -39,4 +39,10 @@ require 'models.php';
 require 'controllers.php';
 require 'routes.php';
 
+//Injección de controladores
+$container['clientes'] = function ($c) {
+    //return new ClientesController($c->get('db'));
+    return new ClientesController('hola');
+};
+
 $app->run();

@@ -7,11 +7,17 @@
 			$this->db = $db;
 		}
 
-		public function get(){
+		/****************************************************************************
+		*	index 		muestra todos los registros 								*
+		*	show 		muestra un registro segun el id 							*
+		*	create 		muestra el formulario para crear un nuevo registro 			*
+		*	store 		guarda un nuevo registro 									*
+		*	edit 		muestra el formulario para editar un registro segun el id 	*
+		*	update 		actualiza un registro segun el id 							*
+		*	destroy 	elimina un registro segun el id 							*
+		*****************************************************************************/
 
-		}
-
-		public function getAll(){
+		public function index(){
 			$cliente = new Cliente($this->db);
 			//$clientes = $cliente->getAll();
 
@@ -22,6 +28,11 @@
 			return $clientes;
 		}
 
+		public function show($id){
+
+		}
+
+
 		public function create(){
 			ob_start();
 			include CLIENTES . '/create.php';
@@ -30,11 +41,19 @@
 			return $clientes;
 		}
 
-		public function edit(){
+		public function store($data){
 
 		}
 
-		public function delete(){
+		public function edit($id){
+
+		}
+
+		public function update($data){
+
+		}
+
+		public function destroy($id){
 
 		}
 
