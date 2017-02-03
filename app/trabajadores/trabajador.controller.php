@@ -1,10 +1,10 @@
 <?php
-	class ClientesController{
+	class TrabajadoresController{
 
-		private $cliente;
+		private $trabajador;
 
 		public function __construct($db){
-			$this->cliente = new Cliente($db);
+			$this->trabajador = new Trabajador($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			//$datos = $this->cliente->getAll();
+			//$datos = $this->trabajador->getAll();
 
 			ob_start();
-			include CLIENTES . '/getall.php';
+			include TRABAJADORES . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->cliente->show($id);
+			//$datos = $this->trabajador->show($id);
 
 			ob_start();
-			include CLIENTES . '/show.php';
+			include TRABAJADORES . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include CLIENTES . '/create.php';
+			include TRABAJADORES . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->cliente->show($id);
+			//$datos = $this->trabajador->show($id);
 
 			ob_start();
-			include CLIENTES . '/edit.php';
+			include TRABAJADORES . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->cliente->update($data);
+			//$datos = $this->trabajador->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->cliente->destroy($id);
+			//$datos = $this->trabajador->destroy($id);
 		}
 
 	}

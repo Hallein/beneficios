@@ -1,10 +1,10 @@
 <?php
-	class ClientesController{
+	class VehiculosController{
 
-		private $cliente;
+		private $vehiculo;
 
 		public function __construct($db){
-			$this->cliente = new Cliente($db);
+			$this->vehiculo = new Vehiculo($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			//$datos = $this->cliente->getAll();
+			//$datos = $this->vehiculo->getAll();
 
 			ob_start();
-			include CLIENTES . '/getall.php';
+			include VEHICULOS . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->cliente->show($id);
+			//$datos = $this->vehiculo->show($id);
 
 			ob_start();
-			include CLIENTES . '/show.php';
+			include VEHICULOS . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include CLIENTES . '/create.php';
+			include VEHICULOS . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->cliente->show($id);
+			//$datos = $this->vehiculo->show($id);
 
 			ob_start();
-			include CLIENTES . '/edit.php';
+			include VEHICULOS . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->cliente->update($data);
+			//$datos = $this->vehiculo->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->cliente->destroy($id);
+			//$datos = $this->vehiculo->destroy($id);
 		}
 
 	}

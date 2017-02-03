@@ -1,5 +1,5 @@
 <?php
-	class Cliente{
+	class Servicio{
 
 		private $db;
 
@@ -13,7 +13,7 @@
 			$query->execute();
 
 			$datos = array();
-			$datos['clientes'] = $query->fetchAll();
+			$datos['servicios'] = $query->fetchAll();
 			return $datos;
 		}
 

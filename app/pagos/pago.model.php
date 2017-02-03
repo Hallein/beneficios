@@ -1,5 +1,5 @@
 <?php
-	class Cliente{
+	class Pago{
 
 		private $db;
 
@@ -13,7 +13,7 @@
 			$query->execute();
 
 			$datos = array();
-			$datos['clientes'] = $query->fetchAll();
+			$datos['pagos'] = $query->fetchAll();
 			return $datos;
 		}
 
