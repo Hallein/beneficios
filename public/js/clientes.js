@@ -1,4 +1,4 @@
-function MostrarClientes(var0){	
+function MostrarClientes(){	
 	$.ajax({
 	    type: "GET",
 	    url : "api/clientes",
@@ -13,13 +13,7 @@ function MostrarClientes(var0){
 	    	$('#d-content').html(resultado.html);	
 	    	$('[data-toggle="tooltip"]').tooltip();    	
 	    	$('#listado_clientes').DataTable( {
-    			responsive: true,
-		        columnDefs: [
-		            {
-		                targets: [ 0, 1, 2 ],
-		                className: 'mdl-data-table__cell--non-numeric'
-		            }
-		        ],
+    			"responsive": true,
 		        "language" : {
 				    "decimal":        "",
 				    "emptyTable":     "No se encontraron resultados",
@@ -50,4 +44,19 @@ function MostrarClientes(var0){
 	});
 }
 
-
+function IngresarCliente(){	
+	$.ajax({
+	    type: "GET",
+	    url : "api/clientes/create",
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg')
+		}
+	});
+}

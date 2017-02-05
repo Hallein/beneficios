@@ -28,7 +28,7 @@
 							'TELEFONO_PERSONA' => '998664844',
 							'EMAIL_PERSONA' => 'julio.caruncho.a@gmail.com',
 							'DIRECCION_PERSONA' => 'Arturo Fernandez #751']);
-
+							
 			array_push($datos['clientes'], $hola);*/
 			//$datos['clientes'] = $query->fetchAll();
 			return $datos;
