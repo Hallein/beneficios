@@ -22,14 +22,14 @@ $container['vehiculos'] = function ($c) {
     return new VehiculosController('hola');
 };
 
-$container['facturas'] = function ($c) {
+$container['factura_venta'] = function ($c) {
     //return new FacturasController($c->get('db'));
-    return new FacturasController('hola');
+    return new FacturaVentaController('hola');
 };
 
-$container['pagos'] = function ($c) {
-    //return new PagosController($c->get('db'));
-    return new PagosController('hola');
+$container['factura_compra'] = function ($c) {
+    //return new FacturasController($c->get('db'));
+    return new FacturaCompraController('hola');
 };
 
 $container['servicios'] = function ($c) {

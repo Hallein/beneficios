@@ -1,10 +1,10 @@
 <?php
-	class FacturasController{
+	class FacturaVentaController{
 
 		private $factura;
 
 		public function __construct($db){
-			$this->factura = new Factura($db);
+			$this->factura = new FacturaVenta($db);
 		}
 
 		/****************************************************************************
@@ -22,7 +22,7 @@
 			//$datos = $this->factura->getAll();
 
 			ob_start();
-			include FACTURAS . '/getall.php';
+			include FACTURA_VENTA . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -33,7 +33,7 @@
 			//$datos = $this->factura->show($id);
 
 			ob_start();
-			include FACTURAS . '/show.php';
+			include FACTURA_VENTA . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include FACTURAS . '/create.php';
+			include FACTURA_VENTA . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -58,7 +58,7 @@
 			//$datos = $this->factura->show($id);
 
 			ob_start();
-			include FACTURAS . '/edit.php';
+			include FACTURA_VENTA . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;

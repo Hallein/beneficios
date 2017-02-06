@@ -1,10 +1,10 @@
 <?php
 
-$app->group('/facturas', function(){
+$app->group('/facturas/venta', function(){
 
 	$this->get('', function ($request, $response, $args) {
 
-		$json = $this->facturas->index();
+		$json = $this->factura_venta->index();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -13,7 +13,7 @@ $app->group('/facturas', function(){
 	$this->get('/show/{id}', function ($request, $response, $args) {
 
 		$id = $args['id'];
-		$json = $this->facturas->show($id);
+		$json = $this->factura_venta->show($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -21,7 +21,7 @@ $app->group('/facturas', function(){
 
 	$this->get('/create', function ($request, $response, $args) {
 
-		$json = $this->facturas->create();
+		$json = $this->factura_venta->create();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -30,7 +30,7 @@ $app->group('/facturas', function(){
 	$this->post('/store', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->facturas->store($data);
+		$json = $this->factura_venta->store($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -38,7 +38,7 @@ $app->group('/facturas', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-		$json = $this->facturas->edit($id);
+		$json = $this->factura_venta->edit($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -47,7 +47,7 @@ $app->group('/facturas', function(){
 	$this->post('/update', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->facturas->update($data);
+		$json = $this->factura_venta->update($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -56,7 +56,7 @@ $app->group('/facturas', function(){
 	$this->post('/destroy/{id}', function ($request, $response, $args) {
 		
 		$id = $args['id'];
-		$json = $this->facturas->destroy($id);
+		$json = $this->factura_venta->destroy($id);
 
 		$response->write(json_encode($json));
 		return $response;
