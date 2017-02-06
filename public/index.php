@@ -42,7 +42,7 @@
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarServicios();">Servicios</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarTrabajadores();">Trabajadores</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
@@ -52,17 +52,32 @@
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarFacturas();">Facturas</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarVentas();">Ventas</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
-					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarPagos();">Pagos</li>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarArriendos();">Arriendos</li>
+				</ul>
+			</div>
+			<div class="d-nav-list">
+				<ul>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarCompras();">Compras</li>
 				</ul>
 			</div>
 			<div class="d-nav-list">
 				<ul>
 					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarProveedores();">Proveedores</li>
+				</ul>
+			</div>
+			<div class="d-nav-list">
+				<ul>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarBodegas();">Bodegas</li>
+				</ul>
+			</div>
+			<div class="d-nav-list">
+				<ul>
+					<li class="mdl-button mdl-js-button mdl-js-ripple-effect d-2-crumb" onclick="MostrarVehiculos();">Vehiculos</li>
 				</ul>
 			</div>
 		</div>

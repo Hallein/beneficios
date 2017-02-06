@@ -1,7 +1,7 @@
-function MostrarProveedores(){
+function MostrarBodegas(){
 	$.ajax({
 	    type: "POST",
-	    url : "api/proveedores",
+	    url : "api/bodegas",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);

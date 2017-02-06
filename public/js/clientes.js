@@ -93,5 +93,5 @@ function IngresarCliente(){
 	    		ShowToast('error', 'Error!', resultado.msg, 2);
 	    	}
 		}
-	});
-}
+	}); //$('#rut_cliente').closest('div').append('<span class="mdl-textfield__error" style="visibility: visible;">El rut esta malisimo!</span>');
+} //$('#rut_cliente').closest('div').addClass('is-invalid');

@@ -1,11 +1,8 @@
-function MostrarServicios(var0){
+function MostrarArriendos(){
 	$.ajax({
 	    type: "POST",
-	    url : "php/servicios.php",
-	    data:({
-	    		var0 : var0
-	    }),
-	    dataType: "html",
+	    url : "api/arriendos",
+	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);
 	    },
@@ -13,7 +10,7 @@ function MostrarServicios(var0){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	$('#d-content').html(resultado);
+	    	$('#d-content').html(resultado.html);
 	    }
 	});
 }

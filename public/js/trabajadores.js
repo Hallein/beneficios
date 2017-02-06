@@ -1,11 +1,8 @@
-function MostrarPagos(var0){
+function MostrarTrabajadores(){
 	$.ajax({
 	    type: "POST",
-	    url : "php/pagos.php",
-	    data:({
-	    		var0 : var0
-	    }),
-	    dataType: "html",
+	    url : "api/trabajadores",
+	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);
 	    },
@@ -13,7 +10,7 @@ function MostrarPagos(var0){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	$('#d-content').html(resultado);
+	    	$('#d-content').html(resultado.html);
 	    }
 	});
 }
