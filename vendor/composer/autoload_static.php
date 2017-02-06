@@ -11,6 +11,10 @@ class ComposerStaticInit91e422025991e49b804925e7d8c337aa
     );
 
     public static $prefixLengthsPsr4 = array (
+        't' => 
+        array (
+            'tebazil\\dbseeder\\' => 17,
+        ),
         'S' => 
         array (
             'Slim\\Views\\' => 11,
@@ -27,10 +31,15 @@ class ComposerStaticInit91e422025991e49b804925e7d8c337aa
         'F' => 
         array (
             'FastRoute\\' => 10,
+            'Faker\\' => 6,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'tebazil\\dbseeder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tebazil/db-seeder/src',
+        ),
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
@@ -50,6 +59,10 @@ class ComposerStaticInit91e422025991e49b804925e7d8c337aa
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
     );
 

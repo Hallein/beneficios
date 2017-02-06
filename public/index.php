@@ -3,12 +3,14 @@
 <head>
 	<meta charset="UTF-8"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/material.min.css">
 	<link rel="stylesheet" href="css/getmdl-select.min.css">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="css/dashboard.css">
-	<link rel="stylesheet" href="css/dataTables.material.min.css">	
+	<link rel="stylesheet" href="css/dataTables.material.min.css">
+	<!--<link rel="stylesheet" href="css/sweetalert.css">	-->
 	<title>Dashboard 2.0</title>
 </head>
 <body>	
@@ -118,6 +120,7 @@
 	<script src="js/libraries/jquery.dataTables.min.js"></script>
 	<script src="js/libraries/dataTables.material.min.js"></script>
 	<script src="js/libraries/Chart.bundle.min.js"></script>
+	<!--<script src="js/libraries/sweetalert.min.js"></script>-->
 	<script src="js/init/init.js"></script>
 	<script src="js/utilities/dashboard.js"></script>
 	<script src="js/utilities/utilities.js"></script>

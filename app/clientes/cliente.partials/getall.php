@@ -6,12 +6,12 @@
 			</div>
 		</div>
 		<div class="btn-multiple">
-			<button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab d-add-icon d-multi-button" style="background-color: #fb8c00; color: #fff;">
+			<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-add-icon d-multi-button d-accent-color">
 			</button>
 			<div class="btn-multiple-options">
 				<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Analizar comparación"></div>
 				<div class="btn-option-hidden btn-position-7 d-bar-chart-icon" data-toggle="tooltip" data-placement="left" title="Generar gráficos"></div>
-				<div id="nuevo_cliente" class="btn-option-hidden btn-position-5 d-new_user-icon" data-toggle="tooltip" data-placement="left" title="Agragar nuevo cliente"></div>
+				<div id="nuevo_cliente" class="btn-option-hidden btn-position-5 d-new_user-icon" data-toggle="tooltip" data-placement="left" title="Agragar nuevo cliente" onmousedown="IngresarCliente();"></div>
 				<span class="btn-option-hidden btn-position-4 d-report-icon" data-toggle="tooltip" data-placement="left" title="Generar reporte"></span>
 			</div>
 		</div>
@@ -19,22 +19,22 @@
 	<div class="mdl-card__supporting-text">
 	<!--<div class="row">
 			<div class="col-md-2">
-				<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
+				<button class="mdl-button mdl-js-ripple-effect mdl-button--option d-full-width">
 					Nuevo Cliente
 				</button>
 			</div>
 			<div class="col-md-2">
-				<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
+				<button class="mdl-button mdl-js-ripple-effect mdl-button--option d-full-width">
 					Opciones
 				</button>
 			</div>
 			<div class="col-md-2">
-				<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
+				<button class="mdl-button mdl-js-ripple-effect mdl-button--option d-full-width">
 					Opciones
 				</button>
 			</div>
 			<div class="col-md-2">
-				<button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--option d-full-width">
+				<button class="mdl-button mdl-js-ripple-effect mdl-button--option d-full-width">
 					Opciones
 				</button>
 			</div>
@@ -63,17 +63,16 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <tr>
 	            <?php foreach($datos['clientes'] as $dato){ ?>
+	            <tr>
 	            	<td><?php echo $dato['RUT_PERSONA']; ?></td>
-	            	<!-- <td>17.095.407-6</td> -->
 	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		                
 	                <td><?php echo $dato['TELEFONO_PERSONA']; ?></td>
 	                <td><?php echo $dato['EMAIL_PERSONA']; ?></td>
 	                <td><?php echo $dato['DIRECCION_PERSONA']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
-							<button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
+							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
 							</button>
 							<div class="btn-multiple-options">
 								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver cliente"></div>
@@ -82,8 +81,8 @@
 							</div>
 						</div>
 	                </td>
-	            <?php } ?>
 	            </tr>
+	            <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

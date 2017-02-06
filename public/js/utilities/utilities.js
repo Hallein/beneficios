@@ -25,3 +25,52 @@ function base64Encode(str) {
     }
     return out;
 }
+
+function OpenModal(id,contenido,size){
+    if(contenido!= ''){
+        if(size != ''){
+            size = ' modal-'+size;
+        }
+        var modal = '';
+        modal += '<div class="modal-overlay"></div>';
+        modal += '<div class="modal fadeInTop" tabindex="-1">';
+        modal += '  <div class="modal-container">';
+        modal += '      <div class="modal-dialog'+size+'">';
+        modal += contenido;
+        modal += '      </div>';
+        modal += '  </div>';
+        modal += '</div>';
+        $('body').append(modal);
+        $('.modal-overlay').fadeIn(400);
+        $('.modal').show();
+        $("body").addClass("modal-open");
+        $('html').keyup(function(e) {
+            if (e.keyCode == 27) {
+                $('.modal-overlay').fadeOut(400);
+                if($('.modal').hasClass('fadeInTop')){
+                    $('.modal').removeClass('fadeInTop');
+                    $('.modal').addClass('fadeOutTop');
+                    $("body").removeClass("modal-open")
+                    setTimeout(function(){
+                        $('.modal').remove();
+                        $('.modal-overlay').remove();
+                    }, 300);
+                }
+            }
+        });
+        $("[data-value='modal-dismiss']").click(function(e) {
+            $('.modal-overlay').fadeOut(400);
+            if($('.modal').hasClass('fadeInTop')){
+                $('.modal').removeClass('fadeInTop');
+                $('.modal').addClass('fadeOutTop');
+                $("body").removeClass("modal-open")
+                setTimeout(function(){
+                    $('.modal').remove();
+                    $('.modal-overlay').remove();
+                }, 300);
+            }
+        });
+    }else{
+    console.log('Contenido vacio!');
+    }
+}

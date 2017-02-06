@@ -4,7 +4,7 @@
 
 $container['clientes'] = function ($c) {
     //return new ClientesController($c->get('db'));
-    return new ClientesController('hola');
+    return new ClientesController($c->db);
 };
 
 $container['proveedores'] = function ($c) {
