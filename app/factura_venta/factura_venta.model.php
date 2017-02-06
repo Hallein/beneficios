@@ -1,5 +1,5 @@
 <?php
-	class Factura{
+	class FacturaVenta{
 
 		private $db;
 
@@ -21,11 +21,12 @@
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['factura'] = $query -> fetch();
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Factura encontrada';
+				$datos['status'] = 'success';
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No existe la factura';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No existe la factura';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}		
@@ -39,11 +40,15 @@
 			$query -> bindParam(':folio', $data['FOLIO']);
 			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Factua registrada';
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Factua registrada correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible registrar la factura';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No fue posible registrar la factura';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -58,11 +63,15 @@
 			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
 			$query -> bindParam(':id', $data['ID_VENTA']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Factura modificada';	
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Factura modificada correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible modificar la factura';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No fue posible modificar la factura';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -72,11 +81,15 @@
 			$query = $this->db->prepare('DELETE FROM factura_venta WHERE ID_VENTA = :id');
 			$query -> bindParam(':id', $data['id']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Factura eliminada';
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Factura eliminada correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible eliminar la factura';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No fue posible eliminar la factura';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

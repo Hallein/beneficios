@@ -19,11 +19,12 @@
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['cliente'] = $query -> fetch();
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Cliente creado';
+				$datos['status'] = 'success';
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible registrar el cliente';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No existe el cliente consultado';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -60,18 +61,34 @@
 			//$query -> bindParam(':ciudad', $data['CIUDAD']);
 			$query -> bindParam(':comuna', $data['comuna']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Cliente ingresado correctamente';
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Cliente registrado correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible registrar el cliente';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No se pudo registrar al cliente';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
 
 		public function update($data){
 			$datos = array();
-			$query = $this->db->prepare('UPDATE cliente SET NOMBRE_PERSONA = :nombres, APATERNO_PERSONA = :apaterno, AMATERNO_PERSONA = :amaterno, FECHA_NACIMIENTO = :fnac, DIRECCION_PERSONA = :dir, TELEFONO_PERSONA = :tel, EMAIL_PERSONA = :email, EMPRESA = :empresa, CIUDAD = :ciudad, COMUNA = :comuna WHERE RUT_PERSONA = :rut');			
+			$query = $this->db->prepare('	UPDATE cliente 
+											SET NOMBRE_PERSONA = :nombres, 
+												APATERNO_PERSONA = :apaterno, 
+												AMATERNO_PERSONA = :amaterno, 
+												FECHA_NACIMIENTO = :fnac, 
+												DIRECCION_PERSONA = :dir, 
+												TELEFONO_PERSONA = :tel, 
+												EMAIL_PERSONA = :email, 
+												EMPRESA = :empresa, 
+												CIUDAD = :ciudad, 
+												COMUNA = :comuna 
+											WHERE RUT_PERSONA = :rut');	
+
 			$query -> bindParam(':nombres', $data['NOMBRE_PERSONA']);
 			$query -> bindParam(':apaterno', $data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', $data['AMATERNO_PERSONA']);
@@ -84,25 +101,34 @@
 			$query -> bindParam(':comuna', $data['COMUNA']);
 			$query -> bindParam(':rut', $data['RUT_PERSONA']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Cliente modificado correctamente';
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Cliente modificado correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible modificar el cliente';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'No fue posible modificar el cliente';
+				$datos['message']['body'] = 'No fue posible modificar el cliente';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
 
 		public function delete($data){
 			$datos = array();
-			$query = $this->db->prepare('DELETE FROM cliente WHERE RUT_PERSONA = :rut');
+			$query = $this->db->prepare('	DELETE FROM cliente 
+											WHERE RUT_PERSONA = :rut');
 			$query -> bindParam(':rut', $data['rut']);
 			if($query -> execute()){
-				$datos['status'] = 'Success';
-				$datos['msg'] = 'Cliente eliminado correctamente';
+				$datos['status'] = 'success';
+				$datos['message']['title'] = '¡Listo!';
+				$datos['message']['body'] = 'Cliente eliminado correctamente';
+				$datos['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'Error';
-				$datos['msg'] = 'No fue posible eliminar el cliente';
+				$datos['status'] = 'error';
+				$datos['message']['title'] = 'Ocurrió un error';
+				$datos['message']['body'] = 'No fue posible eliminar el cliente';
+				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

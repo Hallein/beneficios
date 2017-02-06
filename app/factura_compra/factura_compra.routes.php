@@ -1,10 +1,10 @@
 <?php
 
-$app->group('/pagos', function(){
+$app->group('/facturas/compra', function(){
 
 	$this->get('', function ($request, $response, $args) {
 
-		$json = $this->pagos->index();
+		$json = $this->factura_compra->index();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -13,7 +13,7 @@ $app->group('/pagos', function(){
 	$this->get('/show/{id}', function ($request, $response, $args) {
 
 		$id = $args['id'];
-		$json = $this->pagos->show($id);
+		$json = $this->factura_compra->show($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -21,7 +21,7 @@ $app->group('/pagos', function(){
 
 	$this->get('/create', function ($request, $response, $args) {
 
-		$json = $this->pagos->create();
+		$json = $this->factura_compra->create();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -30,7 +30,7 @@ $app->group('/pagos', function(){
 	$this->post('/store', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->pagos->store($data);
+		$json = $this->factura_compra->store($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -38,7 +38,7 @@ $app->group('/pagos', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-		$json = $this->pagos->edit($id);
+		$json = $this->factura_compra->edit($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -47,7 +47,7 @@ $app->group('/pagos', function(){
 	$this->post('/update', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->pagos->update($data);
+		$json = $this->factura_compra->update($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -56,7 +56,7 @@ $app->group('/pagos', function(){
 	$this->post('/destroy/{id}', function ($request, $response, $args) {
 		
 		$id = $args['id'];
-		$json = $this->pagos->destroy($id);
+		$json = $this->factura_compra->destroy($id);
 
 		$response->write(json_encode($json));
 		return $response;
