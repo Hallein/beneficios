@@ -231,6 +231,7 @@ body{
 /*FOOTER-END*********************************/
 
 /*COMPONENTS*************************************/
+
 	/*HAMBURGUER*********************************/
 	#d-hamburguer{
 		position: relative;
@@ -321,6 +322,7 @@ body{
 		transition-delay: 0s,0.3s;
 	}
 	/*HAMBURGUER-END*********************************/
+
 	/*LOADER*****************************************/
 	#overlay-loader{
 		position: fixed;
@@ -412,6 +414,7 @@ body{
 		}
 	}
 	/*END-LOADER*************************************/
+
 	/*CHARTS*****************************************/
 	canvas{
 		padding: 0 20px;
@@ -445,6 +448,7 @@ body{
 		padding: 5px 0;
 	}
 	/*END-CHARTS*************************************/
+
 	/*ICONS******************************************/
 	.d-new_user-icon:before{		
  		content: "\f234";
@@ -500,6 +504,7 @@ body{
 		font-family: 'FontAwesome';
 	}
 	/*END-ICONS**************************************/
+
 	/*MULTI-BUTTON***********************************/
 	.btn-multiple{
 		width: 40px;
@@ -598,6 +603,7 @@ body{
 		top: calc(100% - 55px);
 	}
 	/*END-MULTI-BUTTON***********************************/
+
 	/*FLOATING-MUTI-BUTTON*******************************/
 	.mdl-card .mdl-card__title .btn-multiple{
 		position: absolute;
@@ -612,6 +618,7 @@ body{
 		height: 54px;
 	}
 	/*END-FLOATING-MUTI-BUTTON***************************/
+
 	/*MODAL**********************************************/
 	body.modal-open {
 	    overflow: hidden;
@@ -686,110 +693,41 @@ body{
 		display: inline-block;
 		margin: 5px;
 	}
+	/*END-MODAL**************************************/
 
-	@media screen and (max-width: 992px){
-		.modal-lg{
-			width: 600px;
-		}
-
-		.modal .modal-content .row{
-			margin: 0;
-		}
+	/*TOAST******************************************/
+	.d-toast{
+		position: fixed;
+		top: 10px;
+		right: 15px;
+		z-index: 9000;
+		white-space: nowrap;
+		padding: 10px 20px;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+		font-size: 16px;
 	}
 
-	@media screen and (max-width: 768px){
-		.modal, .modal-lg, .modal-sm{
-			width: 100%;
-		}
-		.modal-dialog .modal-footer button{
-			width: 100%;
-		}
-
-		.modal .modal-content .row{
-			margin: 0;
-		}
+	.d-toast-success{
+		background-color: #27ae60;
+		color: #f4f6f7;
 	}
 
-	.fadeInTop{
-		-webkit-animation: fadeInTop 0.2s forwards;
-		-moz-animation: fadeInTop 0.2s forwards;
-		-o-animation: fadeInTop 0.2s forwards;
-		animation: fadeInTop 0.2s forwards;
+	.d-toast-error{
+		background-color: #e74c3c;
+		color: #f4f6f7;
 	}
 
-	.fadeOutTop{
-		-webkit-animation: fadeOutTop 0.2s forwards;
-		-moz-animation: fadeOutTop 0.2s forwards;
-		-o-animation: fadeOutTop 0.2s forwards;
-		animation: fadeOutTop 0.2s forwards;
+	.d-toast-notify{
+		background-color: #3498db;
+		color: #f4f6f7;
 	}
 
-	-webkit-@keyframes fadeInTop {
-	   0% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	   100% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	} 
-	
-	-moz-@keyframes fadeInTop {
-	   0% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	   100% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	} 
+	.d-toast-warning{
+		background-color: #f39c12;
+		color: #f4f6f7;
+	}
+	/*END-TOAST**************************************/
 
-	@keyframes fadeInTop {
-	   0% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	   100% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	} 
-
-	-webkit-@keyframes fadeOutTop {
-	   0% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	   100% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	} 
-	
-	-moz-@keyframes fadeOutTop {
-	   0% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	   100% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	} 
-
-	@keyframes fadeOutTop {
-	   0% {
-	      opacity: 1;
-	      transform: translateY(0);
-	   }
-	   100% {
-	      opacity: 0;
-	      transform: translateY(-40px);
-	   }
-	} 
-	/*END-MODAL*************************************/
 /*END-COMPONENTS*************************************/
 
 /*MDL-MODIFY*****************************************/
@@ -905,7 +843,27 @@ body{
 /*MDL-MODIFY-END*****************************************/
 
 /*MEDIA-QUERIES******************************************/
+@media screen and (max-width: 768px){
+	.modal, .modal-lg, .modal-sm{
+		width: 100%;
+	}
+	.modal-dialog .modal-footer button{
+		width: 100%;
+	}
+
+	.modal .modal-content .row{
+		margin: 0;
+	}
+}
 @media screen and (max-width: 992px){
+	.modal-lg{
+		width: 600px;
+		}
+
+	.modal .modal-content .row{
+		margin: 0;
+	}
+
     .mdl-card__supporting-text>.row{
        margin: 0;
    }
@@ -997,3 +955,87 @@ body{
 	}
 	
 }
+/*END-MEDIA-QUERIES***********************************/
+
+/*ANIMATIONS******************************************/
+
+.fadeInTop{
+	-webkit-animation: fadeInTop 0.3s forwards;
+	-moz-animation: fadeInTop 0.3s forwards;
+	-o-animation: fadeInTop 0.3s forwards;
+	animation: fadeInTop 0.3s forwards;
+}
+
+.fadeOutTop{
+	-webkit-animation: fadeOutTop 0.3s forwards;
+	-moz-animation: fadeOutTop 0.3s forwards;
+	-o-animation: fadeOutTop 0.3s forwards;
+	animation: fadeOutTop 0.3s forwards;
+}
+
+-webkit-@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+-moz-@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+-webkit-@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+
+-moz-@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+
+@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+/*END-ANIMATIONS**************************************/

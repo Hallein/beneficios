@@ -58,26 +58,26 @@
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="region_cliente" value="Región" readonly tabIndex="-1">
+				            <input class="mdl-textfield__input" type="text" id="region_cliente" value="Seleccione región" readonly tabIndex="-1">
 				            <label for="region_cliente">
 				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
 				            </label>
 				            <label for="region_cliente" class="mdl-textfield__label">Región</label>
 				            <ul for="region_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="DE">Tarapacá</li>
+				                <li class="mdl-menu__item" data-val="1">Tarapacá</li>
 				            </ul>
 				        </div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="comuna_cliente" value="Comuna" readonly tabIndex="-1">
+				            <input class="mdl-textfield__input" type="text" id="comuna_cliente" value="Seleccione comuna" readonly tabIndex="-1">
 				            <label for="comuna_cliente">
 				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
 				            </label>
 				            <label for="comuna_cliente" class="mdl-textfield__label">Comuna</label>
 				            <ul for="comuna_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="DE">Iquique</li>
-				                <li class="mdl-menu__item" data-val="DE">Alto hospicio</li>
+				                <li class="mdl-menu__item" data-val="1">Iquique</li>
+				                <li class="mdl-menu__item" data-val="2">Alto hospicio</li>
 				            </ul>
 				        </div>
 					</div>	

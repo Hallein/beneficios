@@ -56,27 +56,28 @@ function FormularioCliente(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg')
+	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg');
+	    	getmdlSelect.init(".getmdl-select");
 		}
 	});
 }
 
 
 function IngresarCliente(){
-	var data = 	{
-		rut: 		$('#rut_cliente').val(),
-		nombre:		$('#nombre_cliente').val(),
-		apaterno:	$('#apaterno_cliente').val(),
-		amaterno:	$('#amaterno_cliente').val(),
-		email:		$('#email_cliente').val(),
-		telefono:	$('#telefono_cliente').val(),
-		fechanac:	$('#fecha_cliente').val(),
-		direccion:	$('#direccion_cliente').val(),
-		comuna: 	$('#comuna_cliente option:selected').val()
-	};
 	$.ajax({
 	    type: "POST",
 	    url : "api/clientes/store",
+	    data: {
+	    	rut: 		$('#rut_cliente').val(),
+			nombre:		$('#nombres_cliente').val(),
+			apaterno:	$('#apaterno_cliente').val(),
+			amaterno:	$('#amaterno_cliente').val(),
+			email:		$('#email_cliente').val(),
+			telefono:	$('#telefono_cliente').val(),
+			fechanac:	$('#fecha_cliente').val(),
+			direccion:	$('#direccion_cliente').val(),
+			comuna: 	$('#comuna_cliente').attr('data-val')
+	    },
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);
@@ -85,7 +86,12 @@ function IngresarCliente(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg')
+	    	if(resultado.status == 'Success'){
+	    		ShowToast('success', 'Exito!', resultado.msg, 2);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast('error', 'Error!', resultado.msg, 2);
+	    	}
 		}
 	});
 }

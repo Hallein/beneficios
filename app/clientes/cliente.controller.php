@@ -50,7 +50,8 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->cliente->store($data);
+			return $datos;
 		}
 
 		public function edit($id){

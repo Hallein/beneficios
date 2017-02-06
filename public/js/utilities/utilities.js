@@ -46,31 +46,59 @@ function OpenModal(id,contenido,size){
         $("body").addClass("modal-open");
         $('html').keyup(function(e) {
             if (e.keyCode == 27) {
-                $('.modal-overlay').fadeOut(400);
-                if($('.modal').hasClass('fadeInTop')){
-                    $('.modal').removeClass('fadeInTop');
-                    $('.modal').addClass('fadeOutTop');
-                    $("body").removeClass("modal-open")
-                    setTimeout(function(){
-                        $('.modal').remove();
-                        $('.modal-overlay').remove();
-                    }, 300);
-                }
+                CloseModal();
             }
         });
         $("[data-value='modal-dismiss']").click(function(e) {
-            $('.modal-overlay').fadeOut(400);
-            if($('.modal').hasClass('fadeInTop')){
-                $('.modal').removeClass('fadeInTop');
-                $('.modal').addClass('fadeOutTop');
-                $("body").removeClass("modal-open")
-                setTimeout(function(){
-                    $('.modal').remove();
-                    $('.modal-overlay').remove();
-                }, 300);
-            }
+           CloseModal();
         });
     }else{
     console.log('Contenido vacio!');
     }
+}
+
+function CloseModal(){
+    $('.modal-overlay').fadeOut(400);
+        if($('.modal').hasClass('fadeInTop')){
+            $('.modal').removeClass('fadeInTop');
+            $('.modal').addClass('fadeOutTop');
+            $("body").removeClass("modal-open")
+            setTimeout(function(){
+                $('.modal').remove();
+                $('.modal-overlay').remove();
+            }, 300);
+        }
+}
+
+function ShowToast(type, title, message, time){
+var numbertoast = $('.d-toast').length;
+var toastclass = '';
+switch(type) {
+    case 'success':
+        toastclass = ' d-toast-success';
+        break;
+    case 'error':
+        toastclass = ' d-toast-error';
+        break;
+    case 'notify':
+       toastclass = ' d-toast-notify';
+        break;
+    case 'warning':
+        toastclass = ' d-toast-warning';
+        break;
+} 
+    var toast = '';
+    toast += '<div id="toast_'+numbertoast+'" class="d-toast fadeInTop'+toastclass+'">';
+    toast += '<strong>'+title+'</strong>';
+    toast += ' '+message+'.';
+    toast += '</div>';
+    $('body').append(toast);
+    $('#toast_'+numbertoast).show();
+    setTimeout(function(){ 
+        $('#toast_'+numbertoast).removeClass('fadeInTop');
+        $('#toast_'+numbertoast).addClass('fadeOutTop');
+        setTimeout(function(){ 
+            $('#toast_'+numbertoast).remove();
+        }, 500);
+    }, (time*1000));
 }
