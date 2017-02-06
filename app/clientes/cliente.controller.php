@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->cliente->show($id);
+			$datos = $this->cliente->show($id);
 
 			ob_start();
 			include CLIENTES . '/show.php';
@@ -55,7 +55,7 @@
 
 		public function edit($id){
 
-			//$datos = $this->cliente->show($id);
+			$datos = $this->cliente->show($id);
 
 			ob_start();
 			include CLIENTES . '/edit.php';

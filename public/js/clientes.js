@@ -44,10 +44,39 @@ function MostrarClientes(){
 	});
 }
 
-function IngresarCliente(){	
+function FormularioCliente(){	
 	$.ajax({
 	    type: "GET",
 	    url : "api/clientes/create",
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg')
+		}
+	});
+}
+
+
+function IngresarCliente(){
+	var data = 	{
+		rut: 		$('#rut_cliente').val(),
+		nombre:		$('#nombre_cliente').val(),
+		apaterno:	$('#apaterno_cliente').val(),
+		amaterno:	$('#amaterno_cliente').val(),
+		email:		$('#email_cliente').val(),
+		telefono:	$('#telefono_cliente').val(),
+		fechanac:	$('#fecha_cliente').val(),
+		direccion:	$('#direccion_cliente').val(),
+		comuna: 	$('#comuna_cliente option:selected').val()
+	};
+	$.ajax({
+	    type: "POST",
+	    url : "api/clientes/store",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);

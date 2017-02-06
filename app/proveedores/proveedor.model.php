@@ -33,8 +33,8 @@
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO proveedor VALUES(:rut, :nombre, :ciudad, :pais)');
 			$query -> bindParam(':rut', $data['RUT_PROVEEDOR']);
-			$query -> bindParam(':nombre', $data['NOMBRE_PROVEEDOR]');
-			$query -> bindParam(':ciudad', $data['CIUDAD_PROVEEDOR]');
+			$query -> bindParam(':nombre', $data['NOMBRE_PROVEEDOR']);
+			$query -> bindParam(':ciudad', $data['CIUDAD_PROVEEDOR']);
 			$query -> bindParam(':pais', $data['PAIS_PROVEEDOR']);
 			if($query -> execute()){
 				$datos['status'] = 'Success';
@@ -49,8 +49,8 @@
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('UPDATE proveedor SET NOMBRE_PROVEEDOR = :nombre, CIUDAD_PROVEEDOR = :ciudad, PAIS_PROVEEDOR = :pais WHERE RUT_PROVEEDOR = :rut');			
-			$query -> bindParam(':nombre', $data['NOMBRE_PROVEEDOR]');
-			$query -> bindParam(':ciudad', $data['CIUDAD_PROVEEDOR]');
+			$query -> bindParam(':nombre', $data['NOMBRE_PROVEEDOR']);
+			$query -> bindParam(':ciudad', $data['CIUDAD_PROVEEDOR']);
 			$query -> bindParam(':pais', $data['PAIS_PROVEEDOR']);
 			$query -> bindParam(':rut', $data['RUT_PROVEEDOR']);
 			if($query -> execute()){

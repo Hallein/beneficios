@@ -32,8 +32,8 @@
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO cliente VALUES(:rut, :nombres, :apaterno, :amaterno, :fnac, :dir, :tel, :email, :empresa, :ciudad, :comuna)');
 			$query -> bindParam(':rut', $data['RUT_PERSONA']);
-			$query -> bindParam(':nombres', $data['NOMBRE_PERSONA]');
-			$query -> bindParam(':apaterno', $data['APATERNO_PERSONA]');
+			$query -> bindParam(':nombres', $data['NOMBRE_PERSONA']);
+			$query -> bindParam(':apaterno', $data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', $data['AMATERNO_PERSONA']);
 			$query -> bindParam(':fnac', $data['FECHA_NACIMIENTO']);
 			$query -> bindParam(':dir', $data['DIRECCION_PERSONA']);
@@ -55,8 +55,8 @@
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('UPDATE cliente SET NOMBRE_PERSONA = :nombres, APATERNO_PERSONA = :apaterno, AMATERNO_PERSONA = :amaterno, FECHA_NACIMIENTO = :fnac, DIRECCION_PERSONA = :dir, TELEFONO_PERSONA = :tel, EMAIL_PERSONA = :email, EMPRESA = :empresa, CIUDAD = :ciudad, COMUNA = :comuna WHERE RUT_PERSONA = :rut');			
-			$query -> bindParam(':nombres', $data['NOMBRE_PERSONA]');
-			$query -> bindParam(':apaterno', $data['APATERNO_PERSONA]');
+			$query -> bindParam(':nombres', $data['NOMBRE_PERSONA']);
+			$query -> bindParam(':apaterno', $data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', $data['AMATERNO_PERSONA']);
 			$query -> bindParam(':fnac', $data['FECHA_NACIMIENTO']);
 			$query -> bindParam(':dir', $data['DIRECCION_PERSONA']);

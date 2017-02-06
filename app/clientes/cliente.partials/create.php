@@ -10,72 +10,72 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Rut">
+							<input class="mdl-textfield__input" type="text" id="rut_cliente">
 							<label class="mdl-textfield__label" for="Rut">Rut</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Nombres">
+							<input class="mdl-textfield__input" type="text" id="nombres_cliente">
 							<label class="mdl-textfield__label" for="Nombres">Nombres</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Apaterno">
+							<input class="mdl-textfield__input" type="text" id="apaterno_cliente">
 							<label class="mdl-textfield__label" for="Apaterno">Apellido paterno</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Amaterno">
+							<input class="mdl-textfield__input" type="text" id="amaterno_cliente">
 							<label class="mdl-textfield__label" for="Amaterno">Apellido materno</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Email">
+							<input class="mdl-textfield__input" type="text" id="email_cliente">
 							<label class="mdl-textfield__label" for="Email">Email</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Telefono">
+							<input class="mdl-textfield__input" type="text" id="telefono_cliente">
 							<label class="mdl-textfield__label" for="Telefono">Telefono</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Fecha">
+							<input class="mdl-textfield__input" type="text" id="fecha_cliente">
 							<label class="mdl-textfield__label" for="Fecha">Fecha nacimiento</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="Direccion">
+							<input class="mdl-textfield__input" type="text" id="direccion_cliente">
 							<label class="mdl-textfield__label" for="Direccion">Direccion</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="Región" value="Región" readonly tabIndex="-1">
-				            <label for="Región">
+				            <input class="mdl-textfield__input" type="text" id="region_cliente" value="Región" readonly tabIndex="-1">
+				            <label for="region_cliente">
 				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
 				            </label>
-				            <label for="Región" class="mdl-textfield__label">Región</label>
-				            <ul for="Región" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+				            <label for="region_cliente" class="mdl-textfield__label">Región</label>
+				            <ul for="region_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 				                <li class="mdl-menu__item" data-val="DE">Tarapacá</li>
 				            </ul>
 				        </div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="Comuna" value="Comuna" readonly tabIndex="-1">
-				            <label for="Comuna">
+				            <input class="mdl-textfield__input" type="text" id="comuna_cliente" value="Comuna" readonly tabIndex="-1">
+				            <label for="comuna_cliente">
 				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
 				            </label>
-				            <label for="Comuna" class="mdl-textfield__label">Comuna</label>
-				            <ul for="Comuna" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+				            <label for="comuna_cliente" class="mdl-textfield__label">Comuna</label>
+				            <ul for="comuna_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
 				                <li class="mdl-menu__item" data-val="DE">Iquique</li>
 				                <li class="mdl-menu__item" data-val="DE">Alto hospicio</li>
 				            </ul>
@@ -91,7 +91,7 @@
 		<button  type="button" class="mdl-button mdl-button--raised mdl-button--centered" data-value="modal-dismiss">
 		  Cancelar
 		</button>
-	 	<button  type="button" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
+	 	<button  type="button" onclick="IngresarCliente();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
 		  Ingresar cliente
 		</button>
 	</div>

@@ -34,8 +34,8 @@
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO insumo(NOMBRE_INSUMO, CATEGORIA_INSUMO, SUBCATEGORIA_INSUMO, PRECIO_VENTA, PRECIO_COMPRA) VALUES(:ninsumo, :cinsumo, :scinsumo, :pventa, :pcompra)');
 			$query -> bindParam(':ninsumo', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA]');
-			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO]');
+			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA']);
+			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO']);
 			$query -> bindParam(':pventa', $data['FECHA_LIMITE']);
 			$query -> bindParam(':pcompra', $data['VALOR_TOTAL']);
 			if($query -> execute()){
@@ -52,8 +52,8 @@
 			$datos = array();
 			$query = $this->db->prepare('UPDATE insumo SET NOMBRE_INSUMO = :ninsumo, CATEGORIA_INSUMO = :cinsumo, SUBCATEGORIA_INSUMO = :scinsumo, PRECIO_VENTA = :pventa, PRECIO_COMPRA = :pcompra WHERE ID_INSUMO = :id');
 			$query -> bindParam(':ninsumo', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA]');
-			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO]');
+			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA']);
+			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO']);
 			$query -> bindParam(':pventa', $data['FECHA_LIMITE']);
 			$query -> bindParam(':pcompra', $data['VALOR_TOTAL']);
 			$query -> bindParam(':id', $data['ID_INSUMO']);

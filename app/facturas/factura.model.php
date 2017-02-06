@@ -34,8 +34,8 @@
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO factura_venta(FECHA_VENTA, VALOR_VENTA, IVA, FOLIO, NUMERO_SERIE) VALUES(:fventa, :vventa, :iva, :folio, :nserie)');
 			$query -> bindParam(':fventa', $data['FECHA_VENTA']);
-			$query -> bindParam(':vventa', $data['VALOR_VENTA]');
-			$query -> bindParam(':iva', $data['IVA]');
+			$query -> bindParam(':vventa', $data['VALOR_VENTA']);
+			$query -> bindParam(':iva', $data['IVA']);
 			$query -> bindParam(':folio', $data['FOLIO']);
 			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
 			if($query -> execute()){
@@ -52,8 +52,8 @@
 			$datos = array();
 			$query = $this->db->prepare('UPDATE factura_venta SET FECHA_VENTA = :fventa, VALOR_VENTA = :vvente, IVA = :iva, FOLIO = :folio, NUMERO_SERIE = :nserie WHERE ID_VENTA = :id');
 			$query -> bindParam(':fventa', $data['FECHA_VENTA']);
-			$query -> bindParam(':vventa', $data['VALOR_VENTA]');
-			$query -> bindParam(':iva', $data['IVA]');
+			$query -> bindParam(':vventa', $data['VALOR_VENTA']);
+			$query -> bindParam(':iva', $data['IVA']);
 			$query -> bindParam(':folio', $data['FOLIO']);
 			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
 			$query -> bindParam(':id', $data['ID_VENTA']);
