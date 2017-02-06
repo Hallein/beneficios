@@ -63,10 +63,9 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <tr>
 	            <?php foreach($datos['clientes'] as $dato){ ?>
+	            <tr>
 	            	<td><?php echo $dato['RUT_PERSONA']; ?></td>
-	            	<!-- <td>17.095.407-6</td> -->
 	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		                
 	                <td><?php echo $dato['TELEFONO_PERSONA']; ?></td>
 	                <td><?php echo $dato['EMAIL_PERSONA']; ?></td>
@@ -82,8 +81,8 @@
 							</div>
 						</div>
 	                </td>
-	            <?php } ?>
 	            </tr>
+	            <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

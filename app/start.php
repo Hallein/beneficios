@@ -7,7 +7,7 @@ $config['displayErrorDetails'] = true;
 $config['db']['host']   = "localhost";
 $config['db']['user']   = "root";
 $config['db']['pass']   = "";
-$config['db']['dbname'] = "";
+$config['db']['dbname'] = "industrial";
 
 //Instancia de Slim
 $app = new Slim\App(["settings" => $config]);
@@ -39,6 +39,7 @@ require 'models.php';
 require 'controllers.php';
 require 'routes.php';
 require 'container.php';
+require 'seeder.php';
 
 
 $app->run();
