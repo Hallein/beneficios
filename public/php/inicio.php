@@ -1,5 +1,4 @@
 <?php 
-$option = base64_decode($_POST['var0']);
 switch ($option) {
 	case 'INI_1':
 			$html="";

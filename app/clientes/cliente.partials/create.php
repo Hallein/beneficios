@@ -16,7 +16,7 @@
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="nombres_cliente" required>
+							<input class="mdl-textfield__input" type="text" id="nombres_cliente">
 							<label class="mdl-textfield__label" for="Nombres">Nombres</label>
 						</div>	
 					</div>

@@ -144,9 +144,12 @@
 	<script src="js/inicio.js"></script>
 	<script src="js/clientes.js"></script>
 	<script src="js/insumos.js"></script>
-	<script src="js/pagos.js"></script>
+	<script src="js/bodegas.js"></script>
+	<script src="js/ventas.js"></script>
+	<script src="js/arriendos.js"></script>
 	<script src="js/proveedores.js"></script>
-	<script src="js/servicios.js"></script>
-	<script src="js/facturas.js"></script>
+	<script src="js/compras.js"></script>
+	<script src="js/vehiculos.js"></script>
+	<script src="js/trabajadores.js"></script>
 </body>
 </html>
