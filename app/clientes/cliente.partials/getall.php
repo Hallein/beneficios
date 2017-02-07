@@ -18,7 +18,7 @@
 	</div>
 	<div class="mdl-card__supporting-text">
 		<br>
-		<table id="listado_clientes" class="mdl-data-table" width="100%" cellspacing="0">
+		<table id="listado_clientes" class="mdl-data-table dataTable" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
 	                <th>Rut</th>
@@ -26,7 +26,7 @@
 	                <th>Telefono</th>
 	                <th>Email</th>
 	                <th>Dirección</th>
-	                <th></th>
+	                <th class="all"></th>
 	            </tr>
 	        </thead>
 	        <tfoot>

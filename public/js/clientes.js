@@ -13,7 +13,7 @@ function MostrarClientes(){
 	    	$('#d-content').html(resultado.html);	
 	    	$('[data-toggle="tooltip"]').tooltip();    	
 	    	$('#listado_clientes').DataTable( {
-    			"responsive": true,
+    			responsive: true,
 		        "language" : {
 				    "decimal":        "",
 				    "emptyTable":     "No se encontraron resultados",
