@@ -32,6 +32,10 @@ body{
 	background-color: #fb8c00 !important; 
 	color: #fff;
 }
+
+.d-texto-derecha{
+	text-align: right !important;
+}
 /*GENERAL-END*********************************/
 
 /*VERTICAL-NAV*******************************/
@@ -204,6 +208,57 @@ body{
 #d-content .d-title-margin{
 	margin-left: 16px;
 }
+	/*FACTURA**********************************/
+	.d-factura{
+		padding: 20px 20px 40px 20px;
+	}
+
+	.d-factura .d-factura-logo img{
+		width: 200px;
+		height: auto;
+	}
+
+	.d-factura .d-factura-title h3{
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.d-factura .d-factura-info{
+		list-style-type: none;
+		border: 1px solid rgba(0,0,0,0.15);
+		padding: 5px;
+		margin: 5px 0;
+	}
+
+	.d-factura .d-factura-info li{
+		border-bottom: 1px solid rgba(0,0,0,0.15);
+	}
+
+	.d-factura .d-factura-info li:last-child{
+		border: 0;
+	}
+
+	.d-factura .d-factura-info .d-form-tag{
+		display: inline-block;
+		min-width: 80px;
+		position: relative;
+	}
+
+	.d-factura .d-factura-info .d-form-tag:after{
+		content: ':';
+		position: absolute;
+		right: 2px;
+	}
+
+	.d-factura .d-factura-subtitle h4{
+		/*Diseño pendiente*/
+	}
+
+	.d-factura .mdl-data-table{
+		width: 100%;
+		margin-top: 20px;
+	}
+	/*END-FACTURA******************************/
 /*CONTENT-END**********************************/
 
 /*FOOTER*************************************/

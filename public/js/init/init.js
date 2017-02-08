@@ -23,4 +23,5 @@ $(document).ready(function(){
 	UpdateBreadcrumb();	
 	graficoBarras();
 	graficoLineas(); 
+	ShowTest(); //BORRAR
 });

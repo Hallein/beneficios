@@ -143,6 +143,7 @@
 	<script src="js/utilities/utilities.js"></script>
 	<script src="js/utilities/charts.js"></script>
 	<script src="js/utilities/multi-button.js"></script>
+	<script src="js/utilities/Test.js"></script> <!--SOLO PARA VER MIS DISEÑOS-->
 	<script src="js/inicio.js"></script>
 	<script src="js/clientes.js"></script>
 	<script src="js/insumos.js"></script>
