@@ -11,6 +11,7 @@
 			$datos = array();
 			$query = $this->db->prepare('SELECT * FROM proveedor');			
 			$query->execute();
+			$datos['proveedores'] = $query->fetchAll();
 
 			return $datos;
 		}

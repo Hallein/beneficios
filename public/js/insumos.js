@@ -1,6 +1,6 @@
 function MostrarInsumos(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/insumos",
 	    dataType: "json",
 	    beforeSend: function() {

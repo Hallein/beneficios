@@ -10,10 +10,10 @@
 		public function getAll(){
 			$datos = array();
 
-			/*$query = $this->db->prepare('SELECT * FROM contrato');			
+			$query = $this->db->prepare('SELECT * FROM trabajador');
 			$query->execute();
 
-			$datos['contratos'] = $query->fetchAll();*/
+			$datos['trabajadores'] = $query->fetchAll();
 			return $datos;
 		}
 

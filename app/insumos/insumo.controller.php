@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->insumo->getAll();
+			$datos = $this->insumo->getAll();
 
 			ob_start();
 			include INSUMOS . '/getall.php';

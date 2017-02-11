@@ -1,10 +1,10 @@
 <?php
-	class ProveedoresController{
+	class DocumentoVentaController{
 
-		private $proveedor;
+		private $documento;
 
 		public function __construct($db){
-			$this->proveedor = new Proveedor($db);
+			$this->documento = new DocumentoVenta($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			$datos = $this->proveedor->getAll();
+			//$datos = $this->documento->getAll();
 
 			ob_start();
-			include PROVEEDORES . '/getall.php';
+			include DOCUMENTO_VENTA . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->proveedor->show($id);
+			//$datos = $this->documento->show($id);
 
 			ob_start();
-			include PROVEEDORES . '/show.php';
+			include DOCUMENTO_VENTA . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include PROVEEDORES . '/create.php';
+			include DOCUMENTO_VENTA . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->proveedor->show($id);
+			//$datos = $this->documento->show($id);
 
 			ob_start();
-			include PROVEEDORES . '/edit.php';
+			include DOCUMENTO_VENTA . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->proveedor->update($data);
+			//$datos = $this->documento->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->proveedor->destroy($id);
+			//$datos = $this->documento->destroy($id);
 		}
 
 	}

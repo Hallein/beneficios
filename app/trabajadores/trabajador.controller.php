@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->trabajador->getAll();
+			$datos = $this->trabajador->getAll();
 
 			ob_start();
 			include TRABAJADORES . '/getall.php';

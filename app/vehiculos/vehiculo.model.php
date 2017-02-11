@@ -8,25 +8,23 @@
 		}
 
 		public function getAll(){
-			$datos = array();
 
-			/*$query = $this->db->prepare('SELECT * FROM contrato');			
+			$query = $this->db->prepare('SELECT * FROM VEHICULO');
 			$query->execute();
-
-			$datos['contratos'] = $query->fetchAll();*/
+			$datos['vehiculos'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			/*$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
+			/*$query = $this->db->prepare('SELECT * FROM vehiculo WHERE NRO_PATENTE = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['contrato'] = $query -> fetch();
+				$datos['vehiculo'] = $query -> fetch();
 				$datos['status'] = 'success';
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el contrato';
+				$datos['message']['body'] = 'No existe el vehiculo';
 				$datos['message']['timeout'] = 2;
 			}*/
 			return $datos;

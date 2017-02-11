@@ -1,10 +1,10 @@
 <?php
-	class FacturaCompraController{
+	class DocumentoCompraController{
 
-		private $factura;
+		private $documento;
 
 		public function __construct($db){
-			$this->factura = new FacturaCompra($db);
+			$this->documento = new DocumentoCompra($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			//$datos = $this->factura->getAll();
+			//$datos = $this->documento->getAll();
 
 			ob_start();
-			include FACTURA_COMPRA . '/getall.php';
+			include DOCUMENTO_COMPRA . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->factura->show($id);
+			//$datos = $this->documento->show($id);
 
 			ob_start();
-			include FACTURA_COMPRA . '/show.php';
+			include DOCUMENTO_COMPRA . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include FACTURA_COMPRA . '/create.php';
+			include DOCUMENTO_COMPRA . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->factura->show($id);
+			//$datos = $this->documento->show($id);
 
 			ob_start();
-			include FACTURA_COMPRA . '/edit.php';
+			include DOCUMENTO_COMPRA . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->factura->update($data);
+			//$datos = $this->documento->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->factura->destroy($id);
+			//$datos = $this->documento->destroy($id);
 		}
 
 	}

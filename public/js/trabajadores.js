@@ -1,6 +1,6 @@
 function MostrarTrabajadores(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/trabajadores",
 	    dataType: "json",
 	    beforeSend: function() {

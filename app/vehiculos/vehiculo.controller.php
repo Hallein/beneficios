@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->vehiculo->getAll();
+			$datos = $this->vehiculo->getAll();
 
 			ob_start();
 			include VEHICULOS . '/getall.php';

@@ -1,10 +1,10 @@
 <?php
 
-$app->group('/facturas/venta', function(){
+$app->group('/documentos/venta', function(){
 
 	$this->get('', function ($request, $response, $args) {
 
-		$json = $this->factura_venta->index();
+		$json = $this->documento_venta->index();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -13,7 +13,7 @@ $app->group('/facturas/venta', function(){
 	$this->get('/show/{id}', function ($request, $response, $args) {
 
 		$id = $args['id'];
-		$json = $this->factura_venta->show($id);
+		$json = $this->documento_venta->show($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -21,7 +21,7 @@ $app->group('/facturas/venta', function(){
 
 	$this->get('/create', function ($request, $response, $args) {
 
-		$json = $this->factura_venta->create();
+		$json = $this->documento_venta->create();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -30,7 +30,7 @@ $app->group('/facturas/venta', function(){
 	$this->post('/store', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->factura_venta->store($data);
+		$json = $this->documento_venta->store($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -38,7 +38,7 @@ $app->group('/facturas/venta', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-		$json = $this->factura_venta->edit($id);
+		$json = $this->documento_venta->edit($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -47,7 +47,7 @@ $app->group('/facturas/venta', function(){
 	$this->post('/update', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->factura_venta->update($data);
+		$json = $this->documento_venta->update($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -56,7 +56,7 @@ $app->group('/facturas/venta', function(){
 	$this->post('/destroy/{id}', function ($request, $response, $args) {
 		
 		$id = $args['id'];
-		$json = $this->factura_venta->destroy($id);
+		$json = $this->documento_venta->destroy($id);
 
 		$response->write(json_encode($json));
 		return $response;

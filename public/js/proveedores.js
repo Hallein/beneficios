@@ -1,6 +1,6 @@
 function MostrarProveedores(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/proveedores",
 	    dataType: "json",
 	    beforeSend: function() {

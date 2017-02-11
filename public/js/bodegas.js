@@ -1,6 +1,6 @@
 function MostrarBodegas(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/bodegas",
 	    dataType: "json",
 	    beforeSend: function() {

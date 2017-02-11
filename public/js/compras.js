@@ -1,6 +1,6 @@
 function MostrarCompras(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/compras",
 	    dataType: "json",
 	    beforeSend: function() {

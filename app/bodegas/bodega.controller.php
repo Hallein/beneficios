@@ -1,10 +1,10 @@
 <?php
-	class FacturaVentaController{
+	class BodegasController{
 
-		private $factura;
+		private $bodega;
 
 		public function __construct($db){
-			$this->factura = new FacturaVenta($db);
+			$this->bodega = new Bodega($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			//$datos = $this->factura->getAll();
+			$datos = $this->bodega->getAll();
 
 			ob_start();
-			include FACTURA_VENTA . '/getall.php';
+			include BODEGAS . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->factura->show($id);
+			//$datos = $this->bodega->show($id);
 
 			ob_start();
-			include FACTURA_VENTA . '/show.php';
+			include BODEGAS . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include FACTURA_VENTA . '/create.php';
+			include BODEGAS . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->factura->show($id);
+			//$datos = $this->bodega->show($id);
 
 			ob_start();
-			include FACTURA_VENTA . '/edit.php';
+			include BODEGAS . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->factura->update($data);
+			//$datos = $this->bodega->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->factura->destroy($id);
+			//$datos = $this->bodega->destroy($id);
 		}
 
 	}

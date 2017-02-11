@@ -9,27 +9,32 @@ $container['clientes'] = function ($c) {
 
 $container['proveedores'] = function ($c) {
     //return new ProveedoresController($c->get('db'));
-    return new ProveedoresController('hola');
+    return new ProveedoresController($c->db);
+};
+
+$container['bodegas'] = function ($c) {
+    //return new ContratosController($c->get('db'));
+    return new BodegasController($c->db);
 };
 
 $container['insumos'] = function ($c) {
     //return new InsumosController($c->get('db'));
-    return new InsumosController('hola');
+    return new InsumosController($c->db);
 };
 
 $container['vehiculos'] = function ($c) {
     //return new VehiculosController($c->get('db'));
-    return new VehiculosController('hola');
+    return new VehiculosController($c->db);
 };
 
-$container['factura_venta'] = function ($c) {
+$container['documento_venta'] = function ($c) {
     //return new FacturasController($c->get('db'));
-    return new FacturaVentaController('hola');
+    return new DocumentoVentaController('hola');
 };
 
-$container['factura_compra'] = function ($c) {
+$container['documento_compra'] = function ($c) {
     //return new FacturasController($c->get('db'));
-    return new FacturaCompraController('hola');
+    return new DocumentoCompraController('hola');
 };
 
 $container['servicios'] = function ($c) {
@@ -39,7 +44,7 @@ $container['servicios'] = function ($c) {
 
 $container['trabajadores'] = function ($c) {
     //return new TrabajadoresController($c->get('db'));
-    return new TrabajadoresController('hola');
+    return new TrabajadoresController($c->db);
 };
 
 $container['contratos'] = function ($c) {

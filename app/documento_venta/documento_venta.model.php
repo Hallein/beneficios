@@ -1,5 +1,5 @@
 <?php
-	class FacturaVenta{
+	class DocumentoVenta{
 
 		private $db;
 
@@ -8,24 +8,24 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM factura_venta');
+			$query = $this->db->prepare('SELECT * FROM documento_venta');
 			$query->execute();
 
 			$datos = array();
-			$datos['facturas'] = $query->fetchAll();
+			$datos['documentos'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM factura_venta WHERE ID_VENTA = :id');
+			$query = $this->db->prepare('SELECT * FROM documento_venta WHERE ID_VENTA = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['factura'] = $query -> fetch();
+				$datos['documento'] = $query -> fetch();
 				$datos['status'] = 'success';
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe la factura';
+				$datos['message']['body'] = 'No existe el documento';
 				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
@@ -33,7 +33,7 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO factura_venta(FECHA_VENTA, VALOR_VENTA, IVA, FOLIO, NUMERO_SERIE) VALUES(:fventa, :vventa, :iva, :folio, :nserie)');
+			$query = $this->db->prepare('INSERT INTO documento_venta(FECHA_VENTA, VALOR_VENTA, IVA, FOLIO, NUMERO_SERIE) VALUES(:fventa, :vventa, :iva, :folio, :nserie)');
 			$query -> bindParam(':fventa', $data['FECHA_VENTA']);
 			$query -> bindParam(':vventa', $data['VALOR_VENTA']);
 			$query -> bindParam(':iva', $data['IVA']);
@@ -42,12 +42,12 @@
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Factua registrada correctamente';
+				$datos['message']['body'] = 'Documento registrada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar la factura';
+				$datos['message']['body'] = 'No fue posible registrar el documento';
 				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
@@ -55,7 +55,7 @@
 
 		public function update($data){
 			$datos = array();
-			$query = $this->db->prepare('UPDATE factura_venta SET FECHA_VENTA = :fventa, VALOR_VENTA = :vvente, IVA = :iva, FOLIO = :folio, NUMERO_SERIE = :nserie WHERE ID_VENTA = :id');
+			$query = $this->db->prepare('UPDATE documento_venta SET FECHA_VENTA = :fventa, VALOR_VENTA = :vvente, IVA = :iva, FOLIO = :folio, NUMERO_SERIE = :nserie WHERE ID_VENTA = :id');
 			$query -> bindParam(':fventa', $data['FECHA_VENTA']);
 			$query -> bindParam(':vventa', $data['VALOR_VENTA']);
 			$query -> bindParam(':iva', $data['IVA']);
@@ -65,12 +65,12 @@
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Factura modificada correctamente';
+				$datos['message']['body'] = 'Documento modificada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar la factura';
+				$datos['message']['body'] = 'No fue posible modificar el documento';
 				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
@@ -78,17 +78,17 @@
 
 		public function delete($data){
 			$datos = array();
-			$query = $this->db->prepare('DELETE FROM factura_venta WHERE ID_VENTA = :id');
+			$query = $this->db->prepare('DELETE FROM documento_venta WHERE ID_VENTA = :id');
 			$query -> bindParam(':id', $data['id']);
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Factura eliminada correctamente';
+				$datos['message']['body'] = 'Documento eliminada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar la factura';
+				$datos['message']['body'] = 'No fue posible eliminar el documento';
 				$datos['message']['timeout'] = 2;
 			}
 			return $datos;
