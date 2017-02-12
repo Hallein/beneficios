@@ -1,5 +1,5 @@
 <?php
-	class Contrato{
+	class ServicioVenta{
 
 		private $db;
 
@@ -9,21 +9,16 @@
 
 		public function getAll(){
 			$datos = array();
-			
-			$query = $this->db->prepare('	SELECT 		co.*, 
-														cli.NOMBRE_PERSONA, 
-														cli.APATERNO_PERSONA, 
-														cli.AMATERNO_PERSONA
-											FROM 		contrato co
-											INNER JOIN 	cliente cli ON co.CLI_RUT_PERSONA = cli.RUT_PERSONA');			
+
+			$query = $this->db->prepare('SELECT * FROM venta');			
 			$query->execute();
 
-			$datos['contratos'] = $query->fetchAll();
+			$datos['ventas'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
+			/*$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['contrato'] = $query -> fetch();
@@ -33,12 +28,12 @@
 				$datos['message']['title'] = 'Ocurrió un error';
 				$datos['message']['body'] = 'No existe el contrato';
 				$datos['message']['timeout'] = 2;
-			}
+			}*/
 			return $datos;
 		}		
 
 		public function store($data){
-			$datos = array();
+			/*$datos = array();
 			$query = $this->db->prepare('	INSERT INTO contrato(
 													VALOR_ACORDADO, 
 													LUGAR_ENTREGA, 
@@ -72,15 +67,22 @@
 				$datos['message']['title'] = 'Ocurrió un error';
 				$datos['message']['body'] = 'No fue posible registrar el contrato';
 				$datos['message']['timeout'] = 2;
-			}
+			}*/
 			return $datos;
 		}
 
 		public function update($data){
-			$datos = array();
-			$query = $this->db->prepare('UPDATE contrato 
-				SET VALOR_ACORDADO = :vacordado, LUGAR_ENTREGA = :lentrega, LUGAR_RETIRO = :lretiro, FECHA_LIMITE = :flimite, VALOR_TOTAL = :vtotal, DETALLE_CONTRATO = :dcontrato, ESTADO_CONTRATO = :econtrato 
-				WHERE ID_CONTRATO = :id');
+			/*$datos = array();
+			$query = $this->db->prepare('	UPDATE contrato 
+											SET VALOR_ACORDADO = :vacordado, 
+												LUGAR_ENTREGA = :lentrega, 
+												LUGAR_RETIRO = :lretiro, 
+												FECHA_LIMITE = :flimite, 
+												VALOR_TOTAL = :vtotal, 
+												DETALLE_CONTRATO = :dcontrato, 
+												ESTADO_CONTRATO = :econtrato 
+											WHERE ID_CONTRATO = :id');
+											
 			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
 			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
 			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
@@ -99,12 +101,12 @@
 				$datos['message']['title'] = 'Ocurrió un error';
 				$datos['message']['body'] = 'No fue posible modificar el contrato';
 				$datos['message']['timeout'] = 2;
-			}
+			}*/
 			return $datos;
 		}
 
 		public function delete($id){
-			$datos = array();
+			/*$datos = array();
 			$query = $this->db->prepare('DELETE FROM contrato WHERE ID_CONTRATO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
@@ -117,7 +119,7 @@
 				$datos['message']['title'] = 'Ocurrió un error';
 				$datos['message']['body'] = 'No fue posible eliminar el contrato';
 				$datos['message']['timeout'] = 2;
-			}
+			}*/
 			return $datos;
 		}
 

@@ -7,6 +7,7 @@
 	require 'vehiculos/vehiculo.routes.php';
 	require 'documento_venta/documento_venta.routes.php';
 	require 'documento_compra/documento_compra.routes.php';
-	require 'servicios/servicio.routes.php';
+	require 'servicio_arriendo/servicio_arriendo.routes.php';
+	require 'servicio_venta/servicio_venta.routes.php';
 	require 'trabajadores/trabajador.routes.php';
 	require 'contratos/contrato.routes.php';

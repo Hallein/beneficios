@@ -1,10 +1,10 @@
 <?php
-	class ServiciosController{
+	class ServicioVentaController{
 
 		private $servicio;
 
 		public function __construct($db){
-			$this->servicio = new Servicio($db);
+			$this->servicio = new ServicioVenta($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			//$datos = $this->servicio->getAll();
+			$datos = $this->servicio->getAll();
 
 			ob_start();
-			include SERVICIOS . '/getall.php';
+			include SERVICIO_VENTA . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -33,7 +33,7 @@
 			//$datos = $this->servicio->show($id);
 
 			ob_start();
-			include SERVICIOS . '/show.php';
+			include SERVICIO_VENTA . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include SERVICIOS . '/create.php';
+			include SERVICIO_VENTA . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -58,7 +58,7 @@
 			//$datos = $this->servicio->show($id);
 
 			ob_start();
-			include SERVICIOS . '/edit.php';
+			include SERVICIO_VENTA . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;

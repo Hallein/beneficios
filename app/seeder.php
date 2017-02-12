@@ -68,17 +68,14 @@ $container['seeder'] = function($c){
         'PAIS_PROVEEDOR'    => $faker->country
     ])->rowQuantity(20);
 
-    $folio = 0;
-    $serie = 0;
-
     $seeder->table('documento_compra')->columns([        
         'ID_COMPRA'         => $generator->pk,
         'RUT_PROVEEDOR'     => $generator->relation('proveedor', 'RUT_PROVEEDOR'),
         'FECHA_COMPRA'      => $faker->date($format = 'Y-m-d', $max = 'now'),
         'VALOR_COMPRA'      => $faker->numberBetween($min = 2000, $max = 150000),//Creo que este atributo no deberia ir, el valor de la compra va en el detalle, sumando todos los insumos
         'IVA'               => $faker->numberBetween($min = 200, $max = 15000),
-        'FOLIO'             => function() { return  $folio++; },
-        'NUMERO_SERIE'      => function() { return  $serie++; }
+        'FOLIO'             => $faker->numberBetween($min = 1, $max = 100),
+        'NUMERO_SERIE'      => $faker->numberBetween($min = 1, $max = 100)
     ])->rowQuantity(15);
 
     $seeder->table('detalle_compra')->columns([        
@@ -93,7 +90,7 @@ $container['seeder'] = function($c){
         'ID_INSUMO'         => $generator->relation('insumo', 'ID_INSUMO'),
         'STOCK'             => $faker->numberBetween($min = 1, $max = 30),
         'FECHA_INGRESO'     => $faker->date($format = 'Y-m-d', $max = 'now')
-    ])->rowQuantity(5);
+    ])->rowQuantity(3);
 
     $seeder->table('venta')->columns([        
         'ID_SERVICIO'       => $generator->pk,
@@ -113,9 +110,6 @@ $container['seeder'] = function($c){
         'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
     ])->rowQuantity(15);
 
-    $folio = 0;
-    $serie = 0;
-
     $seeder->table('documento_venta')->columns([        
         'ID_VENTA'          => $generator->pk,
         'RUT_PERSONA'       => $generator->relation('cliente', 'RUT_PERSONA'),
@@ -123,8 +117,8 @@ $container['seeder'] = function($c){
         'FECHA_VENTA'       => $faker->date($format = 'Y-m-d', $max = 'now'),
         'VALOR_VENTA'       => $faker->numberBetween($min = 4000, $max = 300000),//Creo que este atributo no deberia ir, el valor de la compra va en el detalle, sumando todos los insumos
         'IVA'               => $faker->numberBetween($min = 400, $max = 30000),
-        'FOLIO'             => function() { return  $folio++; },
-        'NUMERO_SERIE'      => function() { return  $serie++; }
+        'FOLIO'             => $faker->numberBetween($min = 1, $max = 100),
+        'NUMERO_SERIE'      => $faker->numberBetween($min = 1, $max = 100)
     ])->rowQuantity(15);
 
     $seeder->table('detalle_venta')->columns([        

@@ -1,5 +1,5 @@
 <?php
-	class Servicio{
+	class ServicioArriendo{
 
 		private $db;
 
@@ -10,10 +10,10 @@
 		public function getAll(){
 			$datos = array();
 
-			//$query = $this->db->prepare('SELECT * FROM servicio');			
-			//$query->execute();
+			$query = $this->db->prepare('SELECT * FROM arriendo');			
+			$query->execute();
 
-			//$datos['contratos'] = $query->fetchAll();
+			$datos['arriendos'] = $query->fetchAll();
 			return $datos;
 		}
 

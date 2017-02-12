@@ -7,6 +7,7 @@
 	define('VEHICULOS', '../../app/vehiculos/vehiculo.partials');
 	define('DOCUMENTO_VENTA', '../../app/documento_venta/documento_venta.partials');
 	define('DOCUMENTO_COMPRA', '../../app/documento_compra/documento_compra.partials');
-	define('SERVICIOS', '../../app/servicios/servicio.partials');
+	define('SERVICIO_ARRIENDO', '../../app/servicio_arriendo/servicio_arriendo.partials');
+	define('SERVICIO_VENTA', '../../app/servicio_venta/servicio_venta.partials');
 	define('TRABAJADORES', '../../app/trabajadores/trabajador.partials');
 	define('CONTRATOS', '../../app/contratos/contrato.partials');

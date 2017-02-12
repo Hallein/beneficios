@@ -1,10 +1,10 @@
 <?php
-	class DocumentoCompraController{
+	class ServicioArriendoController{
 
-		private $documento;
+		private $servicio;
 
 		public function __construct($db){
-			$this->documento = new DocumentoCompra($db);
+			$this->servicio = new ServicioArriendo($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			$datos = $this->documento->getAll();
+			$datos = $this->servicio->getAll();
 
 			ob_start();
-			include DOCUMENTO_COMPRA . '/getall.php';
+			include SERVICIO_ARRIENDO . '/getall.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			//$datos = $this->documento->show($id);
+			//$datos = $this->servicio->show($id);
 
 			ob_start();
-			include DOCUMENTO_COMPRA . '/show.php';
+			include SERVICIO_ARRIENDO . '/show.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include DOCUMENTO_COMPRA . '/create.php';
+			include SERVICIO_ARRIENDO . '/create.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
@@ -55,21 +55,21 @@
 
 		public function edit($id){
 
-			//$datos = $this->documento->show($id);
+			//$datos = $this->servicio->show($id);
 
 			ob_start();
-			include DOCUMENTO_COMPRA . '/edit.php';
+			include SERVICIO_ARRIENDO . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
 			return $datos;
 		}
 
 		public function update($data){
-			//$datos = $this->documento->update($data);
+			//$datos = $this->servicio->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->documento->destroy($id);
+			//$datos = $this->servicio->destroy($id);
 		}
 
 	}

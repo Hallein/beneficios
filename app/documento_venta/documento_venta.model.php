@@ -8,7 +8,16 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM documento_venta');
+			$query = $this->db->prepare('	SELECT 		dv.*, 
+														cli.RUT_PERSONA, 
+														cli.NOMBRE_PERSONA,
+														cli.APATERNO_PERSONA,
+														cli.AMATERNO_PERSONA,
+														s.ID_SERVICIO,
+														s.NOMBRE_SERVICIO
+											FROM 		documento_venta dv
+											INNER JOIN 	cliente cli ON dv.RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN 	venta s ON dv.ID_SERVICIO = s.ID_SERVICIO');
 			$query->execute();
 
 			$datos = array();

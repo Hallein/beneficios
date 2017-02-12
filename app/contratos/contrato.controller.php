@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->contrato->getAll();
+			$datos = $this->contrato->getAll();
 
 			ob_start();
 			include CONTRATOS . '/getall.php';

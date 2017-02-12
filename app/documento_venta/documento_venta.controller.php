@@ -19,7 +19,7 @@
 
 		public function index(){
 			
-			//$datos = $this->documento->getAll();
+			$datos = $this->documento->getAll();
 
 			ob_start();
 			include DOCUMENTO_VENTA . '/getall.php';

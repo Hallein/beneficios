@@ -8,7 +8,11 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM documento_compra');
+			$query = $this->db->prepare('	SELECT 		dc.*, 
+														p.RUT_PROVEEDOR, 
+														p.NOMBRE_PROVEEDOR
+											FROM 		documento_compra dc
+											INNER JOIN 	proveedor p ON dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR');
 			$query->execute();
 
 			$datos = array();
