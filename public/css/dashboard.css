@@ -659,7 +659,7 @@ body{
 	.mdl-card .mdl-card__title .btn-multiple{
 		position: absolute;
 		top: calc(100% - 27px);
-		right: 44px;
+		right: 54px;
 		width: 54px;
 		height: 54px;
 	}

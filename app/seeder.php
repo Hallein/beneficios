@@ -30,7 +30,8 @@ $container['seeder'] = function($c){
         'EMAIL_PERSONA'     => $faker->email,
         'PREVISION_SOCIAL'  => $faker->randomElement(['AFP','Sin previsión']),
         'PREVISION_SALUD'   => $faker->randomElement(['Fonasa','Isapre','Sin previsión']),
-        'CARGO'             => $faker->jobTitle
+        'CARGO'             => $faker->jobTitle,
+        //'CONTRASENA'        => $faker->
     ])->rowQuantity(6);
 
     $seeder->table('bodega')->columns([        

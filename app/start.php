@@ -34,9 +34,12 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
+session_start();
+
 require 'partials.php';
 require 'models.php';
 require 'controllers.php';
+require 'middlewares.php';
 require 'routes.php';
 require 'container.php';
 require 'seeder.php';
