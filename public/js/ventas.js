@@ -1,7 +1,7 @@
 function MostrarVentas(){
 	$.ajax({
 	    type: "GET",
-	    url : "api/documento_venta",
+	    url : "api/documentos/venta",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);
