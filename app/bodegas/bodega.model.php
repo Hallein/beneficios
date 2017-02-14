@@ -31,12 +31,23 @@
 
 		public function store($data){
 			$datos = array();
-			/*$query = $this->db->prepare('INSERT INTO insumo(NOMBRE_INSUMO, CATEGORIA_INSUMO, SUBCATEGORIA_INSUMO, PRECIO_VENTA, PRECIO_COMPRA) VALUES(:ninsumo, :cinsumo, :scinsumo, :pventa, :pcompra)');
-			$query -> bindParam(':ninsumo', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':pventa', $data['FECHA_LIMITE']);
-			$query -> bindParam(':pcompra', $data['VALOR_TOTAL']);*/
+			$query = $this->db->prepare('	INSERT INTO bodega(	ID_BODEGA, 
+																RUT_PERSONA, 
+																NOMBRE_BODEGA, 
+																DIRECCION_BODEGA, 
+																TIPO_BODEGA ) 
+													VALUES(		:id, 
+																:rut, 
+																:nombre, 
+																:direccion, 
+																:tipo)');
+
+			$query -> bindParam(':id', 			$data['ID_BODEGA']);
+			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
+			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
+			$query -> bindParam(':tipo', 		$data['TIPO_BODEGA']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

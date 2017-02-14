@@ -40,6 +40,10 @@
 		public function store($data){
 			$datos = array();
 			$query = $this->db->prepare('	INSERT INTO contrato(
+													NRO_PATENTE,
+													RUT_PERSONA,
+													CLI_RUT_PERSONA,
+													ID_SERVICIO,
 													VALOR_ACORDADO, 
 													LUGAR_ENTREGA, 
 													LUGAR_RETIRO, 
@@ -47,21 +51,30 @@
 													VALOR_TOTAL, 
 													DETALLE_CONTRATO, 
 													ESTADO_CONTRATO) 
-											VALUES(	:vacordado, 
-													:lentrega, 
-													:lretiro, 
-													:flimite, 
-													:vtotal, 
-													:dcontrato, 
-													:econtrato)');
+											VALUES(	:patente,
+													:rut_trabajador,
+													:rut_cliente,
+													:id_servicio,
+													:valor_acordado, 
+													:lugar_entrega, 
+													:lugar_retiro, 
+													:fecha_limite, 
+													:valor_total, 
+													:detalle, 
+													:estado)');
 
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
+			$query -> bindParam(':patente', 		$data['NRO_PATENTE']);
+			$query -> bindParam(':rut_trabajador', 	$data['RUT_PERSONA']);
+			$query -> bindParam(':rut_cliente', 	$data['CLI_RUT_PERSONA']);
+			$query -> bindParam(':id_servicio', 	$data['ID_SERVICIO']);
+			$query -> bindParam(':valor_acordado', 	$data['VALOR_ACORDADO']);
+			$query -> bindParam(':lugar_entrega', 	$data['LUGAR_ENTREGA']);
+			$query -> bindParam(':lugar_retiro', 	$data['LUGAR_RETIRO']);
+			$query -> bindParam(':fecha_limite', 	$data['FECHA_LIMITE']);
+			$query -> bindParam(':valor_total', 	$data['VALOR_TOTAL']);
+			$query -> bindParam(':detalle', 		$data['DETALLE_CONTRATO']);
+			$query -> bindParam(':estado', 			$data['ESTADO_CONTRATO']);
+			
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

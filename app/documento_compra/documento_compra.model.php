@@ -37,12 +37,27 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO documento_compra(FECHA_COMPRA, VALOR_COMPRA, IVA, FOLIO, NUMERO_SERIE) VALUES(:fcompra, :vcompra, :iva, :folio, :nserie)');
-			$query -> bindParam(':fcompra', $data['FECHA_COMPRA']);
-			$query -> bindParam(':vcompra', $data['VALOR_COMPRA']);
-			$query -> bindParam(':iva', $data['IVA']);
-			$query -> bindParam(':folio', $data['FOLIO']);
-			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
+			$query = $this->db->prepare('	INSERT INTO documento_compra(
+													RUT_PROVEEDOR,
+													FECHA_COMPRA, 
+													VALOR_COMPRA, 
+													IVA, 
+													FOLIO, 
+													NUMERO_SERIE) 	
+											VALUES(	:rut,
+													:fecha_compra, 
+													:valor_compra, 
+													:iva, 
+													:folio, 
+													:numero_serie)'); //Folio y numero de serie podrian ser autoincrementales
+
+			$query -> bindParam(':rut', 			$data['RUT_PROVEEDOR']);
+			$query -> bindParam(':fecha_compra', 	$data['FECHA_COMPRA']);
+			$query -> bindParam(':valor_compra', 	$data['VALOR_COMPRA']);
+			$query -> bindParam(':iva', 			$data['IVA']);
+			$query -> bindParam(':folio', 			$data['FOLIO']);
+			$query -> bindParam(':numero_serie', 	$data['NUMERO_SERIE']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

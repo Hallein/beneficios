@@ -45,21 +45,23 @@
 																:apaterno, 
 																:amaterno, 
 																:fnac, 
-																:dir, 
-																:tel, 
+																:direccion, 
+																:telefono, 
 																:email, 
-																:comuna)');
-			$query -> bindParam(':rut', $data['rut']);
-			$query -> bindParam(':nombres', $data['nombre']);
-			$query -> bindParam(':apaterno', $data['apaterno']);
-			$query -> bindParam(':amaterno', $data['amaterno']);
-			$query -> bindParam(':fnac', $data['fechanac']);
-			$query -> bindParam(':dir', $data['direccion']);
-			$query -> bindParam(':tel', $data['telefono']);
-			$query -> bindParam(':email', $data['email']);
-			//$query -> bindParam(':empresa', $data['EMPRESA']);
-			//$query -> bindParam(':ciudad', $data['CIUDAD']);
-			$query -> bindParam(':comuna', $data['comuna']);
+																:comuna)'); //Falta EMPRESA y CIUDAD
+			
+			$query -> bindParam(':rut', 		$data['rut']);
+			$query -> bindParam(':nombres', 	$data['nombre']);
+			$query -> bindParam(':apaterno', 	$data['apaterno']);
+			$query -> bindParam(':amaterno', 	$data['amaterno']);
+			$query -> bindParam(':fnac', 		$data['fechanac']);
+			$query -> bindParam(':direccion', 	$data['direccion']);
+			$query -> bindParam(':telefono', 	$data['telefono']);
+			$query -> bindParam(':email', 		$data['email']);
+			//$query -> bindParam(':empresa', 	$data['EMPRESA']);
+			//$query -> bindParam(':ciudad', 	$data['CIUDAD']);
+			$query -> bindParam(':comuna', 		$data['comuna']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

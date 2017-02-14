@@ -42,7 +42,22 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO documento_venta(FECHA_VENTA, VALOR_VENTA, IVA, FOLIO, NUMERO_SERIE) VALUES(:fventa, :vventa, :iva, :folio, :nserie)');
+			$query = $this->db->prepare('	INSERT INTO documento_venta(
+													RUT_PERSONA,
+													ID_SERVICIO,
+													FECHA_VENTA, 
+													VALOR_VENTA, 
+													IVA, 
+													FOLIO,
+												 	NUMERO_SERIE) 
+											VALUES( :rut,
+													:id_servicio,
+													:fventa, 
+													:vventa, 
+													:iva, 
+													:folio, 
+													:nserie)');
+
 			$query -> bindParam(':fventa', $data['FECHA_VENTA']);
 			$query -> bindParam(':vventa', $data['VALOR_VENTA']);
 			$query -> bindParam(':iva', $data['IVA']);
