@@ -10,7 +10,18 @@
 		public function getAll(){
 			$datos = array();
 
-			$query = $this->db->prepare('SELECT * FROM trabajador');
+			$query = $this->db->prepare('SELECT RUT_PERSONA,
+												PREVISION_SOCIAL, 
+												PREVISION_SALUD, 
+												CARGO, 
+												NOMBRE_PERSONA, 
+												APATERNO_PERSONA, 
+												AMATERNO_PERSONA, 
+												FECHA_NACIMIENTO, 
+												DIRECCION_PERSONA, 
+												TELEFONO_PERSONA, 
+												EMAIL_PERSONA 
+										FROM 	trabajador');
 			$query->execute();
 
 			$datos['trabajadores'] = $query->fetchAll();
