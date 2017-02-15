@@ -31,18 +31,15 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('	INSERT INTO bodega(	ID_BODEGA, 
-																RUT_PERSONA, 
+			$query = $this->db->prepare('	INSERT INTO bodega(	RUT_PERSONA, 
 																NOMBRE_BODEGA, 
 																DIRECCION_BODEGA, 
 																TIPO_BODEGA ) 
-													VALUES(		:id, 
-																:rut, 
+													VALUES(		:rut, 
 																:nombre, 
 																:direccion, 
 																:tipo)');
 
-			$query -> bindParam(':id', 			$data['ID_BODEGA']);
 			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
 			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
 			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
@@ -64,13 +61,19 @@
 
 		public function update($data){
 			$datos = array();
-			/*$query = $this->db->prepare('UPDATE insumo SET NOMBRE_INSUMO = :ninsumo, CATEGORIA_INSUMO = :cinsumo, SUBCATEGORIA_INSUMO = :scinsumo, PRECIO_VENTA = :pventa, PRECIO_COMPRA = :pcompra WHERE ID_INSUMO = :id');
-			$query -> bindParam(':ninsumo', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':cinsumo', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':scinsumo', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':pventa', $data['FECHA_LIMITE']);
-			$query -> bindParam(':pcompra', $data['VALOR_TOTAL']);
-			$query -> bindParam(':id', $data['ID_INSUMO']);*/
+			$query = $this->db->prepare('	UPDATE 	bodega 
+											SET 	RUT_PERSONA = :rut, 
+													NOMBRE_BODEGA = :nombre,
+													DIRECCION_BODEGA = :direccion, 
+													TIPO_BODEGA = :tipo 
+											WHERE 	ID_INSUMO = :id');
+
+			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
+			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
+			$query -> bindParam(':tipo', 		$data['TIPO_BODEGA']);
+			$query -> bindParam(':id', 			$data['ID_INSUMO']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

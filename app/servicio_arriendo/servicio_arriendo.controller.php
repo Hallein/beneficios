@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->servicio->show($id);
+			$datos = $this->servicio->show($id);
 
 			ob_start();
 			include SERVICIO_ARRIENDO . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->servicio->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->servicio->show($id);
+			$datos = $this->servicio->show($id);
 
 			ob_start();
 			include SERVICIO_ARRIENDO . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->servicio->update($data);
+			$datos = $this->servicio->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->servicio->destroy($id);
+			$datos = $this->servicio->destroy($id);
 		}
 
 	}

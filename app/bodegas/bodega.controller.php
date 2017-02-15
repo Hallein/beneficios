@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->bodega->show($id);
+			$datos = $this->bodega->show($id);
 
 			ob_start();
 			include BODEGAS . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->bodega->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->bodega->show($id);
+			$datos = $this->bodega->show($id);
 
 			ob_start();
 			include BODEGAS . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->bodega->update($data);
+			$datos = $this->bodega->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->bodega->destroy($id);
+			$datos = $this->bodega->destroy($id);
 		}
 
 	}

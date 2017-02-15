@@ -18,108 +18,94 @@
 		}
 
 		public function show($id){
-			/*$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
+			$query = $this->db->prepare('SELECT * FROM venta WHERE ID_SERVICIO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['contrato'] = $query -> fetch();
+				$datos['venta'] = $query -> fetch();
 				$datos['status'] = 'success';
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
 				$datos['message']['body'] = 'No existe el contrato';
 				$datos['message']['timeout'] = 2;
-			}*/
+			}
 			return $datos;
 		}		
 
 		public function store($data){
-			/*$datos = array();
-			$query = $this->db->prepare('	INSERT INTO contrato(
-													VALOR_ACORDADO, 
-													LUGAR_ENTREGA, 
-													LUGAR_RETIRO, 
-													FECHA_LIMITE, 
-													VALOR_TOTAL, 
-													DETALLE_CONTRATO, 
-													ESTADO_CONTRATO) 
-											VALUES(	:vacordado, 
-													:lentrega, 
-													:lretiro, 
-													:flimite, 
-													:vtotal, 
-													:dcontrato, 
-													:econtrato)');
+			$datos = array();
+			$query = $this->db->prepare('INSERT INTO venta(	TIPO_PAGO, 
+															NOMBRE_SERVICIO, 
+															TIPO_SERVICIO, 
+															ESTADO_SERVICIO) 
+												VALUES(		:tipo_pago, 
+															:nombre, 
+															:tipo_servicio, 
+															:estado)');
 
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
+			$query -> bindParam(':tipo_pago', 		$data['TIPO_PAGO']);
+			$query -> bindParam(':nombre', 			$data['NOMBRE_SERVICIO']);
+			$query -> bindParam(':tipo_servicio', 	$data['TIPO_SERVICIO']);
+			$query -> bindParam(':estado', 			$data['ESTADO_SERVICIO']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato registrado correctamente';
+				$datos['message']['body'] = 'Venta registrada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar el contrato';
+				$datos['message']['body'] = 'No fue posible registrar la venta';
 				$datos['message']['timeout'] = 2;
-			}*/
+			}
 			return $datos;
 		}
 
 		public function update($data){
-			/*$datos = array();
-			$query = $this->db->prepare('	UPDATE contrato 
-											SET VALOR_ACORDADO = :vacordado, 
-												LUGAR_ENTREGA = :lentrega, 
-												LUGAR_RETIRO = :lretiro, 
-												FECHA_LIMITE = :flimite, 
-												VALOR_TOTAL = :vtotal, 
-												DETALLE_CONTRATO = :dcontrato, 
-												ESTADO_CONTRATO = :econtrato 
-											WHERE ID_CONTRATO = :id');
+			$datos = array();
+			$query = $this->db->prepare('	UPDATE 	venta 
+											SET 	TIPO_PAGO = :vacordado, 
+													NOMBRE_SERVICIO = :lentrega, 
+													TIPO_SERVICIO = :lretiro, 
+													ESTADO_SERVICIO = :flimite
+											WHERE 	ID_SERVICIO = :id');
 											
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
-			$query -> bindParam(':id', $data['ID_CONTRATO']);
+			$query -> bindParam(':tipo_pago', 		$data['TIPO_PAGO']);
+			$query -> bindParam(':nombre', 			$data['NOMBRE_SERVICIO']);
+			$query -> bindParam(':tipo_servicio', 	$data['TIPO_SERVICIO']);
+			$query -> bindParam(':estado', 			$data['ESTADO_SERVICIO']);
+			$query -> bindParam(':id', 				$data['ID_SERVICIO']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato modificado correctamente';
+				$datos['message']['body'] = 'Venta modificada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar el contrato';
+				$datos['message']['body'] = 'No fue posible modificar la venta';
 				$datos['message']['timeout'] = 2;
-			}*/
+			}
 			return $datos;
 		}
 
 		public function delete($id){
-			/*$datos = array();
-			$query = $this->db->prepare('DELETE FROM contrato WHERE ID_CONTRATO = :id');
+			$datos = array();
+			$query = $this->db->prepare('DELETE FROM venta WHERE ID_SERVICIO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato eliminado correctamente';
+				$datos['message']['body'] = 'Venta eliminada correctamente';
 				$datos['message']['timeout'] = 2;
 			}else{
 				$datos['status'] = 'error';
 				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar el contrato';
+				$datos['message']['body'] = 'No fue posible eliminar la venta';
 				$datos['message']['timeout'] = 2;
-			}*/
+			}
 			return $datos;
 		}
 

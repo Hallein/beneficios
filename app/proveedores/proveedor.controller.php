@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->proveedor->show($id);
+			$datos = $this->proveedor->show($id);
 
 			ob_start();
 			include PROVEEDORES . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->proveedor->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->proveedor->show($id);
+			$datos = $this->proveedor->show($id);
 
 			ob_start();
 			include PROVEEDORES . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->proveedor->update($data);
+			$datos = $this->proveedor->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->proveedor->destroy($id);
+			$datos = $this->proveedor->destroy($id);
 		}
 
 	}

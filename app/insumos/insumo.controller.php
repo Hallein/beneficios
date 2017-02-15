@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->insumo->show($id);
+			$datos = $this->insumo->show($id);
 
 			ob_start();
 			include INSUMOS . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->insumo->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->insumo->show($id);
+			$datos = $this->insumo->show($id);
 
 			ob_start();
 			include INSUMOS . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->insumo->update($data);
+			$datos = $this->insumo->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->insumo->destroy($id);
+			$datos = $this->insumo->destroy($id);
 		}
 
 	}

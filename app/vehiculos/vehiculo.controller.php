@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->vehiculo->show($id);
+			$datos = $this->vehiculo->show($id);
 
 			ob_start();
 			include VEHICULOS . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->vehiculo->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->vehiculo->show($id);
+			$datos = $this->vehiculo->show($id);
 
 			ob_start();
 			include VEHICULOS . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->vehiculo->update($data);
+			$datos = $this->vehiculo->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->vehiculo->destroy($id);
+			$datos = $this->vehiculo->destroy($id);
 		}
 
 	}
