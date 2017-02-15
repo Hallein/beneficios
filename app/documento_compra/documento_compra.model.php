@@ -12,7 +12,8 @@
 														p.RUT_PROVEEDOR, 
 														p.NOMBRE_PROVEEDOR
 											FROM 		documento_compra dc
-											INNER JOIN 	proveedor p ON dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR');
+											INNER JOIN 	proveedor p 
+											ON 			dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR');
 			$query->execute();
 
 			$datos = array();
@@ -37,19 +38,18 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('	INSERT INTO documento_compra(
-													RUT_PROVEEDOR,
-													FECHA_COMPRA, 
-													VALOR_COMPRA, 
-													IVA, 
-													FOLIO, 
-													NUMERO_SERIE) 	
-											VALUES(	:rut,
-													:fecha_compra, 
-													:valor_compra, 
-													:iva, 
-													:folio, 
-													:numero_serie)'); //Folio y numero de serie podrian ser autoincrementales
+			$query = $this->db->prepare('INSERT INTO documento_compra(	RUT_PROVEEDOR,
+																		FECHA_COMPRA, 
+																		VALOR_COMPRA, 
+																		IVA, 
+																		FOLIO, 
+																		NUMERO_SERIE) 	
+															VALUES(		:rut,
+																		:fecha_compra, 
+																		:valor_compra, 
+																		:iva, 
+																		:folio, 
+																		:numero_serie)'); //Folio y numero de serie podrian ser autoincrementales
 
 			$query -> bindParam(':rut', 			$data['RUT_PROVEEDOR']);
 			$query -> bindParam(':fecha_compra', 	$data['FECHA_COMPRA']);
@@ -74,13 +74,21 @@
 
 		public function update($data){
 			$datos = array();
-			$query = $this->db->prepare('UPDATE documento_compra SET FECHA_COMPRA = :fcompra, VALOR_COMPRA = :vvente, IVA = :iva, FOLIO = :folio, NUMERO_SERIE = :nserie WHERE ID_COMPRA = :id');
-			$query -> bindParam(':fcompra', $data['FECHA_COMPRA']);
-			$query -> bindParam(':vcompra', $data['VALOR_COMPRA']);
-			$query -> bindParam(':iva', $data['IVA']);
-			$query -> bindParam(':folio', $data['FOLIO']);
-			$query -> bindParam(':nserie', $data['NUMERO_SERIE']);
-			$query -> bindParam(':id', $data['ID_COMPRA']);
+			$query = $this->db->prepare('	UPDATE 	documento_compra 
+											SET 	FECHA_COMPRA = :fecha, 
+													VALOR_COMPRA = :valor, 
+													IVA = :iva, 
+													FOLIO = :folio, 
+													NUMERO_SERIE = :nserie 
+											WHERE 	ID_COMPRA = :id');
+
+			$query -> bindParam(':fecha', 	$data['FECHA_COMPRA']);
+			$query -> bindParam(':valor', 	$data['VALOR_COMPRA']);
+			$query -> bindParam(':iva', 	$data['IVA']);
+			$query -> bindParam(':folio', 	$data['FOLIO']);
+			$query -> bindParam(':nserie', 	$data['NUMERO_SERIE']);
+			$query -> bindParam(':id', 		$data['ID_COMPRA']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';

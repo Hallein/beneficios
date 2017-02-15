@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->trabajador->show($id);
+			$datos = $this->trabajador->show($id);
 
 			ob_start();
 			include TRABAJADORES . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->trabajador->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->trabajador->show($id);
+			$datos = $this->trabajador->show($id);
 
 			ob_start();
 			include TRABAJADORES . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->trabajador->update($data);
+			$datos = $this->trabajador->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->trabajador->destroy($id);
+			$datos = $this->trabajador->destroy($id);
 		}
 
 	}

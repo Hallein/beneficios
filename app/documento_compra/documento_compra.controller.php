@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->documento->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
 			include DOCUMENTO_COMPRA . '/show.php';
@@ -38,7 +38,6 @@
 
 			return $datos;
 		}
-
 
 		public function create(){
 
@@ -50,12 +49,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->documento->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->documento->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
 			include DOCUMENTO_COMPRA . '/edit.php';
@@ -65,11 +65,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->documento->update($data);
+			$datos = $this->documento->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->documento->destroy($id);
+			$datos = $this->documento->destroy($id);
 		}
 
 	}

@@ -30,7 +30,7 @@
 
 		public function show($id){
 			
-			//$datos = $this->contrato->show($id);
+			$datos = $this->contrato->show($id);
 
 			ob_start();
 			include CONTRATOS . '/show.php';
@@ -50,12 +50,13 @@
 		}
 
 		public function store($data){
-
+			$datos = $this->contrato->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->contrato->show($id);
+			$datos = $this->contrato->show($id);
 
 			ob_start();
 			include CONTRATOS . '/edit.php';
@@ -65,11 +66,11 @@
 		}
 
 		public function update($data){
-			//$datos = $this->contrato->update($data);
+			$datos = $this->contrato->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->contrato->destroy($id);
+			$datos = $this->contrato->destroy($id);
 		}
 
 	}

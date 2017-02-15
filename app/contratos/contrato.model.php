@@ -15,7 +15,8 @@
 														cli.APATERNO_PERSONA, 
 														cli.AMATERNO_PERSONA
 											FROM 		contrato co
-											INNER JOIN 	cliente cli ON co.CLI_RUT_PERSONA = cli.RUT_PERSONA');			
+											INNER JOIN 	cliente cli 
+											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA');			
 			$query->execute();
 
 			$datos['contratos'] = $query->fetchAll();
@@ -91,17 +92,33 @@
 
 		public function update($data){
 			$datos = array();
-			$query = $this->db->prepare('UPDATE contrato 
-				SET VALOR_ACORDADO = :vacordado, LUGAR_ENTREGA = :lentrega, LUGAR_RETIRO = :lretiro, FECHA_LIMITE = :flimite, VALOR_TOTAL = :vtotal, DETALLE_CONTRATO = :dcontrato, ESTADO_CONTRATO = :econtrato 
-				WHERE ID_CONTRATO = :id');
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
-			$query -> bindParam(':id', $data['ID_CONTRATO']);
+			$query = $this->db->prepare('	UPDATE 	contrato 
+											SET 	NRO_PATENTE = :patente,
+													RUT_PERSONA = :rut_trabajador,
+													CLI_RUT_PERSONA = :rut_cliente,
+													ID_SERVICIO = :id_servicio,
+													VALOR_ACORDADO = :valor_acordado, 
+													LUGAR_ENTREGA = :lugar_entrega, 
+													LUGAR_RETIRO = :lugar_retiro, 
+													FECHA_LIMITE = :fecha_limite, 
+													VALOR_TOTAL = :valor_total, 
+													DETALLE_CONTRATO = :detalle, 
+													ESTADO_CONTRATO = :estado 
+											WHERE 	ID_CONTRATO = :id');
+
+			$query -> bindParam(':patente', 		$data['NRO_PATENTE']);
+			$query -> bindParam(':rut_trabajador', 	$data['RUT_PERSONA']);
+			$query -> bindParam(':rut_cliente', 	$data['CLI_RUT_PERSONA']);
+			$query -> bindParam(':id_servicio', 	$data['ID_SERVICIO']);
+			$query -> bindParam(':valor_acordado', 	$data['VALOR_ACORDADO']);
+			$query -> bindParam(':lugar_entrega', 	$data['LUGAR_ENTREGA']);
+			$query -> bindParam(':lugar_retiro', 	$data['LUGAR_RETIRO']);
+			$query -> bindParam(':fecha_limite', 	$data['FECHA_LIMITE']);
+			$query -> bindParam(':valor_total', 	$data['VALOR_TOTAL']);
+			$query -> bindParam(':detalle', 		$data['DETALLE_CONTRATO']);
+			$query -> bindParam(':estado', 			$data['ESTADO_CONTRATO']);
+			$query -> bindParam(':id', 				$data['ID_CONTRATO']);
+
 			if($query -> execute()){
 				$datos['status'] = 'success';
 				$datos['message']['title'] = '¡Listo!';
