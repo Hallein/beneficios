@@ -23,9 +23,9 @@
 
 			ob_start();
 			include CONTRATOS . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
@@ -34,9 +34,9 @@
 
 			ob_start();
 			include CONTRATOS . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,14 +44,16 @@
 
 			ob_start();
 			include CONTRATOS . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
+
 			$datos = $this->contrato->store($data);
-			return $datos;
+			
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
@@ -60,9 +62,9 @@
 
 			ob_start();
 			include CONTRATOS . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){

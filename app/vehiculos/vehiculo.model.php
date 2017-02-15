@@ -20,12 +20,19 @@
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['vehiculo'] = $query -> fetch();
-				$datos['status'] = 'success';
+				if($datos['vehiculo']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe el vehículo';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el vehículo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe el vehículo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}		
@@ -56,15 +63,15 @@
 			$query -> bindParam(':tipo_patente', 	$data['TIPO_PATENTE']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Vehículo registrado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Vehículo registrado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar el vehículo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar el vehículo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -91,15 +98,15 @@
 			$query -> bindParam(':id', 				$data['NRO_PATENTE']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Vehículo modificado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Vehículo modificado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar el vehículo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar el vehículo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -109,15 +116,15 @@
 			$query = $this->db->prepare('DELETE FROM vehiculo WHERE NRO_PATENTE = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Vehículo eliminado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Vehículo eliminado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar el vehículo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el vehículo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

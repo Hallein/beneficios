@@ -22,12 +22,19 @@
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['venta'] = $query -> fetch();
-				$datos['status'] = 'success';
+				if($datos['venta']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe la venta';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el contrato';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe la venta';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}		
@@ -49,15 +56,15 @@
 			$query -> bindParam(':estado', 			$data['ESTADO_SERVICIO']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Venta registrada correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Venta registrada correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar la venta';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar la venta';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -78,15 +85,15 @@
 			$query -> bindParam(':id', 				$data['ID_SERVICIO']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Venta modificada correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Venta modificada correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar la venta';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar la venta';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -96,15 +103,15 @@
 			$query = $this->db->prepare('DELETE FROM venta WHERE ID_SERVICIO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Venta eliminada correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Venta eliminada correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar la venta';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar la venta';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

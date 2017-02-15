@@ -21,12 +21,19 @@
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['insumo'] = $query -> fetch();
-				$datos['status'] = 'success';
+				if($datos['insumo']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe el insumo';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el insumo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe el insumo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -51,15 +58,15 @@
 			$query -> bindParam(':precio_compra', 	$data['PRECIO_COMPRA']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Insumo registrado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Insumo registrado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar el insumo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar el insumo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -82,15 +89,15 @@
 			$query -> bindParam(':id', 				$data['ID_INSUMO']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Insumo modificado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Insumo modificado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar el insumo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar el insumo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -100,15 +107,15 @@
 			$query = $this->db->prepare('DELETE FROM insumo WHERE ID_INSUMO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Insumo eliminado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Insumo eliminado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar el insumo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el insumo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

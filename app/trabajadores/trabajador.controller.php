@@ -23,9 +23,9 @@
 
 			ob_start();
 			include TRABAJADORES . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
@@ -34,9 +34,9 @@
 
 			ob_start();
 			include TRABAJADORES . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,9 +44,9 @@
 
 			ob_start();
 			include TRABAJADORES . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
@@ -60,9 +60,9 @@
 
 			ob_start();
 			include TRABAJADORES . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){

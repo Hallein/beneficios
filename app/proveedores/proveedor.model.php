@@ -21,12 +21,19 @@
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['proveedor'] = $query -> fetch();
-				$datos['status'] = 'Success';
+				if($datos['proveedor']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe el proveedor';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el proveedor';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe el proveedor';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}		
@@ -48,15 +55,15 @@
 			$query -> bindParam(':pais', 	$data['PAIS_PROVEEDOR']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Proveedor registrado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Proveedor registrado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar al proveedor';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar al proveedor';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -75,15 +82,15 @@
 			$query -> bindParam(':rut', 	$data['RUT_PROVEEDOR']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Proveedor modificado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Proveedor modificado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar al proveedor';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar al proveedor';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -93,15 +100,15 @@
 			$query = $this->db->prepare('DELETE FROM proveedor WHERE RUT_PROVEEDOR = :rut');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Proveedor eliminado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Proveedor eliminado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar al proveedor';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar al proveedor';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

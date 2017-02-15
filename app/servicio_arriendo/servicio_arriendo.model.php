@@ -22,12 +22,19 @@
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['arriendo'] = $query -> fetch();
-				$datos['status'] = 'success';
+				if($datos['arriendo']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe el arriendo';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el arriendo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe el arriendo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}		
@@ -55,15 +62,15 @@
 			$query -> bindParam(':estado', 			$data['ESTADO_SERVICIO']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Arriendo registrado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Arriendo registrado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar el arriendo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar el arriendo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -88,15 +95,15 @@
 			$query -> bindParam(':id', 				$data['ID_SERVICIO']);
 
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Arriendo modificado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Arriendo modificado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar el arriendo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar el arriendo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}
@@ -106,15 +113,15 @@
 			$query = $this->db->prepare('DELETE FROM arriendo WHERE ID_SERVICIO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Arriendo eliminado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Arriendo eliminado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar el arriendo';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el arriendo';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}
 			return $datos;
 		}

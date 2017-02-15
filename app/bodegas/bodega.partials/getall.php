@@ -2,7 +2,7 @@
 	<div class="mdl-card__title d-primaty-color">
 		<div class="row">
 			<div class="col-xs-12">							
-				<div class="mdl-card__title-text"><h4 class="d-title-margin">INSUMOS</h4></div>
+				<div class="mdl-card__title-text"><h4 class="d-title-margin">BODEGAS</h4></div>
 			</div>
 		</div>
 		<div class="btn-multiple">

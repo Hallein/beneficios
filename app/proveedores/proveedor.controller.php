@@ -23,9 +23,9 @@
 
 			ob_start();
 			include PROVEEDORES . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
@@ -34,9 +34,9 @@
 
 			ob_start();
 			include PROVEEDORES . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,14 +44,16 @@
 
 			ob_start();
 			include PROVEEDORES . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
+
 			$datos = $this->proveedor->store($data);
-			return $datos;
+			
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
@@ -60,9 +62,9 @@
 
 			ob_start();
 			include PROVEEDORES . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
