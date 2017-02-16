@@ -21,21 +21,21 @@
 		<table id="listado_ventas" class="mdl-data-table dataTable" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
-	                <th>Rut</th>
+	                <th>Codgio</th>
 	                <th>Nombre</th>
-	                <th>Telefono</th>
-	                <th>Email</th>
-	                <th>Dirección</th>
+	                <th>Servicio</th>
+	                <th>Fecha</th>
+	                <th>Valor</th>
 	                <th class="all"></th>
 	            </tr>
 	        </thead>
 	        <tfoot>
 	            <tr>
-	                <th>Rut</th>
+	                <th>Codgio</th>
 	                <th>Nombre</th>
-	                <th>Telefono</th>
-	                <th>Email</th>
-	                <th>Dirección</th>
+	                <th>Servicio</th>
+	                <th>Fecha</th>
+	                <th>Valor</th>
 	                <th></th>
 	            </tr>
 	        </tfoot>
@@ -43,8 +43,8 @@
 	            <?php foreach($datos['documentos'] as $dato){ ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_VENTA']; ?></td>
-	                <td><?php echo $dato['RUT_PERSONA']; ?></td>		                
-	                <td><?php echo $dato['ID_SERVICIO']; ?></td>
+	                <td><?php echo $dato['NOMBRE_PERSONA']; ?></td>		                
+	                <td><?php echo $dato['NOMBRE_SERVICIO']; ?></td>
 	                <td><?php echo $dato['FECHA_VENTA']; ?></td>
 	                <td><?php echo $dato['VALOR_VENTA']; ?></td>
 	                <td>

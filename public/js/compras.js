@@ -1,7 +1,7 @@
 function MostrarCompras(){
 	$.ajax({
 	    type: "GET",
-	    url : "api/compras",
+	    url : "api/documentos/compra",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);

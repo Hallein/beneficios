@@ -53,7 +53,7 @@
 	                <td><?php echo $dato['DIRECCION_PERSONA']; ?></td>
 	                <td><?php echo $dato['PREVISION_SOCIAL']; ?></td>
 	                <td><?php echo $dato['PREVISION_SALUD']; ?></td>
-	                	<div class="btn-multiple">
+	                <td><div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
 							</button>
 							<div class="btn-multiple-options">
