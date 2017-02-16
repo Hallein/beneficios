@@ -10,7 +10,17 @@
 		public function getAll(){
 			$datos = array();
 			
-			$query = $this->db->prepare('	SELECT 		co.*, 
+			$query = $this->db->prepare('	SELECT 		co.NRO_PATENTE,
+														co.RUT_PERSONA,
+														co.CLI_RUT_PERSONA,
+														co.ID_SERVICIO,
+														co.VALOR_ACORDADO, 
+														co.LUGAR_ENTREGA, 
+														co.LUGAR_RETIRO, 
+														co.FECHA_LIMITE, 
+														co.VALOR_TOTAL, 
+														co.DETALLE_CONTRATO, 
+														co.ESTADO_CONTRATO,
 														cli.NOMBRE_PERSONA, 
 														cli.APATERNO_PERSONA, 
 														cli.AMATERNO_PERSONA
@@ -24,7 +34,24 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
+			$query = $this->db->prepare('	SELECT 		co.NRO_PATENTE,
+														co.RUT_PERSONA,
+														co.CLI_RUT_PERSONA,
+														co.ID_SERVICIO,
+														co.VALOR_ACORDADO, 
+														co.LUGAR_ENTREGA, 
+														co.LUGAR_RETIRO, 
+														co.FECHA_LIMITE, 
+														co.VALOR_TOTAL, 
+														co.DETALLE_CONTRATO, 
+														co.ESTADO_CONTRATO,
+														cli.NOMBRE_PERSONA, 
+														cli.APATERNO_PERSONA, 
+														cli.AMATERNO_PERSONA
+											FROM 		contrato co
+											INNER JOIN 	cliente cli 
+											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA
+											WHERE 		co.ID_CONTRATO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['contrato'] = $query -> fetch();
@@ -48,28 +75,28 @@
 		public function store($data){
 			$datos = array();
 			$query = $this->db->prepare('	INSERT INTO contrato(
-													NRO_PATENTE,
-													RUT_PERSONA,
-													CLI_RUT_PERSONA,
-													ID_SERVICIO,
-													VALOR_ACORDADO, 
-													LUGAR_ENTREGA, 
-													LUGAR_RETIRO, 
-													FECHA_LIMITE, 
-													VALOR_TOTAL, 
-													DETALLE_CONTRATO, 
-													ESTADO_CONTRATO) 
-											VALUES(	:patente,
-													:rut_trabajador,
-													:rut_cliente,
-													:id_servicio,
-													:valor_acordado, 
-													:lugar_entrega, 
-													:lugar_retiro, 
-													:fecha_limite, 
-													:valor_total, 
-													:detalle, 
-													:estado)');
+																NRO_PATENTE,
+																RUT_PERSONA,
+																CLI_RUT_PERSONA,
+																ID_SERVICIO,
+																VALOR_ACORDADO, 
+																LUGAR_ENTREGA, 
+																LUGAR_RETIRO, 
+																FECHA_LIMITE, 
+																VALOR_TOTAL, 
+																DETALLE_CONTRATO, 
+																ESTADO_CONTRATO) 
+												VALUES(			:patente,
+																:rut_trabajador,
+																:rut_cliente,
+																:id_servicio,
+																:valor_acordado, 
+																:lugar_entrega, 
+																:lugar_retiro, 
+																:fecha_limite, 
+																:valor_total, 
+																:detalle, 
+																:estado)');
 
 			$query -> bindParam(':patente', 		$data['NRO_PATENTE']);
 			$query -> bindParam(':rut_trabajador', 	$data['RUT_PERSONA']);

@@ -10,7 +10,14 @@
 		public function getAll(){
 			$datos = array();
 
-			$query = $this->db->prepare('SELECT * FROM arriendo');			
+			$query = $this->db->prepare('	SELECT 	ID_SERVICIO,
+													FECHA_INICIO, 
+													FECHA_TERMINO, 
+													DETALLE, 
+													NOMBRE_SERVICIO, 
+													TIPO_SERVICIO, 
+													ESTADO_SERVICIO 
+											FROM	arriendo');			
 			$query->execute();
 
 			$datos['arriendos'] = $query->fetchAll();
@@ -18,7 +25,15 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM arriendo WHERE ID_SERVICIO = :id');
+			$query = $this->db->prepare('	SELECT 	ID_SERVICIO,
+													FECHA_INICIO, 
+													FECHA_TERMINO, 
+													DETALLE, 
+													NOMBRE_SERVICIO, 
+													TIPO_SERVICIO, 
+													ESTADO_SERVICIO 
+											FROM	arriendo 
+											WHERE	ID_SERVICIO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['arriendo'] = $query -> fetch();

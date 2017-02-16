@@ -10,7 +10,13 @@
 		public function getAll(){
 			$datos = array();
 
-			$query = $this->db->prepare('SELECT * FROM venta');			
+			$query = $this->db->prepare('SELECT ID_SERVICIO,
+												TIPO_PAGO, 
+												NOMBRE_SERVICIO, 
+												TIPO_SERVICIO, 
+												ESTADO_SERVICIO 
+										FROM 	venta');
+
 			$query->execute();
 
 			$datos['ventas'] = $query->fetchAll();
@@ -18,7 +24,14 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM venta WHERE ID_SERVICIO = :id');
+			$query = $this->db->prepare('SELECT ID_SERVICIO,
+												TIPO_PAGO, 
+												NOMBRE_SERVICIO, 
+												TIPO_SERVICIO, 
+												ESTADO_SERVICIO 
+										FROM 	venta 
+										WHERE 	ID_SERVICIO = :id');
+
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['venta'] = $query -> fetch();
@@ -101,6 +114,7 @@
 		public function delete($id){
 			$datos = array();
 			$query = $this->db->prepare('DELETE FROM venta WHERE ID_SERVICIO = :id');
+			
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

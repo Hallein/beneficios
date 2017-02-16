@@ -8,7 +8,14 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('	SELECT 		dv.*, 
+			$query = $this->db->prepare('	SELECT 		dv.ID_VENTA,
+														dv.RUT_PERSONA,
+														dv.ID_SERVICIO,
+														dv.FECHA_VENTA, 
+														dv.VALOR_VENTA, 
+														dv.IVA, 
+														dv.FOLIO,
+													 	dv.NUMERO_SERIE,
 														cli.RUT_PERSONA, 
 														cli.NOMBRE_PERSONA,
 														cli.APATERNO_PERSONA,
@@ -28,7 +35,26 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM documento_venta WHERE ID_VENTA = :id');
+			$query = $this->db->prepare('	SELECT 		dv.ID_VENTA,
+														dv.RUT_PERSONA,
+														dv.ID_SERVICIO,
+														dv.FECHA_VENTA, 
+														dv.VALOR_VENTA, 
+														dv.IVA, 
+														dv.FOLIO,
+													 	dv.NUMERO_SERIE,
+													 	cli.RUT_PERSONA, 
+														cli.NOMBRE_PERSONA,
+														cli.APATERNO_PERSONA,
+														cli.AMATERNO_PERSONA,
+														s.ID_SERVICIO,
+														s.NOMBRE_SERVICIO 
+										 	FROM 		documento_venta dv
+										 	INNER JOIN 	cliente cli 
+											ON 			dv.RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN 	venta s 
+											ON 			dv.ID_SERVICIO = s.ID_SERVICIO
+										 	WHERE 		dv.ID_VENTA = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['documento'] = $query -> fetch();
@@ -66,11 +92,13 @@
 																		:folio, 
 																		:nserie)');
 
-			$query -> bindParam(':fecha', 	$data['FECHA_VENTA']);
-			$query -> bindParam(':valor', 	$data['VALOR_VENTA']);
-			$query -> bindParam(':iva', 	$data['IVA']);
-			$query -> bindParam(':folio', 	$data['FOLIO']);
-			$query -> bindParam(':nserie', 	$data['NUMERO_SERIE']);
+			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+			$query -> bindParam(':id_servicio', $data['ID_SERVICIO']);
+			$query -> bindParam(':fecha', 		$data['FECHA_VENTA']);
+			$query -> bindParam(':valor', 		$data['VALOR_VENTA']);
+			$query -> bindParam(':iva', 		$data['IVA']);
+			$query -> bindParam(':folio', 		$data['FOLIO']);
+			$query -> bindParam(':nserie', 		$data['NUMERO_SERIE']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
@@ -89,19 +117,23 @@
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	documento_venta 
-											SET 	FECHA_VENTA = :fecha, 
+											SET 	RUT_PERSONA = :rut,
+													ID_SERVICIO = :id_servicio,
+													FECHA_VENTA = :fecha, 
 													VALOR_VENTA = :valor, 
 													IVA = :iva, 
 													FOLIO = :folio, 
 													NUMERO_SERIE = :nserie 
-											WHERE 	ID_VENTA = :id');
+											WHERE 	ID_VENTA = :id_venta');
 
-			$query -> bindParam(':fecha', 	$data['FECHA_VENTA']);
-			$query -> bindParam(':valor', 	$data['VALOR_VENTA']);
-			$query -> bindParam(':iva', 	$data['IVA']);
-			$query -> bindParam(':folio', 	$data['FOLIO']);
-			$query -> bindParam(':nserie', 	$data['NUMERO_SERIE']);
-			$query -> bindParam(':id', 		$data['ID_VENTA']);
+			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+			$query -> bindParam(':id_servicio', $data['ID_SERVICIO']);
+			$query -> bindParam(':fecha', 		$data['FECHA_VENTA']);
+			$query -> bindParam(':valor', 		$data['VALOR_VENTA']);
+			$query -> bindParam(':iva', 		$data['IVA']);
+			$query -> bindParam(':folio', 		$data['FOLIO']);
+			$query -> bindParam(':nserie', 		$data['NUMERO_SERIE']);
+			$query -> bindParam(':id_venta', 	$data['ID_VENTA']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
