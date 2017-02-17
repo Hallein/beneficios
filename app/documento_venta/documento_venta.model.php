@@ -49,7 +49,7 @@
 														cli.AMATERNO_PERSONA,
 														cli.EMPRESA,
 														cli.DIRECCION_PERSONA,
-														cli.COMUNA,
+														co.COMUNA,
 														s.ID_SERVICIO,
 														s.NOMBRE_SERVICIO,
                                                         SUM( (i.PRECIO_VENTA * det.CANTIDAD_VENDIDA) ) AS TOTAL_IMPORTE,
@@ -64,6 +64,8 @@
                                             ON			det.ID_VENTA = dv.ID_VENTA
                                             LEFT JOIN 	insumo i
                                             ON			i.ID_INSUMO = det.ID_INSUMO
+                                            INNER JOIN	comuna co
+                                            ON			co.ID_COMUNA = cli.ID_COMUNA
 										 	WHERE 		dv.ID_VENTA = :id
                                             GROUP BY 	dv.RUT_PERSONA,
 														dv.ID_SERVICIO,
