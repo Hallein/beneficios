@@ -9,7 +9,11 @@
 
 		public function getAll(){
 			$datos = array();
-			$query = $this->db->prepare('SELECT * FROM proveedor');			
+			$query = $this->db->prepare('	SELECT 	RUT_PROVEEDOR,
+													NOMBRE_PROVEEDOR,
+													CIUDAD_PROVEEDOR,
+													PAIS_PROVEEDOR 
+											FROM 	proveedor');			
 			$query->execute();
 			$datos['proveedores'] = $query->fetchAll();
 
@@ -17,7 +21,12 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM proveedor WHERE RUT_PROVEEDOR = :rut');
+			$query = $this->db->prepare('	SELECT 	RUT_PROVEEDOR,
+													NOMBRE_PROVEEDOR,
+													CIUDAD_PROVEEDOR,
+													PAIS_PROVEEDOR 
+											FROM 	proveedor 
+											WHERE 	RUT_PROVEEDOR = :rut');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['proveedor'] = $query -> fetch();

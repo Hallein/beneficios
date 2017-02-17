@@ -8,12 +8,19 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('	SELECT 		dc.*, 
+			$query = $this->db->prepare('	SELECT 		dc.ID_COMPRA,
+														dc.RUT_PROVEEDOR,
+														dc.FECHA_COMPRA, 
+														dc.VALOR_COMPRA, 
+														dc.IVA, 
+														dc.FOLIO, 
+														dc.NUMERO_SERIE,
 														p.RUT_PROVEEDOR, 
 														p.NOMBRE_PROVEEDOR
 											FROM 		documento_compra dc
 											INNER JOIN 	proveedor p 
 											ON 			dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR');
+
 			$query->execute();
 
 			$datos = array();
@@ -22,7 +29,20 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM documento_compra WHERE ID_COMPRA = :id');
+			$query = $this->db->prepare('	SELECT 		dc.ID_COMPRA,
+														dc.RUT_PROVEEDOR,
+														dc.FECHA_COMPRA, 
+														dc.VALOR_COMPRA, 
+														dc.IVA, 
+														dc.FOLIO, 
+														dc.NUMERO_SERIE,
+														p.RUT_PROVEEDOR, 
+														p.NOMBRE_PROVEEDOR
+											FROM 		documento_compra dc
+											INNER JOIN 	proveedor p 
+											ON 			dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR
+											WHERE 		dc.ID_COMPRA = :id');
+
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['documento'] = $query -> fetch();
@@ -82,13 +102,15 @@
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	documento_compra 
-											SET 	FECHA_COMPRA = :fecha, 
+											SET 	RUT_PROVEEDOR = :rut,
+													FECHA_COMPRA = :fecha, 
 													VALOR_COMPRA = :valor, 
 													IVA = :iva, 
 													FOLIO = :folio, 
 													NUMERO_SERIE = :nserie 
 											WHERE 	ID_COMPRA = :id');
 
+			$query -> bindParam(':rut', 	$data['RUT_PROVEEDOR']);
 			$query -> bindParam(':fecha', 	$data['FECHA_COMPRA']);
 			$query -> bindParam(':valor', 	$data['VALOR_COMPRA']);
 			$query -> bindParam(':iva', 	$data['IVA']);

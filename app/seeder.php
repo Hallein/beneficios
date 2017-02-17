@@ -16,7 +16,7 @@ $container['seeder'] = function($c){
         'TELEFONO_PERSONA'  => $faker->tollFreePhoneNumber,
         'EMAIL_PERSONA'     => $faker->email,
         'EMPRESA'           => $faker->company,
-        'CIUDAD'            => $faker->city
+        'COMUNA'            => $faker->city
     ])->rowQuantity(40);
 
     $seeder->table('trabajador')->columns([

@@ -38,6 +38,7 @@ $app->group('/documentos/compra', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
+		$id = $args['id'];
 		$json = $this->documento_compra->edit($id);
 
 		$response->write(json_encode($json));

@@ -8,14 +8,34 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM CLIENTE');
+			$query = $this->db->prepare('SELECT RUT_PERSONA,
+												NOMBRE_PERSONA, 
+												APATERNO_PERSONA, 
+												AMATERNO_PERSONA,
+												FECHA_NACIMIENTO,
+												DIRECCION_PERSONA,
+												TELEFONO_PERSONA,
+												EMAIL_PERSONA,
+												COMUNA 
+										FROM 	cliente');
 			$query->execute();
 			$datos['clientes'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM cliente WHERE RUT_PERSONA = :rut');
+			$query = $this->db->prepare('SELECT RUT_PERSONA,
+												NOMBRE_PERSONA, 
+												APATERNO_PERSONA, 
+												AMATERNO_PERSONA,
+												FECHA_NACIMIENTO,
+												DIRECCION_PERSONA,
+												TELEFONO_PERSONA,
+												EMAIL_PERSONA,
+												COMUNA 
+										FROM 	cliente 
+										WHERE 	RUT_PERSONA = :rut');
+
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['cliente'] = $query -> fetch();
@@ -42,7 +62,7 @@
 																NOMBRE_PERSONA, 
 																APATERNO_PERSONA, 
 																AMATERNO_PERSONA,
-																FECHA_NACIMIENO,
+																FECHA_NACIMIENTO,
 																DIRECCION_PERSONA,
 																TELEFONO_PERSONA,
 																EMAIL_PERSONA,
@@ -65,8 +85,6 @@
 			$query -> bindParam(':direccion', 	$data['direccion']);
 			$query -> bindParam(':telefono', 	$data['telefono']);
 			$query -> bindParam(':email', 		$data['email']);
-			//$query -> bindParam(':empresa', 	$data['EMPRESA']);
-			//$query -> bindParam(':ciudad', 	$data['CIUDAD']);
 			$query -> bindParam(':comuna', 		$data['comuna']);
 
 			if($query -> execute()){
@@ -89,24 +107,22 @@
 											SET 	NOMBRE_PERSONA = :nombres, 
 													APATERNO_PERSONA = :apaterno, 
 													AMATERNO_PERSONA = :amaterno, 
-													FECHA_NACIMIENTO = :fnac, 
-													DIRECCION_PERSONA = :dir, 
-													TELEFONO_PERSONA = :tel, 
+													FECHA_NACIMIENTO = :fecha, 
+													DIRECCION_PERSONA = :direccion, 
+													TELEFONO_PERSONA = :telefono, 
 													EMAIL_PERSONA = :email, 
-													EMPRESA = :empresa, 
-													CIUDAD = :ciudad, 
+													EMPRESA = :empresa,
 													COMUNA = :comuna 
 											WHERE 	RUT_PERSONA = :rut');	
 
 			$query -> bindParam(':nombres', 	$data['NOMBRE_PERSONA']);
 			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
-			$query -> bindParam(':fnac', 		$data['FECHA_NACIMIENTO']);
-			$query -> bindParam(':dir', 		$data['DIRECCION_PERSONA']);
-			$query -> bindParam(':tel', 		$data['TELEFONO_PERSONA']);
+			$query -> bindParam(':fecha', 		$data['FECHA_NACIMIENTO']);
+			$query -> bindParam(':direccion', 	$data['DIRECCION_PERSONA']);
+			$query -> bindParam(':telefono', 	$data['TELEFONO_PERSONA']);
 			$query -> bindParam(':email', 		$data['EMAIL_PERSONA']);
 			$query -> bindParam(':empresa', 	$data['EMPRESA']);
-			$query -> bindParam(':ciudad', 		$data['CIUDAD']);
 			$query -> bindParam(':comuna', 		$data['COMUNA']);
 			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
 			if($query -> execute()){
@@ -127,6 +143,7 @@
 			$datos = array();
 			$query = $this->db->prepare('	DELETE FROM cliente 
 											WHERE RUT_PERSONA = :rut');
+
 			$query -> bindParam(':rut', $data['rut']);
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

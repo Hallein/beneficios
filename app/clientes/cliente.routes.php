@@ -38,6 +38,7 @@ $app->group('/clientes', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
+		$id = $args['id'];
 		$json = $this->clientes->edit($id);
 
 		$response->write(json_encode($json));
