@@ -154,5 +154,7 @@
 	<script src="js/compras.js"></script>
 	<script src="js/vehiculos.js"></script>
 	<script src="js/trabajadores.js"></script>
+
+	<script src="js/auth.js"></script>
 </body>
 </html>

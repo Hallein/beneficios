@@ -62,4 +62,4 @@ $app->group('/clientes', function(){
 		return $response;
 	});
 
-});
+})->add($login);
