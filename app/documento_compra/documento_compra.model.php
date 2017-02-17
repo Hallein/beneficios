@@ -39,29 +39,13 @@
 													 	pro.RUT_PROVEEDOR, 
 														pro.NOMBRE_PROVEEDOR,
 														co.COMUNA,
-                                                        SUM( (i.PRECIO_COMPRA * det.CANTIDAD_COMPRADA) ) AS TOTAL_IMPORTE,
-                                                        SUM( ROUND( ((i.PRECIO_COMPRA * det.CANTIDAD_COMPRADA) * 0.19) ) ) AS TOTAL_IVA,
-                                                        SUM( ROUND( (i.PRECIO_COMPRA * det.CANTIDAD_COMPRADA) + ((i.PRECIO_COMPRA * det.CANTIDAD_COMPRADA) * 0.19) ) ) AS TOTAL
+														(dc.VALOR_COMPRA + dc.IVA) AS TOTAL
 										 	FROM 		documento_compra dc
 										 	INNER JOIN 	proveedor pro 
 											ON 			dc.RUT_PROVEEDOR = pro.RUT_PROVEEDOR
-                                            LEFT JOIN	detalle_compra det
-                                            ON			det.ID_COMPRA = dc.ID_COMPRA
-                                            LEFT JOIN 	insumo i
-                                            ON			i.ID_INSUMO = det.ID_INSUMO
                                             INNER JOIN	comuna co
                                             ON			co.ID_COMUNA = pro.ID_COMUNA
-										 	WHERE 		dc.ID_COMPRA = :id
-                                            GROUP BY 	dc.ID_COMPRA,
-														dc.RUT_PROVEEDOR,
-														dc.FECHA_COMPRA, 
-														dc.VALOR_COMPRA, 
-														dc.IVA, 
-														dc.FOLIO,
-													 	dc.NUMERO_SERIE,
-													 	pro.RUT_PROVEEDOR, 
-														pro.NOMBRE_PROVEEDOR,
-														co.COMUNA');
+										 	WHERE 		dc.ID_COMPRA = :id');
 
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
@@ -75,9 +59,10 @@
 																dc.CANTIDAD_COMPRADA,
 																dc.SUB_TOTAL_COMPRA,
 																i.NOMBRE_INSUMO,
-																i.PRECIO_COMPRA AS PRECIO_UNITARIO,
-																(i.PRECIO_COMPRA * dc.CANTIDAD_COMPRADA) AS IMPORTE,
-																ROUND( ((i.PRECIO_COMPRA * dc.CANTIDAD_COMPRADA) * 0.19) ) AS IVA
+																(i.PRECIO_COMPRA - ROUND(i.PRECIO_COMPRA * 0.19)) AS PRECIO_UNITARIO,
+																(ROUND(i.PRECIO_COMPRA * 0.19)) AS IVA_UNITARIO,
+																( dc.SUB_TOTAL_COMPRA - ROUND( dc.SUB_TOTAL_COMPRA * 0.19 )) AS IMPORTE,
+																ROUND( dc.SUB_TOTAL_COMPRA * 0.19 ) AS IVA
 													FROM 		detalle_compra dc
 													INNER JOIN 	insumo i 
 													ON 			i.ID_INSUMO = dc.ID_INSUMO
