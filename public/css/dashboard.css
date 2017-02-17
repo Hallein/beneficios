@@ -1113,3 +1113,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child::befor
    }
 } 
 /*END-ANIMATIONS**************************************/
+
+
+.clase-faunito:hover{
+	-webkit-box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+	box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+	transform: translateY(-5px);
+}
