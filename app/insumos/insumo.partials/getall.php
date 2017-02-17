@@ -46,7 +46,7 @@
 	                <td><?php echo $dato['NOMBRE_INSUMO']; ?></td>		                
 	                <td><?php echo $dato['CATEGORIA_INSUMO']; ?></td>
 	                <td><?php echo $dato['SUBCATEGORIA_INSUMO']; ?></td>
-	                <td><?php echo $dato['PRECIO_VENTA']; ?></td>
+	                <td>$<?php echo $dato['PRECIO_VENTA']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
