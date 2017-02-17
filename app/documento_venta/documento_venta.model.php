@@ -65,7 +65,7 @@
                                             LEFT JOIN 	insumo i
                                             ON			i.ID_INSUMO = det.ID_INSUMO
 										 	WHERE 		dv.ID_VENTA = :id
-                                            GROUP BY dv.RUT_PERSONA,
+                                            GROUP BY 	dv.RUT_PERSONA,
 														dv.ID_SERVICIO,
 														dv.FECHA_VENTA, 
 														dv.VALOR_VENTA, 

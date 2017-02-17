@@ -8,7 +8,8 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('	SELECT 	NOMBRE_INSUMO, 
+			$query = $this->db->prepare('	SELECT 	ID_INSUMO,
+													NOMBRE_INSUMO, 
 													CATEGORIA_INSUMO, 
 													SUBCATEGORIA_INSUMO, 
 													PRECIO_VENTA, 
