@@ -59,7 +59,8 @@
 																dc.CANTIDAD_COMPRADA,
 																dc.SUB_TOTAL_COMPRA,
 																i.NOMBRE_INSUMO,
-																i.PRECIO_COMPRA AS PRECIO_UNITARIO,
+																(i.PRECIO_COMPRA - ROUND(i.PRECIO_COMPRA * 0.19)) AS PRECIO_UNITARIO,
+																(ROUND(i.PRECIO_COMPRA * 0.19)) AS IVA_UNITARIO,
 																( dc.SUB_TOTAL_COMPRA - ROUND( dc.SUB_TOTAL_COMPRA * 0.19 )) AS IMPORTE,
 																ROUND( dc.SUB_TOTAL_COMPRA * 0.19 ) AS IVA
 													FROM 		detalle_compra dc
