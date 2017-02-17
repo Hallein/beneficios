@@ -2,7 +2,7 @@
 	<div class="mdl-card__title d-primaty-color">
 		<div class="row">
 			<div class="col-xs-12">							
-				<div class="mdl-card__title-text"><h4 class="d-title-margin">TRABAJADORES</h4></div>
+				<div class="mdl-card__title-text"><h4 class="d-title-margin">CONTRATOS</h4></div>
 			</div>
 		</div>
 		<div class="btn-multiple">
@@ -23,6 +23,8 @@
 	            <tr>
 	                <th>Numero contrato</th>
 	                <th>Cliente</th>
+	                <th>Lugar retiro</th>
+	                <th>Lugar entrega</th>
 	                <th>Fecha</th>
 	                <th>Valor total</th>
 	                <th>Estado</th>
@@ -32,6 +34,8 @@
 	            <tr>
 	                <th>Numero contrato</th>
 	                <th>Cliente</th>
+	                <th>Lugar retiro</th>
+	                <th>Lugar entrega</th>
 	                <th>Fecha</th>
 	                <th>Valor total</th>
 	                <th>Estado</th>
@@ -41,8 +45,10 @@
 	            <?php foreach($datos['contratos'] as $dato){ ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_CONTRATO']; ?></td>
-	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		                
-	                <td><?php echo $dato['FECHA_FIRMA']; ?></td>
+	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		 
+	                <td><?php echo $dato['LUGAR_RETIRO']; ?></td>            
+	                <td><?php echo $dato['LUGAR_ENTREGA']; ?></td>   
+	                <td><?php echo $dato['FECHA_LIMITE']; ?></td>
 	                <td><?php echo $dato['VALOR_TOTAL']; ?></td>
 	                <td><?php echo $dato['ESTADO_CONTRATO']; ?></td>
 	                <td>

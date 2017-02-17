@@ -44,7 +44,7 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['vehiculo'] as $dato){ ?>
+	            <?php foreach($datos['vehiculos'] as $dato){ ?>
 	            <tr>
 	            	<td><?php echo $dato['NRO_PATENTE']; ?></td>
 	                <td><?php echo $dato['MARCA']; ?></td>		                

@@ -1,10 +1,10 @@
 <?php
 
-$app->group('/servicios', function(){
+$app->group('/documentos/compra', function(){
 
 	$this->get('', function ($request, $response, $args) {
 
-		$json = $this->servicios->index();
+		$json = $this->documento_compra->index();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -13,7 +13,7 @@ $app->group('/servicios', function(){
 	$this->get('/show/{id}', function ($request, $response, $args) {
 
 		$id = $args['id'];
-		$json = $this->servicios->show($id);
+		$json = $this->documento_compra->show($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -21,7 +21,7 @@ $app->group('/servicios', function(){
 
 	$this->get('/create', function ($request, $response, $args) {
 
-		$json = $this->servicios->create();
+		$json = $this->documento_compra->create();
 
 		$response->write(json_encode($json));
 		return $response;
@@ -30,7 +30,7 @@ $app->group('/servicios', function(){
 	$this->post('/store', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->servicios->store($data);
+		$json = $this->documento_compra->store($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -38,7 +38,8 @@ $app->group('/servicios', function(){
 
 	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-		$json = $this->servicios->edit($id);
+		$id = $args['id'];
+		$json = $this->documento_compra->edit($id);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -47,7 +48,7 @@ $app->group('/servicios', function(){
 	$this->post('/update', function ($request, $response, $args) {
 
 		$data = $request->getParsedBody();
-		$json = $this->servicios->update($data);
+		$json = $this->documento_compra->update($data);
 
 		$response->write(json_encode($json));
 		return $response;
@@ -56,7 +57,7 @@ $app->group('/servicios', function(){
 	$this->post('/destroy/{id}', function ($request, $response, $args) {
 		
 		$id = $args['id'];
-		$json = $this->servicios->destroy($id);
+		$json = $this->documento_compra->destroy($id);
 
 		$response->write(json_encode($json));
 		return $response;

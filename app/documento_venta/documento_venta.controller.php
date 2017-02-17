@@ -1,10 +1,10 @@
 <?php
-	class ContratosController{
+	class DocumentoVentaController{
 
-		private $contrato;
+		private $documento;
 
 		public function __construct($db){
-			$this->contrato = new Contrato($db);
+			$this->documento = new DocumentoVenta($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			$datos = $this->contrato->getAll();
+			$datos = $this->documento->getAll();
 
 			ob_start();
-			include CONTRATOS . '/getall.php';
+			include DOCUMENTO_VENTA . '/getall.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			$datos = $this->contrato->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
-			include CONTRATOS . '/show.php';
+			include DOCUMENTO_VENTA . '/show.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
@@ -43,7 +43,7 @@
 		public function create(){
 
 			ob_start();
-			include CONTRATOS . '/create.php';
+			include DOCUMENTO_VENTA . '/create.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
@@ -51,28 +51,28 @@
 
 		public function store($data){
 
-			$datos = $this->contrato->store($data);
+			$datos = $this->documento->store($data);
 			
 			return $datos['respuesta'];
 		}
 
 		public function edit($id){
 
-			$datos = $this->contrato->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
-			include CONTRATOS . '/edit.php';
+			include DOCUMENTO_VENTA . '/edit.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			$datos = $this->contrato->update($data);
+			$datos = $this->documento->update($data);
 		}
 
 		public function destroy($id){
-			$datos = $this->contrato->destroy($id);
+			$datos = $this->documento->destroy($id);
 		}
 
 	}

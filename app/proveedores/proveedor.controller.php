@@ -19,24 +19,24 @@
 
 		public function index(){
 			
-			//$datos = $this->proveedor->getAll();
+			$datos = $this->proveedor->getAll();
 
 			ob_start();
 			include PROVEEDORES . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
 			
-			//$datos = $this->proveedor->show($id);
+			$datos = $this->proveedor->show($id);
 
 			ob_start();
 			include PROVEEDORES . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,32 +44,35 @@
 
 			ob_start();
 			include PROVEEDORES . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
 
+			$datos = $this->proveedor->store($data);
+			
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
 
-			//$datos = $this->proveedor->show($id);
+			$datos = $this->proveedor->show($id);
 
 			ob_start();
 			include PROVEEDORES . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->proveedor->update($data);
+			$datos = $this->proveedor->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->proveedor->destroy($id);
+			$datos = $this->proveedor->destroy($id);
 		}
 
 	}

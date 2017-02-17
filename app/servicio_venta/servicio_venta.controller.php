@@ -1,10 +1,10 @@
 <?php
-	class ServiciosController{
+	class ServicioVentaController{
 
 		private $servicio;
 
 		public function __construct($db){
-			$this->servicio = new Servicio($db);
+			$this->servicio = new ServicioVenta($db);
 		}
 
 		/****************************************************************************
@@ -19,57 +19,58 @@
 
 		public function index(){
 			
-			//$datos = $this->servicio->getAll();
+			$datos = $this->servicio->getAll();
 
 			ob_start();
-			include SERVICIOS . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			include SERVICIO_VENTA . '/getall.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
 			
-			//$datos = $this->servicio->show($id);
+			$datos = $this->servicio->show($id);
 
 			ob_start();
-			include SERVICIOS . '/show.php';
-			$datos['html'] = ob_get_clean();
+			include SERVICIO_VENTA . '/show.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
 		public function create(){
 
 			ob_start();
-			include SERVICIOS . '/create.php';
-			$datos['html'] = ob_get_clean();
+			include SERVICIO_VENTA . '/create.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
-
+			$datos = $this->servicio->store($data);
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
 
-			//$datos = $this->servicio->show($id);
+			$datos = $this->servicio->show($id);
 
 			ob_start();
-			include SERVICIOS . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			include SERVICIO_VENTA . '/edit.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->servicio->update($data);
+			$datos = $this->servicio->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->servicio->destroy($id);
+			$datos = $this->servicio->destroy($id);
 		}
 
 	}

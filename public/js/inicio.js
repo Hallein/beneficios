@@ -1,6 +1,6 @@
 function MostrarInicio(var0){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "php/inicio.php",
 	    data:({
 	    		var0 : var0

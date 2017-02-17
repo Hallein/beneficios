@@ -1,6 +1,6 @@
 function MostrarArriendos(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/arriendos",
 	    dataType: "json",
 	    beforeSend: function() {

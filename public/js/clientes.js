@@ -95,3 +95,23 @@ function IngresarCliente(){
 		}
 	}); //$('#rut_cliente').closest('div').append('<span class="mdl-textfield__error" style="visibility: visible;">El rut esta malisimo!</span>');
 } //$('#rut_cliente').closest('div').addClass('is-invalid');
+
+
+//Se podria reutilizar la funcion de arriba, mandandole como parametro /create o /edit para la url
+function FormularioEditarCliente(rut){
+	$.ajax({
+	    type: "GET",
+	    url : "api/clientes/edit/" + rut,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	console.log(resultado);
+	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg');
+	    	getmdlSelect.init(".getmdl-select");
+		}
+	});
+}

@@ -1,10 +1,10 @@
 <?php
-	class ContratosController{
+	class BodegasController{
 
-		private $contrato;
+		private $bodega;
 
 		public function __construct($db){
-			$this->contrato = new Contrato($db);
+			$this->bodega = new Bodega($db);
 		}
 
 		/****************************************************************************
@@ -19,10 +19,10 @@
 
 		public function index(){
 			
-			$datos = $this->contrato->getAll();
+			$datos = $this->bodega->getAll();
 
 			ob_start();
-			include CONTRATOS . '/getall.php';
+			include BODEGAS . '/getall.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
@@ -30,10 +30,10 @@
 
 		public function show($id){
 			
-			$datos = $this->contrato->show($id);
+			$datos = $this->bodega->show($id);
 
 			ob_start();
-			include CONTRATOS . '/show.php';
+			include BODEGAS . '/show.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
@@ -43,36 +43,34 @@
 		public function create(){
 
 			ob_start();
-			include CONTRATOS . '/create.php';
+			include BODEGAS . '/create.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}
 
 		public function store($data){
-
-			$datos = $this->contrato->store($data);
-			
+			$datos = $this->bodega->store($data);
 			return $datos['respuesta'];
 		}
 
 		public function edit($id){
 
-			$datos = $this->contrato->show($id);
+			$datos = $this->bodega->show($id);
 
 			ob_start();
-			include CONTRATOS . '/edit.php';
+			include BODEGAS . '/edit.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			$datos = $this->contrato->update($data);
+			$datos = $this->bodega->update($data);
 		}
 
 		public function destroy($id){
-			$datos = $this->contrato->destroy($id);
+			$datos = $this->bodega->destroy($id);
 		}
 
 	}

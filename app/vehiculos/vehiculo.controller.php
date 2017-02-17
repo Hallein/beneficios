@@ -19,24 +19,24 @@
 
 		public function index(){
 			
-			//$datos = $this->vehiculo->getAll();
+			$datos = $this->vehiculo->getAll();
 
 			ob_start();
 			include VEHICULOS . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
 			
-			//$datos = $this->vehiculo->show($id);
+			$datos = $this->vehiculo->show($id);
 
 			ob_start();
 			include VEHICULOS . '/show.php';
 			$datos['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -46,30 +46,31 @@
 			include VEHICULOS . '/create.php';
 			$datos['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
-
+			$datos = $this->vehiculo->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->vehiculo->show($id);
+			$datos = $this->vehiculo->show($id);
 
 			ob_start();
 			include VEHICULOS . '/edit.php';
 			$datos['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->vehiculo->update($data);
+			$datos = $this->vehiculo->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->vehiculo->destroy($id);
+			$datos = $this->vehiculo->destroy($id);
 		}
 
 	}

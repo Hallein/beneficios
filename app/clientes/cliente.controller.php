@@ -23,9 +23,9 @@
 
 			ob_start();
 			include CLIENTES . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
@@ -34,9 +34,9 @@
 
 			ob_start();
 			include CLIENTES . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,14 +44,16 @@
 
 			ob_start();
 			include CLIENTES . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
+
 			$datos = $this->cliente->store($data);
-			return $datos;
+			
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
@@ -60,17 +62,17 @@
 
 			ob_start();
 			include CLIENTES . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->cliente->update($data);
+			$datos = $this->cliente->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->cliente->destroy($id);
+			$datos = $this->cliente->destroy($id);
 		}
 
 	}

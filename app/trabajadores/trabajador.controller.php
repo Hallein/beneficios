@@ -19,24 +19,24 @@
 
 		public function index(){
 			
-			//$datos = $this->trabajador->getAll();
+			$datos = $this->trabajador->getAll();
 
 			ob_start();
 			include TRABAJADORES . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
 			
-			//$datos = $this->trabajador->show($id);
+			$datos = $this->trabajador->show($id);
 
 			ob_start();
 			include TRABAJADORES . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 
@@ -44,32 +44,33 @@
 
 			ob_start();
 			include TRABAJADORES . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
-
+			$datos = $this->trabajador->store($data);
+			return $datos;
 		}
 
 		public function edit($id){
 
-			//$datos = $this->trabajador->show($id);
+			$datos = $this->trabajador->show($id);
 
 			ob_start();
 			include TRABAJADORES . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->trabajador->update($data);
+			$datos = $this->trabajador->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->trabajador->destroy($id);
+			$datos = $this->trabajador->destroy($id);
 		}
 
 	}

@@ -1,6 +1,6 @@
 function MostrarVehiculos(){
 	$.ajax({
-	    type: "POST",
+	    type: "GET",
 	    url : "api/vehiculos",
 	    dataType: "json",
 	    beforeSend: function() {

@@ -1,10 +1,10 @@
 <?php
-	class FacturaVentaController{
+	class DocumentoCompraController{
 
-		private $factura;
+		private $documento;
 
 		public function __construct($db){
-			$this->factura = new FacturaVenta($db);
+			$this->documento = new DocumentoCompra($db);
 		}
 
 		/****************************************************************************
@@ -19,57 +19,59 @@
 
 		public function index(){
 			
-			//$datos = $this->factura->getAll();
+			$datos = $this->documento->getAll();
 
 			ob_start();
-			include FACTURA_VENTA . '/getall.php';
-			$datos['html'] = ob_get_clean();
+			include DOCUMENTO_COMPRA . '/getall.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function show($id){
 			
-			//$datos = $this->factura->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
-			include FACTURA_VENTA . '/show.php';
-			$datos['html'] = ob_get_clean();
+			include DOCUMENTO_COMPRA . '/show.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
-
 
 		public function create(){
 
 			ob_start();
-			include FACTURA_VENTA . '/create.php';
-			$datos['html'] = ob_get_clean();
+			include DOCUMENTO_COMPRA . '/create.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function store($data){
+			
+			$datos = $this->documento->store($data);
 
+			return $datos['respuesta'];
 		}
 
 		public function edit($id){
 
-			//$datos = $this->factura->show($id);
+			$datos = $this->documento->show($id);
 
 			ob_start();
-			include FACTURA_VENTA . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			include DOCUMENTO_COMPRA . '/edit.php';
+			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 		public function update($data){
-			//$datos = $this->factura->update($data);
+			$datos = $this->documento->update($data);
 		}
 
 		public function destroy($id){
-			//$datos = $this->factura->destroy($id);
+			$datos = $this->documento->destroy($id);
 		}
 
 	}

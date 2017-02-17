@@ -10,109 +10,162 @@
 		public function getAll(){
 			$datos = array();
 
-			/*$query = $this->db->prepare('SELECT * FROM contrato');			
+			$query = $this->db->prepare('SELECT RUT_PERSONA,
+												PREVISION_SOCIAL, 
+												PREVISION_SALUD, 
+												CARGO, 
+												NOMBRE_PERSONA, 
+												APATERNO_PERSONA, 
+												AMATERNO_PERSONA, 
+												FECHA_NACIMIENTO, 
+												DIRECCION_PERSONA, 
+												TELEFONO_PERSONA, 
+												EMAIL_PERSONA 
+										FROM 	trabajador');
 			$query->execute();
 
-			$datos['contratos'] = $query->fetchAll();*/
+			$datos['trabajadores'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			/*$query = $this->db->prepare('SELECT * FROM contrato WHERE ID_CONTRATO = :id');
-			$query -> bindParam(':id', $id);
+			$query = $this->db->prepare('	SELECT 	RUT_PERSONA,
+													PREVISION_SOCIAL, 
+													PREVISION_SALUD, 
+													CARGO, 
+													NOMBRE_PERSONA, 
+													APATERNO_PERSONA, 
+													AMATERNO_PERSONA, 
+													FECHA_NACIMIENTO, 
+													DIRECCION_PERSONA, 
+													TELEFONO_PERSONA, 
+													EMAIL_PERSONA  
+											FROM 	trabajador 
+											WHERE 	RUT_PERSONA = :rut');
+			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
-				$datos['contrato'] = $query -> fetch();
-				$datos['status'] = 'success';
+				$datos['trabajador'] = $query -> fetch();
+				if($datos['trabajador']){
+					$datos['respuesta']['status'] = 'success';					
+				}else{
+					$datos['respuesta']['status'] = 'error';
+					$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+					$datos['respuesta']['message']['body'] = 'No existe el trabajador';
+					$datos['respuesta']['message']['timeout'] = 2;
+				}
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No existe el contrato';
-				$datos['message']['timeout'] = 2;
-			}*/
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No existe el trabajador';
+				$datos['respuesta']['message']['timeout'] = 2;
+			}
 			return $datos;
 		}		
 
 		public function store($data){
-			/*$datos = array();
-			$query = $this->db->prepare('	INSERT INTO contrato(
-													VALOR_ACORDADO, 
-													LUGAR_ENTREGA, 
-													LUGAR_RETIRO, 
-													FECHA_LIMITE, 
-													VALOR_TOTAL, 
-													DETALLE_CONTRATO, 
-													ESTADO_CONTRATO) 
-											VALUES(	:vacordado, 
-													:lentrega, 
-													:lretiro, 
-													:flimite, 
-													:vtotal, 
-													:dcontrato, 
-													:econtrato)');
+			$datos = array();
+			$query = $this->db->prepare('INSERT INTO trabajador(	PREVISION_SOCIAL, 
+																	PREVISION_SALUD, 
+																	CARGO, 
+																	NOMBRE_PERSONA, 
+																	APATERNO_PERSONA, 
+																	AMATERNO_PERSONA, 
+																	FECHA_NACIMIENTO, 
+																	DIRECCION_PERSONA, 
+																	TELEFONO_PERSONA, 
+																	EMAIL_PERSONA) 
+														VALUES(		:social, 
+																	:salud, 
+																	:cargo, 
+																	:nombre, 
+																	:apaterno, 
+																	:amaterno, 
+																	:fecha, 
+																	:direccion, 
+																	:telefono, 
+																	:email)');
 
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
+			$query -> bindParam(':social', 		$data['PREVISION_SOCIAL']);
+			$query -> bindParam(':salud', 		$data['PREVISION_SALUD']);
+			$query -> bindParam(':cargo', 		$data['CARGO']);
+			$query -> bindParam(':nombre', 		$data['NOMBRE_PERSONA']);
+			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
+			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
+			$query -> bindParam(':fecha', 		$data['FECHA_NACIMIENTO']);
+			$query -> bindParam(':direccion', 	$data['DIRECCION_PERSONA']);
+			$query -> bindParam(':telefono', 	$data['TELEFONO_PERSONA']);
+			$query -> bindParam(':email', 		$data['EMAIL_PERSONA']);
+
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato registrado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Trabajador registrado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible registrar el contrato';
-				$datos['message']['timeout'] = 2;
-			}*/
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible registrar el trabajador';
+				$datos['respuesta']['message']['timeout'] = 2;
+			}
 			return $datos;
 		}
 
 		public function update($data){
-			/*$datos = array();
-			$query = $this->db->prepare('UPDATE contrato 
-				SET VALOR_ACORDADO = :vacordado, LUGAR_ENTREGA = :lentrega, LUGAR_RETIRO = :lretiro, FECHA_LIMITE = :flimite, VALOR_TOTAL = :vtotal, DETALLE_CONTRATO = :dcontrato, ESTADO_CONTRATO = :econtrato 
-				WHERE ID_CONTRATO = :id');
-			$query -> bindParam(':vacordado', $data['VALOR_ACORDADO']);
-			$query -> bindParam(':lentrega', $data['LUGAR_ENTREGA']);
-			$query -> bindParam(':lretiro', $data['LUGAR_RETIRO']);
-			$query -> bindParam(':flimite', $data['FECHA_LIMITE']);
-			$query -> bindParam(':vtotal', $data['VALOR_TOTAL']);
-			$query -> bindParam(':dcontrato', $data['DETALLE_CONTRATO']);
-			$query -> bindParam(':econtrato', $data['ESTADO_CONTRATO']);
-			$query -> bindParam(':id', $data['ID_CONTRATO']);
+			$datos = array();
+			$query = $this->db->prepare('	UPDATE 	trabajador 
+											SET 	PREVISION_SOCIAL = :social, 
+													PREVISION_SALUD = :salud, 
+													CARGO = :cargo, 
+													NOMBRE_PERSONA = :nombre, 
+													APATERNO_PERSONA = :apaterno, 
+													AMATERNO_PERSONA = :amaterno, 
+													FECHA_NACIMIENTO = :fecha,
+													DIRECCION_PERSONA = :direccion,
+													TELEFONO_PERSONA = :telefono,
+													EMAIL_PERSONA = :email
+											WHERE 	RUT_PERSONA = :rut');
+
+			$query -> bindParam(':social', 		$data['PREVISION_SOCIAL']);
+			$query -> bindParam(':salud', 		$data['PREVISION_SALUD']);
+			$query -> bindParam(':cargo', 		$data['CARGO']);
+			$query -> bindParam(':nombre', 		$data['NOMBRE_PERSONA']);
+			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
+			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
+			$query -> bindParam(':fecha', 		$data['FECHA_NACIMIENTO']);
+			$query -> bindParam(':direccion', 	$data['DIRECCION_PERSONA']);
+			$query -> bindParam(':telefono', 	$data['TELEFONO_PERSONA']);
+			$query -> bindParam(':email', 		$data['EMAIL_PERSONA']);
+			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato modificado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Trabajador modificado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible modificar el contrato';
-				$datos['message']['timeout'] = 2;
-			}*/
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible modificar el trabajador';
+				$datos['respuesta']['message']['timeout'] = 2;
+			}
 			return $datos;
 		}
 
 		public function delete($id){
-			/*$datos = array();
-			$query = $this->db->prepare('DELETE FROM contrato WHERE ID_CONTRATO = :id');
-			$query -> bindParam(':id', $id);
+			$datos = array();
+			$query = $this->db->prepare('DELETE FROM trabajador WHERE RUT_PERSONA = :rut');
+			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
-				$datos['status'] = 'success';
-				$datos['message']['title'] = '¡Listo!';
-				$datos['message']['body'] = 'Contrato eliminado correctamente';
-				$datos['message']['timeout'] = 2;
+				$datos['respuesta']['status'] = 'success';
+				$datos['respuesta']['message']['title'] = '¡Listo!';
+				$datos['respuesta']['message']['body'] = 'Trabajador eliminado correctamente';
+				$datos['respuesta']['message']['timeout'] = 2;
 			}else{
-				$datos['status'] = 'error';
-				$datos['message']['title'] = 'Ocurrió un error';
-				$datos['message']['body'] = 'No fue posible eliminar el contrato';
-				$datos['message']['timeout'] = 2;
-			}*/
+				$datos['respuesta']['status'] = 'error';
+				$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el trabajador';
+				$datos['respuesta']['message']['timeout'] = 2;
+			}
 			return $datos;
 		}
 
