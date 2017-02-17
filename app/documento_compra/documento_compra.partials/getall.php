@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">DOCUMENTOS DE COMPRA</h4></div>
@@ -22,7 +22,7 @@
 	        <thead>
 	            <tr>
 	                <th>Compra N°</th>
-	                <th>Rut proveedor</th>
+	                <th>Nombre proveedor</th>
 	                <th>Fecha compra</th>
 	                <th>Valor compra</th>
 	                <th class="all"></th>
@@ -31,19 +31,20 @@
 	        <tfoot>
 	            <tr>
 	                <th>Compra N°</th>
-	                <th>Rut proveedor</th>
+	                <th>Nombre proveedor</th>
 	                <th>Fecha compra</th>
 	                <th>Valor compra</th>
 	                <th></th>
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['documentos'] as $dato){ ?>
+	        <?php if (is_array($datos['documentos']) || is_object(['documentos'])) { ?>
+				<?php foreach ($datos['documentos'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_COMPRA']; ?></td>
-	                <td><?php echo $dato['RUT_PROVEEDOR']; ?></td>
+	                <td><?php echo $dato['NOMBRE_PROVEEDOR']; ?></td>
 	                <td><?php echo $dato['FECHA_COMPRA']; ?></td>
-	                <td><?php echo $dato['VALOR_COMPRA']; ?></td>
+	                <td>$<?php echo $dato['VALOR_COMPRA']; ?></td>	                
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
@@ -57,6 +58,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

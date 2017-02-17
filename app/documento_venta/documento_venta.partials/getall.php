@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">DOCUMENTOS DE VENTA</h4></div>
@@ -22,7 +22,8 @@
 	        <thead>
 	            <tr>
 	                <th>Codgio</th>
-	                <th>Nombre</th>
+	                <th>Rut cliente</th>
+	                <th>Nombre cliente</th>
 	                <th>Servicio</th>
 	                <th>Fecha</th>
 	                <th>Valor</th>
@@ -32,7 +33,8 @@
 	        <tfoot>
 	            <tr>
 	                <th>Codgio</th>
-	                <th>Nombre</th>
+	                <th>Rut cliente</th>
+	                <th>Nombre cliente</th>
 	                <th>Servicio</th>
 	                <th>Fecha</th>
 	                <th>Valor</th>
@@ -40,9 +42,11 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['documentos'] as $dato){ ?>
+	        <?php if (is_array($datos['documentos']) || is_object(['documentos'])) { ?>
+				<?php foreach ($datos['documentos'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_VENTA']; ?></td>
+	            	<td><?php echo $dato['RUT_PERSONA']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PERSONA']; ?></td>		                
 	                <td><?php echo $dato['NOMBRE_SERVICIO']; ?></td>
 	                <td><?php echo $dato['FECHA_VENTA']; ?></td>
@@ -60,6 +64,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

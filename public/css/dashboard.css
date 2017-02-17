@@ -789,17 +789,6 @@ body{
 		margin-top: 40px;
 	}
 
-	.d-login:before{
-		position: absolute;
-		content: '';
-		top: 60px;
-		left: -5px;
-		display: block;
-		height: 60px;
-		width: 10px;
-		background-color: #2e4053;
-	}
-
 	.d-login .d-login-button{
 		position: absolute;
 		right: -42px;
@@ -838,7 +827,6 @@ body{
  
 	.d-login .d-login-main button{
 		margin-top: 30px;
-		background-color: #fb8c00 !important;
 	}
 
 	.d-login .d-login-image{
@@ -860,6 +848,21 @@ body{
 		background-color: rgba(230, 126, 34,0.5);
 	}
 	/*END-LOGIN**************************************/
+	/*MARKER*****************************************/
+	.d-marker{
+		position: absolute;
+		top: 60px;
+		left: -5px;
+		display: block;
+		height: 60px;
+		width: 10px;
+		background-color: #2e4053;
+		-webkit-transition: top 0.3s ease-in, height 0.5s ease, background-color 0.3s ease-in;
+		-moz-transition: top 0.3s ease-in, height 0.5s ease, background-color 0.3s ease-in;
+		-o-transition: top 0.3s ease-in, height 0.5s ease, background-color 0.3s ease-in;
+		transition: top 0.3s ease-in, height 0.5s ease, background-color 0.3s ease-in;
+	}
+	/*END-MARKER*************************************/
 /*END-COMPONENTS*************************************/
 
 /*MDL-MODIFY*****************************************/

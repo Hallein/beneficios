@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">INSUMOS</h4></div>
@@ -40,7 +40,8 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['insumos'] as $dato){ ?>
+	        <?php if (is_array($datos['insumos']) || is_object(['insumos'])) { ?>
+				<?php foreach ($datos['insumos'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_INSUMO']; ?></td>
 	                <td><?php echo $dato['NOMBRE_INSUMO']; ?></td>		                
@@ -60,6 +61,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

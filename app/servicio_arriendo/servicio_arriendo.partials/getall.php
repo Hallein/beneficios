@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">DOCUMENTOS DE ARRIENDO</h4></div>
@@ -22,31 +22,35 @@
 	        <thead>
 	            <tr>
 	                <th>Codgio</th>
-	                <th>Nombre</th>
+	                <th>Tipo de arriendo</th>
 	                <th>Servicio</th>
-	                <th>Fecha</th>
-	                <th>Valor</th>
+	                <th>Fecha Inicio</th>
+	                <th>Fecha termino</th>
+	                <th>Estado</th>
 	                <th class="all"></th>
 	            </tr>
 	        </thead>
 	        <tfoot>
 	            <tr>
 	                <th>Codgio</th>
-	                <th>Nombre</th>
+	                <th>Tipo de arriendo</th>
 	                <th>Servicio</th>
-	                <th>Fecha</th>
-	                <th>Valor</th>
+	                <th>Fecha Inicio</th>
+	                <th>Fecha termino</th>
+	                <th>Estado</th>
 	                <th></th>
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['documentos'] as $dato){ ?>
+	        <?php if (is_array($datos['arriendos']) || is_object(['arriendos'])) { ?>
+				<?php foreach ($datos['arriendos'] as $dato) { ?>
 	            <tr>
-	            	<td><?php echo $dato['ID_VENTA']; ?></td>
-	                <td><?php echo $dato['NOMBRE_PERSONA']; ?></td>		                
-	                <td><?php echo $dato['NOMBRE_SERVICIO']; ?></td>
-	                <td><?php echo $dato['FECHA_VENTA']; ?></td>
-	                <td>$<?php echo $dato['VALOR_VENTA']; ?></td>
+	            	<td><?php echo $dato['ID_SERVICIO']; ?></td>
+	                <td><?php echo $dato['NOMBRE_SERVICIO']; ?></td>		                
+	                <td><?php echo $dato['TIPO_SERVICIO']; ?></td>
+	                <td><?php echo $dato['FECHA_INICIO']; ?></td>
+	                <td><?php echo $dato['FECHA_TERMINO']; ?></td>
+	                <td><?php echo $dato['ESTADO_SERVICIO']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
@@ -60,6 +64,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>
