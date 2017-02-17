@@ -8,33 +8,43 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT RUT_PERSONA,
-												NOMBRE_PERSONA, 
-												APATERNO_PERSONA, 
-												AMATERNO_PERSONA,
-												FECHA_NACIMIENTO,
-												DIRECCION_PERSONA,
-												TELEFONO_PERSONA,
-												EMAIL_PERSONA,
-												COMUNA 
-										FROM 	cliente');
+			$query = $this->db->prepare('SELECT 	c.RUT_PERSONA,
+													c.NOMBRE_PERSONA, 
+													c.APATERNO_PERSONA, 
+													c.AMATERNO_PERSONA,
+													c.FECHA_NACIMIENTO,
+													c.DIRECCION_PERSONA,
+													c.TELEFONO_PERSONA,
+													c.EMAIL_PERSONA,
+													co.COMUNA,
+													s.SEXO
+										FROM 		cliente c
+										INNER JOIN	comuna co
+										ON			co.ID_COMUNA = c.ID_COMUNA
+										INNER JOIN 	sexo s
+										ON 			s.ID_SEXO = c.ID_SEXO');
 			$query->execute();
 			$datos['clientes'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT RUT_PERSONA,
-												NOMBRE_PERSONA, 
-												APATERNO_PERSONA, 
-												AMATERNO_PERSONA,
-												FECHA_NACIMIENTO,
-												DIRECCION_PERSONA,
-												TELEFONO_PERSONA,
-												EMAIL_PERSONA,
-												COMUNA 
-										FROM 	cliente 
-										WHERE 	RUT_PERSONA = :rut');
+			$query = $this->db->prepare('SELECT 	c.RUT_PERSONA,
+													c.NOMBRE_PERSONA, 
+													c.APATERNO_PERSONA, 
+													c.AMATERNO_PERSONA,
+													c.FECHA_NACIMIENTO,
+													c.DIRECCION_PERSONA,
+													c.TELEFONO_PERSONA,
+													c.EMAIL_PERSONA,
+													co.COMUNA,
+													s.SEXO
+										FROM 		cliente c
+										INNER JOIN	comuna co
+										ON			co.ID_COMUNA = c.ID_COMUNA
+										INNER JOIN 	sexo s
+										ON 			s.ID_SEXO = c.ID_SEXO
+										WHERE 		c.RUT_PERSONA = :rut');
 
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
@@ -66,7 +76,9 @@
 																DIRECCION_PERSONA,
 																TELEFONO_PERSONA,
 																EMAIL_PERSONA,
-																COMUNA ) 
+																EMPRESA,
+																ID_COMUNA,
+																ID_SEXO ) 
 													VALUES	(	:rut, 
 																:nombres, 
 																:apaterno, 
@@ -75,7 +87,9 @@
 																:direccion, 
 																:telefono, 
 																:email, 
-																:comuna)'); //Falta EMPRESA y CIUDAD
+																:empresa,
+																:comuna,
+																:sexo)');
 			
 			$query -> bindParam(':rut', 		$data['rut']);
 			$query -> bindParam(':nombres', 	$data['nombre']);
@@ -85,7 +99,9 @@
 			$query -> bindParam(':direccion', 	$data['direccion']);
 			$query -> bindParam(':telefono', 	$data['telefono']);
 			$query -> bindParam(':email', 		$data['email']);
+			$query -> bindParam(':empresa', 	$data['empresa']);
 			$query -> bindParam(':comuna', 		$data['comuna']);
+			$query -> bindParam(':sexo', 		$data['sexo']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
@@ -112,19 +128,22 @@
 													TELEFONO_PERSONA = :telefono, 
 													EMAIL_PERSONA = :email, 
 													EMPRESA = :empresa,
-													COMUNA = :comuna 
+													ID_COMUNA = :comuna,
+													ID_SEXO =:sexo
 											WHERE 	RUT_PERSONA = :rut');	
 
-			$query -> bindParam(':nombres', 	$data['NOMBRE_PERSONA']);
-			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
-			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
-			$query -> bindParam(':fecha', 		$data['FECHA_NACIMIENTO']);
-			$query -> bindParam(':direccion', 	$data['DIRECCION_PERSONA']);
-			$query -> bindParam(':telefono', 	$data['TELEFONO_PERSONA']);
-			$query -> bindParam(':email', 		$data['EMAIL_PERSONA']);
-			$query -> bindParam(':empresa', 	$data['EMPRESA']);
-			$query -> bindParam(':comuna', 		$data['COMUNA']);
+			$query -> bindParam(':nombres', 	$data['nombre']);
+			$query -> bindParam(':apaterno', 	$data['apaterno']);
+			$query -> bindParam(':amaterno', 	$data['amaterno']);
+			$query -> bindParam(':fnac', 		$data['fechanac']);
+			$query -> bindParam(':direccion', 	$data['direccion']);
+			$query -> bindParam(':telefono', 	$data['telefono']);
+			$query -> bindParam(':email', 		$data['email']);
+			$query -> bindParam(':empresa', 	$data['empresa']);
+			$query -> bindParam(':comuna', 		$data['comuna']);
+			$query -> bindParam(':sexo', 		$data['sexo']);
 			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
 				$datos['respuesta']['message']['title'] = '¡Listo!';

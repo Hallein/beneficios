@@ -56,7 +56,7 @@ $container['seeder'] = function($c){
         'TELEFONO_PERSONA'  => $faker->tollFreePhoneNumber,
         'EMAIL_PERSONA'     => $faker->email,
         'EMPRESA'           => $faker->company,
-        'COMUNA'            => $generator->relation('comuna', 'ID_COMUNA'),
+        'ID_COMUNA'            => $generator->relation('comuna', 'ID_COMUNA'),
         'ID_SEXO'           => $generator->relation('sexo', 'ID_SEXO')
     ])->rowQuantity(40);
 
@@ -107,7 +107,7 @@ $container['seeder'] = function($c){
     $seeder->table('proveedor')->columns([        
         'RUT_PROVEEDOR'     => $faker->numberBetween($min = 1000000, $max = 25999999),
         'NOMBRE_PROVEEDOR'  => $faker->name,
-        'COMUNA_PROVEEDOR'  => $generator->relation('comuna', 'ID_COMUNA')
+        'ID_COMUNA'         => $generator->relation('comuna', 'ID_COMUNA')
     ])->rowQuantity(20);
 
     $seeder->table('documento_compra')->columns([        

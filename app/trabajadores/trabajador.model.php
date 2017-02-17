@@ -10,18 +10,21 @@
 		public function getAll(){
 			$datos = array();
 
-			$query = $this->db->prepare('SELECT RUT_PERSONA,
-												PREVISION_SOCIAL, 
-												PREVISION_SALUD, 
-												CARGO, 
-												NOMBRE_PERSONA, 
-												APATERNO_PERSONA, 
-												AMATERNO_PERSONA, 
-												FECHA_NACIMIENTO, 
-												DIRECCION_PERSONA, 
-												TELEFONO_PERSONA, 
-												EMAIL_PERSONA 
-										FROM 	trabajador');
+			$query = $this->db->prepare('SELECT 	t.RUT_PERSONA,
+													t.PREVISION_SOCIAL, 
+													t.PREVISION_SALUD, 
+													t.CARGO, 
+													t.NOMBRE_PERSONA, 
+													t.APATERNO_PERSONA, 
+													t.AMATERNO_PERSONA, 
+													t.FECHA_NACIMIENTO, 
+													t.DIRECCION_PERSONA, 
+													t.TELEFONO_PERSONA, 
+													t.EMAIL_PERSONA, 
+													s.SEXO
+										FROM 		trabajador t
+										INNER JOIN 	sexo s
+										ON			s.ID_SEXO = t.ID_SEXO');
 			$query->execute();
 
 			$datos['trabajadores'] = $query->fetchAll();
@@ -29,19 +32,22 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('	SELECT 	RUT_PERSONA,
-													PREVISION_SOCIAL, 
-													PREVISION_SALUD, 
-													CARGO, 
-													NOMBRE_PERSONA, 
-													APATERNO_PERSONA, 
-													AMATERNO_PERSONA, 
-													FECHA_NACIMIENTO, 
-													DIRECCION_PERSONA, 
-													TELEFONO_PERSONA, 
-													EMAIL_PERSONA  
-											FROM 	trabajador 
-											WHERE 	RUT_PERSONA = :rut');
+			$query = $this->db->prepare('	SELECT 		t.RUT_PERSONA,
+														t.PREVISION_SOCIAL, 
+														t.PREVISION_SALUD, 
+														t.CARGO, 
+														t.NOMBRE_PERSONA, 
+														t.APATERNO_PERSONA, 
+														t.AMATERNO_PERSONA, 
+														t.FECHA_NACIMIENTO, 
+														t.DIRECCION_PERSONA, 
+														t.TELEFONO_PERSONA, 
+														t.EMAIL_PERSONA, 
+														s.SEXO
+											FROM 		trabajador t
+											INNER JOIN 	sexo s
+											ON			s.ID_SEXO = t.ID_SEXO 
+											WHERE 		t.RUT_PERSONA = :rut');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['trabajador'] = $query -> fetch();
