@@ -1,7 +1,7 @@
 function ShowTest(){
 	$.ajax({
 	    type: "POST",
-	    url : "php/factura.php",
+	    url : "php/login.php",
 	    dataType: "html",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);

@@ -54,7 +54,7 @@
 							<div class="btn-multiple-options">
 								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver cliente"></div>
 								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar cliente"></div>
-								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar cliente"></div>
+								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar cliente"  onmousedown="FormularioEditarCliente(<?php echo $dato['RUT_PERSONA']; ?>)"></div>
 							</div>
 						</div>
 	                </td>

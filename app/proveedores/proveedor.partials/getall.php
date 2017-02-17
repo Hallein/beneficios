@@ -23,8 +23,7 @@
 	            <tr>
 	                <th>Rut</th>
 	                <th>Nombre</th>
-	                <th>Ciudad</th>
-	                <th>Pais</th>
+	                <th>Comuna</th>
 	                <th></th>
 	            </tr>
 	        </thead>
@@ -32,8 +31,7 @@
 	            <tr>
 	                <th>Rut</th>
 	                <th>Nombre</th>
-	                <th>Ciudad</th>
-	                <th>Pais</th>
+	                <th>Comuna</th>
 	                <th></th>
 	            </tr>
 	        </tfoot>
@@ -42,8 +40,7 @@
 	            <tr>
 	            	<td><?php echo $dato['RUT_PROVEEDOR']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PROVEEDOR']; ?></td>		                
-	                <td><?php echo $dato['CIUDAD_PROVEEDOR']; ?></td>
-	                <td><?php echo $dato['PAIS_PROVEEDOR']; ?></td>
+	                <td><?php echo $dato['COMUNA']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">

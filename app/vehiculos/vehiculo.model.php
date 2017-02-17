@@ -9,14 +9,32 @@
 
 		public function getAll(){
 
-			$query = $this->db->prepare('SELECT * FROM vehiculo');
+			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
+													ID_BODEGA, 
+													MARCA, 
+													MODELO, 
+													ANHO_FABRICACION, 
+													TIPO_VEHICULO, 
+													ESTADO_VEHICULO, 
+													TIPO_PATENTE  
+											FROM	vehiculo');
 			$query->execute();
 			$datos['vehiculos'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM vehiculo WHERE NRO_PATENTE = :id');
+			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
+													ID_BODEGA, 
+													MARCA, 
+													MODELO, 
+													ANHO_FABRICACION, 
+													TIPO_VEHICULO, 
+													ESTADO_VEHICULO, 
+													TIPO_PATENTE 
+											FROM	vehiculo 
+											WHERE	NRO_PATENTE = :id');
+
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['vehiculo'] = $query -> fetch();

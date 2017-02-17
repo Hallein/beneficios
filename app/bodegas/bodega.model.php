@@ -8,14 +8,25 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM bodega');
+			$query = $this->db->prepare('SELECT ID_BODEGA,
+												RUT_PERSONA, 
+												NOMBRE_BODEGA, 
+												DIRECCION_BODEGA, 
+												TIPO_BODEGA 
+										FROM 	bodega');
 			$query->execute();
 			$datos['bodegas'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM bodega WHERE ID_BODEGA = :id');
+			$query = $this->db->prepare('SELECT ID_BODEGA,
+												RUT_PERSONA, 
+												NOMBRE_BODEGA, 
+												DIRECCION_BODEGA, 
+												TIPO_BODEGA 
+										FROM 	bodega 
+										WHERE 	ID_BODEGA = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['bodega'] = $query -> fetch();
@@ -98,6 +109,7 @@
 		public function delete($data){
 			$datos = array();
 			$query = $this->db->prepare('DELETE FROM bodega WHERE ID_BODEGA = :id');
+			
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

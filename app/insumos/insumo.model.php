@@ -8,7 +8,13 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT * FROM insumo');
+			$query = $this->db->prepare('	SELECT 	ID_INSUMO,
+													NOMBRE_INSUMO, 
+													CATEGORIA_INSUMO, 
+													SUBCATEGORIA_INSUMO, 
+													PRECIO_VENTA, 
+													PRECIO_COMPRA 
+											FROM 	insumo');
 			$query->execute();
 
 			$datos = array();
@@ -17,7 +23,13 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT * FROM insumo WHERE ID_INSUMO = :id');
+			$query = $this->db->prepare('	SELECT 	NOMBRE_INSUMO, 
+													CATEGORIA_INSUMO, 
+													SUBCATEGORIA_INSUMO, 
+													PRECIO_VENTA, 
+													PRECIO_COMPRA 
+											FROM 	insumo 
+											WHERE 	ID_INSUMO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['insumo'] = $query -> fetch();
