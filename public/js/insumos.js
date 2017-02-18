@@ -40,6 +40,7 @@ function MostrarInsumos(){
 				}
 		    } );
 		    HiddenOptionsInit();
+		    MultiButtonDatatable('listado_insumos');
 	    }
 	});
 }

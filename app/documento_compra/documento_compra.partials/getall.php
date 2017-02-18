@@ -18,7 +18,7 @@
 	</div>
 	<div class="mdl-card__supporting-text">
 		<br>
-		<table id="listado_ventas" class="mdl-data-table dataTable" width="100%" cellspacing="0">
+		<table id="listado_compras" class="mdl-data-table dataTable" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
 	                <th>Compra N°</th>

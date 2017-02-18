@@ -22,7 +22,7 @@
 					<span></span>
 				</div>
 			</li>
-			<li class="d-title">Titulo Aplicación</li>
+			<li class="d-title">HAZ-TOP</li>
 		</ul>
 	</div>
 	<div id="d-top-header">

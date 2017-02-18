@@ -53,8 +53,8 @@
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
 							</button>
 							<div class="btn-multiple-options">
-								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver cliente"></div>
-								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar cliente"></div>
+								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver cliente" onmousedown="VerCliente(<?php echo $dato['RUT_PERSONA']; ?>)"></div>
+								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar cliente" onmousedown="EliminarCliente(<?php echo $dato['RUT_PERSONA']; ?>)"></div>
 								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar cliente"  onmousedown="FormularioEditarCliente(<?php echo $dato['RUT_PERSONA']; ?>)"></div>
 							</div>
 						</div>

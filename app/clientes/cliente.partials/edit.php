@@ -91,8 +91,8 @@
 		<button  type="button" class="mdl-button mdl-button--raised mdl-button--centered" data-value="modal-dismiss">
 		  Cancelar
 		</button>
-	 	<button  type="button" onclick="IngresarCliente();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
-		  Ingresar cliente
+	 	<button  type="button" onclick="ModificarCliente(<?php echo $datos['cliente']['RUT_PERSONA']; ?>);" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
+		  Modificar cliente
 		</button>
 	</div>
 </div>

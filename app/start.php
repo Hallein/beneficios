@@ -44,5 +44,4 @@ require 'routes.php';
 require 'container.php';
 require 'seeder.php';
 
-
 $app->run();
