@@ -138,12 +138,11 @@
 	<script src="js/libraries/Chart.bundle.min.js"></script>
 	<script src="js/libraries/dataTables.responsive.min.js"></script>
 	<!--<script src="js/libraries/sweetalert.min.js"></script>-->
-	<script src="js/init/init.js"></script>
+	<script src="js/utilities/Test.js"></script> <!--SOLO PARA VER MIS DISEÑOS-->
 	<script src="js/utilities/dashboard.js"></script>
 	<script src="js/utilities/utilities.js"></script>
 	<script src="js/utilities/charts.js"></script>
-	<script src="js/utilities/multi-button.js"></script>
-	<script src="js/utilities/Test.js"></script> <!--SOLO PARA VER MIS DISEÑOS-->
+	<script src="js/utilities/multi-button.js"></script>	
 	<script src="js/inicio.js"></script>
 	<script src="js/clientes.js"></script>
 	<script src="js/insumos.js"></script>
@@ -154,7 +153,11 @@
 	<script src="js/compras.js"></script>
 	<script src="js/vehiculos.js"></script>
 	<script src="js/trabajadores.js"></script>
+<<<<<<< HEAD
 
 	<script src="js/auth.js"></script>
+=======
+	<script src="js/init/init.js"></script>
+>>>>>>> deda2d35676a5a9802dee167aeb28ec6a7cb5e85
 </body>
 </html>

@@ -1,7 +1,7 @@
 function MostrarArriendos(){
 	$.ajax({
 	    type: "GET",
-	    url : "api/arriendos",
+	    url : "api/servicios/arriendo",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#overlay-loader').fadeIn(400);

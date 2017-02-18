@@ -9,11 +9,12 @@
 
 		public function getAll(){
 			$datos = array();
-			$query = $this->db->prepare('	SELECT 	RUT_PROVEEDOR,
-													NOMBRE_PROVEEDOR,
-													CIUDAD_PROVEEDOR,
-													PAIS_PROVEEDOR 
-											FROM 	proveedor');			
+			$query = $this->db->prepare('	SELECT 		p.RUT_PROVEEDOR,
+														p.NOMBRE_PROVEEDOR,
+														c.COMUNA
+											FROM 		proveedor p
+											INNER JOIN 	comuna c
+											ON 			c.ID_COMUNA = p.ID_COMUNA');			
 			$query->execute();
 			$datos['proveedores'] = $query->fetchAll();
 
@@ -21,12 +22,13 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('	SELECT 	RUT_PROVEEDOR,
-													NOMBRE_PROVEEDOR,
-													CIUDAD_PROVEEDOR,
-													PAIS_PROVEEDOR 
-											FROM 	proveedor 
-											WHERE 	RUT_PROVEEDOR = :rut');
+			$query = $this->db->prepare('	SELECT 		p.RUT_PROVEEDOR,
+														p.NOMBRE_PROVEEDOR,
+														c.COMUNA
+											FROM 		proveedor p
+											INNER JOIN 	comuna c
+											ON 			c.ID_COMUNA = p.ID_COMUNA
+											WHERE 		p.RUT_PROVEEDOR = :rut');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['proveedor'] = $query -> fetch();
@@ -50,9 +52,8 @@
 		public function store($data){
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO proveedor(	RUT_PROVEEDOR,
-																NOMBRE_PROVEEDOR,
-																CIUDAD_PROVEEDOR,
-																PAIS_PROVEEDOR)
+																NOMBRE_PROVEEDOR
+																ID_COMUNA)
 													VALUES(		:rut, 
 																:nombre, 
 																:ciudad, 
@@ -81,14 +82,11 @@
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	proveedor 
 											SET 	NOMBRE_PROVEEDOR = :nombre, 
-													CIUDAD_PROVEEDOR = :ciudad, 
-													PAIS_PROVEEDOR = :pais 
+													ID_COMUNA = :comuna
 											WHERE 	RUT_PROVEEDOR = :rut');
 
 			$query -> bindParam(':nombre', 	$data['NOMBRE_PROVEEDOR']);
-			$query -> bindParam(':ciudad', 	$data['CIUDAD_PROVEEDOR']);
-			$query -> bindParam(':pais', 	$data['PAIS_PROVEEDOR']);
-			$query -> bindParam(':rut', 	$data['RUT_PROVEEDOR']);
+			$query -> bindParam(':comuna', 	$data['ID_COMUNA']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

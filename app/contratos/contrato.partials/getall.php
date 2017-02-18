@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">CONTRATOS</h4></div>
@@ -42,7 +42,8 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['contratos'] as $dato){ ?>
+	         <?php if (is_array($datos['contratos']) || is_object(['contratos'])) { ?>
+				<?php foreach ($datos['contratos'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['ID_CONTRATO']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		 
@@ -64,6 +65,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">TRABAJADORES</h4></div>
@@ -44,7 +44,8 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['trabajadores'] as $dato){ ?>
+	        <?php if (is_array($datos['trabajadores']) || is_object(['trabajadores'])) { ?>
+				<?php foreach ($datos['trabajadores'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['RUT_PERSONA']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA'] . ' ' . $dato['AMATERNO_PERSONA']; ?></td>		                
@@ -66,6 +67,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>

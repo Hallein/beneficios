@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">BODEGAS</h4></div>

@@ -1,5 +1,5 @@
 <div class="mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__title d-primaty-color">
+	<div class="mdl-card__title d-primary-color">
 		<div class="row">
 			<div class="col-xs-12">							
 				<div class="mdl-card__title-text"><h4 class="d-title-margin">VEHICULOS</h4></div>
@@ -44,7 +44,8 @@
 	            </tr>
 	        </tfoot>
 	        <tbody>
-	            <?php foreach($datos['vehiculos'] as $dato){ ?>
+	       	<?php if (is_array($datos['vehiculos']) || is_object(['vehiculos'])) { ?>
+				<?php foreach ($datos['vehiculos'] as $dato) { ?>
 	            <tr>
 	            	<td><?php echo $dato['NRO_PATENTE']; ?></td>
 	                <td><?php echo $dato['MARCA']; ?></td>		                
@@ -66,6 +67,7 @@
 	                </td>
 	            </tr>
 	            <?php } ?>
+	        <?php } ?>
 	        </tbody>
 	    </table>
 	</div>
