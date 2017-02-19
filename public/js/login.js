@@ -19,6 +19,7 @@ function LoginUsuario(){
 	    success: function(resultado){
 	    	if(resultado.status == 'success'){
 		    	$('#d-main').html(resultado.html);
+		    	$('#d-hamburguer').unbind('click');
 		    	$('#d-hamburguer').click(function(e){
 					if($('#d-hamburguer').hasClass('d-toggle-hamburguer')){
 						$('#d-hamburguer').removeClass('d-toggle-hamburguer')
@@ -33,6 +34,7 @@ function LoginUsuario(){
 						$('#d-top-header, #d-content, #d-footer').addClass('full-content');
 					}
 				});
+				$('.d-nav-list li').unbind('click');
 				$('.d-nav-list li').click(function(e){
 					$('.d-nav-list li').removeClass('d-active');
 					$('.d-nav-list .d-2-crumb').removeClass('d-active-crumb');
@@ -40,10 +42,10 @@ function LoginUsuario(){
 					$(this).addClass('d-active-crumb');
 					UpdateBreadcrumb();
 				});
-				UpdateBreadcrumb();	
+				UpdateBreadcrumb();
 				graficoBarras();
 				graficoLineas(); 
-				ShowTest();
+				//ShowTest();
 			}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
