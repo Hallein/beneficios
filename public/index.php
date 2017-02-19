@@ -153,11 +153,7 @@
 	<script src="js/compras.js"></script>
 	<script src="js/vehiculos.js"></script>
 	<script src="js/trabajadores.js"></script>
-<<<<<<< HEAD
-
-	<script src="js/auth.js"></script>
-=======
+	<script src="js/login.js"></script>
 	<script src="js/init/init.js"></script>
->>>>>>> deda2d35676a5a9802dee167aeb28ec6a7cb5e85
 </body>
 </html>
