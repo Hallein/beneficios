@@ -34,7 +34,7 @@
 
 			ob_start();
 			include VEHICULOS . '/show.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}
@@ -44,7 +44,7 @@
 
 			ob_start();
 			include VEHICULOS . '/create.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}
@@ -60,7 +60,7 @@
 
 			ob_start();
 			include VEHICULOS . '/edit.php';
-			$datos['html'] = ob_get_clean();
+			$datos['respuesta']['html'] = ob_get_clean();
 
 			return $datos['respuesta'];
 		}

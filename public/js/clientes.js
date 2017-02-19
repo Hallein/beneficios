@@ -107,8 +107,8 @@ function FormularioEditarCliente(rut){
 	    complete:   function(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
-	    success: function(resultado){	console.log(resultado);
-	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg');
+	    success: function(resultado){
+	    	OpenModal('modal_editar_cliente',resultado.html,'lg');
 	    	getmdlSelect.init(".getmdl-select");
 		}
 	});
@@ -171,4 +171,8 @@ function EliminarCliente(rut){
 	    	}
 		}
 	});
+}
+
+function VerCliente(){
+	
 }

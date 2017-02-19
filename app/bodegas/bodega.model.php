@@ -58,10 +58,10 @@
 																:direccion, 
 																:tipo)');
 
-			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
-			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
-			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
-			$query -> bindParam(':tipo', 		$data['TIPO_BODEGA']);
+			$query -> bindParam(':rut', 		$data['rut']);
+			$query -> bindParam(':nombre', 		$data['nombre']);
+			$query -> bindParam(':direccion', 	$data['direccion']);
+			$query -> bindParam(':tipo', 		$data['tipo']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
@@ -86,11 +86,11 @@
 													TIPO_BODEGA = :tipo 
 											WHERE 	ID_INSUMO = :id');
 
-			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
-			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
-			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
-			$query -> bindParam(':tipo', 		$data['TIPO_BODEGA']);
-			$query -> bindParam(':id', 			$data['ID_INSUMO']);
+			$query -> bindParam(':rut', 		$data['rut']);
+			$query -> bindParam(':nombre', 		$data['nombre']);
+			$query -> bindParam(':direccion', 	$data['direccion']);
+			$query -> bindParam(':tipo', 		$data['tipo']);
+			$query -> bindParam(':id', 			$data['id']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
@@ -110,7 +110,7 @@
 			$datos = array();
 			$query = $this->db->prepare('DELETE FROM bodega WHERE ID_BODEGA = :id');
 			
-			$query -> bindParam(':id', $id);
+			$query -> bindParam(':id', $data['id']);
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
 				$datos['respuesta']['message']['title'] = '¡Listo!';

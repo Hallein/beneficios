@@ -11,49 +11,49 @@
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="rut_cliente">
-							<label class="mdl-textfield__label" for="Rut">Rut</label>
+							<label class="mdl-textfield__label" for="rut_cliente">Rut</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="nombres_cliente">
-							<label class="mdl-textfield__label" for="Nombres">Nombres</label>
+							<label class="mdl-textfield__label" for="nombres_cliente">Nombres</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="apaterno_cliente">
-							<label class="mdl-textfield__label" for="Apaterno">Apellido paterno</label>
+							<label class="mdl-textfield__label" for="apaterno_cliente">Apellido paterno</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="amaterno_cliente">
-							<label class="mdl-textfield__label" for="Amaterno">Apellido materno</label>
+							<label class="mdl-textfield__label" for="amaterno_cliente">Apellido materno</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="email_cliente">
-							<label class="mdl-textfield__label" for="Email">Email</label>
+							<label class="mdl-textfield__label" for="email_cliente">Email</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="telefono_cliente">
-							<label class="mdl-textfield__label" for="Telefono">Telefono</label>
+							<label class="mdl-textfield__label" for="telefono_cliente">Telefono</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="fecha_cliente">
-							<label class="mdl-textfield__label" for="Fecha">Fecha nacimiento</label>
+							<label class="mdl-textfield__label" for="fecha_cliente">Fecha nacimiento</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="direccion_cliente">
-							<label class="mdl-textfield__label" for="Direccion">Direccion</label>
+							<label class="mdl-textfield__label" for="direccion_cliente">Direccion</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">

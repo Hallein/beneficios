@@ -104,11 +104,14 @@ switch(type) {
 }
 
 function Marker(){
+    var Top = $('.d-marker-title').offset().top - $('.mdl-card').offset().top;
+    $('.d-marker').css('top', Top+'px');
     $('.mdl-textfield>input').focusin(function(e){
         var handlerTop = $(this).offset().top - $('.mdl-card').offset().top;
         $('.d-marker').css({'top':handlerTop+'px','height': '40px','background-color':'#3f51b5'});
     });
     $('.mdl-textfield>input').focusout(function(e){
-        $('.d-marker').css({'top':'60px','height': '60px','background-color':'#2e4053'});
+         var Top = $('.d-marker-title').offset().top - $('.mdl-card').offset().top;
+        $('.d-marker').css({'top': Top+'px','height': '60px','background-color':'#2e4053'});
     });
 }

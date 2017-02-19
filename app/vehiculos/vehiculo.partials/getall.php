@@ -18,7 +18,7 @@
 	</div>
 	<div class="mdl-card__supporting-text">
 		<br>
-		<table id="listado_vehiculo" class="mdl-data-table" width="100%" cellspacing="0">
+		<table id="listado_vehiculos" class="mdl-data-table" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
 	                <th>Patente</th>
