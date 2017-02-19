@@ -70,11 +70,11 @@
 						<?php } ?>
 							<tr>
 								<td class="d-texto-derecha" colspan="3">Subtotal :</td>
-								<td>$<?php echo $datos['documento']['TOTAL_IMPORTE']; ?></td>
+								<td>$<?php echo $datos['documento']['VALOR_VENTA']; ?></td>
 							</tr>
 							<tr>
 								<td class="d-texto-derecha" colspan="3">IVA :</td>
-								<td>$<?php echo $datos['documento']['TOTAL_IVA']; ?></td>
+								<td>$<?php echo $datos['documento']['IVA']; ?></td>
 							</tr>
 							<tr>
 								<td class="d-texto-derecha" colspan="3">Total :</td>

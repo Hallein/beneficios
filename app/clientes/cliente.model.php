@@ -129,13 +129,13 @@
 													EMAIL_PERSONA = :email, 
 													EMPRESA = :empresa,
 													ID_COMUNA = :comuna,
-													ID_SEXO =:sexo
+													ID_SEXO = :sexo
 											WHERE 	RUT_PERSONA = :rut');	
 
 			$query -> bindParam(':nombres', 	$data['nombre']);
 			$query -> bindParam(':apaterno', 	$data['apaterno']);
 			$query -> bindParam(':amaterno', 	$data['amaterno']);
-			$query -> bindParam(':fnac', 		$data['fechanac']);
+			$query -> bindParam(':fecha', 		$data['fechanac']);
 			$query -> bindParam(':direccion', 	$data['direccion']);
 			$query -> bindParam(':telefono', 	$data['telefono']);
 			$query -> bindParam(':email', 		$data['email']);
