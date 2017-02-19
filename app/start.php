@@ -72,8 +72,8 @@ $app->post('/login', function ($request, $response, $args){
 
 		}else{
 			$datos['respuesta']['status'] = 'error';
-			$datos['respuesta']['message']['title'] = 'Ocurrió un error';
-			$datos['respuesta']['message']['body'] = 'Datos incorrectos o el usuario no existe';
+			$datos['respuesta']['message']['title'] = 'Error!';
+			$datos['respuesta']['message']['body'] = 'Usuario o contraseña incorrectos';
 			$datos['respuesta']['message']['timeout'] = 2;	
 		}
 	}
