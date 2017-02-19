@@ -17,7 +17,6 @@ function LoginUsuario(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){
-	    	console.log(resultado);
 	    	$('#d-main').html(resultado.html);
 	    }
 	});

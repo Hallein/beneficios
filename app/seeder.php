@@ -64,19 +64,6 @@ $container['seeder'] = function($c){
     $columnConfig = ['RUT_PERSONA','NOMBRE_PERSONA','APATERNO_PERSONA','AMATERNO_PERSONA','FECHA_NACIMIENTO','DIRECCION_PERSONA','TELEFONO_PERSONA','EMAIL_PERSONA','EMPRESA','ID_COMUNA','ID_SEXO'];
     $seeder->table('cliente')->data($array, $columnConfig)->rowQuantity(12);
 
-    /*$seeder->table('cliente')->columns([
-        'RUT_PERSONA'       => $faker->numberBetween($min = 1000000, $max = 25999999),
-        'NOMBRE_PERSONA'    => $faker->firstName,
-        'APATERNO_PERSONA'  => $faker->lastName,
-        'AMATERNO_PERSONA'  => $faker->lastName,
-        'FECHA_NACIMIENTO'  => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'DIRECCION_PERSONA' => $faker->address,
-        'TELEFONO_PERSONA'  => $faker->tollFreePhoneNumber,
-        'EMAIL_PERSONA'     => $faker->email,
-        'EMPRESA'           => $faker->company,
-        'ID_COMUNA'            => $generator->relation('comuna', 'ID_COMUNA'),
-        'ID_SEXO'           => $generator->relation('sexo', 'ID_SEXO')
-    ])->rowQuantity(40);*/
 
     $seeder->table('trabajador')->columns([
         'RUT_PERSONA'       => $faker->numberBetween($min = 1000000, $max = 25999999),

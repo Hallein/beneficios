@@ -83,7 +83,7 @@ $app->post('/login', function ($request, $response, $args){
 		$datos['respuesta']['message']['body'] = 'Error de conexión';
 		$datos['respuesta']['message']['timeout'] = 2;
 	}
-	return json_encode($datos);
+	return json_encode($datos['respuesta']);
  	
 });
 
