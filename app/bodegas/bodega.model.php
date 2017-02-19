@@ -58,10 +58,10 @@
 																:direccion, 
 																:tipo)');
 
-			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
-			$query -> bindParam(':nombre', 		$data['NOMBRE_BODEGA']);
-			$query -> bindParam(':direccion', 	$data['DIRECCION_BODEGA']);
-			$query -> bindParam(':tipo', 		$data['TIPO_BODEGA']);
+			$query -> bindParam(':rut', 		$data['rut']);
+			$query -> bindParam(':nombre', 		$data['nombre']);
+			$query -> bindParam(':direccion', 	$data['direccion']);
+			$query -> bindParam(':tipo', 		$data['tipo']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

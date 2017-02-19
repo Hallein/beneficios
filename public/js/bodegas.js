@@ -44,3 +44,49 @@ function MostrarBodegas(){
 	    }
 	});
 }
+
+function FormularioBodega(){	
+	$.ajax({
+	    type: "GET",
+	    url : "api/bodegas/create",
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	OpenModal('modal_nueva_bodega',resultado.html,'');
+	    	getmdlSelect.init(".getmdl-select");
+		}
+	});
+}
+
+function IngresarBodega(){
+	$.ajax({
+	    type: "POST",
+	    url : "api/bodegas/store",
+	    data: {
+	    	rut: 		$('#encargado_bodega').attr('data-val')
+			nombre:		$('#nombre_bodega').val(),
+			direccion:	$('#direccion_bodega').val(),
+			tipo: 		$('#tipo_bodega').attr('data-val')
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+		}
+	}); 
+}
