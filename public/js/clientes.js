@@ -87,10 +87,10 @@ function IngresarCliente(){
 	    },
 	    success: function(resultado){	
 	    	if(resultado.status == 'success'){
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
 	    	}else{
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
 		}
 	}); //$('#rut_cliente').closest('div').append('<span class="mdl-textfield__error" style="visibility: visible;">El rut esta malisimo!</span>');
@@ -127,7 +127,7 @@ function ModificarCliente(rut){
 			telefono:	$('#telefono_cliente').val(),
 			fechanac:	$('#fecha_cliente').val(),
 			direccion:	$('#direccion_cliente').val(),
-			sexo: 		1;
+			sexo: 		1,
 			comuna: 	$('#comuna_cliente').attr('data-val')
 	    },
 	    dataType: "json",
@@ -139,10 +139,10 @@ function ModificarCliente(rut){
 	    },
 	    success: function(resultado){	
 	    	if(resultado.status == 'success'){
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
 	    	}else{
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
 		}
 	});
@@ -151,7 +151,7 @@ function ModificarCliente(rut){
 function EliminarCliente(rut){
 	$.ajax({
 	    type: "POST",
-	    url : "api/clientes/delete",
+	    url : "api/clientes/destroy",
 	    data: {
 	    	rut: 		rut
 	    },
@@ -164,10 +164,10 @@ function EliminarCliente(rut){
 	    },
 	    success: function(resultado){	
 	    	if(resultado.status == 'success'){
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
 	    	}else{
-	    		ShowToast(resultado.status, resultado.status.message.title, resultado.status.message.body, resultado.status.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
 		}
 	});
