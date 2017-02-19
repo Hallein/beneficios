@@ -127,7 +127,7 @@ function ModificarCliente(rut){
 			telefono:	$('#telefono_cliente').val(),
 			fechanac:	$('#fecha_cliente').val(),
 			direccion:	$('#direccion_cliente').val(),
-			sexo: 		1;
+			sexo: 		1,
 			comuna: 	$('#comuna_cliente').attr('data-val')
 	    },
 	    dataType: "json",
