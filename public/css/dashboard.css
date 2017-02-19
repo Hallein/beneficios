@@ -17,6 +17,7 @@
 
 body{
 	font-family: 'Lato Regular';
+	background-color: #e5e7e9;
 }
 
 .d-full-width{
@@ -40,6 +41,19 @@ body{
 .d-center-block{
 	display: block;
 	margin: 0 auto;
+}
+
+#d-background{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	background-image: url(../img/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	max-height: 100vh;
 }
 /*GENERAL-END*********************************/
 
@@ -786,7 +800,7 @@ body{
 	/*LOGIN******************************************/
 	.d-login{
 		position: relative;
-		margin-top: 40px;
+		top: 40px;
 	}
 
 	.d-login .d-login-button{
