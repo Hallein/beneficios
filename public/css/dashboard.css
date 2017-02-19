@@ -802,6 +802,16 @@ body{
 		position: relative;
 		top: 40px;
 	}
+	
+	.d-login .d-login-title h3{
+		margin: 20px 0 0 0;
+		text-align: center;
+	}
+
+	.d-login .d-login-subtitle h4{
+		margin: 0;
+		text-align: center;
+	}
 
 	.d-login .d-login-button{
 		position: absolute;
@@ -810,7 +820,7 @@ body{
 	}
 
 	.d-login .d-login-main{
-		padding: 30px;
+		padding: 20px 50px;
 		position: relative;
 		z-index: 10;
 		width: 100%;
@@ -818,7 +828,7 @@ body{
 	}
 
 	.d-login .d-login-main h3{
-		margin: 30px 0;
+		margin: 0 0 30px 0;
 		position: relative;
 	}
 
@@ -848,24 +858,16 @@ body{
 	}
 
 	.d-login .d-login-image>img{
+		display: block;
+		margin: 10px auto;
+		max-width: 150px;
 		height: auto;
-		width: 100%;
-	}
-
-	.d-login .d-login-image:after{
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: rgba(230, 126, 34,0.5);
 	}
 	/*END-LOGIN**************************************/
 	/*MARKER*****************************************/
 	.d-marker{
 		position: absolute;
-		top: 60px;
+		top: 0;
 		left: -5px;
 		display: block;
 		height: 60px;
