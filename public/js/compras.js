@@ -12,7 +12,7 @@ function MostrarCompras(){
 	    success: function(resultado){	
 	    	$('#d-content').html(resultado.html);
 	    	$('[data-toggle="tooltip"]').tooltip();    	
-	    	$('#listado_ventas').DataTable( {
+	    	$('#listado_compras').DataTable( {
     			responsive: true,
 		        "language" : {
 				    "decimal":        "",
@@ -40,6 +40,7 @@ function MostrarCompras(){
 				}
 		    } );
 		    HiddenOptionsInit();
+		    MultiButtonDatatable('listado_compras');
 	    }
 	});
 }

@@ -22,7 +22,7 @@
 					<span></span>
 				</div>
 			</li>
-			<li class="d-title">Titulo Aplicación</li>
+			<li class="d-title">HAZ-TOP</li>
 		</ul>
 	</div>
 	<div id="d-top-header">
@@ -153,6 +153,7 @@
 	<script src="js/compras.js"></script>
 	<script src="js/vehiculos.js"></script>
 	<script src="js/trabajadores.js"></script>
+	<script src="js/login.js"></script>
 	<script src="js/init/init.js"></script>
 </body>
 </html>

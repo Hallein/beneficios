@@ -14,6 +14,7 @@
 														dv.FECHA_VENTA, 
 														dv.VALOR_VENTA, 
 														dv.IVA, 
+														(dv.VALOR_VENTA + dv.IVA) AS VALOR_TOTAL,
 														dv.FOLIO,
 													 	dv.NUMERO_SERIE,
 														cli.RUT_PERSONA, 

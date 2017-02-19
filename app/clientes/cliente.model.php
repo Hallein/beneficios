@@ -130,7 +130,7 @@
 													EMPRESA = :empresa,
 													ID_COMUNA = :comuna,
 													ID_SEXO = :sexo
-											WHERE 	RUT_PERSONA = :rut');	
+											WHERE 	RUT_PERSONA = :rut');
 
 			$query -> bindParam(':nombres', 	$data['nombre']);
 			$query -> bindParam(':apaterno', 	$data['apaterno']);
@@ -142,7 +142,7 @@
 			$query -> bindParam(':empresa', 	$data['empresa']);
 			$query -> bindParam(':comuna', 		$data['comuna']);
 			$query -> bindParam(':sexo', 		$data['sexo']);
-			$query -> bindParam(':rut', 		$data['RUT_PERSONA']);
+			$query -> bindParam(':rut', 		$data['rut']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

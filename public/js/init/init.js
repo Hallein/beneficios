@@ -25,3 +25,9 @@ $(document).ready(function(){
 	graficoLineas(); 
 	ShowTest();
 });
+
+function MultiButtonDatatable(id){
+	$('#'+id).on( 'order.dt length.dt draw.dt search.dt' , function () {
+		HiddenOptionsInit();
+	}).dataTable();
+}

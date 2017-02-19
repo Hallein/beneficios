@@ -69,10 +69,12 @@
 
 		public function update($data){
 			$datos = $this->cliente->update($data);
+			return $datos['respuesta'];
 		}
 
 		public function destroy($id){
 			$datos = $this->cliente->destroy($id);
+			return $datos['respuesta'];
 		}
 
 	}

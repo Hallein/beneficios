@@ -11,7 +11,7 @@
 }
 
 @font-face {
-    font-family: 'Roboto Condensed';
+    font-family: 'Roboto Cfondensed';
     src: url(../fonts/RobotoCondensed-Regular.ttf) format('truetype');
 }
 
@@ -589,10 +589,10 @@ body{
 	}
 
 	.btn-multiple .d-multi-button:focus+.btn-multiple-options{
-		top: -70px;
-		bottom: -70px;
-		left: -70px;
-		right: -70px;
+		top: -60px;
+		bottom: -60px;
+		left: -60px;
+		right: -60px;
 	}
 
 	.btn-multiple .btn-multiple-options .btn-option-hidden{

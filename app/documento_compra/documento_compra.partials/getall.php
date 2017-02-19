@@ -18,7 +18,7 @@
 	</div>
 	<div class="mdl-card__supporting-text">
 		<br>
-		<table id="listado_ventas" class="mdl-data-table dataTable" width="100%" cellspacing="0">
+		<table id="listado_compras" class="mdl-data-table dataTable" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
 	                <th>Compra N°</th>
@@ -44,7 +44,7 @@
 	            	<td><?php echo $dato['ID_COMPRA']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PROVEEDOR']; ?></td>
 	                <td><?php echo $dato['FECHA_COMPRA']; ?></td>
-	                <td>$<?php echo $dato['VALOR_COMPRA']; ?></td>	                
+	                <td>$<?php echo $dato['VALOR_TOTAL']; ?></td>	                
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">

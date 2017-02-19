@@ -40,6 +40,7 @@ function MostrarClientes(){
 				}
 		    } );
 		    HiddenOptionsInit();
+		    MultiButtonDatatable('listado_clientes');
 	    }
 	});
 }
@@ -61,7 +62,6 @@ function FormularioCliente(){
 		}
 	});
 }
-
 
 function IngresarCliente(){
 	$.ajax({
@@ -86,18 +86,16 @@ function IngresarCliente(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){	
-	    	if(resultado.status == 'Success'){
-	    		ShowToast('success', 'Exito!', resultado.msg, 2);
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
 	    	}else{
-	    		ShowToast('error', 'Error!', resultado.msg, 2);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
 		}
 	}); //$('#rut_cliente').closest('div').append('<span class="mdl-textfield__error" style="visibility: visible;">El rut esta malisimo!</span>');
 } //$('#rut_cliente').closest('div').addClass('is-invalid');
 
-
-//Se podria reutilizar la funcion de arriba, mandandole como parametro /create o /edit para la url
 function FormularioEditarCliente(rut){
 	$.ajax({
 	    type: "GET",
@@ -112,6 +110,65 @@ function FormularioEditarCliente(rut){
 	    success: function(resultado){	console.log(resultado);
 	    	OpenModal('modal_nuevo_cliente',resultado.html,'lg');
 	    	getmdlSelect.init(".getmdl-select");
+		}
+	});
+}
+
+function ModificarCliente(rut){
+	$.ajax({
+	    type: "POST",
+	    url : "api/clientes/update",
+	    data: {
+	    	rut: 		rut,
+			nombre:		$('#nombres_cliente').val(),
+			apaterno:	$('#apaterno_cliente').val(),
+			amaterno:	$('#amaterno_cliente').val(),
+			email:		$('#email_cliente').val(),
+			telefono:	$('#telefono_cliente').val(),
+			fechanac:	$('#fecha_cliente').val(),
+			direccion:	$('#direccion_cliente').val(),
+			sexo: 		1,
+			comuna: 	$('#comuna_cliente').attr('data-val')
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+		}
+	});
+}
+
+function EliminarCliente(rut){
+	$.ajax({
+	    type: "POST",
+	    url : "api/clientes/destroy",
+	    data: {
+	    	rut: 		rut
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
 		}
 	});
 }

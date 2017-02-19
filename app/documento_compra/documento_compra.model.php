@@ -13,6 +13,7 @@
 														dc.FECHA_COMPRA, 
 														dc.VALOR_COMPRA, 
 														dc.IVA, 
+														(dc.VALOR_COMPRA + dc.IVA) AS VALOR_TOTAL,
 														dc.FOLIO, 
 														dc.NUMERO_SERIE,
 														p.RUT_PROVEEDOR, 

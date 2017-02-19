@@ -21,21 +21,21 @@
 		$sql->bindParam(':rut', $rut);
 		$sql->execute();
 		$usuario = $sql->fetch();	
-
+		$response->getBody()->write('BEFORE');
+			$response = $next($request, $response);
+			$response->getBody()->write('AFTER');
 		$password = hash('sha256', $password);
-
 		if(strcmp($password, $usuario['CONTRASENA']) == 0){
 			$_SESSION['usuario'] = $usuario;
+			$response->getBody()->write('BEFORE');
 			$response = $next($request, $response);
+			$response->getBody()->write('AFTER');
 
 		}else{
 			$msg['status'] = 'Error';
 			$msg['message'] = 'Contraseña incorrecta';
+			$response->getBody->write('pinche wei');
 		}
-		return $response;
 	}
-	//pasar a ruta
-	//despues
-}
-
-?>
+	return $response;
+};
