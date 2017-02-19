@@ -43,5 +43,44 @@ require 'middlewares.php';
 require 'routes.php';
 require 'container.php';
 require 'seeder.php';
+//require 'auth.php';
+
+$app->post('/login', function ($request, $response, $args){
+	$data = $request->getParsedBody();
+
+	$usuario['rut'] = filter_var($data['user'], FILTER_SANITIZE_STRING);
+	$usuario['pass'] = filter_var($data['pass'], FILTER_SANITIZE_STRING);
+
+	//$usuario['pass'] = hash('sha256', $usuario['pass']);
+	
+	$sql = $this->db->prepare('SELECT RUT_PERSONA, CARGO, CONTRASENA from TRABAJADOR where RUT_PERSONA = :rut AND CONTRASENA = :pass');
+	$sql->bindParam(':rut', $usuario['rut']);
+	$sql->bindParam(':pass', $usuario['pass']);
+	if($sql->execute()){
+		unset($usuario);
+		$usuario = $sql->fetch();
+		if($usuario){
+			$_SESSION['session'] = $usuario;
+			$datos['respuesta']['status'] = 'success';
+			$datos['respuesta']['message']['title'] = '¡Listo!';
+			$datos['respuesta']['message']['body'] = 'Identificación exitosa';
+			$datos['respuesta']['message']['timeout'] = 2;
+
+		}else{
+			$datos['respuesta']['status'] = 'error';
+			$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+			$datos['respuesta']['message']['body'] = 'Datos incorrectos o el usuario no existe';
+			$datos['respuesta']['message']['timeout'] = 2;	
+		}
+	}
+	else{
+		$datos['respuesta']['status'] = 'error';
+		$datos['respuesta']['message']['title'] = 'Ocurrió un error';
+		$datos['respuesta']['message']['body'] = 'Error de conexión';
+		$datos['respuesta']['message']['timeout'] = 2;
+	}
+	return json_encode($datos);
+
+});
 
 $app->run();

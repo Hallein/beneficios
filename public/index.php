@@ -153,6 +153,7 @@
 	<script src="js/compras.js"></script>
 	<script src="js/vehiculos.js"></script>
 	<script src="js/trabajadores.js"></script>
+	<script src="js/login.js"></script>
 	<script src="js/init/init.js"></script>
 </body>
 </html>

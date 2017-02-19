@@ -14,7 +14,7 @@
 					    	<input class="mdl-textfield__input" id="contrasena_login" type="password">
 					    	<label class="mdl-textfield__label" for="contrasena_login">Contraseña</label>
 					  	</div>
-					  	<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored d-center-block d-accent-color" onclick="LoginUsuario();">
+					  	<button type="button" id="enviar" data-path="api/login" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored d-center-block d-accent-color" onclick="LoginUsuario();">
 							Ingresar
 						</button>
 				  	</form>
