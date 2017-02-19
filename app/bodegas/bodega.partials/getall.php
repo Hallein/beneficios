@@ -52,9 +52,9 @@
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
 							</button>
 							<div class="btn-multiple-options">
-								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver bodega"></div>
-								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar bodega"></div>
-								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar bodega"></div>
+								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver bodega" onmousedown="VerBodega(<?php echo $dato['ID_BODEGA']; ?>)"></div>
+								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar bodega" onmousedown="EliminarBodega(<?php echo $dato['ID_BODEGA']; ?>)"></div>
+								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar bodega" onmousedown="FormularioEditarBodega(<?php echo $dato['ID_BODEGA']; ?>)"></div>
 							</div>
 						</div>
 	                </td>

@@ -45,6 +45,9 @@ function LoginUsuario(){
 				UpdateBreadcrumb();
 				graficoBarras();
 				graficoLineas(); 
+				window.onbeforeunload = function() {
+			        return "¿Estas seguro de abandonar la pagina?. Deberá iniciar sesión nuevamente.";
+			    }
 				//ShowTest();
 			}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);

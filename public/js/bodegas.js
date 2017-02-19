@@ -56,7 +56,7 @@ function FormularioBodega(){
 	    complete:   function(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
-	    success: function(resultado){	
+	    success: function(resultado){
 	    	OpenModal('modal_nueva_bodega',resultado.html,'');
 	    	getmdlSelect.init(".getmdl-select");
 		}
@@ -89,4 +89,80 @@ function IngresarBodega(){
 	    	}
 		}
 	}); 
+}
+
+function FormularioEditarBodega(id){
+	$.ajax({
+	    type: "GET",
+	    url : "api/bodegas/edit/" + id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){
+	    	OpenModal('modal_editar_bodega',resultado.html,'lg');
+	    	getmdlSelect.init(".getmdl-select");
+		}
+	});
+}
+
+function ModificarBodega(id){
+	$.ajax({
+	    type: "POST",
+	    url : "api/bodegas/update",
+	    data: {
+	    	id: 		id,
+	    	rut: 		$('#encargado_bodega').attr('data-val'),
+			nombre:		$('#nombre_bodega').val(),
+			direccion:	$('#direccion_bodega').val(),
+			tipo: 		$('#tipo_bodega').attr('data-val')
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+		}
+	});
+}
+
+function EliminarBodega(id){
+$.ajax({
+	    type: "POST",
+	    url : "api/bodegas/destroy",
+	    data: {
+	    	id: 		id
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+		}
+	});
+}
+
+function VerBodega(id){
+
 }
