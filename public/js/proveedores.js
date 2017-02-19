@@ -40,6 +40,7 @@ function MostrarProveedores(){
 				}
 		    } );
 	    	HiddenOptionsInit();
+	    	MultiButtonDatatable('listado_proveedores');
 	    }
 	});
 }

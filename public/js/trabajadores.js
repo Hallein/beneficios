@@ -40,6 +40,7 @@ function MostrarTrabajadores(){
 				}
 		    } );
 	    	HiddenOptionsInit();
+	    	MultiButtonDatatable('listado_trabajadores');
 	    }
 	});
 }

@@ -38,8 +38,9 @@ function MostrarVentas(){
 				        "sortDescending": ": activar para ordenar columnas de forma descendente"
 				    }
 				}
-		    } );
+		    });
 		    HiddenOptionsInit();
+		    MultiButtonDatatable('listado_ventas');
 	    }
 	});
 }
