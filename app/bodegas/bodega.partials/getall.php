@@ -11,14 +11,14 @@
 			<div class="btn-multiple-options">
 				<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Analizar comparación"></div>
 				<div class="btn-option-hidden btn-position-7 d-bar-chart-icon" data-toggle="tooltip" data-placement="left" title="Generar gráficos"></div>
-				<div id="nuevo_insumo" class="btn-option-hidden btn-position-5 d-new_user-icon" data-toggle="tooltip" data-placement="left" title="Agragar nuevo insumo" onmousedown="FormularioInsumo();"></div>
+				<div id="nueva_bodega" class="btn-option-hidden btn-position-5 d-new_user-icon" data-toggle="tooltip" data-placement="left" title="Agragar nueva bodega" onmousedown="FormularioBodega();"></div>
 				<span class="btn-option-hidden btn-position-4 d-report-icon" data-toggle="tooltip" data-placement="left" title="Generar reporte"></span>
 			</div>
 		</div>
 	</div>
 	<div class="mdl-card__supporting-text">
 		<br>
-		<table id="listado_insumos" class="mdl-data-table" width="100%" cellspacing="0">
+		<table id="listado_bodegas" class="mdl-data-table" width="100%" cellspacing="0">
 	        <thead>
 	            <tr>
 	                <th>ID Bodega</th>
@@ -52,9 +52,9 @@
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">
 							</button>
 							<div class="btn-multiple-options">
-								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver insumo"></div>
-								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar insumo"></div>
-								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar insumo"></div>
+								<div class="btn-option-hidden btn-position-1 d-view-icon" data-toggle="tooltip" data-placement="left" title="Ver bodega"></div>
+								<div class="btn-option-hidden btn-position-7 d-delete-icon" data-toggle="tooltip" data-placement="left" title="Eliminar bodega"></div>
+								<div class="btn-option-hidden btn-position-5 d-edit-icon" data-toggle="tooltip" data-placement="left" title="Editar bodega"></div>
 							</div>
 						</div>
 	                </td>
