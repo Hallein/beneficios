@@ -68,7 +68,7 @@ function IngresarBodega(){
 	    type: "POST",
 	    url : "api/bodegas/store",
 	    data: {
-	    	rut: 		$('#encargado_bodega').attr('data-val')
+	    	rut: 		$('#encargado_bodega').attr('data-val'),
 			nombre:		$('#nombre_bodega').val(),
 			direccion:	$('#direccion_bodega').val(),
 			tipo: 		$('#tipo_bodega').attr('data-val')
