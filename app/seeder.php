@@ -64,72 +64,110 @@ $container['seeder'] = function($c){
     $columnConfig = ['RUT_PERSONA','NOMBRE_PERSONA','APATERNO_PERSONA','AMATERNO_PERSONA','FECHA_NACIMIENTO','DIRECCION_PERSONA','TELEFONO_PERSONA','EMAIL_PERSONA','EMPRESA','ID_COMUNA','ID_SEXO'];
     $seeder->table('cliente')->data($array, $columnConfig)->rowQuantity(12);
 
+    //Prevision salud
+    $array =
+     [
+        [1, 'Fonasa'],
+        [2, 'Isapre'],
+        [3, 'Sin previsión']
+     ];
+    $columnConfig = ['ID_PREVISION_SALUD', 'DESCRIPCION_PREVISION_SALUD'];
+    $seeder->table('prevision_salud')->data($array, $columnConfig)->rowQuantity(3);
 
-    $seeder->table('trabajador')->columns([
-        'RUT_PERSONA'       => $faker->numberBetween($min = 1000000, $max = 25999999),
-        'NOMBRE_PERSONA'    => $faker->firstName,
-        'APATERNO_PERSONA'  => $faker->lastName,
-        'AMATERNO_PERSONA'  => $faker->lastName,
-        'FECHA_NACIMIENTO'  => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'DIRECCION_PERSONA' => $faker->address,
-        'TELEFONO_PERSONA'  => $faker->tollFreePhoneNumber,
-        'EMAIL_PERSONA'     => $faker->email,
-        'PREVISION_SOCIAL'  => $faker->randomElement(['AFP','Sin previsión']),
-        'PREVISION_SALUD'   => $faker->randomElement(['Fonasa','Isapre','Sin previsión']),
-        'CARGO'             => $faker->jobTitle,
-        'CONTRASENA'        => $faker->randomElement(['hola']),
-        'ID_SEXO'           => $generator->relation('sexo', 'ID_SEXO')
-    ])->rowQuantity(6);
+    //Prevision social
+    $array =
+     [
+        [1, 'AFP'],
+        [2, 'Caja Los Andes'],
+        [3, 'Sin previsión']
+     ];
+    $columnConfig = ['ID_PREVISION_SOCIAL', 'DESCRIPCION_PREVISION_SOCIAL'];
+    $seeder->table('prevision_social')->data($array, $columnConfig)->rowQuantity(3);
 
-    $seeder->table('bodega')->columns([        
-        'ID_BODEGA'         => $generator->pk,
-        'RUT_PERSONA'       => $generator->relation('trabajador', 'RUT_PERSONA'),
-        'NOMBRE_BODEGA'     => $faker->company,
-        'DIRECCION_BODEGA'  => $faker->address,
-        'TIPO_BODEGA'       => $faker->randomElement([1, 2])
-    ])->rowQuantity(4);
+     //Trabajador
+    $array =
+     [
+        [11111111,'Fernando','Díaz','Núñez','1990/01/01','Playa Brava #1234','99999999','piratemani@gmail.com',1,1,'JEFE','123',1,1],
+        [22222222,'Julio','Caruncho','Arriagada','1990/01/01','Playa Brava #1234','99999999','julio.caruncho.a@gmail.com',2,2,'JEFE','123',2,1],
+        [33333333,'Camilo','Daza','Lavín','1990/01/01','Playa Brava #1234','99999999','daza.camilos@gmail.com',3,3,'JEFE','123',3,1]
+     ];
+    $columnConfig = ['RUT_PERSONA','NOMBRE_PERSONA','APATERNO_PERSONA','AMATERNO_PERSONA','FECHA_NACIMIENTO','DIRECCION_PERSONA','TELEFONO_PERSONA','EMAIL_PERSONA','ID_PREVISION_SOCIAL','ID_PREVISION_SALUD','CARGO','CONTRASENA','ID_SEXO'];
+    $seeder->table('trabajador')->data($array, $columnConfig)->rowQuantity(3);
 
+     //Tipo bodega
+    $array =
+     [
+        [1, 'Bodega almacenamiento'],
+        [2, 'Bodega estacionamiento']
+     ];
+    $columnConfig = ['ID_TIPO_BODEGA', 'DESCRIPCION_TIPO_BODEGA'];
+    $seeder->table('tipo_bodega')->data($array, $columnConfig)->rowQuantity(2);
+
+     //Bodega
+    $array =
+     [
+        [1, 11111111, 'Bodega almacenamiento', 'Playa brava #1234', 1],
+        [2, 22222222, 'Bodega estacionamiento', 'Zofri galpón 777', 2]
+     ];
+    $columnConfig = ['ID_BODEGA','RUT_PERSONA','NOMBRE_BODEGA','DIRECCION_BODEGA','ID_TIPO_BODEGA'];
+    $seeder->table('bodega')->data($array, $columnConfig)->rowQuantity(2);
+
+    //Tipo vehiculo
+    $array =
+     [
+        [1, 'Auto'],
+        [2, 'Moto'],
+        [3, 'Camioneta'],
+        [4, 'Furgón'],
+        [5, 'Todo terreno']
+     ];
+    $columnConfig = ['ID_TIPO_VEHICULO', 'DESCRIPCION_TIPO_VEHICULO'];
+    $seeder->table('tipo_vehiculo')->data($array, $columnConfig)->rowQuantity(5);
+
+    //Vehiculo
     $seeder->table('vehiculo')->columns([        
         'NRO_PATENTE'       => $faker->bothify('????##'),
         'ID_BODEGA'         => $generator->relation('bodega', 'ID_BODEGA'),
         'MARCA'             => $faker->colorName,
         'MODELO'            => $faker->colorName,
         'ANHO_FABRICACION'  => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'TIPO_VEHICULO'     => $faker->randomElement(['Automóvil','Camioneta 4x4','Furgón', 'Moto']),
+        'ID_TIPO_VEHICULO'  => $generator->relation('tipo_vehiculo', 'ID_TIPO_VEHICULO'),
         'ESTADO_VEHICULO'   => $faker->randomElement([1, 2, 3]), //'Disponible','En arriendo', 'Descompuesto'
         'TIPO_PATENTE'      => $faker->randomElement([1, 2, 3, 4])
     ])->rowQuantity(15);
 
+    //Categoria insumo
+    $array =
+     [
+        [1, 'Repuestos autos'],
+        [2, 'Repuestos camionetas'],
+        [3, 'Repuestos motos'],
+        [4, 'Misceláneos']
+     ];
+    $columnConfig = ['ID_CATEGORIA_INSUMO', 'DESCRIPCION_CATEGORIA_INSUMO'];
+    $seeder->table('categoria_insumo')->data($array, $columnConfig)->rowQuantity(4);
+
     //Insumos
     $array =
      [
-        [1,'Neumáticos 4x4','Repuestos autos','Neumáticos',325000,210000],
-        [2,'Ventana polarizada','Misceláneos','Neumáticos',180000,70000],
-        [3,'Motor 2000cc','Repuestos camionetas','Neumáticos',450000,290000],
-        [4,'Pastillas freno','Repuestos autos','Neumáticos',48000,22000],
-        [5,'luces neón','Misceláneos','Neumáticos',23500,10800],
-        [6,'Luces altas','Misceláneos','Neumáticos',67000,30000],
-        [7,'Luces bajas','Misceláneos','Neumáticos',60000,25000],
-        [8,'Funda asientos','Repuestos autos','Neumáticos',18000,7500],
-        [9,'Ventilador','Misceláneos','Neumáticos',9900,3800],
-        [10,'Aceite','Repuestos motos','Neumáticos',15000,8000],
-        [11,'Agua oxigenada','Repuestos motos','Neumáticos',7000,3000],
-        [12,'Limpia parabrisas','Repuestos autos','Neumáticos',10000,5000],
-        [13,'Cables eléctricos','Repuestos camionetas','Neumáticos',7900,3900],
-        [14,'Cerraduras','Misceláneos','Neumáticos',14500,8000],
-        [15,'Espejo retrovisor','Repuestos autos','Neumáticos',33500,18000],
+        [1,'Neumáticos 4x4',1,325000,210000],
+        [2,'Ventana polarizada',4,180000,70000],
+        [3,'Motor 2000cc',2,450000,290000],
+        [4,'Pastillas freno',1,48000,22000],
+        [5,'luces neón',4,23500,10800],
+        [6,'Luces altas',4,67000,30000],
+        [7,'Luces bajas',4,60000,25000],
+        [8,'Funda asientos',1,18000,7500],
+        [9,'Ventilador',4,9900,3800],
+        [10,'Aceite','Repuestos motos',15000,8000],
+        [11,'Agua oxigenada',3,7000,3000],
+        [12,'Limpia parabrisas',1,10000,5000],
+        [13,'Cables eléctricos',2,7900,3900],
+        [14,'Cerraduras',4,14500,8000],
+        [15,'Espejo retrovisor',1,33500,18000],
      ];
-    $columnConfig = ['ID_INSUMO','NOMBRE_INSUMO','CATEGORIA_INSUMO','SUBCATEGORIA_INSUMO','PRECIO_VENTA','PRECIO_COMPRA'];
+    $columnConfig = ['ID_INSUMO','NOMBRE_INSUMO','ID_CATEGORIA_INSUMO','SUBCATEGORIA_INSUMO','PRECIO_VENTA','PRECIO_COMPRA'];
     $seeder->table('insumo')->data($array, $columnConfig)->rowQuantity(15);
-
-    /*$seeder->table('insumo')->columns([        
-        'ID_INSUMO'             => $generator->pk,
-        'NOMBRE_INSUMO'         => $faker->randomElement(['Neumáticos 4x4', 'Ventana polarizada', 'Motor 2000cc', 'Pastillas freno', 'luces neón', 'Luces altas', 'Luces bajas', 'Funda asientos', 'Ventilador', 'Aceite', 'Agua oxigenada', 'Limpia parabrisas', 'Cables eléctricos']),
-        'CATEGORIA_INSUMO'      => $faker->randomElement(['Repuestos autos', 'Repuestos camionetas', 'Repuestos motos', 'Misceláneos']),
-        'SUBCATEGORIA_INSUMO'   => $faker->randomElement(['Luces', 'Chasis', 'Piezas', 'Neumáticos']),
-        'PRECIO_VENTA'          => $faker->numberBetween($min = 5990, $max = 325000),
-        'PRECIO_COMPRA'         => $faker->numberBetween($min = 2000, $max = 150000)
-    ])->rowQuantity(20);*/
 
     //Proveedor
     $array =
