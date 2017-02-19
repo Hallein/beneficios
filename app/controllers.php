@@ -11,3 +11,4 @@
 	require 'servicio_venta/servicio_venta.controller.php';
 	require 'trabajadores/trabajador.controller.php';
 	require 'contratos/contrato.controller.php';
+	require 'auth/auth.controller.php';

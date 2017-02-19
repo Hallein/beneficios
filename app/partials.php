@@ -11,3 +11,4 @@
 	define('SERVICIO_VENTA', '../../app/servicio_venta/servicio_venta.partials');
 	define('TRABAJADORES', '../../app/trabajadores/trabajador.partials');
 	define('CONTRATOS', '../../app/contratos/contrato.partials');
+	define ('AUTH', '../../app/auth/auth.partials');

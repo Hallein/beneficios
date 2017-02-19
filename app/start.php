@@ -66,6 +66,10 @@ $app->post('/login', function ($request, $response, $args){
 			$datos['respuesta']['message']['body'] = 'Identificación exitosa';
 			$datos['respuesta']['message']['timeout'] = 2;
 
+			
+			
+			$datos['respuesta']['html'] = $this->auth->index();
+
 		}else{
 			$datos['respuesta']['status'] = 'error';
 			$datos['respuesta']['message']['title'] = 'Ocurrió un error';
@@ -80,7 +84,7 @@ $app->post('/login', function ($request, $response, $args){
 		$datos['respuesta']['message']['timeout'] = 2;
 	}
 	return json_encode($datos);
-
+ 	
 });
 
 $app->run();

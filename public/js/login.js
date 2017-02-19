@@ -1,8 +1,7 @@
 function LoginUsuario(){
 	var user = $("#usuario_login").val();
 	var pass = $("#contrasena_login").val();
-	var url = $('#enviar').attr('data-path');
-	console.log(user+pass);
+	var url = 'api/login';
 	$.ajax({
 	    type: "POST",
 	    url : url,
@@ -18,7 +17,8 @@ function LoginUsuario(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){
-	    	
+	    	console.log(resultado);
+	    	$('#d-main').html(resultado.html);
 	    }
 	});
 }

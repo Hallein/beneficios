@@ -45,3 +45,7 @@ $container['trabajadores'] = function ($c) {
 $container['contratos'] = function ($c) {
     return new ContratosController($c->db);
 };
+
+$container['auth'] = function ($c) {
+    return new AuthController($c->db);
+};
