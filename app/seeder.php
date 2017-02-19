@@ -45,8 +45,26 @@ $container['seeder'] = function($c){
 
      $seeder->table('sexo')->data($array, $columnConfig)->rowQuantity(2);
 
+     //Cliente
+    $array =
+     [
+        [11111111,'Fernando','Díaz','Núñez','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',1,1],
+        [22222222,'Julio','Caruncho','Arriagada','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',2,1],
+        [33333333,'Camilo','Daza','Lavín','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',3,1],
+        [44444444,'Brayan','Berna','Rojas','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',4,2],
+        [55555555,'Oscar','Chacón','Cautín','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',5,2],
+        [66666666,'Rodolfo','Ruiz','Hola','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',6,1],
+        [77777777,'Juan','Rejas','Rejitas','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',7,1],
+        [88888888,'John','Guerra','Fría','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',8,1],
+        [99999999,'Cesar','Mamani','Rozas','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',9,2],
+        [10101010,'Rodrigo','Marín','Gordín','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',10,1],
+        [12121212,'Sergio','Cerda','Chao','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',11,2],
+        [13131313,'David','Cautín','Epifani','1990/01/01','Playa Brava #1234','99999999','hola@bien.cl','UNAP',12,1]
+     ];
+    $columnConfig = ['RUT_PERSONA','NOMBRE_PERSONA','APATERNO_PERSONA','AMATERNO_PERSONA','FECHA_NACIMIENTO','DIRECCION_PERSONA','TELEFONO_PERSONA','EMAIL_PERSONA','EMPRESA','ID_COMUNA','ID_SEXO'];
+    $seeder->table('cliente')->data($array, $columnConfig)->rowQuantity(12);
 
-    $seeder->table('cliente')->columns([
+    /*$seeder->table('cliente')->columns([
         'RUT_PERSONA'       => $faker->numberBetween($min = 1000000, $max = 25999999),
         'NOMBRE_PERSONA'    => $faker->firstName,
         'APATERNO_PERSONA'  => $faker->lastName,
@@ -58,7 +76,7 @@ $container['seeder'] = function($c){
         'EMPRESA'           => $faker->company,
         'ID_COMUNA'            => $generator->relation('comuna', 'ID_COMUNA'),
         'ID_SEXO'           => $generator->relation('sexo', 'ID_SEXO')
-    ])->rowQuantity(40);
+    ])->rowQuantity(40);*/
 
     $seeder->table('trabajador')->columns([
         'RUT_PERSONA'       => $faker->numberBetween($min = 1000000, $max = 25999999),
@@ -203,7 +221,7 @@ $container['seeder'] = function($c){
         'NOMBRE_SERVICIO'   => $faker->randomElement(['Reparación', 'Venta repuesto', 'Venta accesorio', 'Mecánico']),
         'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
         'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(30);
+    ])->rowQuantity(12);
 
     $seeder->table('arriendo')->columns([        
         'ID_SERVICIO'       => $generator->pk,
@@ -213,26 +231,45 @@ $container['seeder'] = function($c){
         'NOMBRE_SERVICIO'   => $faker->randomElement(['Arriendo moto', 'Arriendo auto', 'Arriendo camioneta', 'Arriendo furgón']),
         'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
         'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(15);
+    ])->rowQuantity(10);
 
-    $seeder->table('documento_venta')->columns([        
-        'ID_VENTA'          => $generator->pk,
-        'RUT_PERSONA'       => $generator->relation('cliente', 'RUT_PERSONA'),
-        'ID_SERVICIO'       => $generator->relation('venta', 'ID_SERVICIO'),
-        'FECHA_VENTA'       => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'HORA_VENTA'        => $faker->time($format = 'H:i:s', $max = 'now'),
-        'VALOR_VENTA'       => $faker->numberBetween($min = 4000, $max = 300000),//Creo que este atributo no deberia ir, el valor de la compra va en el detalle, sumando todos los insumos
-        'IVA'               => $faker->numberBetween($min = 400, $max = 30000),
-        'FOLIO'             => $faker->numberBetween($min = 1, $max = 100),
-        'NUMERO_SERIE'      => $faker->randomNumber($nbDigits = 4)
-    ])->rowQuantity(15);
+    //Documento de venta
+    $array =
+     [
+        [1, 11111111,1,'2016/01/01','12:00:00',0,0,100,1],
+        [2, 22222222,2,'2016/02/02','12:00:00',0,0,100,2],
+        [3, 33333333,3,'2016/03/03','12:00:00',0,0,100,3],
+        [4, 44444444,4,'2016/04/04','12:00:00',0,0,100,4],
+        [5, 55555555,5,'2016/05/05','12:00:00',0,0,100,5],
+        [6, 66666666,6,'2016/06/06','12:00:00',0,0,100,6],
+        [7, 77777777,7,'2016/07/07','12:00:00',0,0,100,7],
+        [8, 88888888,8,'2016/08/08','12:00:00',0,0,100,8],
+        [9, 99999999,9,'2016/09/09','12:00:00',0,0,100,9],
+        [10, 10101010,10,'2016/10/10','12:00:00',0,0,100,10],
+        [11, 12121212,11,'2016/11/11','12:00:00',0,0,100,11],
+        [12, 13131313,12,'2016/12/12','12:00:00',0,0,100,12]
+     ];
+    $columnConfig = ['ID_VENTA','RUT_PERSONA','ID_SERVICIO','FECHA_VENTA','HORA_VENTA','VALOR_VENTA','IVA','FOLIO','NUMERO_SERIE'];
+    $seeder->table('documento_venta')->data($array, $columnConfig)->rowQuantity(12);
 
-    $seeder->table('detalle_venta')->columns([        
-        'ID_VENTA'          => $generator->relation('documento_venta', 'ID_VENTA'),
-        'ID_INSUMO'         => $generator->relation('insumo', 'ID_INSUMO'),
-        'CANTIDAD_VENDIDA'  => $faker->numberBetween($min = 1, $max = 30),
-        'SUB_TOTAL_VENTA'   => $faker->numberBetween($min = 5000, $max = 800000)
-    ])->rowQuantity(8);
+    //Detalle de venta
+    $array =
+     [
+        [1, 1, 3, 1], [1, 2, 2, 1], [1, 3, 1, 1], [1, 4, 1, 1],
+        [2, 5, 5, 1], [2, 6, 10, 1], [2, 7, 2, 1], [2, 8, 1, 1], [2, 9, 3, 1],
+        [3, 10, 2, 1], [3, 11, 4, 1], [3, 12, 2, 1],
+        [4, 13, 3, 1], [4, 14, 5, 1], [4, 15, 1, 1], [4, 1, 11, 1], [4, 2, 4, 1], [4, 3, 1, 1],
+        [5, 4, 4, 1], [5, 5, 2, 1], [5, 6, 3, 1],
+        [6, 7, 5, 1], [6, 8, 9, 1], [6, 9, 2, 1], [6, 10, 1, 1], [6, 11, 1, 1], [6, 12, 7, 1], [6, 13, 3, 1], [6, 14, 2, 1], [6, 15, 1, 1],
+        [7, 1, 10, 1],
+        [8, 2, 4, 1], [8, 3, 3, 1],
+        [9, 4, 13, 1], [9, 5, 9, 1], [8, 6, 8, 1], [8, 7, 2, 1],
+        [10, 8, 1, 1], [10, 9, 5, 1], [10, 10, 1, 1], [10, 11, 10, 1], [10, 12, 2, 1], [10, 13, 4, 1],
+        [11, 14, 2, 1], [11, 15, 10, 1], [11, 1, 9, 1],
+        [12, 2, 4, 1], [12, 3, 16, 1], [12, 4, 6, 1], [12, 5, 7, 1]
+     ];
+    $columnConfig = ['ID_VENTA','ID_INSUMO','CANTIDAD_VENDIDA',false];
+    $seeder->table('detalle_venta')->data($array, $columnConfig)->rowQuantity(50);
 
     $seeder->table('contrato')->columns([        
         'ID_CONTRATO'       => $generator->pk,
@@ -247,7 +284,7 @@ $container['seeder'] = function($c){
         'VALOR_TOTAL'       => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
         'DETALLE_CONTRATO'  => $faker->text($maxNbChars = 300),
         'ESTADO_CONTRATO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(8);
+    ])->rowQuantity(4);
 
     return $seeder;
 };

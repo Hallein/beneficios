@@ -13,6 +13,7 @@
 														dc.FECHA_COMPRA, 
 														dc.VALOR_COMPRA, 
 														dc.IVA, 
+														(dc.VALOR_COMPRA + dc.IVA) AS VALOR_TOTAL,
 														dc.FOLIO, 
 														dc.NUMERO_SERIE,
 														p.RUT_PROVEEDOR, 
@@ -59,9 +60,9 @@
 																dc.CANTIDAD_COMPRADA,
 																dc.SUB_TOTAL_COMPRA,
 																i.NOMBRE_INSUMO,
-																(i.PRECIO_COMPRA - ROUND(i.PRECIO_COMPRA * 0.19)) AS PRECIO_UNITARIO,
+																i.PRECIO_COMPRA AS PRECIO_UNITARIO,
 																(ROUND(i.PRECIO_COMPRA * 0.19)) AS IVA_UNITARIO,
-																( dc.SUB_TOTAL_COMPRA - ROUND( dc.SUB_TOTAL_COMPRA * 0.19 )) AS IMPORTE,
+																dc.SUB_TOTAL_COMPRA AS IMPORTE,
 																ROUND( dc.SUB_TOTAL_COMPRA * 0.19 ) AS IVA
 													FROM 		detalle_compra dc
 													INNER JOIN 	insumo i 

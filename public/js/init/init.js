@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('#d-hamburguer').click(function(e){
+	/*$('#d-hamburguer').click(function(e){
 		if($('#d-hamburguer').hasClass('d-toggle-hamburguer')){
 			$('#d-hamburguer').removeClass('d-toggle-hamburguer')
 		}else{
@@ -12,18 +12,20 @@ $(document).ready(function(){
 			$('#d-nav').addClass('hideen-nav');
 			$('#d-top-header, #d-content, #d-footer').addClass('full-content');
 		}
-	});
-	$('.d-nav-list li').click(function(e){
+	});*/
+	/*$('.d-nav-list li').click(function(e){
 		$('.d-nav-list li').removeClass('d-active');
 		$('.d-nav-list .d-2-crumb').removeClass('d-active-crumb');
 		$(this).addClass('d-active');
 		$(this).addClass('d-active-crumb');
 		UpdateBreadcrumb();
-	}); 
-	UpdateBreadcrumb();	
-	graficoBarras();
-	graficoLineas(); 
-	ShowTest();
+	});*/
+	//UpdateBreadcrumb();	
+	//graficoBarras();
+	//graficoLineas(); 
+	//ShowTest();
+	componentHandler.upgradeAllRegistered();
+	Marker();
 });
 
 function MultiButtonDatatable(id){
