@@ -50,7 +50,7 @@
 	                <td><?php echo $dato['NOMBRE_PERSONA']; ?></td>		                
 	                <td><?php echo $dato['NOMBRE_SERVICIO']; ?></td>
 	                <td><?php echo $dato['FECHA_VENTA']; ?></td>
-	                <td>$<?php echo $dato['VALOR_VENTA']; ?></td>
+	                <td>$<?php echo $dato['VALOR_TOTAL']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">

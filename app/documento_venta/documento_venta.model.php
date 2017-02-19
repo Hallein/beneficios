@@ -14,6 +14,7 @@
 														dv.FECHA_VENTA, 
 														dv.VALOR_VENTA, 
 														dv.IVA, 
+														(dv.VALOR_VENTA + dv.IVA) AS VALOR_TOTAL,
 														dv.FOLIO,
 													 	dv.NUMERO_SERIE,
 														cli.RUT_PERSONA, 
@@ -21,12 +22,15 @@
 														cli.APATERNO_PERSONA,
 														cli.AMATERNO_PERSONA,
 														s.ID_SERVICIO,
-														s.NOMBRE_SERVICIO
+														s.NOMBRE_SERVICIO,
+                                                        co.COMUNA
 											FROM 		documento_venta dv
 											INNER JOIN 	cliente cli 
 											ON 			dv.RUT_PERSONA = cli.RUT_PERSONA
 											INNER JOIN 	venta s 
-											ON 			dv.ID_SERVICIO = s.ID_SERVICIO');
+											ON 			dv.ID_SERVICIO = s.ID_SERVICIO
+                                            INNER JOIN	comuna co
+                                            ON			cli.ID_COMUNA = co.ID_COMUNA');
 			$query->execute();
 
 			$datos = array();
@@ -52,9 +56,7 @@
 														co.COMUNA,
 														s.ID_SERVICIO,
 														s.NOMBRE_SERVICIO,
-                                                        SUM( (i.PRECIO_VENTA * det.CANTIDAD_VENDIDA) ) AS TOTAL_IMPORTE,
-                                                        SUM( ROUND( ((i.PRECIO_VENTA * det.CANTIDAD_VENDIDA) * 0.19) ) ) AS TOTAL_IVA,
-                                                        SUM( ROUND( (i.PRECIO_VENTA * det.CANTIDAD_VENDIDA) + ((i.PRECIO_VENTA * det.CANTIDAD_VENDIDA) * 0.19) ) ) AS TOTAL
+														(dv.VALOR_VENTA + dv.IVA) AS TOTAL
 										 	FROM 		documento_venta dv
 										 	INNER JOIN 	cliente cli 
 											ON 			dv.RUT_PERSONA = cli.RUT_PERSONA
@@ -66,23 +68,7 @@
                                             ON			i.ID_INSUMO = det.ID_INSUMO
                                             INNER JOIN	comuna co
                                             ON			co.ID_COMUNA = cli.ID_COMUNA
-										 	WHERE 		dv.ID_VENTA = :id
-                                            GROUP BY 	dv.RUT_PERSONA,
-														dv.ID_SERVICIO,
-														dv.FECHA_VENTA, 
-														dv.VALOR_VENTA, 
-														dv.IVA, 
-														dv.FOLIO,
-													 	dv.NUMERO_SERIE,
-													 	cli.RUT_PERSONA, 
-														cli.NOMBRE_PERSONA,
-														cli.APATERNO_PERSONA,
-														cli.AMATERNO_PERSONA,
-														cli.EMPRESA,
-														cli.DIRECCION_PERSONA,
-														cli.COMUNA,
-														s.ID_SERVICIO,
-														s.NOMBRE_SERVICIO');
+										 	WHERE 		dv.ID_VENTA = :id');
 
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
@@ -97,8 +83,9 @@
 																dv.SUB_TOTAL_VENTA,
 																i.NOMBRE_INSUMO,
 																i.PRECIO_VENTA AS PRECIO_UNITARIO,
-																(i.PRECIO_VENTA * dv.CANTIDAD_VENDIDA) AS IMPORTE,
-																ROUND( ((i.PRECIO_VENTA * dv.CANTIDAD_VENDIDA) * 0.19) ) AS IVA
+																ROUND( ((i.PRECIO_VENTA) * 0.19) ) AS IVA_UNITARIO,
+																dv.SUB_TOTAL_VENTA AS IMPORTE,
+																ROUND( dv.SUB_TOTAL_VENTA * 0.19 ) AS IVA
 													FROM 		detalle_venta dv
 													INNER JOIN 	insumo i 
 													ON 			i.ID_INSUMO = dv.ID_INSUMO

@@ -43,7 +43,7 @@ require 'middlewares.php';
 require 'routes.php';
 require 'container.php';
 require 'seeder.php';
-//require 'auth.php';
+
 
 $app->post('/login', function ($request, $response, $args){
 	$data = $request->getParsedBody();

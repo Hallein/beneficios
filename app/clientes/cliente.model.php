@@ -129,8 +129,8 @@
 													EMAIL_PERSONA = :email, 
 													EMPRESA = :empresa,
 													ID_COMUNA = :comuna,
-													ID_SEXO =:sexo
-											WHERE 	RUT_PERSONA = :rut');	 
+													ID_SEXO = :sexo
+											WHERE 	RUT_PERSONA = :rut');
 
 			$query -> bindParam(':nombres', 	$data['nombre']);
 			$query -> bindParam(':apaterno', 	$data['apaterno']);
