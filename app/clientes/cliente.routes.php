@@ -63,4 +63,13 @@ $app->group('/clientes', function(){
 		return $response;
 	});
 
+	$this->get('/comunas/{id}', function ($request, $response, $args) {
+
+		$id = $args['id'];
+		$json = $this->clientes->getComunas($id);
+
+		$response->write(json_encode($json));
+		return $response;
+	});
+
 });

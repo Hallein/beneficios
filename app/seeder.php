@@ -87,9 +87,9 @@ $container['seeder'] = function($c){
      //Trabajador
     $array =
      [
-        [11111111,'Fernando','Díaz','Núñez','1990/01/01','Playa Brava #1234','99999999','piratemani@gmail.com',1,1,'JEFE','123',1,1],
-        [22222222,'Julio','Caruncho','Arriagada','1990/01/01','Playa Brava #1234','99999999','julio.caruncho.a@gmail.com',2,2,'JEFE','123',2,1],
-        [33333333,'Camilo','Daza','Lavín','1990/01/01','Playa Brava #1234','99999999','daza.camilos@gmail.com',3,3,'JEFE','123',3,1]
+        [11111111,'Fernando','Díaz','Núñez','1990/01/01','Playa Brava #1234','99999999','piratemani@gmail.com',1,1,'JEFE','123',1],
+        [22222222,'Julio','Caruncho','Arriagada','1990/01/01','Playa Brava #1234','99999999','julio.caruncho.a@gmail.com',2,2,'JEFE','123',2],
+        [33333333,'Camilo','Daza','Lavín','1990/01/01','Playa Brava #1234','99999999','daza.camilos@gmail.com',3,3,'JEFE','123',2]
      ];
     $columnConfig = ['RUT_PERSONA','NOMBRE_PERSONA','APATERNO_PERSONA','AMATERNO_PERSONA','FECHA_NACIMIENTO','DIRECCION_PERSONA','TELEFONO_PERSONA','EMAIL_PERSONA','ID_PREVISION_SOCIAL','ID_PREVISION_SALUD','CARGO','CONTRASENA','ID_SEXO'];
     $seeder->table('trabajador')->data($array, $columnConfig)->rowQuantity(3);

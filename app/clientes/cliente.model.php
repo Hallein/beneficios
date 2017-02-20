@@ -178,4 +178,25 @@
 			return $datos;
 		}
 
+		public function getRegiones(){
+			$query = $this->db->prepare('	SELECT 	r.ID_REGION,
+													r.REGION 
+											FROM	region r');
+			$query->execute();
+			$datos = $query->fetchAll();
+			return $datos;
+		}
+
+		public function getComunas($id){
+			$query = $this->db->prepare('	SELECT 	c.ID_COMUNA,
+													c.COMUNA 
+											FROM	comuna c
+											WHERE 	c.ID_REGION = :id');
+
+			$query -> bindParam(':id', $id);
+			$query->execute();
+			$datos = $query->fetchAll();
+			return $datos;
+		}
+
 	}

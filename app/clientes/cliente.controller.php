@@ -42,6 +42,8 @@
 
 		public function create(){
 
+			$datos['regiones'] = $this->cliente->getRegiones();
+
 			ob_start();
 			include CLIENTES . '/create.php';
 			$datos['respuesta']['html'] = ob_get_clean();
@@ -75,6 +77,11 @@
 		public function destroy($id){
 			$datos = $this->cliente->destroy($id);
 			return $datos['respuesta'];
+		}
+
+		public function getComunas($id){
+			$datos = $this->cliente->getComunas($id);
+			return $datos;
 		}
 
 	}

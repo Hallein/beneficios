@@ -64,7 +64,11 @@
 				            </label>
 				            <label for="region_cliente" class="mdl-textfield__label">Región</label>
 				            <ul for="region_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="1">Tarapacá</li>
+				                <?php foreach($datos['regiones'] as $region) { ?>
+									<li class="mdl-menu__item" data-val="<?php echo $region['ID_REGION']; ?>">
+										<?php echo $region['REGION']; ?>
+									</li>
+				                <?php } ?>
 				            </ul>
 				        </div>
 					</div>
@@ -76,8 +80,7 @@
 				            </label>
 				            <label for="comuna_cliente" class="mdl-textfield__label">Comuna</label>
 				            <ul for="comuna_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="1">Iquique</li>
-				                <li class="mdl-menu__item" data-val="2">Alto hospicio</li>
+				            
 				            </ul>
 				        </div>
 					</div>	
