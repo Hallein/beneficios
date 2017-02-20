@@ -24,7 +24,7 @@
 
 			$datos['respuesta']['values'] = array();
 			$datos['respuesta']['labels'] = array();
-			
+
 			$i = 0;
 			foreach($clientes as $cliente){
 				$datos['respuesta']['values'][$i] = $cliente['CANTIDAD_VENTAS'];

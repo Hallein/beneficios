@@ -23,9 +23,12 @@
 				            </label>
 				            <label for="id_bodega" class="mdl-textfield__label">Bodega</label>
 				            <ul for="id_bodega" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				            	<?php
-								foreach ($datos as $d) { ?>
-									<li class="mdl-menu__item" data-val="'.<?php echo $d['ID_BODEGA']; ?>.'"><?php echo $d['NOMBRE_BODEGA']; ?></li><?php } ?>
+				            <?php
+								foreach ($datos['bodegas'] as $d) { ?>
+									<li class="mdl-menu__item" data-val="<?php echo $d['ID_BODEGA']; ?>">
+										<?php echo $d['NOMBRE_BODEGA']; ?>										
+									</li>
+							<?php } ?>
 				            </ul>
 				        </div>	
 					</div>
