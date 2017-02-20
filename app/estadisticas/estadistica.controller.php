@@ -20,7 +20,17 @@
 
 		public function topClientes(){
 			
-			$datos = $this->estadistica->topClientes();
+			$clientes = $this->estadistica->topClientes();
+
+			$datos['respuesta']['values'] = array();
+			$datos['respuesta']['labels'] = array();
+			
+			$i = 0;
+			foreach($clientes as $cliente){
+				$datos['respuesta']['values'][$i] = $cliente['CANTIDAD_VENTAS'];
+				$datos['respuesta']['labels'][$i] = $cliente['NOMBRE_PERSONA'] . $cliente['APATERNO_PERSONA'];
+				$i++;
+			}
 
 			ob_start();
 			include ESTADISTICAS . '/topClientes.php';

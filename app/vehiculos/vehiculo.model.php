@@ -158,7 +158,8 @@
 		public function getBodegas(){
 			$query = $this->db->prepare('	SELECT 	b.ID_BODEGA,
 													b.NOMBRE_BODEGA	  
-											FROM	bodega b');
+											FROM	bodega b
+											WHERE	b.ID_TIPO_BODEGA = 2');
 			$query->execute();
 			$datos = $query->fetchAll();
 			return $datos;
