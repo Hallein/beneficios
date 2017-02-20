@@ -48,9 +48,9 @@ require 'seeder.php';
 //Ruta Inicio
 $app->get('/inicio', function($request, $response, $args){
 
-	$datos['respuesta'] = $this->estadisticas->index();
+	$datos = $this->estadisticas->index();
 
-	return json_encode($datos['respuesta']);
+	return json_encode($datos);
 });
 
 
