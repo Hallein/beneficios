@@ -23,7 +23,7 @@
 														c.DIRECCION_PERSONA,
 														c.TELEFONO_PERSONA,
 														c.EMAIL_PERSONA,
-														COUNT(dv.ID_VENTA)
+														COUNT(dv.ID_VENTA) AS CANTIDAD_VENTAS
 											FROM		cliente c
 											INNER JOIN 	documento_venta dv
 											ON 			dv.RUT_PERSONA = c.RUT_PERSONA
@@ -37,9 +37,11 @@
 														c.FECHA_NACIMIENTO,
 														c.DIRECCION_PERSONA,
 														c.TELEFONO_PERSONA,
-														c.EMAIL_PERSONA');
+														c.EMAIL_PERSONA
+											ORDER BY	CANTIDAD_VENTAS DESC
+											LIMIT		10');
 			$query->execute();
-			$datos['vehiculos'] = $query->fetchAll();
+			$datos = $query->fetchAll();
 			return $datos;
 		}
 
