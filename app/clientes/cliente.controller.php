@@ -43,6 +43,8 @@
 		public function create(){
 
 			$datos['regiones'] = $this->cliente->getRegiones();
+			
+			$datos['sexos'] = $this->cliente->getSexos();
 
 			ob_start();
 			include CLIENTES . '/create.php';
@@ -59,9 +61,14 @@
 		}
 
 		public function edit($id){
-
 			$datos = $this->cliente->show($id);
 
+			$datos['sexos'] = $this->cliente->getSexos();		
+
+			$datos['regiones'] = $this->cliente->getRegiones();	
+
+			$datos['comunas'] = $this->cliente->getComunas($datos['cliente']['ID_REGION']);
+			
 			ob_start();
 			include CLIENTES . '/edit.php';
 			$datos['respuesta']['html'] = ob_get_clean();
@@ -75,13 +82,16 @@
 		}
 
 		public function destroy($id){
-			$datos = $this->cliente->destroy($id);
+			$datos = $this->cliente->delete($id);
 			return $datos['respuesta'];
 		}
 
 		public function getComunas($id){
-			$datos = $this->cliente->getComunas($id);
-			return $datos;
+			$datos['comunas'] = $this->cliente->getComunas($id);
+			ob_start();
+			include CLIENTES . '/getcomunas.php';
+			$datos['respuesta']['html'] = ob_get_clean();
+			return $datos['respuesta'];
 		}
 
 	}

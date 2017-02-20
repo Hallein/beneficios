@@ -37,11 +37,18 @@
 													c.DIRECCION_PERSONA,
 													c.TELEFONO_PERSONA,
 													c.EMAIL_PERSONA,
+													c.EMPRESA,
+													co.ID_COMUNA,
 													co.COMUNA,
+													r.ID_REGION,
+													r.REGION,
+													s.ID_SEXO,
 													s.SEXO
 										FROM 		cliente c
-										INNER JOIN	comuna co
+										LEFT JOIN	comuna co
 										ON			co.ID_COMUNA = c.ID_COMUNA
+										LEFT JOIN	region r
+										ON			r.ID_REGION = co.ID_REGION
 										INNER JOIN 	sexo s
 										ON 			s.ID_SEXO = c.ID_SEXO
 										WHERE 		c.RUT_PERSONA = :rut');
@@ -163,7 +170,7 @@
 			$query = $this->db->prepare('	DELETE FROM cliente 
 											WHERE RUT_PERSONA = :rut');
 
-			$query -> bindParam(':rut', $data['rut']);
+			$query -> bindParam(':rut', $data);
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
 				$datos['respuesta']['message']['title'] = '¡Listo!';
@@ -175,6 +182,15 @@
 				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el cliente';
 				$datos['respuesta']['message']['timeout'] = 2;
 			}
+			return $datos;
+		}
+
+		public function getSexos(){
+			$query = $this->db->prepare('	SELECT 	s.ID_SEXO,
+													s.SEXO 
+											FROM	SEXO s');
+			$query->execute();
+			$datos = $query->fetchAll();
 			return $datos;
 		}
 
