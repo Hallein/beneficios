@@ -67,7 +67,7 @@
 		  Cancelar
 		</button>	
 	 	<button  type="button" onclick="IngresarVehiculo();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
-		  Ingresar cliente
+		  Ingresar vehículo
 		</button>
 	</div>
 </div>
