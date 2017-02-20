@@ -24,7 +24,6 @@
 	                <th>Codigo</th>
 	                <th>Nombre</th>
 	                <th>Categoria</th>
-	                <th>Subcategoria</th>
 	                <th>Precio</th>
 	                <th></th>
 	            </tr>
@@ -34,7 +33,6 @@
 	                <th>Codigo</th>
 	                <th>Nombre</th>
 	                <th>Categoria</th>
-	                <th>Subcategoria</th>
 	                <th>Precio</th>
 	                <th></th>
 	            </tr>
@@ -46,7 +44,6 @@
 	            	<td><?php echo $dato['ID_INSUMO']; ?></td>
 	                <td><?php echo $dato['NOMBRE_INSUMO']; ?></td>		                
 	                <td><?php echo $dato['CATEGORIA_INSUMO']; ?></td>
-	                <td><?php echo $dato['SUBCATEGORIA_INSUMO']; ?></td>
 	                <td>$<?php echo $dato['PRECIO_VENTA']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">

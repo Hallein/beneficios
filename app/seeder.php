@@ -106,8 +106,8 @@ $container['seeder'] = function($c){
      //Bodega
     $array =
      [
-        [1, 11111111, 'Bodega almacenamiento', 'Playa brava #1234', 1],
-        [2, 22222222, 'Bodega estacionamiento', 'Zofri galpón 777', 2]
+        [1, 11111111, 'Bodega playa brava', 'Playa brava #1234', 1],
+        [2, 22222222, 'Bodega zofri', 'Zofri galpón 777', 2]
      ];
     $columnConfig = ['ID_BODEGA','RUT_PERSONA','NOMBRE_BODEGA','DIRECCION_BODEGA','ID_TIPO_BODEGA'];
     $seeder->table('bodega')->data($array, $columnConfig)->rowQuantity(2);
@@ -134,7 +134,49 @@ $container['seeder'] = function($c){
         'ID_TIPO_VEHICULO'  => $generator->relation('tipo_vehiculo', 'ID_TIPO_VEHICULO'),
         'ESTADO_VEHICULO'   => $faker->randomElement([1, 2, 3]), //'Disponible','En arriendo', 'Descompuesto'
         'TIPO_PATENTE'      => $faker->randomElement([1, 2, 3, 4])
-    ])->rowQuantity(15);
+    ])->rowQuantity(5);
+
+    $seeder->table('arriendo')->columns([        
+        'ID_SERVICIO'       => $generator->pk,
+        'FECHA_INICIO'      => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'FECHA_TERMINO'     => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'DETALLE'           => $faker->text($maxNbChars = 300),
+        'NOMBRE_SERVICIO'   => $faker->randomElement(['Arriendo moto', 'Arriendo auto', 'Arriendo camioneta', 'Arriendo furgón']),
+        'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
+        'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
+    ])->rowQuantity(10);
+
+    $seeder->table('contrato')->columns([        
+        'ID_CONTRATO'       => $generator->pk,
+        'NRO_PATENTE'       => $generator->relation('vehiculo', 'NRO_PATENTE'),
+        'RUT_PERSONA'       => $generator->relation('trabajador', 'RUT_PERSONA'),
+        'CLI_RUT_PERSONA'   => $generator->relation('cliente', 'RUT_PERSONA'),
+        'ID_SERVICIO'       => $generator->relation('arriendo', 'ID_SERVICIO'),
+        'VALOR_ACORDADO'    => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
+        'LUGAR_ENTREGA'     => $faker->streetAddress,
+        'LUGAR_RETIRO'      => $faker->streetAddress,
+        'FECHA_LIMITE'      => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'VALOR_TOTAL'       => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
+        'DETALLE_CONTRATO'  => $faker->text($maxNbChars = 300),
+        'ESTADO_CONTRATO'   => $faker->randomElement([1, 2, 3])
+    ])->rowQuantity(4);
+
+    return $seeder;
+};
+
+
+
+
+//=============================================================================================
+
+
+
+
+$container['seeder2'] = function($c){
+
+    $seeder = new \tebazil\dbseeder\Seeder($c->db);
+    $generator = $seeder->getGeneratorConfigurator();
+    $faker = $generator->getFakerConfigurator();
 
     //Categoria insumo
     $array =
@@ -159,14 +201,14 @@ $container['seeder'] = function($c){
         [7,'Luces bajas',4,60000,25000],
         [8,'Funda asientos',1,18000,7500],
         [9,'Ventilador',4,9900,3800],
-        [10,'Aceite','Repuestos motos',15000,8000],
+        [10,'Aceite',2,15000,8000],
         [11,'Agua oxigenada',3,7000,3000],
         [12,'Limpia parabrisas',1,10000,5000],
         [13,'Cables eléctricos',2,7900,3900],
         [14,'Cerraduras',4,14500,8000],
         [15,'Espejo retrovisor',1,33500,18000],
      ];
-    $columnConfig = ['ID_INSUMO','NOMBRE_INSUMO','ID_CATEGORIA_INSUMO','SUBCATEGORIA_INSUMO','PRECIO_VENTA','PRECIO_COMPRA'];
+    $columnConfig = ['ID_INSUMO','NOMBRE_INSUMO','ID_CATEGORIA_INSUMO','PRECIO_VENTA','PRECIO_COMPRA'];
     $seeder->table('insumo')->data($array, $columnConfig)->rowQuantity(15);
 
     //Proveedor
@@ -226,19 +268,27 @@ $container['seeder'] = function($c){
     $columnConfig = ['ID_COMPRA','ID_INSUMO','CANTIDAD_COMPRADA',false];
     $seeder->table('detalle_compra')->data($array, $columnConfig)->rowQuantity(50);
 
-    /*$seeder->table('detalle_compra')->columns([        
-        'ID_COMPRA'         => $generator->relation('documento_compra', 'ID_COMPRA'),
-        'ID_INSUMO'         => $generator->relation('insumo', 'ID_INSUMO'),
-        'CANTIDAD_COMPRADA' => $faker->numberBetween($min = 1, $max = 30),
-        'SUB_TOTAL_COMPRA'  => $faker->numberBetween($min = 5000, $max = 800000)
-    ])->rowQuantity(8);*/
-
-    $seeder->table('detalle_bodega')->columns([        
-        'ID_BODEGA'         => $generator->relation('bodega', 'ID_BODEGA'),
-        'ID_INSUMO'         => $generator->relation('insumo', 'ID_INSUMO'),
-        'STOCK'             => $faker->numberBetween($min = 1, $max = 30),
-        'FECHA_INGRESO'     => $faker->date($format = 'Y-m-d', $max = 'now')
-    ])->rowQuantity(3);
+    //Detalle bodega
+    $array =
+     [
+        [1, 1, 20, '2016/01/01'],
+        [1, 2, 18, '2016/01/01'],
+        [1, 3, 9, '2016/01/01'],
+        [1, 4, 5, '2016/01/01'],
+        [1, 5, 3, '2016/01/01'],
+        [1, 6, 12, '2016/01/01'],
+        [1, 7, 54, '2016/01/01'],
+        [1, 8, 6, '2016/01/01'],
+        [1, 9, 6, '2016/01/01'],
+        [1, 10, 42, '2016/01/01'],
+        [1, 11, 13, '2016/01/01'],
+        [1, 12, 41, '2016/01/01'],
+        [1, 13, 21, '2016/01/01'],
+        [1, 14, 13, '2016/01/01'],
+        [1, 15, 11, '2016/01/01']
+     ];
+    $columnConfig = ['ID_BODEGA', 'ID_INSUMO','STOCK','FECHA_INGRESO'];
+    $seeder->table('detalle_bodega')->data($array, $columnConfig)->rowQuantity(15);
 
     $seeder->table('venta')->columns([        
         'ID_SERVICIO'       => $generator->pk,
@@ -247,16 +297,6 @@ $container['seeder'] = function($c){
         'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
         'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
     ])->rowQuantity(12);
-
-    $seeder->table('arriendo')->columns([        
-        'ID_SERVICIO'       => $generator->pk,
-        'FECHA_INICIO'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'FECHA_TERMINO'     => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'DETALLE'           => $faker->text($maxNbChars = 300),
-        'NOMBRE_SERVICIO'   => $faker->randomElement(['Arriendo moto', 'Arriendo auto', 'Arriendo camioneta', 'Arriendo furgón']),
-        'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
-        'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(10);
 
     //Documento de venta
     $array =
@@ -296,21 +336,6 @@ $container['seeder'] = function($c){
     $columnConfig = ['ID_VENTA','ID_INSUMO','CANTIDAD_VENDIDA',false];
     $seeder->table('detalle_venta')->data($array, $columnConfig)->rowQuantity(50);
 
-    $seeder->table('contrato')->columns([        
-        'ID_CONTRATO'       => $generator->pk,
-        'NRO_PATENTE'       => $generator->relation('vehiculo', 'NRO_PATENTE'),
-        'RUT_PERSONA'       => $generator->relation('trabajador', 'RUT_PERSONA'),
-        'CLI_RUT_PERSONA'   => $generator->relation('cliente', 'RUT_PERSONA'),
-        'ID_SERVICIO'       => $generator->relation('arriendo', 'ID_SERVICIO'),
-        'VALOR_ACORDADO'    => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
-        'LUGAR_ENTREGA'     => $faker->streetAddress,
-        'LUGAR_RETIRO'      => $faker->streetAddress,
-        'FECHA_LIMITE'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'VALOR_TOTAL'       => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
-        'DETALLE_CONTRATO'  => $faker->text($maxNbChars = 300),
-        'ESTADO_CONTRATO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(4);
-
     return $seeder;
 };
 
@@ -328,4 +353,17 @@ $app->get('/seeder', function ($request, $response, $args) {
     $query->execute();
 
 	return $semillas;
+});
+
+$app->get('/seeder2', function ($request, $response, $args) {
+
+    $query = $this->db->prepare('SET FOREIGN_KEY_CHECKS = 0');          
+    $query->execute();
+
+    $semillas = $this->seeder2->refill();
+
+    $query = $this->db->prepare('SET FOREIGN_KEY_CHECKS = 1');          
+    $query->execute();
+
+    return $semillas;
 });

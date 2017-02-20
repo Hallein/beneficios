@@ -11,8 +11,8 @@
 			$datos = array();
 
 			$query = $this->db->prepare('SELECT 	t.RUT_PERSONA,
-													t.PREVISION_SOCIAL, 
-													t.PREVISION_SALUD, 
+													t.ID_PREVISION_SOCIAL, 
+													t.ID_PREVISION_SALUD, 
 													t.CARGO, 
 													t.NOMBRE_PERSONA, 
 													t.APATERNO_PERSONA, 
@@ -21,10 +21,16 @@
 													t.DIRECCION_PERSONA, 
 													t.TELEFONO_PERSONA, 
 													t.EMAIL_PERSONA, 
-													s.SEXO
+													s.SEXO,
+													pso.DESCRIPCION_PREVISION_SOCIAL AS PREVISION_SOCIAL,
+													psa.DESCRIPCION_PREVISION_SALUD AS PREVISION_SALUD
 										FROM 		trabajador t
 										INNER JOIN 	sexo s
-										ON			s.ID_SEXO = t.ID_SEXO');
+										ON			s.ID_SEXO = t.ID_SEXO
+										INNER JOIN	prevision_social pso
+										ON			pso.ID_PREVISION_SOCIAL = t.ID_PREVISION_SOCIAL
+										INNER JOIN 	prevision_salud psa
+										ON			psa.ID_PREVISION_SALUD = t.ID_PREVISION_SALUD');
 			$query->execute();
 
 			$datos['trabajadores'] = $query->fetchAll();
@@ -33,8 +39,8 @@
 
 		public function show($id){
 			$query = $this->db->prepare('	SELECT 		t.RUT_PERSONA,
-														t.PREVISION_SOCIAL, 
-														t.PREVISION_SALUD, 
+														t.ID_PREVISION_SOCIAL, 
+														t.ID_PREVISION_SALUD, 
 														t.CARGO, 
 														t.NOMBRE_PERSONA, 
 														t.APATERNO_PERSONA, 
@@ -43,10 +49,16 @@
 														t.DIRECCION_PERSONA, 
 														t.TELEFONO_PERSONA, 
 														t.EMAIL_PERSONA, 
-														s.SEXO
+														s.SEXO,
+														pso.DESCRIPCION_PREVISION_SOCIAL AS PREVISION_SOCIAL,
+														psa.DESCRIPCION_PREVISION_SALUD AS PREVISION_SALUD
 											FROM 		trabajador t
 											INNER JOIN 	sexo s
-											ON			s.ID_SEXO = t.ID_SEXO 
+											ON			s.ID_SEXO = t.ID_SEXO
+											INNER JOIN	prevision_social pso
+											ON			pso.ID_PREVISION_SOCIAL = t.ID_PREVISION_SOCIAL
+											INNER JOIN 	prevision_salud psa
+											ON			psa.ID_PREVISION_SALUD = t.ID_PREVISION_SALUD 
 											WHERE 		t.RUT_PERSONA = :rut');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
@@ -70,9 +82,10 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO trabajador(	PREVISION_SOCIAL, 
-																	PREVISION_SALUD, 
+			$query = $this->db->prepare('INSERT INTO trabajador(	ID_PREVISION_SOCIAL, 
+																	ID_PREVISION_SALUD, 
 																	CARGO, 
+																	SEXO,
 																	NOMBRE_PERSONA, 
 																	APATERNO_PERSONA, 
 																	AMATERNO_PERSONA, 
@@ -83,6 +96,7 @@
 														VALUES(		:social, 
 																	:salud, 
 																	:cargo, 
+																	:sexo,
 																	:nombre, 
 																	:apaterno, 
 																	:amaterno, 
@@ -91,9 +105,10 @@
 																	:telefono, 
 																	:email)');
 
-			$query -> bindParam(':social', 		$data['PREVISION_SOCIAL']);
-			$query -> bindParam(':salud', 		$data['PREVISION_SALUD']);
+			$query -> bindParam(':social', 		$data['ID_PREVISION_SOCIAL']);
+			$query -> bindParam(':salud', 		$data['ID_PREVISION_SALUD']);
 			$query -> bindParam(':cargo', 		$data['CARGO']);
+			$query -> bindParam(':sexo', 		$data['SEXO']);
 			$query -> bindParam(':nombre', 		$data['NOMBRE_PERSONA']);
 			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
@@ -119,9 +134,10 @@
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	trabajador 
-											SET 	PREVISION_SOCIAL = :social, 
-													PREVISION_SALUD = :salud, 
+											SET 	ID_PREVISION_SOCIAL = :social, 
+													ID_PREVISION_SALUD = :salud, 
 													CARGO = :cargo, 
+													SEXO = :sexo,
 													NOMBRE_PERSONA = :nombre, 
 													APATERNO_PERSONA = :apaterno, 
 													AMATERNO_PERSONA = :amaterno, 
@@ -131,9 +147,10 @@
 													EMAIL_PERSONA = :email
 											WHERE 	RUT_PERSONA = :rut');
 
-			$query -> bindParam(':social', 		$data['PREVISION_SOCIAL']);
-			$query -> bindParam(':salud', 		$data['PREVISION_SALUD']);
+			$query -> bindParam(':social', 		$data['ID_PREVISION_SOCIAL']);
+			$query -> bindParam(':salud', 		$data['ID_PREVISION_SALUD']);
 			$query -> bindParam(':cargo', 		$data['CARGO']);
+			$query -> bindParam(':sexo', 		$data['SEXO']);
 			$query -> bindParam(':nombre', 		$data['NOMBRE_PERSONA']);
 			$query -> bindParam(':apaterno', 	$data['APATERNO_PERSONA']);
 			$query -> bindParam(':amaterno', 	$data['AMATERNO_PERSONA']);
