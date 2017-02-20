@@ -44,6 +44,14 @@ require 'routes.php';
 require 'container.php';
 require 'seeder.php';
 
+//Ruta Inicio
+$app->get('/inicio', function($request, $response, $args){
+
+	$datos['respuesta'] = $this->estadisticas->index();
+
+	return json_encode($datos['respuesta']);
+});
+
 
 $app->post('/login', function ($request, $response, $args){
 	$data = $request->getParsedBody();
@@ -53,7 +61,11 @@ $app->post('/login', function ($request, $response, $args){
 
 	//$usuario['pass'] = hash('sha256', $usuario['pass']);
 	
-	$sql = $this->db->prepare('SELECT RUT_PERSONA, CARGO, CONTRASENA from TRABAJADOR where RUT_PERSONA = :rut AND CONTRASENA = :pass');
+	$sql = $this->db->prepare('	SELECT 	RUT_PERSONA, CARGO, CONTRASENA 
+								FROM 	TRABAJADOR 
+								WHERE 	RUT_PERSONA = :rut 
+								AND 	CONTRASENA = :pass');
+
 	$sql->bindParam(':rut', $usuario['rut']);
 	$sql->bindParam(':pass', $usuario['pass']);
 	if($sql->execute()){

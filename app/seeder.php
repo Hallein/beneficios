@@ -136,42 +136,28 @@ $container['seeder'] = function($c){
     $columnConfig = ['NRO_PATENTE','ID_BODEGA','MARCA','MODELO','ANHO_FABRICACION','ID_TIPO_VEHICULO', 'ESTADO_VEHICULO','TIPO_PATENTE'];
     $seeder->table('vehiculo')->data($array, $columnConfig)->rowQuantity(5);
 
-    //Vehiculo
-    /*$seeder->table('vehiculo')->columns([        
-        'NRO_PATENTE'       => $faker->bothify('????##'),
-        'ID_BODEGA'         => $generator->relation('bodega', 'ID_BODEGA'),
-        'MARCA'             => $faker->colorName,
-        'MODELO'            => $faker->colorName,
-        'ANHO_FABRICACION'  => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'ID_TIPO_VEHICULO'  => $generator->relation('tipo_vehiculo', 'ID_TIPO_VEHICULO'),
-        'ESTADO_VEHICULO'   => $faker->randomElement([1, 2, 3]), //'Disponible','En arriendo', 'Descompuesto'
-        'TIPO_PATENTE'      => $faker->randomElement([1, 2, 3, 4])
-    ])->rowQuantity(5);*/
+    $array =
+     [
+        [1, '2016/01/01', '2016/01/20', 'Arriendo de vehículo para su uso en la ciudad', 'Arriendo de vehículos', 2, 1],
+        [2, '2016/02/01', '2016/01/10', 'Arriendo de vehículo para su uso en la ciudad', 'Arriendo de vehículos', 2, 1],
+        [3, '2016/03/01', '2016/01/08', 'Arriendo de vehículo para su uso en la ciudad', 'Arriendo de vehículos', 2, 1],
+        [4, '2016/04/01', '2016/01/13', 'Arriendo de vehículo para su uso en la ciudad', 'Arriendo de vehículos', 2, 1],
+        [5, '2016/05/01', '2016/01/14', 'Arriendo de vehículo para su uso en la ciudad', 'Arriendo de vehículos', 2, 1]
+     ];
+    $columnConfig = ['ID_SERVICIO','FECHA_INICIO','FECHA_TERMINO','DETALLE','NOMBRE_SERVICIO','TIPO_SERVICIO', 'ESTADO_SERVICIO'];
+    $seeder->table('arriendo')->data($array, $columnConfig)->rowQuantity(5);
 
-    $seeder->table('arriendo')->columns([        
-        'ID_SERVICIO'       => $generator->pk,
-        'FECHA_INICIO'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'FECHA_TERMINO'     => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'DETALLE'           => $faker->text($maxNbChars = 300),
-        'NOMBRE_SERVICIO'   => $faker->randomElement(['Arriendo moto', 'Arriendo auto', 'Arriendo camioneta', 'Arriendo furgón']),
-        'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
-        'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(10);
+    $array =
+     [
+        [1, 'ASDF11', '11111111', '44444444', '1', 10000, 'Cavancha, frente al colegio inglés','Baquedano #1234','2016/01/31',10000,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam ea vero praesentium quia, obcaecati omnis exercitationem delectus tenetur animi veritatis accusamus tempora cumque totam voluptas molestiae, soluta aspernatur natus nobis.',1],
+        [2, 'QWER22', '22222222', '55555555', '2', 20000, 'Cavancha, frente al colegio inglés','Baquedano #1234','2016/01/31',20000,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum suscipit voluptate assumenda explicabo consequuntur dolores quod tempore enim eius, placeat asperiores minima fugit velit commodi, et laborum rerum consectetur, quaerat.',1],
+        [3, 'AABB33', '33333333', '66666666', '3', 30000, 'Cavancha, frente al colegio inglés','Baquedano #1234','2016/01/31',30000,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae tenetur nihil tempora, quisquam eveniet beatae omnis harum, dicta alias doloremque praesentium blanditiis tempore dolore sapiente hic consequuntur aliquid quos libero.',1],
+        [4, 'JJCC44', '11111111', '77777777', '4', 40000, 'Cavancha, frente al colegio inglés','Baquedano #1234','2016/01/31',40000,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, cumque quod ullam maxime eveniet pariatur vel incidunt aut fugit officia a quas deleniti molestias perferendis eos non suscipit voluptatibus odit.',1],
+        [5, 'RRHH55', '22222222', '88888888', '5', 50000, 'Cavancha, frente al colegio inglés','Baquedano #1234','2016/01/31',50000,'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate officia architecto, repellat nulla ad totam quidem deserunt numquam sapiente deleniti quia voluptatibus illum magnam aperiam sequi dolorem enim quam quae.',1]
+     ];
+    $columnConfig = ['ID_CONTRATO','NRO_PATENTE','RUT_PERSONA','CLI_RUT_PERSONA','ID_SERVICIO','VALOR_ACORDADO', 'LUGAR_ENTREGA','LUGAR_RETIRO','FECHA_LIMITE','VALOR_TOTAL','DETALLE_CONTRATO','ESTADO_CONTRATO'];
+    $seeder->table('contrato')->data($array, $columnConfig)->rowQuantity(5);
 
-    $seeder->table('contrato')->columns([        
-        'ID_CONTRATO'       => $generator->pk,
-        'NRO_PATENTE'       => $generator->relation('vehiculo', 'NRO_PATENTE'),
-        'RUT_PERSONA'       => $generator->relation('trabajador', 'RUT_PERSONA'),
-        'CLI_RUT_PERSONA'   => $generator->relation('cliente', 'RUT_PERSONA'),
-        'ID_SERVICIO'       => $generator->relation('arriendo', 'ID_SERVICIO'),
-        'VALOR_ACORDADO'    => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
-        'LUGAR_ENTREGA'     => $faker->streetAddress,
-        'LUGAR_RETIRO'      => $faker->streetAddress,
-        'FECHA_LIMITE'      => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'VALOR_TOTAL'       => $faker->randomElement([100000, 200000, 300000, 400000, 50000, 40000, 30000, 80000, 90000]),
-        'DETALLE_CONTRATO'  => $faker->text($maxNbChars = 300),
-        'ESTADO_CONTRATO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(4);
 
     return $seeder;
 };
@@ -302,13 +288,36 @@ $container['seeder2'] = function($c){
     $columnConfig = ['ID_BODEGA', 'ID_INSUMO','STOCK','FECHA_INGRESO'];
     $seeder->table('detalle_bodega')->data($array, $columnConfig)->rowQuantity(15);
 
-    $seeder->table('venta')->columns([        
-        'ID_SERVICIO'       => $generator->pk,
-        'TIPO_PAGO'         => $faker->randomElement([1, 2, 3]),
-        'NOMBRE_SERVICIO'   => $faker->randomElement(['Reparación', 'Venta repuesto', 'Venta accesorio', 'Mecánico']),
-        'TIPO_SERVICIO'     => $faker->randomElement([1, 2, 3, 4]),
-        'ESTADO_SERVICIO'   => $faker->randomElement([1, 2, 3])
-    ])->rowQuantity(12);
+    //Venta
+    $array =
+     [
+        [1, 1, 'Venta de insumos y repuestos', 1, 1],
+        [2, 2, 'Venta de insumos y repuestos', 1, 1],
+        [3, 1, 'Venta de insumos y repuestos', 1, 1],
+        [4, 2, 'Venta de insumos y repuestos', 1, 1],
+        [5, 1, 'Venta de insumos y repuestos', 1, 1],
+        [6, 2, 'Venta de insumos y repuestos', 1, 1],
+        [7, 1, 'Venta de insumos y repuestos', 1, 1],
+        [8, 2, 'Venta de insumos y repuestos', 1, 1],
+        [9, 1, 'Venta de insumos y repuestos', 1, 1],
+        [10, 2, 'Venta de insumos y repuestos', 1, 1],
+        [11, 1, 'Venta de insumos y repuestos', 1, 1],
+        [12, 2, 'Venta de insumos y repuestos', 1, 1],
+        [13, 1, 'Venta de insumos y repuestos', 1, 1],
+        [14, 2, 'Venta de insumos y repuestos', 1, 1],
+        [15, 1, 'Venta de insumos y repuestos', 1, 1],
+        [16, 2, 'Venta de insumos y repuestos', 1, 1],
+        [17, 1, 'Venta de insumos y repuestos', 1, 1],
+        [18, 2, 'Venta de insumos y repuestos', 1, 1],
+        [19, 1, 'Venta de insumos y repuestos', 1, 1],
+        [20, 2, 'Venta de insumos y repuestos', 1, 1],
+        [21, 1, 'Venta de insumos y repuestos', 1, 1],
+        [22, 2, 'Venta de insumos y repuestos', 1, 1],
+        [23, 1, 'Venta de insumos y repuestos', 1, 1],
+        [24, 2, 'Venta de insumos y repuestos', 1, 1]
+     ];
+    $columnConfig = ['ID_SERVICIO', 'TIPO_PAGO','NOMBRE_SERVICIO','TIPO_SERVICIO','ESTADO_SERVICIO'];
+    $seeder->table('venta')->data($array, $columnConfig)->rowQuantity(24);
 
     //Documento de venta
     $array =
@@ -325,18 +334,18 @@ $container['seeder2'] = function($c){
         [10, 10101010,10,'2016/10/10','12:00:00',0,0,100,10],
         [11, 11111111,11,'2016/11/11','12:00:00',0,0,100,11],
         [12, 22222222,12,'2016/12/12','12:00:00',0,0,100,12],
-        [13, 11111111,1,'2016/01/01','12:00:00',0,0,100,1],
-        [14, 88888888,2,'2016/02/02','12:00:00',0,0,100,2],
-        [15, 33333333,3,'2016/03/03','12:00:00',0,0,100,3],
-        [16, 22222222,4,'2016/04/04','12:00:00',0,0,100,4],
-        [17, 33333333,5,'2016/05/05','12:00:00',0,0,100,5],
-        [18, 66666666,6,'2016/06/06','12:00:00',0,0,100,6],
-        [19, 22222222,7,'2016/07/07','12:00:00',0,0,100,7],
-        [20, 22222222,8,'2016/08/08','12:00:00',0,0,100,8],
-        [21, 22222222,9,'2016/09/09','12:00:00',0,0,100,9],
-        [22, 22222222,10,'2016/10/10','12:00:00',0,0,100,10],
-        [23, 33333333,11,'2016/11/11','12:00:00',0,0,100,11],
-        [24, 33333333,12,'2016/12/12','12:00:00',0,0,100,12]
+        [13, 11111111,13,'2016/01/01','12:00:00',0,0,100,1],
+        [14, 88888888,14,'2016/02/02','12:00:00',0,0,100,2],
+        [15, 33333333,15,'2016/03/03','12:00:00',0,0,100,3],
+        [16, 22222222,16,'2016/04/04','12:00:00',0,0,100,4],
+        [17, 33333333,17,'2016/05/05','12:00:00',0,0,100,5],
+        [18, 66666666,18,'2016/06/06','12:00:00',0,0,100,6],
+        [19, 22222222,19,'2016/07/07','12:00:00',0,0,100,7],
+        [20, 22222222,20,'2016/08/08','12:00:00',0,0,100,8],
+        [21, 22222222,21,'2016/09/09','12:00:00',0,0,100,9],
+        [22, 22222222,22,'2016/10/10','12:00:00',0,0,100,10],
+        [23, 33333333,23,'2016/11/11','12:00:00',0,0,100,11],
+        [24, 33333333,24,'2016/12/12','12:00:00',0,0,100,12]
      ];
     $columnConfig = ['ID_VENTA','RUT_PERSONA','ID_SERVICIO','FECHA_VENTA','HORA_VENTA','VALOR_VENTA','IVA','FOLIO','NUMERO_SERIE'];
     $seeder->table('documento_venta')->data($array, $columnConfig)->rowQuantity(24);

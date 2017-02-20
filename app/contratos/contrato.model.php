@@ -24,17 +24,34 @@
 														cli.NOMBRE_PERSONA, 
 														cli.APATERNO_PERSONA, 
 														cli.AMATERNO_PERSONA,
+														cli.DIRECCION_PERSONA,
+														cli.TELEFONO_PERSONA,
+														t.NOMBRE_PERSONA AS NOMBRE_TRABAJADOR,
+														t.APATERNO_PERSONA AS APATERNO_TRABAJADOR,
+														t.AMATERNO_PERSONA AS AMATERNO_TRABAJADOR,
 														a.NOMBRE_SERVICIO,
 														a.DETALLE,
 														a.TIPO_SERVICIO,
 														a.FECHA_INICIO,
 														a.FECHA_TERMINO,
-														a.ESTADO_SERVICIO
+														a.ESTADO_SERVICIO,
+														v.MARCA,
+														v.MODELO,
+														v.ANHO_FABRICACION,
+														v.ESTADO_VEHICULO,
+														v.TIPO_PATENTE,
+														tv.DESCRIPCION_TIPO_VEHICULO
 											FROM 		contrato co
 											INNER JOIN 	cliente cli 
 											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN 	trabajador t 
+											ON 			co.RUT_PERSONA = t.RUT_PERSONA
 											INNER JOIN	arriendo a
-											ON			a.ID_SERVICIO = co.ID_SERVICIO');			
+											ON			a.ID_SERVICIO = co.ID_SERVICIO
+											INNER JOIN	vehiculo v
+											ON			v.NRO_PATENTE = co.NRO_PATENTE
+											INNER JOIN	tipo_vehiculo tv
+											ON			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO');			
 			$query->execute();
 
 			$datos['contratos'] = $query->fetchAll();
@@ -56,17 +73,34 @@
 														cli.NOMBRE_PERSONA, 
 														cli.APATERNO_PERSONA, 
 														cli.AMATERNO_PERSONA,
+														cli.DIRECCION_PERSONA,
+														cli.TELEFONO_PERSONA,
+														t.NOMBRE_PERSONA AS NOMBRE_TRABAJADOR,
+														t.APATERNO_PERSONA AS APATERNO_TRABAJADOR,
+														t.AMATERNO_PERSONA AS AMATERNO_TRABAJADOR,
 														a.NOMBRE_SERVICIO,
 														a.DETALLE,
 														a.TIPO_SERVICIO,
 														a.FECHA_INICIO,
 														a.FECHA_TERMINO,
-														a.ESTADO_SERVICIO
+														a.ESTADO_SERVICIO,
+														v.MARCA,
+														v.MODELO,
+														v.ANHO_FABRICACION,
+														v.ESTADO_VEHICULO,
+														v.TIPO_PATENTE,
+														tv.DESCRIPCION_TIPO_VEHICULO
 											FROM 		contrato co
 											INNER JOIN 	cliente cli 
 											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN 	trabajador t 
+											ON 			co.RUT_PERSONA = t.RUT_PERSONA
 											INNER JOIN	arriendo a
 											ON			a.ID_SERVICIO = co.ID_SERVICIO
+											INNER JOIN	vehiculo v
+											ON			v.NRO_PATENTE = co.NRO_PATENTE
+											INNER JOIN	tipo_vehiculo tv
+											ON			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO
 											WHERE 		co.ID_CONTRATO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){

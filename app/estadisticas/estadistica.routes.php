@@ -34,4 +34,12 @@ $app->group('/estadisticas', function(){
 		return $response;
 	});
 
+	$this->get('/promedio-ventas', function ($request, $response, $args) {
+
+		$json = $this->estadisticas->promedioVentas();
+
+		$response->write(json_encode($json));
+		return $response;
+	});
+
 });
