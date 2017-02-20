@@ -109,7 +109,7 @@
 													MARCA = :marca, 
 													MODELO = :modelo, 
 													ANHO_FABRICACION = :anho, 
-													TIPO_VEHICULO = :tipo_vehiculo, 
+													ID_TIPO_VEHICULO = :tipo_vehiculo, 
 													ESTADO_VEHICULO = :estado, 
 													TIPO_PATENTE = :tipo_patente 
 											WHERE 	NRO_PATENTE = :id');
@@ -118,7 +118,7 @@
 			$query -> bindParam(':marca', 			$data['MARCA']);
 			$query -> bindParam(':modelo', 			$data['MODELO']);
 			$query -> bindParam(':anho', 			$data['ANHO_FABRICACION']);
-			$query -> bindParam(':tipo_vehiculo', 	$data['TIPO_VEHICULO']);
+			$query -> bindParam(':tipo_vehiculo', 	$data['ID_TIPO_VEHICULO']);
 			$query -> bindParam(':estado', 			$data['ESTADO_VEHICULO']);
 			$query -> bindParam(':tipo_patente', 	$data['TIPO_PATENTE']);
 			$query -> bindParam(':id', 				$data['NRO_PATENTE']);
