@@ -29,7 +29,7 @@
 			foreach($clientes as $cliente){
 				$datos['respuesta']['values'][$i] = $cliente['CANTIDAD_VENTAS'];
 				$datos['respuesta']['labels'][$i] = $cliente['NOMBRE_PERSONA'] . $cliente['APATERNO_PERSONA'];
-				$i++;
+				$i++; 
 			}
 
 			ob_start();
