@@ -2,6 +2,14 @@
 
 $app->group('/estadisticas', function(){
 
+	$this->get('', function ($request, $response, $args) {
+
+		$json = $this->estadisticas->index();
+
+		$response->write(json_encode($json));
+		return $response;
+	});
+
 	$this->get('/top-trabajadores', function ($request, $response, $args) {
 
 		$json = $this->estadisticas->topTrabajadores();

@@ -55,14 +55,15 @@ function FormularioVehiculo(){
 	    complete:   function(){
 	    	$('#overlay-loader').fadeOut(400);
 	    },
-	    success: function(resultado){	
+	    success: function(resultado){
+	    	//cargar valores de select
 	    	OpenModal('modal_nuevo_vehiculo',resultado.html,'lg');
 	    	getmdlSelect.init(".getmdl-select");
 		}
 	});
 }
 function IngresarVehiculo(){
-	console.log($('#patente_vehiculo').val()+$('#id_bodega').val()+$('#marca_vehiculo').val()+$('#modelo_vehiculo').val()+$('#anho_fabricacion').val()+$('#tipo_vehiculo').val()+$('#estado_vehiculo').val()+$('#tipo_patente').val());
+
 	$.ajax({
 	    type: "POST",
 	    url : "api/vehiculos/store",

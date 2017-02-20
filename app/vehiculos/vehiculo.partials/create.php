@@ -14,11 +14,23 @@
 							<label class="mdl-textfield__label" for="patente_vehiculo">Patente</label>
 						</div>	
 					</div>
+					
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="id_bodega">
-							<label class="mdl-textfield__label" for="id_bodega">Bodega</label>
-						</div>	
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+				            <input class="mdl-textfield__input" type="text" id="id_bodega" value="Seleccione bodega" readonly tabIndex="-1">
+				            <label for="id_bodega">
+				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
+				            </label>
+				            <label for="id_bodega" class="mdl-textfield__label">Bodega</label>
+				            <ul for="id_bodega" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+				            <?php
+								foreach ($datos['bodegas'] as $d) { ?>
+									<li class="mdl-menu__item" data-val="<?php echo $d['ID_BODEGA']; ?>">
+										<?php echo $d['NOMBRE_BODEGA']; ?>										
+									</li>
+							<?php } ?>
+				            </ul>
+				        </div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -67,7 +79,7 @@
 		  Cancelar
 		</button>	
 	 	<button  type="button" onclick="IngresarVehiculo();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
-		  Ingresar cliente
+		  Ingresar vehículo
 		</button>
 	</div>
 </div>
