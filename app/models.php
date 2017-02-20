@@ -10,3 +10,4 @@
 	require 'servicio_venta/servicio_venta.model.php';
 	require 'trabajadores/trabajador.model.php';
 	require 'contratos/contrato.model.php';
+	require 'estadisticas/estadistica.model.php';
