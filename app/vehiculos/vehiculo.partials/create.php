@@ -11,76 +11,51 @@
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="patente_vehiculo">
-							<label class="mdl-textfield__label" for="Patente">Patente</label>
+							<label class="mdl-textfield__label" for="patente_vehiculo">Patente</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 							<input class="mdl-textfield__input" type="text" id="id_bodega">
-							<label class="mdl-textfield__label" for="Bodega">Bodega</label>
+							<label class="mdl-textfield__label" for="id_bodega">Bodega</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="apaterno_cliente">
-							<label class="mdl-textfield__label" for="Apaterno">Apellido paterno</label>
+							<input class="mdl-textfield__input" type="text" id="marca_vehiculo">
+							<label class="mdl-textfield__label" for="marca_vehiculo">Marca</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="amaterno_cliente">
-							<label class="mdl-textfield__label" for="Amaterno">Apellido materno</label>
-						</div>	
-					</div>	
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="email_cliente">
-							<label class="mdl-textfield__label" for="Email">Email</label>
+							<input class="mdl-textfield__input" type="text" id="modelo_vehiculo">
+							<label class="mdl-textfield__label" for="modelo_vehiculo">Modelo</label>
 						</div>	
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="telefono_cliente">
-							<label class="mdl-textfield__label" for="Telefono">Telefono</label>
+							<input class="mdl-textfield__input" type="text" id="anho_fabricacion">
+							<label class="mdl-textfield__label" for="anho_fabricacion">Año fabricación</label>
 						</div>	
 					</div>	
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="fecha_cliente">
-							<label class="mdl-textfield__label" for="Fecha">Fecha nacimiento</label>
+							<input class="mdl-textfield__input" type="text" id="tipo_vehiculo">
+							<label class="mdl-textfield__label" for="tipo_vehiculo">Tipo vehículo</label>
 						</div>	
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-							<input class="mdl-textfield__input" type="text" id="direccion_cliente">
-							<label class="mdl-textfield__label" for="Direccion">Direccion</label>
+							<input class="mdl-textfield__input" type="text" id="estado_vehiculo">
+							<label class="mdl-textfield__label" for="estado_vehiculo">Estado vehículo</label>
 						</div>	
-					</div>	
-					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="region_cliente" value="Seleccione región" readonly tabIndex="-1">
-				            <label for="region_cliente">
-				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
-				            </label>
-				            <label for="region_cliente" class="mdl-textfield__label">Región</label>
-				            <ul for="region_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="1">Tarapacá</li>
-				            </ul>
-				        </div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
-				            <input class="mdl-textfield__input" type="text" id="comuna_cliente" value="Seleccione comuna" readonly tabIndex="-1">
-				            <label for="comuna_cliente">
-				                <i class="mdl-icon-toggle__label fa fa-sort-desc" aria-hidden="true"></i>
-				            </label>
-				            <label for="comuna_cliente" class="mdl-textfield__label">Comuna</label>
-				            <ul for="comuna_cliente" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-				                <li class="mdl-menu__item" data-val="1">Iquique</li>
-				                <li class="mdl-menu__item" data-val="2">Alto hospicio</li>
-				            </ul>
-				        </div>
-					</div>	
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" id="tipo_patente">
+							<label class="mdl-textfield__label" for="tipo_patente">Tipo patente</label>
+						</div>	
+					</div>
 				</div>
 			</form>
 		</div>
@@ -90,8 +65,8 @@
 	<div class="col-xs-12">
 		<button  type="button" class="mdl-button mdl-button--raised mdl-button--centered" data-value="modal-dismiss">
 		  Cancelar
-		</button>
-	 	<button  type="button" onclick="IngresarCliente();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
+		</button>	
+	 	<button  type="button" onclick="IngresarVehiculo();" class="mdl-button mdl-button--raised mdl-button--colored mdl-button--centered">
 		  Ingresar cliente
 		</button>
 	</div>

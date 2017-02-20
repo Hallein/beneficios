@@ -57,14 +57,16 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO vehiculo(	ID_BODEGA, 
+			$query = $this->db->prepare('INSERT INTO vehiculo(	NRO_PATENTE,
+																ID_BODEGA, 
 																MARCA, 
 																MODELO, 
 																ANHO_FABRICACION, 
 																TIPO_VEHICULO, 
 																ESTADO_VEHICULO, 
 																TIPO_PATENTE) 
-													VALUES(		:bodega, 
+													VALUES(		:patente,
+																:bodega, 
 																:marca, 
 																:modelo, 
 																:anho, 
@@ -72,13 +74,14 @@
 																:estado, 
 																:tipo_patente)');
 
-			$query -> bindParam(':bodega', 			$data['ID_BODEGA']);
-			$query -> bindParam(':marca', 			$data['MARCA']);
-			$query -> bindParam(':modelo', 			$data['MODELO']);
-			$query -> bindParam(':anho', 			$data['ANHO_FABRICACION']);
-			$query -> bindParam(':tipo_vehiculo', 	$data['TIPO_VEHICULO']);
-			$query -> bindParam(':estado', 			$data['ESTADO_VEHICULO']);
-			$query -> bindParam(':tipo_patente', 	$data['TIPO_PATENTE']);
+			$query -> bindParam(':patente', 		$data['patente']);
+			$query -> bindParam(':bodega', 			$data['bodega']);
+			$query -> bindParam(':marca', 			$data['marca']);
+			$query -> bindParam(':modelo', 			$data['modelo']);
+			$query -> bindParam(':anho', 			$data['anho']);
+			$query -> bindParam(':tipo_vehiculo', 	$data['tipo_vehiculo']);
+			$query -> bindParam(':estado', 			$data['estado']);
+			$query -> bindParam(':tipo_patente', 	$data['tipo_patente']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';

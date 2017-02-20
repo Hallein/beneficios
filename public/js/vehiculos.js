@@ -61,3 +61,35 @@ function FormularioVehiculo(){
 		}
 	});
 }
+function IngresarVehiculo(){
+	console.log($('#patente_vehiculo').val()+$('#id_bodega').val()+$('#marca_vehiculo').val()+$('#modelo_vehiculo').val()+$('#anho_fabricacion').val()+$('#tipo_vehiculo').val()+$('#estado_vehiculo').val()+$('#tipo_patente').val());
+	$.ajax({
+	    type: "POST",
+	    url : "api/vehiculos/store",
+	    data: {
+	    	patente: 		$('#patente_vehiculo').val(),
+			bodega:			$('#id_bodega').val(),
+			marca:			$('#marca_vehiculo').val(),
+			modelo:			$('#modelo_vehiculo').val(),
+			anho:			$('#anho_fabricacion').val(),
+			tipo_vehiculo:	$('#tipo_vehiculo').val(),
+			estado:			$('#estado_vehiculo').val(),
+			tipo_patente:	$('#tipo_patente').val()
+	    },
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	if(resultado.respuesta.status == 'success'){
+	    		ShowToast(resultado.respuesta.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		CloseModal();
+	    	}else{
+	    		ShowToast(resultado.respuesta.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+		}
+	});
+}
