@@ -24,6 +24,7 @@
 	                <th>Rut</th>
 	                <th>Nombre</th>
 	                <th>Comuna</th>
+	                <th>Compras realizadas</th>
 	                <th></th>
 	            </tr>
 	        </thead>
@@ -32,6 +33,7 @@
 	                <th>Rut</th>
 	                <th>Nombre</th>
 	                <th>Comuna</th>
+	                <th>Compras realizadas</th>
 	                <th></th>
 	            </tr>
 	        </tfoot>
@@ -42,6 +44,7 @@
 	            	<td><?php echo $dato['RUT_PROVEEDOR']; ?></td>
 	                <td><?php echo $dato['NOMBRE_PROVEEDOR']; ?></td>		                
 	                <td><?php echo $dato['COMUNA']; ?></td>
+	                <td><?php echo $dato['COMPRAS_REALIZADAS']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">
 							<button type="button" class="mdl-button mdl-button--fab mdl-button--mini-fab d-options-icon d-multi-button">

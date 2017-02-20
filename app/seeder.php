@@ -125,7 +125,19 @@ $container['seeder'] = function($c){
     $seeder->table('tipo_vehiculo')->data($array, $columnConfig)->rowQuantity(5);
 
     //Vehiculo
-    $seeder->table('vehiculo')->columns([        
+    $array =
+     [
+        ['ASDF11', 2, 'Suzuki', 'Vitara', '2016/01/01', 1, 1, 'Normal'],
+        ['QWER22', 2, 'Honda', 'CB 190R', '2016/01/01', 2, 1, 'Normal'],
+        ['AABB33', 2, 'Mercedes Benz', 'a200', '2016/01/01', 1, 1, 'Normal'],
+        ['JJCC44', 2, 'Ferrari', 'Enzo', '2016/01/01', 1, 1, 'Normal'],
+        ['RRHH55', 2, 'Mitsubichi' , 'Montero', '2016/01/01', 3, 1, 'Normal']
+     ];
+    $columnConfig = ['NRO_PATENTE','ID_BODEGA','MARCA','MODELO','ANHO_FABRICACION','ID_TIPO_VEHICULO', 'ESTADO_VEHICULO','TIPO_PATENTE'];
+    $seeder->table('vehiculo')->data($array, $columnConfig)->rowQuantity(5);
+
+    //Vehiculo
+    /*$seeder->table('vehiculo')->columns([        
         'NRO_PATENTE'       => $faker->bothify('????##'),
         'ID_BODEGA'         => $generator->relation('bodega', 'ID_BODEGA'),
         'MARCA'             => $faker->colorName,
@@ -134,7 +146,7 @@ $container['seeder'] = function($c){
         'ID_TIPO_VEHICULO'  => $generator->relation('tipo_vehiculo', 'ID_TIPO_VEHICULO'),
         'ESTADO_VEHICULO'   => $faker->randomElement([1, 2, 3]), //'Disponible','En arriendo', 'Descompuesto'
         'TIPO_PATENTE'      => $faker->randomElement([1, 2, 3, 4])
-    ])->rowQuantity(5);
+    ])->rowQuantity(5);*/
 
     $seeder->table('arriendo')->columns([        
         'ID_SERVICIO'       => $generator->pk,
