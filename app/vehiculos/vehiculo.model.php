@@ -9,31 +9,36 @@
 
 		public function getAll(){
 
-			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
-													ID_BODEGA, 
-													MARCA, 
-													MODELO, 
-													ANHO_FABRICACION, 
-													TIPO_VEHICULO, 
-													ESTADO_VEHICULO, 
-													TIPO_PATENTE  
-											FROM	vehiculo');
+			$query = $this->db->prepare('	SELECT 		v.NRO_PATENTE,
+														v.ID_BODEGA, 
+														v.MARCA, 
+														v.MODELO, 
+														v.ANHO_FABRICACION, 
+														v.ID_TIPO_VEHICULO, 
+														v.ESTADO_VEHICULO, 
+														v.TIPO_PATENTE,
+														tv.DESCRIPCION_TIPO_VEHICULO AS TIPO_VEHICULO  
+											FROM		vehiculo v
+											INNER JOIN 	tipo_vehiculo tv
+											ON 			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO');
 			$query->execute();
 			$datos['vehiculos'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
-													ID_BODEGA, 
-													MARCA, 
-													MODELO, 
-													ANHO_FABRICACION, 
-													TIPO_VEHICULO, 
-													ESTADO_VEHICULO, 
-													TIPO_PATENTE 
-											FROM	vehiculo 
-											WHERE	NRO_PATENTE = :id');
+			$query = $this->db->prepare('	SELECT 		v.NRO_PATENTE,
+														v.ID_BODEGA, 
+														v.MARCA, 
+														v.MODELO, 
+														v.ANHO_FABRICACION, 
+														v.ID_TIPO_VEHICULO, 
+														v.ESTADO_VEHICULO, 
+														v.TIPO_PATENTE 
+											FROM		vehiculo v
+											INNER JOIN 	tipo_vehiculo tv
+											ON 			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO 
+											WHERE		v.NRO_PATENTE = :id');
 
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
@@ -61,7 +66,7 @@
 																MARCA, 
 																MODELO, 
 																ANHO_FABRICACION, 
-																TIPO_VEHICULO, 
+																ID_TIPO_VEHICULO, 
 																ESTADO_VEHICULO, 
 																TIPO_PATENTE) 
 													VALUES(		:bodega, 

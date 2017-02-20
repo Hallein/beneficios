@@ -11,3 +11,4 @@
 	require 'servicio_venta/servicio_venta.routes.php';
 	require 'trabajadores/trabajador.routes.php';
 	require 'contratos/contrato.routes.php';
+	require 'estadisticas/estadistica.routes.php';
