@@ -1,8 +1,8 @@
 <?php
 
-$app->group('estadisticas', function(){
+$app->group('/estadisticas', function(){
 
-	$this->get('top-trabajadores', function ($request, $response, $args) {
+	$this->get('/top-trabajadores', function ($request, $response, $args) {
 
 		$json = $this->estadisticas->topTrabajadores();
 
@@ -10,7 +10,7 @@ $app->group('estadisticas', function(){
 		return $response;
 	});
 
-	$this->get('top-clientes', function ($request, $response, $args) {
+	$this->get('/top-clientes', function ($request, $response, $args) {
 
 		$json = $this->estadisticas->topClientes();
 
@@ -18,7 +18,7 @@ $app->group('estadisticas', function(){
 		return $response;
 	});
 
-	$this->get('producto-mas-vendido', function ($request, $response, $args) {
+	$this->get('/producto-mas-vendido', function ($request, $response, $args) {
 
 		$json = $this->estadisticas->productoMasVendido();
 
