@@ -1,5 +1,4 @@
 <?php
-
 class Estadistica{
 	private $db;
 
@@ -46,7 +45,8 @@ class Estadistica{
 	}
 
 	public function promedioVentas(){
-		$query = $this->db->prepare('	SELECT 		DATE_FORMAT(documento_venta.FECHA_VENTA, "%m") AS MES, 
+		$query = $this->db->prepare('	SELECT 		UPPER(DATE_FORMAT(documento_venta.FECHA_VENTA, "%b")) AS MES,
+													DATE_FORMAT(documento_venta.FECHA_VENTA, "%m") AS ORDEN,
 													DATE_FORMAT(documento_venta.FECHA_VENTA, "%Y") AS ANHO,
 													SUM(documento_venta.VALOR_VENTA) AS VENTAS
 										FROM 		documento_venta
@@ -54,8 +54,8 @@ class Estadistica{
 										BETWEEN 	(now() - INTERVAL 7 month) 
 										AND 		(now() - INTERVAL 1 month)
 										GROUP BY 	MES, ANHO,documento_venta.FECHA_VENTA
-										ORDER BY 	ANHO DESC, 
-													MES DESC');
+										ORDER BY 	ANHO ASC, 
+													ORDEN ASC');
 		$query->execute();
 		$datos['ventas-por-mes'] = $query->fetchAll();
 

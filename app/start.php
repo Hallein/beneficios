@@ -24,6 +24,7 @@ $container['db'] = function ($c) {
 				    	array('charset'=>'utf8'));
 
 		$pdo->query("SET CHARACTER SET utf8");
+		$pdo->query("SET lc_time_names = 'es_ES'");
 	    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);    	
     }

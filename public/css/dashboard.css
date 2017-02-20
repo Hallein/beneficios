@@ -495,11 +495,17 @@ a:link, a:visited, a:hover, a:active {
 	/*END-LOADER*************************************/
 
 	/*CHARTS*****************************************/
+	.d-chart-title{
+		text-align: center;
+		margin: 0;
+		padding: 24px 0 16px 0;
+	}
 	canvas{
 		padding: 0 20px;
 	}
 	.d-canvas canvas{
 		background-color: #148f77;
+		color: #fff;
 	}
 	.d-canvas  .d-canvas-container{
 		display: block;

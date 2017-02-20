@@ -10,9 +10,9 @@
 		public function index(){
 
 			//$datos['respuesta']['top-trabajadores'] = $this->topTrabajadores();
-			$datos['respuesta']['top-clientes'] = $this->topClientes();
-			$datos['respuesta']['producto-mas-vendido'] = $this->productoMasVendido();
-			$datos['respuesta']['promedio-ventas'] = $this->promedioVentas();
+			$datos['respuesta']['topclientes'] = $this->topClientes();
+			$datos['respuesta']['productomasvendido'] = $this->productoMasVendido();
+			$datos['respuesta']['promedioventas'] = $this->promedioVentas();
 
 			return $datos['respuesta'];
 		}
@@ -91,7 +91,7 @@
 			$i = 0;
 			foreach($ventas['ventas-por-mes'] as $venta){
 				$datos['respuesta']['values'][$i] = $venta['VENTAS'];
-				$datos['respuesta']['labels'][$i] = $venta['MES'] . '/' . $venta['ANHO'];
+				$datos['respuesta']['labels'][$i] = $venta['MES'] . ' ' . $venta['ANHO'];
 				$i++; 
 			}
 
@@ -99,7 +99,7 @@
 			include ESTADISTICAS . '/promedioVentas.php';
 			$datos['respuesta']['html'] = ob_get_clean();
 
-			return $datos;
+			return $datos['respuesta'];
 		}
 
 

@@ -46,7 +46,7 @@ function LoginUsuario(){
 				window.onbeforeunload = function() {
 			        return "¿Estas seguro de abandonar la pagina?. Deberá iniciar sesión nuevamente.";
 			    }
-			    TopClientes();
+			    MostrarInicio();
 			}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
