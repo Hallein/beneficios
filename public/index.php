@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="css/dataTables.material.min.css">
 	<link rel="stylesheet" href="css/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="css/material.datepicker.css">
 	<link rel="stylesheet" href="css/dashboard.css">
 	<!--<link rel="stylesheet" href="css/sweetalert.css">	-->
 	<title>Dashboard 2.0</title>

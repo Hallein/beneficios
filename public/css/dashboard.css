@@ -20,6 +20,15 @@ body{
 	background-color: #e5e7e9;
 }
 
+a{
+	color: #212121;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #212121;
+    text-decoration: none;
+}
+
 .d-full-width{
 	width: 100%;
 }

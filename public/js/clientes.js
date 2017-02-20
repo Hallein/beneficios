@@ -76,7 +76,9 @@ function IngresarCliente(){
 			telefono:	$('#telefono_cliente').val(),
 			fechanac:	$('#fecha_cliente').val(),
 			direccion:	$('#direccion_cliente').val(),
-			comuna: 	$('#comuna_cliente').attr('data-val')
+			comuna: 	$('#comuna_cliente').attr('data-val'),
+			empresa: 	$('#empresa_cliente').val(),
+			sexo: 		$('#sexo_cliente').attr('data-val')
 	    },
 	    dataType: "json",
 	    beforeSend: function() {
@@ -89,6 +91,7 @@ function IngresarCliente(){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
+	    		MostrarClientes();
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
@@ -127,8 +130,9 @@ function ModificarCliente(rut){
 			telefono:	$('#telefono_cliente').val(),
 			fechanac:	$('#fecha_cliente').val(),
 			direccion:	$('#direccion_cliente').val(),
-			sexo: 		1,
-			comuna: 	$('#comuna_cliente').attr('data-val')
+			comuna: 	$('#comuna_cliente').attr('data-val'),
+			empresa: 	$('#empresa_cliente').val(),
+			sexo: 		$('#sexo_cliente').attr('data-val')
 	    },
 	    dataType: "json",
 	    beforeSend: function() {
@@ -141,6 +145,7 @@ function ModificarCliente(rut){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
+	    		MostrarClientes();
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
@@ -151,7 +156,7 @@ function ModificarCliente(rut){
 function EliminarCliente(rut){
 	$.ajax({
 	    type: "POST",
-	    url : "api/clientes/destroy",
+	    url : "api/clientes/destroy/"+rut,
 	    data: {
 	    	rut: 		rut
 	    },
@@ -166,6 +171,7 @@ function EliminarCliente(rut){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		CloseModal();
+	    		MostrarClientes();
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
@@ -175,4 +181,25 @@ function EliminarCliente(rut){
 
 function VerCliente(){
 	
+}
+
+function ListarComunas(element){
+	var id = parseInt($(element).attr('data-val'));
+	$.ajax({
+	    type: "GET",
+	    url : "api/clientes/comunas/"+id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	//$('#overlay-loader').fadeIn(400);
+	    },
+	    complete:   function(){
+	    	//$('#overlay-loader').fadeOut(400);
+	    },
+	    success: function(resultado){	
+	    	$('#comuna_cliente').val('Seleccione una comuna');
+	    	$('#comuna_cliente').attr('data-val','');
+	    	$('#ul_comuna_cliente').html(resultado.html);
+	    	getmdlSelect.init(".getmdl-select");
+		}
+	});
 }
