@@ -7,6 +7,15 @@
 			$this->estadistica = new Estadistica($db);
 		}
 
+		public function index(){
+
+			$datos['respuesta']['top-trabajadores'] = $this->topTrabajadores();
+			$datos['respuesta']['top-clientes'] = $this->topClientes();
+			$datos['respuesta']['producto-mas-vendido'] = $this->productoMasVendido();
+
+			return $datos['respuesta'];
+		}
+
 		public function topTrabajadores(){
 			
 			$datos = $this->estadistica->topTrabajadores();
