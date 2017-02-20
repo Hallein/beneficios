@@ -23,10 +23,18 @@
 														co.ESTADO_CONTRATO,
 														cli.NOMBRE_PERSONA, 
 														cli.APATERNO_PERSONA, 
-														cli.AMATERNO_PERSONA
+														cli.AMATERNO_PERSONA,
+														a.NOMBRE_SERVICIO,
+														a.DETALLE,
+														a.TIPO_SERVICIO,
+														a.FECHA_INICIO,
+														a.FECHA_TERMINO,
+														a.ESTADO_SERVICIO
 											FROM 		contrato co
 											INNER JOIN 	cliente cli 
-											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA');			
+											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN	arriendo a
+											ON			a.ID_SERVICIO = co.ID_SERVICIO');			
 			$query->execute();
 
 			$datos['contratos'] = $query->fetchAll();
@@ -47,10 +55,18 @@
 														co.ESTADO_CONTRATO,
 														cli.NOMBRE_PERSONA, 
 														cli.APATERNO_PERSONA, 
-														cli.AMATERNO_PERSONA
+														cli.AMATERNO_PERSONA,
+														a.NOMBRE_SERVICIO,
+														a.DETALLE,
+														a.TIPO_SERVICIO,
+														a.FECHA_INICIO,
+														a.FECHA_TERMINO,
+														a.ESTADO_SERVICIO
 											FROM 		contrato co
 											INNER JOIN 	cliente cli 
 											ON 			co.CLI_RUT_PERSONA = cli.RUT_PERSONA
+											INNER JOIN	arriendo a
+											ON			a.ID_SERVICIO = co.ID_SERVICIO
 											WHERE 		co.ID_CONTRATO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){

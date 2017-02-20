@@ -8,13 +8,18 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('	SELECT 	ID_INSUMO,
-													NOMBRE_INSUMO, 
-													CATEGORIA_INSUMO, 
-													SUBCATEGORIA_INSUMO, 
-													PRECIO_VENTA, 
-													PRECIO_COMPRA 
-											FROM 	insumo');
+			$query = $this->db->prepare('	SELECT 		i.ID_INSUMO,
+														i.NOMBRE_INSUMO, 
+														i.ID_CATEGORIA_INSUMO, 
+														i.PRECIO_VENTA, 
+														i.PRECIO_COMPRA,
+														cat.DESCRIPCION_CATEGORIA_INSUMO AS CATEGORIA_INSUMO,
+														det.STOCK
+											FROM 		insumo i
+											INNER JOIN	categoria_insumo cat
+											ON			cat.ID_CATEGORIA_INSUMO = i.ID_CATEGORIA_INSUMO
+											INNER JOIN 	detalle_bodega det
+											ON			det.ID_INSUMO = i.ID_INSUMO');
 			$query->execute();
 
 			$datos = array();
@@ -23,13 +28,18 @@
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('	SELECT 	NOMBRE_INSUMO, 
-													CATEGORIA_INSUMO, 
-													SUBCATEGORIA_INSUMO, 
-													PRECIO_VENTA, 
-													PRECIO_COMPRA 
-											FROM 	insumo 
-											WHERE 	ID_INSUMO = :id');
+			$query = $this->db->prepare('	SELECT 		i.NOMBRE_INSUMO, 
+														i.ID_CATEGORIA_INSUMO,
+														i.PRECIO_VENTA, 
+														i.PRECIO_COMPRA, 
+														cat.DESCRIPCION_CATEGORIA_INSUMO,														
+														det.STOCK
+											FROM 		insumo i
+											INNER JOIN	categoria_insumo cat
+											ON			cat.ID_CATEGORIA_INSUMO = i.ID_CATEGORIA_INSUMO
+											INNER JOIN 	detalle_bodega det
+											ON			det.ID_INSUMO = i.ID_INSUMO
+											WHERE 		i.ID_INSUMO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['insumo'] = $query -> fetch();
@@ -53,19 +63,16 @@
 		public function store($data){
 			$datos = array();
 			$query = $this->db->prepare('INSERT INTO insumo(NOMBRE_INSUMO, 
-															CATEGORIA_INSUMO, 
-															SUBCATEGORIA_INSUMO, 
+															ID_CATEGORIA_INSUMO, 
 															PRECIO_VENTA, 
 															PRECIO_COMPRA) 
 												VALUES(		:nombre, 
 															:categoria, 
-															:subcategoria, 
 															:precio_venta, 
 															:precio_compra)');
 
 			$query -> bindParam(':nombre', 			$data['NOMBRE_INSUMO']);
-			$query -> bindParam(':categoria', 		$data['CATEGORIA_INSUMO']);
-			$query -> bindParam(':subcategoria', 	$data['SUBCATEGORIA_INSUMO']);
+			$query -> bindParam(':categoria', 		$data['ID_CATEGORIA_INSUMO']);
 			$query -> bindParam(':precio_venta', 	$data['PRECIO_VENTA']);
 			$query -> bindParam(':precio_compra', 	$data['PRECIO_COMPRA']);
 
@@ -87,15 +94,13 @@
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	insumo 
 											SET 	NOMBRE_INSUMO = :nombre, 
-													CATEGORIA_INSUMO = :categoria, 
-													SUBCATEGORIA_INSUMO = :subcategoria, 
+													ID_CATEGORIA_INSUMO = :categoria, 
 													PRECIO_VENTA = :precio_venta, 
 													PRECIO_COMPRA = :precio_compra 
 											WHERE 	ID_INSUMO = :id');
 
 			$query -> bindParam(':nombre', 			$data['NOMBRE_INSUMO']);
-			$query -> bindParam(':categoria', 		$data['CATEGORIA_INSUMO']);
-			$query -> bindParam(':subcategoria', 	$data['SUBCATEGORIA_INSUMO']);
+			$query -> bindParam(':categoria', 		$data['ID_CATEGORIA_INSUMO']);
 			$query -> bindParam(':precio_venta', 	$data['PRECIO_VENTA']);
 			$query -> bindParam(':precio_compra', 	$data['PRECIO_COMPRA']);
 			$query -> bindParam(':id', 				$data['ID_INSUMO']);

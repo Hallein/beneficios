@@ -8,25 +8,41 @@
 		}
 
 		public function getAll(){
-			$query = $this->db->prepare('SELECT ID_BODEGA,
-												RUT_PERSONA, 
-												NOMBRE_BODEGA, 
-												DIRECCION_BODEGA, 
-												TIPO_BODEGA 
-										FROM 	bodega');
+			$query = $this->db->prepare('SELECT 	b.ID_BODEGA,
+													b.RUT_PERSONA, 
+													b.NOMBRE_BODEGA, 
+													b.DIRECCION_BODEGA, 
+													b.ID_TIPO_BODEGA,
+													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA,
+													t.NOMBRE_PERSONA,
+													t.APATERNO_PERSONA,
+													t.AMATERNO_PERSONA
+										FROM 		bodega b
+										INNER JOIN 	tipo_bodega tp
+										ON 			tp.ID_TIPO_BODEGA = b.ID_TIPO_BODEGA
+										INNER JOIN	trabajador t
+										ON			t.RUT_PERSONA = b.RUT_PERSONA');
 			$query->execute();
 			$datos['bodegas'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('SELECT ID_BODEGA,
-												RUT_PERSONA, 
-												NOMBRE_BODEGA, 
-												DIRECCION_BODEGA, 
-												TIPO_BODEGA 
-										FROM 	bodega 
-										WHERE 	ID_BODEGA = :id');
+			$query = $this->db->prepare('SELECT 	b.ID_BODEGA,
+													b.RUT_PERSONA, 
+													b.NOMBRE_BODEGA, 
+													b.DIRECCION_BODEGA, 
+													b.ID_TIPO_BODEGA,
+													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA,
+													t.NOMBRE_PERSONA,
+													t.APATERNO_PERSONA,
+													t.AMATERNO_PERSONA
+										FROM 		bodega b
+										INNER JOIN 	tipo_bodega tp
+										ON 			tp.ID_TIPO_BODEGA = b.ID_TIPO_BODEGA
+										INNER JOIN	trabajador t
+										ON			t.RUT_PERSONA = b.RUT_PERSONA
+										WHERE 		b.ID_BODEGA = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
 				$datos['bodega'] = $query -> fetch();
@@ -52,7 +68,7 @@
 			$query = $this->db->prepare('	INSERT INTO bodega(	RUT_PERSONA, 
 																NOMBRE_BODEGA, 
 																DIRECCION_BODEGA, 
-																TIPO_BODEGA ) 
+																ID_TIPO_BODEGA ) 
 													VALUES(		:rut, 
 																:nombre, 
 																:direccion, 
@@ -83,7 +99,7 @@
 											SET 	RUT_PERSONA = :rut, 
 													NOMBRE_BODEGA = :nombre,
 													DIRECCION_BODEGA = :direccion, 
-													TIPO_BODEGA = :tipo 
+													ID_TIPO_BODEGA = :tipo 
 											WHERE 	ID_INSUMO = :id');
 
 			$query -> bindParam(':rut', 		$data['rut']);
