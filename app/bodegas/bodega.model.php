@@ -13,10 +13,15 @@
 													b.NOMBRE_BODEGA, 
 													b.DIRECCION_BODEGA, 
 													b.ID_TIPO_BODEGA,
-													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA
+													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA,
+													t.NOMBRE_PERSONA,
+													t.APATERNO_PERSONA,
+													t.AMATERNO_PERSONA
 										FROM 		bodega b
 										INNER JOIN 	tipo_bodega tp
-										ON 			tp.ID_TIPO_BODEGA = b.ID_TIPO_BODEGA');
+										ON 			tp.ID_TIPO_BODEGA = b.ID_TIPO_BODEGA
+										INNER JOIN	trabajador t
+										ON			t.RUT_PERSONA = b.RUT_PERSONA');
 			$query->execute();
 			$datos['bodegas'] = $query->fetchAll();
 			return $datos;
@@ -28,10 +33,15 @@
 													b.NOMBRE_BODEGA, 
 													b.DIRECCION_BODEGA, 
 													b.ID_TIPO_BODEGA,
-													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA
+													tp.DESCRIPCION_TIPO_BODEGA AS TIPO_BODEGA,
+													t.NOMBRE_PERSONA,
+													t.APATERNO_PERSONA,
+													t.AMATERNO_PERSONA
 										FROM 		bodega b
 										INNER JOIN 	tipo_bodega tp
 										ON 			tp.ID_TIPO_BODEGA = b.ID_TIPO_BODEGA
+										INNER JOIN	trabajador t
+										ON			t.RUT_PERSONA = b.RUT_PERSONA
 										WHERE 		b.ID_BODEGA = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){

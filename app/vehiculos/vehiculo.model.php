@@ -9,31 +9,36 @@
 
 		public function getAll(){
 
-			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
-													ID_BODEGA, 
-													MARCA, 
-													MODELO, 
-													ANHO_FABRICACION, 
-													TIPO_VEHICULO, 
-													ESTADO_VEHICULO, 
-													TIPO_PATENTE  
-											FROM	vehiculo');
+			$query = $this->db->prepare('	SELECT 		v.NRO_PATENTE,
+														v.ID_BODEGA, 
+														v.MARCA, 
+														v.MODELO, 
+														v.ANHO_FABRICACION, 
+														v.ID_TIPO_VEHICULO, 
+														v.ESTADO_VEHICULO, 
+														v.TIPO_PATENTE,
+														tv.DESCRIPCION_TIPO_VEHICULO AS TIPO_VEHICULO  
+											FROM		vehiculo v
+											INNER JOIN 	tipo_vehiculo tv
+											ON 			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO');
 			$query->execute();
 			$datos['vehiculos'] = $query->fetchAll();
 			return $datos;
 		}
 
 		public function show($id){
-			$query = $this->db->prepare('	SELECT 	NRO_PATENTE,
-													ID_BODEGA, 
-													MARCA, 
-													MODELO, 
-													ANHO_FABRICACION, 
-													TIPO_VEHICULO, 
-													ESTADO_VEHICULO, 
-													TIPO_PATENTE 
-											FROM	vehiculo 
-											WHERE	NRO_PATENTE = :id');
+			$query = $this->db->prepare('	SELECT 		v.NRO_PATENTE,
+														v.ID_BODEGA, 
+														v.MARCA, 
+														v.MODELO, 
+														v.ANHO_FABRICACION, 
+														v.ID_TIPO_VEHICULO, 
+														v.ESTADO_VEHICULO, 
+														v.TIPO_PATENTE 
+											FROM		vehiculo v
+											INNER JOIN 	tipo_vehiculo tv
+											ON 			tv.ID_TIPO_VEHICULO = v.ID_TIPO_VEHICULO 
+											WHERE		v.NRO_PATENTE = :id');
 
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
@@ -57,14 +62,16 @@
 
 		public function store($data){
 			$datos = array();
-			$query = $this->db->prepare('INSERT INTO vehiculo(	ID_BODEGA, 
+			$query = $this->db->prepare('INSERT INTO vehiculo(	NRO_PATENTE,
+																ID_BODEGA, 
 																MARCA, 
 																MODELO, 
 																ANHO_FABRICACION, 
-																TIPO_VEHICULO, 
+																ID_TIPO_VEHICULO, 
 																ESTADO_VEHICULO, 
 																TIPO_PATENTE) 
-													VALUES(		:bodega, 
+													VALUES(		:patente,
+																:bodega, 
 																:marca, 
 																:modelo, 
 																:anho, 
@@ -72,13 +79,14 @@
 																:estado, 
 																:tipo_patente)');
 
-			$query -> bindParam(':bodega', 			$data['ID_BODEGA']);
-			$query -> bindParam(':marca', 			$data['MARCA']);
-			$query -> bindParam(':modelo', 			$data['MODELO']);
-			$query -> bindParam(':anho', 			$data['ANHO_FABRICACION']);
-			$query -> bindParam(':tipo_vehiculo', 	$data['TIPO_VEHICULO']);
-			$query -> bindParam(':estado', 			$data['ESTADO_VEHICULO']);
-			$query -> bindParam(':tipo_patente', 	$data['TIPO_PATENTE']);
+			$query -> bindParam(':patente', 		$data['patente']);
+			$query -> bindParam(':bodega', 			$data['bodega']);
+			$query -> bindParam(':marca', 			$data['marca']);
+			$query -> bindParam(':modelo', 			$data['modelo']);
+			$query -> bindParam(':anho', 			$data['anho']);
+			$query -> bindParam(':tipo_vehiculo', 	$data['tipo_vehiculo']);
+			$query -> bindParam(':estado', 			$data['estado']);
+			$query -> bindParam(':tipo_patente', 	$data['tipo_patente']);
 
 			if($query -> execute()){
 				$datos['respuesta']['status'] = 'success';
@@ -101,7 +109,7 @@
 													MARCA = :marca, 
 													MODELO = :modelo, 
 													ANHO_FABRICACION = :anho, 
-													TIPO_VEHICULO = :tipo_vehiculo, 
+													ID_TIPO_VEHICULO = :tipo_vehiculo, 
 													ESTADO_VEHICULO = :estado, 
 													TIPO_PATENTE = :tipo_patente 
 											WHERE 	NRO_PATENTE = :id');
@@ -110,7 +118,7 @@
 			$query -> bindParam(':marca', 			$data['MARCA']);
 			$query -> bindParam(':modelo', 			$data['MODELO']);
 			$query -> bindParam(':anho', 			$data['ANHO_FABRICACION']);
-			$query -> bindParam(':tipo_vehiculo', 	$data['TIPO_VEHICULO']);
+			$query -> bindParam(':tipo_vehiculo', 	$data['ID_TIPO_VEHICULO']);
 			$query -> bindParam(':estado', 			$data['ESTADO_VEHICULO']);
 			$query -> bindParam(':tipo_patente', 	$data['TIPO_PATENTE']);
 			$query -> bindParam(':id', 				$data['NRO_PATENTE']);
@@ -144,6 +152,15 @@
 				$datos['respuesta']['message']['body'] = 'No fue posible eliminar el vehículo';
 				$datos['respuesta']['message']['timeout'] = 2;
 			}
+			return $datos;
+		}
+
+		public function getBodegas(){
+			$query = $this->db->prepare('	SELECT 	b.ID_BODEGA,
+													b.NOMBRE_BODEGA	  
+											FROM	bodega b');
+			$query->execute();
+			$datos = $query->fetchAll();
 			return $datos;
 		}
 

@@ -42,6 +42,8 @@
 
 		public function create(){
 
+			$datos['bodegas'] = $this->vehiculo->getBodegas();
+
 			ob_start();
 			include VEHICULOS . '/create.php';
 			$datos['respuesta']['html'] = ob_get_clean();
@@ -57,6 +59,7 @@
 		public function edit($id){
 
 			$datos = $this->vehiculo->show($id);
+			$datos['bodegas'] = $this->vehiculo->getBodegas();
 
 			ob_start();
 			include VEHICULOS . '/edit.php';

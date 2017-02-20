@@ -12,3 +12,4 @@
 	require 'trabajadores/trabajador.controller.php';
 	require 'contratos/contrato.controller.php';
 	require 'auth/auth.controller.php';
+	require 'estadisticas/estadistica.controller.php';

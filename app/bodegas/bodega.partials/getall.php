@@ -45,7 +45,7 @@
 	            	<td><?php echo $dato['ID_BODEGA']; ?></td>
 	                <td><?php echo $dato['NOMBRE_BODEGA']; ?></td>
 	                <td><?php echo $dato['DIRECCION_BODEGA']; ?></td>
-	                <td><?php echo $dato['RUT_PERSONA']; ?></td>		                
+	                <td><?php echo $dato['NOMBRE_PERSONA'] . ' ' . $dato['APATERNO_PERSONA']; ?></td>		                
 	                <td><?php echo $dato['TIPO_BODEGA']; ?></td>
 	                <td>
 	                	<div class="btn-multiple">

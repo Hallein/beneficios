@@ -49,3 +49,8 @@ $container['contratos'] = function ($c) {
 $container['auth'] = function ($c) {
     return new AuthController($c->db);
 };
+
+$container['estadisticas'] = function ($c) {
+    return new EstadisticasController($c->db);
+};
+

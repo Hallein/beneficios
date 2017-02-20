@@ -11,10 +11,16 @@
 			$datos = array();
 			$query = $this->db->prepare('	SELECT 		p.RUT_PROVEEDOR,
 														p.NOMBRE_PROVEEDOR,
-														c.COMUNA
+														c.COMUNA,
+														COUNT(dc.ID_COMPRA) AS COMPRAS_REALIZADAS
 											FROM 		proveedor p
 											INNER JOIN 	comuna c
-											ON 			c.ID_COMUNA = p.ID_COMUNA');			
+											ON 			c.ID_COMUNA = p.ID_COMUNA
+											INNER JOIN	documento_compra dc
+											ON			dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR
+											GROUP BY 	p.RUT_PROVEEDOR,
+														p.NOMBRE_PROVEEDOR,
+														c.COMUNA');			
 			$query->execute();
 			$datos['proveedores'] = $query->fetchAll();
 
@@ -24,11 +30,17 @@
 		public function show($id){
 			$query = $this->db->prepare('	SELECT 		p.RUT_PROVEEDOR,
 														p.NOMBRE_PROVEEDOR,
-														c.COMUNA
+														c.COMUNA,
+														COUNT(dc.ID_COMPRA) AS COMPRAS_REALIZADAS
 											FROM 		proveedor p
 											INNER JOIN 	comuna c
 											ON 			c.ID_COMUNA = p.ID_COMUNA
-											WHERE 		p.RUT_PROVEEDOR = :rut');
+											INNER JOIN	documento_compra dc
+											ON			dc.RUT_PROVEEDOR = p.RUT_PROVEEDOR
+											WHERE 		p.RUT_PROVEEDOR = :rut
+											GROUP BY 	p.RUT_PROVEEDOR,
+														p.NOMBRE_PROVEEDOR,
+														c.COMUNA');
 			$query -> bindParam(':rut', $id);
 			if($query -> execute()){
 				$datos['proveedor'] = $query -> fetch();
