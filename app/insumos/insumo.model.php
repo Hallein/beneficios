@@ -13,10 +13,13 @@
 														i.ID_CATEGORIA_INSUMO, 
 														i.PRECIO_VENTA, 
 														i.PRECIO_COMPRA,
-														cat.DESCRIPCION_CATEGORIA_INSUMO AS CATEGORIA_INSUMO
+														cat.DESCRIPCION_CATEGORIA_INSUMO AS CATEGORIA_INSUMO,
+														det.STOCK
 											FROM 		insumo i
 											INNER JOIN	categoria_insumo cat
-											ON			cat.ID_CATEGORIA_INSUMO = i.ID_CATEGORIA_INSUMO');
+											ON			cat.ID_CATEGORIA_INSUMO = i.ID_CATEGORIA_INSUMO
+											INNER JOIN 	detalle_bodega det
+											ON			det.ID_INSUMO = i.ID_INSUMO');
 			$query->execute();
 
 			$datos = array();
@@ -29,10 +32,13 @@
 														i.ID_CATEGORIA_INSUMO,
 														i.PRECIO_VENTA, 
 														i.PRECIO_COMPRA, 
-														cat.DESCRIPCION_CATEGORIA_INSUMO
+														cat.DESCRIPCION_CATEGORIA_INSUMO,														
+														det.STOCK
 											FROM 		insumo i
 											INNER JOIN	categoria_insumo cat
 											ON			cat.ID_CATEGORIA_INSUMO = i.ID_CATEGORIA_INSUMO
+											INNER JOIN 	detalle_bodega det
+											ON			det.ID_INSUMO = i.ID_INSUMO
 											WHERE 		i.ID_INSUMO = :id');
 			$query -> bindParam(':id', $id);
 			if($query -> execute()){
