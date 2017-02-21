@@ -532,6 +532,68 @@ a:link, a:visited, a:hover, a:active {
 		font-size: 18px;
 		padding: 5px 0;
 	}
+	
+	.d-red-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #D32F2F;
+	}
+	.d-red-canvas canvas{
+		background-color: #F44336;
+	}
+
+	.d-blue-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #1976D2;
+	}
+
+	.d-blue-canvas canvas{
+		background-color: #2196F3;
+	}
+
+	.d-teal-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #00796B;
+	}
+
+	.d-teal-canvas canvas{
+		background-color: #009688;
+	}
+
+	.d-orange-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #F57C00;
+	}
+
+	.d-orange-canvas canvas{
+		background-color: #FF9800;
+	}
+
+	.d-indigo-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #303F9F;
+	}
+
+	.d-indigo-canvas canvas{
+		background-color: #3F51B5;
+	}
+
+	.d-green-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #388E3C;
+	}
+
+	.d-green-canvas canvas{
+		background-color: #4CAF50;
+	}
+
+	.d-cyan-canvas .d-canvas-title{
+		color: #fff;
+		background-color: #0097A7;
+	}
+
+	.d-cyan-canvas canvas{
+		background-color: #00BCD4;
+	}
 	/*END-CHARTS*************************************/
 
 	/*ICONS******************************************/

@@ -25,38 +25,10 @@ function BarsChart(id, labels, data, content){
 	        datasets: [{
 	            label: content,
 	            data: data,
-	            backgroundColor: [
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)'
-	            ],
-	            borderColor: [
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)',
-	                'rgba( 171, 235, 198 ,1)'
-	            ],
+	            backgroundColor: 'rgba( 171, 235, 198 ,0.8)',
+	            hoverBackgroundColor: 'rgba( 240, 133, 62 ,1)',
+	            hoverBorderColor: 'rgba( 240, 133, 62 ,1)',
+	            borderColor: 'rgba( 171, 235, 198 ,1)',
 	            borderWidth: 1
 	        }]
 	    },
@@ -69,17 +41,23 @@ function BarsChart(id, labels, data, content){
 		                display : false
 			            },
 			        categoryPercentage: 0.5,
-					barPercentage: 1.0
+					barPercentage: 1.0,
+					ticks: {
+                        fontColor: "white"
+                    }
 			        } ],
 			    yAxes : [ {
 			    	display : true,
 		            gridLines : {
 		                display : false
-			            }
+			            },
+			        ticks: {
+                        fontColor: "white"
+                    }
 			        } ]
 	        },
 	        legend: {
-	            display: true
+	            display: false
 	        },
 	        title: {
             	display: false
@@ -130,17 +108,23 @@ function LinesChart(id, labels, data, content){
 	            	display : true,
 		            gridLines : {
 		                display : false
-			            }
+			            },
+			        ticks: {
+                        fontColor: "white"
+                    }
 			        } ],
 			    yAxes : [ {
 			    	display : true,
 		            gridLines : {
 		                display : false
-			            }
+			            },
+			        ticks: {
+                        fontColor: "white"
+                    }
 			        } ]
 	        },
 	        legend: {
-	            display: true
+	            display: false
 	        },
 	        title: {
             	display: true
@@ -154,43 +138,3 @@ function LinesChart(id, labels, data, content){
 	    }
 	});
 }
-
-/*
-var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: <?php echo json_encode($timeSlice); ?> , 
-            datasets: [{
-                label: 'My Label',
-                backgroundColor: "rgba(159,170,174,0.8)",
-                borderWidth: 1,
-                hoverBackgroundColor: "rgba(232,105,90,0.8)",
-                hoverBorderColor: "orange",
-                scaleStepWidth: 1,
-                data: <?php echo json_encode($myCount); ?>
-            }]
-        },
-        options: { 
-            legend: {labels:{fontColor:"white", fontSize: 18}},
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        fontColor: "white",
-                        fontSize: 18,
-                        stepSize: 1,
-                        beginAtZero:true
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        fontColor: "white",
-                        fontSize: 14,
-                        stepSize: 1,
-                        beginAtZero:true
-                    }
-                }]
-            }
-        }
-    });
-*/

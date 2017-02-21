@@ -44,7 +44,7 @@ function LoginUsuario(){
 				});
 				UpdateBreadcrumb();
 				window.onbeforeunload = function() {
-			        return "¿Estas seguro de abandonar la pagina?. Deberá iniciar sesión nuevamente.";
+			        return "¿Esta seguro de abandonar la pagina?. Deberá iniciar sesión nuevamente.";
 			    }
 			    MostrarInicio();
 			}else{

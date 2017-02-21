@@ -51,7 +51,7 @@ class Estadistica{
 													SUM(documento_venta.VALOR_VENTA) AS VENTAS
 										FROM 		documento_venta
 										WHERE 		documento_venta.FECHA_VENTA 
-										BETWEEN 	(now() - INTERVAL 7 month) 
+										BETWEEN 	(now() - INTERVAL 13 month) 
 										AND 		(now() - INTERVAL 1 month)
 										GROUP BY 	MES, ANHO,documento_venta.FECHA_VENTA
 										ORDER BY 	ANHO ASC, 
