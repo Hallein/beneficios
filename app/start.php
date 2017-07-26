@@ -7,7 +7,7 @@ $config['displayErrorDetails'] = true;
 $config['db']['host']   = "localhost";
 $config['db']['user']   = "root";
 $config['db']['pass']   = "";
-$config['db']['dbname'] = "industrial";
+$config['db']['dbname'] = "beneficios";
 
 //Instancia de Slim
 $app = new Slim\App(["settings" => $config]);
@@ -44,57 +44,45 @@ require 'middlewares.php';
 require 'routes.php';
 require 'container.php';
 require 'seeder.php';
+require 'libs/password_hash.php';
+require 'libs/funciones.php';
 
-//Ruta Inicio
-$app->get('/inicio', function($request, $response, $args){
+/*========== PRUEBAS DE PASSWORD HASH ==========*/
+$app->get('/test/{password}', function($request, $response, $args){
+	try {
+		$password = $args['password'];
+		$hash = new passwordHash();
+		$newpass = $hash->hash($password);
 
-	$datos = $this->estadisticas->index();
+		$response->write($newpass);
+    	return $response;
 
-	return json_encode($datos);
+	} catch(PDOException $e) {
+		echo "Error: " . $e->getMessage();
+	}
 });
 
+$app->get('/verify/{pass}/{hash}', function($request, $response, $args){
+	try {
+		$hash = $args['hash'];
+		$pass = $args['pass'];
+		$verify = new passwordHash();
+		$newpass = $verify->check_password($pass, $hash);
+		$success = array();
 
-$app->post('/login', function ($request, $response, $args){
-	$data = $request->getParsedBody();
-
-	$usuario['rut'] = filter_var($data['user'], FILTER_SANITIZE_STRING);
-	$usuario['pass'] = filter_var($data['pass'], FILTER_SANITIZE_STRING);
-
-	//$usuario['pass'] = hash('sha256', $usuario['pass']);
-	
-	$sql = $this->db->prepare('	SELECT 	RUT_PERSONA, CARGO, CONTRASENA 
-								FROM 	TRABAJADOR 
-								WHERE 	RUT_PERSONA = :rut 
-								AND 	CONTRASENA = :pass');
-
-	$sql->bindParam(':rut', $usuario['rut']);
-	$sql->bindParam(':pass', $usuario['pass']);
-	if($sql->execute()){
-		unset($usuario);
-		$usuario = $sql->fetch();
-		if($usuario){
-			$_SESSION['session'] = $usuario;
-			$datos['respuesta']['status'] = 'success';
-			$datos['respuesta']['message']['title'] = '¡Listo!';
-			$datos['respuesta']['message']['body'] = 'Identificación exitosa';
-			$datos['respuesta']['message']['timeout'] = 2;
-			$datos['respuesta']['html'] = $this->auth->index();
-
+		if($newpass){
+			$success['success'] = 1;
 		}else{
-			$datos['respuesta']['status'] = 'error';
-			$datos['respuesta']['message']['title'] = 'Error!';
-			$datos['respuesta']['message']['body'] = 'Usuario o contraseña incorrectos';
-			$datos['respuesta']['message']['timeout'] = 2;	
+			$success['success'] = 0;
 		}
+
+		$response->write(json_encode($success));
+    	return $response;
+
+	} catch(PDOException $e) {
+		echo "Error: " . $e->getMessage();
 	}
-	else{
-		$datos['respuesta']['status'] = 'error';
-		$datos['respuesta']['message']['title'] = 'Ocurrió un error';
-		$datos['respuesta']['message']['body'] = 'Error de conexión';
-		$datos['respuesta']['message']['timeout'] = 2;
-	}
-	return json_encode($datos['respuesta']);
- 	
 });
+/*========== FIN PRUEBAS PASSWORD HASH ==========*/
 
 $app->run();
