@@ -13,12 +13,8 @@
 	<title>Antofagasta Minerals</title>
 	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="../css/font-awesome.css">
+	<link rel="stylesheet" href="../css/j-toast.css">
 	<link rel="stylesheet" href="../css/style.css">
-	<style>
-		body{
-			background-color: #eee;
-		}
-	</style>
 </head>
 <body class="login-background">
 	<section>
@@ -43,7 +39,7 @@
 								</div>
 								<div class="pass-user">
 									<label for="pass-user">Constraseña</label>
-									<input id="pass-user" type="text" placeholder="Ingrese su clave">
+									<input id="pass-user" type="password" placeholder="Ingrese su clave">
 									<div class="input-underline"></div>
 								</div>
 							</div>
@@ -62,26 +58,8 @@
 			<div>contacto@crecerconsultoresltda.cl</div>
 		</div>
 	</section>
-
 	<script src="../js/jquery.min.js"></script>
-	<script>
-	$(function(){
-
-		$('#login-button').on('click', login);
-
-		function login(){
-			var data = {
-				rut: $('#rut-user').val(),
-				pass: $('#pass-user').val()
-			};
-			$.post('../api/login', data).done(function(respuesta){
-				console.log(respuesta);
-			});
-
-		}
-
-	});
-
-	</script>
+	<script src="../js/j-toast.js"></script>
+	<script src="../js/login.js"></script>
 </body>
 </html>
