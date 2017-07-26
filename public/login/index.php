@@ -20,7 +20,7 @@
 	<section>
 		<div class="container">
 			<div class="container-fluid center-xs center-sm start-md">
-				<div class="login-title text-primary-color"><strong>Beneficio hanitacional</strong><br>Antofagasta Minerals S.A.</div>
+				<div class="login-title text-primary-color"><strong>Beneficio habitacional</strong><br>Antofagasta Minerals S.A.</div>
 			</div>
 		</div>
 		<div class="container-fluid">

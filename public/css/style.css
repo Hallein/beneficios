@@ -66,12 +66,75 @@ body{
 
 /*FORM COMPONENTS*/
 .form-input{
+	position: relative;
+	margin: 20px 0 0 0;
+	z-index: 1;
+}
+.form-input input, .form-input select, .form-input textarea{
+	position: relative;
+	z-index: 5;
 	width: 100%;
-	padding: 5px 10px;
+	padding: 5px 0;
 	color: #757575;
-	font-size: 1em;
+	font-size: 1.1em;
 	border: none;
 	border-bottom: 2px solid #b0bec5;
+	background-color: transparent;
+}
+
+.form-input select{
+	padding: 3px 0 5px 0;
+}
+
+.form-input textarea{
+	width: 100%;
+	resize: none;
+}
+
+.form-input label{
+	position: absolute;
+	color: #757575;
+	bottom: 7px;
+	left: 0;
+	font-size: 1.1em;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	z-index: 1;
+}
+
+.form-input .label-select{
+	bottom: calc(100% - 26px);
+}
+
+.form-input label.active-input{
+	position: absolute;
+	color: #26c6da;
+	bottom: 100%;
+	left: 0;
+	font-size: .9em;
+}
+
+.form-input .input-underline{
+	display: block;
+	width: 0;
+	height: 2px;
+	background-color: #26c6da;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;	
+	margin: 0 auto;
+	-webkit-transition: width 0.2s linear;
+	-moz-transition: width 0.2s linear;
+	-o-transition: width 0.2s linear;
+	transition: width 0.2s linear;
+	z-index: 10;
+}
+
+.form-input .active-input ~ .input-underline{
+	width: 100%;
 }
 
 /*MAIN COMPONENTS*/
@@ -175,7 +238,7 @@ nav .sidenav-content .navbar .nav-element:hover{
 }
 
 .main-content .main-image{
-	height: 35vh;
+	height: 30vh;
 	position: relative;
 	background-image: url('../img/large-img.png');
 	background-size: cover;
@@ -208,11 +271,11 @@ nav .sidenav-content .navbar .nav-element:hover{
 }
 
 .main-content .main-image .introduction-title .main-title{
-	font-size: 4em;
+	font-size: 3em;
 }
 
 .main-content .main-image .introduction-title .subtitle{
-	font-size: 2.5em;
+	font-size: 2em;
 }
 
 .main-content section>.container{
