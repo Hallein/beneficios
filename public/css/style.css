@@ -64,6 +64,16 @@ body{
 	border-color: #BDBDBD;
 }
 
+/*FORM COMPONENTS*/
+.form-input{
+	width: 100%;
+	padding: 5px 10px;
+	color: #757575;
+	font-size: 1em;
+	border: none;
+	border-bottom: 2px solid #b0bec5;
+}
+
 /*MAIN COMPONENTS*/
 nav{
 	position: fixed;
@@ -183,10 +193,10 @@ nav .sidenav-content .navbar .nav-element:hover{
 	bottom: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(248,191,102,0.6);
-	background: -moz-linear-gradient(-45deg, rgba(248,191,102,0.6) 0%, rgba(247,142,86,0.6) 52%, rgba(239,71,71,0.6) 100%);
-	background: -webkit-linear-gradient(-45deg, rgba(248,191,102,0.6) 0%,rgba(247,142,86,0.6) 52%,rgba(239,71,71,0.6) 100%);
-	background: linear-gradient(135deg, rgba(248,191,102,0.6) 0%,rgba(247,142,86,0.6) 52%,rgba(239,71,71,0.6) 100%);
+	background: rgba(248,191,102,0.4);
+	background: -moz-linear-gradient(-45deg, rgba(248,191,102,0.4) 0%, rgba(247,142,86,0.4) 52%, rgba(239,71,71,0.4) 100%);
+	background: -webkit-linear-gradient(-45deg, rgba(248,191,102,0.4) 0%,rgba(247,142,86,0.4) 52%,rgba(239,71,71,0.4) 100%);
+	background: linear-gradient(135deg, rgba(248,191,102,0.4) 0%,rgba(247,142,86,0.4) 52%,rgba(239,71,71,0.4) 100%);
 }
 
 .main-content .main-image .introduction-title{
@@ -263,6 +273,10 @@ nav .sidenav-content .navbar .nav-element:hover{
 
 .card .card-title{
 	min-height: 40px;
+}
+
+.card .card-body{
+	padding: 20px;
 }
 
 .over-background{
@@ -378,7 +392,10 @@ nav .sidenav-content .navbar .nav-element:hover{
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0,0,0,.5);
+	background: rgba(248,191,102,0.4);
+	background: -moz-linear-gradient(-45deg, rgba(248,191,102,0.4) 0%, rgba(247,142,86,0.4) 52%, rgba(239,71,71,0.4) 100%);
+	background: -webkit-linear-gradient(-45deg, rgba(248,191,102,0.4) 0%,rgba(247,142,86,0.4) 52%,rgba(239,71,71,0.4) 100%);
+	background: linear-gradient(135deg, rgba(248,191,102,0.4) 0%,rgba(247,142,86,0.4) 52%,rgba(239,71,71,0.4) 100%);
 	z-index: -1;
 }
 
@@ -407,6 +424,7 @@ nav .sidenav-content .navbar .nav-element:hover{
 }
 
 .card.login-card .login-form{
+	position: relative;
 	padding-left: 40px;
 }
 
@@ -452,15 +470,15 @@ nav .sidenav-content .navbar .nav-element:hover{
 }
 
 .card.login-card .login-form .input-underline{
-	position: absolute;
-	display: block;
+	display: inline-block;
 	width: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1;	
 	height: 2px;
 	background-color: #26c6da;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;	
+	margin: 0 auto;
 	-webkit-transition: width 0.2s linear;
 	-moz-transition: width 0.2s linear;
 	-o-transition: width 0.2s linear;

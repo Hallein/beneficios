@@ -1,0 +1,110 @@
+/*TOAST*/
+.fadeInTop{
+	-webkit-animation: fadeInTop 0.3s forwards;
+	-moz-animation: fadeInTop 0.3s forwards;
+	-o-animation: fadeInTop 0.3s forwards;
+	animation: fadeInTop 0.3s forwards;
+}
+
+.fadeOutTop{
+	-webkit-animation: fadeOutTop 0.3s forwards;
+	-moz-animation: fadeOutTop 0.3s forwards;
+	-o-animation: fadeOutTop 0.3s forwards;
+	animation: fadeOutTop 0.3s forwards;
+}
+
+-webkit-@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+-moz-@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+@keyframes fadeInTop {
+   0% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+} 
+
+-webkit-@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+
+-moz-@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+
+@keyframes fadeOutTop {
+   0% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px);
+   }
+} 
+
+.d-toast{
+	position: fixed;
+	top: 0;
+	right: 15px;
+	z-index: 9999;
+	padding: 10px 20px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+	font-size: 16px;
+}
+
+.d-toast-success{
+	background-color: #27ae60;
+	color: #f4f6f7;
+}
+
+.d-toast-error{
+	background-color: #e74c3c;
+	color: #f4f6f7;
+}
+
+.d-toast-notify{
+	background-color: #3498db;
+	color: #f4f6f7;
+}
+
+.d-toast-warning{
+	background-color: #f39c12;
+	color: #f4f6f7;
+}

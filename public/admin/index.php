@@ -53,7 +53,15 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-xs-12">
-						<div class="card over-background"></div>
+						<div class="card over-background">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xs-2">
+										<input type="text" class="form-input" placeholder="Ingrese algo">
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row">

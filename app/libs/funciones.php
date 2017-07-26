@@ -5,6 +5,7 @@ function respuesta($status, $titulo = '', $mensaje = ''){
 	$respuesta['status'] = $status;
 	$respuesta['message']['title'] = $titulo;
 	$respuesta['message']['body'] = $mensaje;
+	$respuesta['message']['timeout'] = 2;
 
 	return $respuesta;
 }
