@@ -20,7 +20,7 @@
 		<div class="sidenav-logo">
 			<div class="row middle-xs">
 				<div class="col-xs-12">
-					<img src="../img/main-logo.png" alt="">
+					<img src="../img/main-logo.png" alt="Antofahasta Minerals">
 				</div>
 			</div>			
 		</div>
@@ -32,6 +32,7 @@
 				<li class="nav-element dark-primary-color">Opcion 4</li>
 			</ul>
 		</div>
+		<div class="secondary-logo"></div>
 	</nav>
 	<div class="main-content light-primary-color">
 		<header class="dark-primary-color ">
@@ -94,10 +95,114 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
-						<div class="card"></div>
+						<div class="card">
+							<div class="card-title text-primary-color dark-primary-color">
+								<div class="row center-xs center-sm start-md">
+									<div class="col-xs-12">
+										Ingresar nuevo beneficio ministerial
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
+										<div class="form-input">
+											<label for="user-rut">Rut</label>
+											<input id="user-rut" type="text">
+											<div class="input-underline"></div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-4">
+										<div class="form-input">
+											<label for="user-name">Nombre</label>
+											<input id="user-name" type="text">
+											<div class="input-underline"></div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
+										<div class="form-input">
+											<label for="user-company">Empresa</label>
+											<select id="user-company">
+												<option value="">1</option>
+												<option value="">2</option>
+											</select>
+											<div class="input-underline"></div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-4">
+										<div class="form-input">
+											<label for="user-benefit">Tipo de beneficio</label>
+											<select id="user-benefit">
+												<option value="">1</option>
+												<option value="">2</option>
+											</select>
+											<div class="input-underline"></div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<br>
+								<div class="row center-xs">
+									<div class="col-xs-12">
+										<button id="login-button" class="btn btn-primary">Ingresar</button>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-12 col-md-6">
-						<div class="card"></div>
+						<div class="card">
+							<div class="card-title text-primary-color dark-primary-color">
+								<div class="row center-xs center-sm start-md">
+									<div class="col-xs-12">
+										Ingresar nuevo hito
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+										<div class="form-input">
+											<label for="user-company">Hito</label>
+											<select id="user-company">
+												<option value="">1</option>
+												<option value="">2</option>
+											</select>
+											<div class="input-underline"></div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+										<div class="form-input">
+											<label for="textarea-prueba1">Detalle</label>
+											<textarea id="textarea-prueba1"></textarea>
+											<div class="input-underline"></div>
+										</div>
+									</div>
+								</div>
+								<br>
+								<br>
+								<div class="row center-xs">
+									<div class="col-xs-12">
+										<button id="login-button" class="btn btn-primary">Ingresar</button>
+									</div>
+								</div>
+								<br>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
