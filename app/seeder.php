@@ -42,12 +42,12 @@ $container['seeder'] = function($c){
     //Tabla Etapa
     $array =
     [
-        [1, 'Etapa Uno', ''],
-        [2, 'Etapa Dos', ''],
-        [3, 'Etapa Tres', ''],
-        [4, 'Etapa Cuatro', ''],
-        [5, 'Etapa Cinco', ''],
-        [6, 'Etapa Seis', '']
+        [1, 'Primera Etapa', ''],
+        [2, 'Segunta Etapa', ''],
+        [3, 'Tercera Etapa', ''],
+        [4, 'Cuarta Etapa', ''],
+        [5, 'Quinta Etapa', ''],
+        [6, 'Sexta Etapa', '']
         
     ];
     $columnConfig = ['ETA_ID','ETA_NOMBRE','ETA_DETALLE'];
