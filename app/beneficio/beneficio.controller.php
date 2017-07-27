@@ -11,7 +11,7 @@
 *****************************************************************************/
 class BeneficioController{
 
-	private $beneficio;
+	private $beneficio; 
 
 	public function __construct($db){
 		$this->beneficio = new Beneficio($db);
@@ -31,7 +31,28 @@ class BeneficioController{
 	public function show($id){
 		
 		$datos = $this->beneficio->show($id);
+		$hitos = $this->beneficio->showHitos($id);
 
+		$HE = array();
+		$id_hito = '';
+		foreach($hitos['hitos'] as $etapa){
+			if($etapa['ETA_ID']!=$id_hito){
+				$id_hito = $etapa['ETA_ID'];
+				$array_etapa = array( 'id'	 => $etapa['ETA_ID'],
+									'nombre' => $etapa['ETA_NOMBRE'],
+									'hitos'  => array());
+				foreach($hitos['hitos'] as $hito){
+					if($hito['ETA_ID']==$id_hito){
+						$array_hito = array( 'id'	 	=> $hito['HITO_ID'],
+											'nombre' 	=> $hito['HITO_NOMBRE'],
+											'fecha'  	=> $hito['HB_FECHA'],
+											'detalle' 	=> $hito['HB_DETALLE']);
+						$array_etapa['hitos'][] = $array_hito;
+					}
+				}
+				$HE[] = $array_etapa;
+			}
+		}
 		ob_start();
 		include BENEFICIO . '/_show.php';
 		$datos['respuesta']['html'] = ob_get_clean();

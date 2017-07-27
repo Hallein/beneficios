@@ -44,6 +44,7 @@ class Beneficio{
 			ON 			T.TIPBEN_ID = B.TIPBEN_ID
 			INNER JOIN 	PERSONA P
 			ON 			P.PER_RUT = B.PER_RUT
+			ORDER BY	B.BEN_ID DESC
 		');
 
 		$query->execute();
@@ -83,7 +84,14 @@ class Beneficio{
                                 						ORDER BY	EB.ETA_ID DESC
                                 						LIMIT 1
 													)
-						) ETAPA_ACTUAL
+						) ETAPA_ACTUAL,
+						(
+							SELECT 		EB.ETA_ID
+							FROM 		ETAPA_BENEFICIO EB
+							WHERE		EB.BEN_ID = :id
+    						ORDER BY	EB.ETA_ID DESC
+    						LIMIT 1
+						) ID_ETAPA_ACTUAL
 			FROM 		BENEFICIO B
 			INNER JOIN 	TIPO_BENEFICIO T
 			ON 			T.TIPBEN_ID = B.TIPBEN_ID
@@ -105,6 +113,34 @@ class Beneficio{
 			}
 		}else{
 			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No existe el beneficio consultado');
+		}
+		return $datos;
+	}
+
+	public function showHitos($id){
+
+		$query = $this->db->prepare('
+			SELECT 		B.BEN_ID, H.ETA_ID, E.ETA_NOMBRE, HB.HITO_ID, H.HITO_NOMBRE, HB.HB_FECHA, HB.HB_DETALLE
+			FROM 		BENEFICIO B
+			INNER JOIN 	HITO_BENEFICIO HB
+			ON			HB.BEN_ID = B.BEN_ID
+			INNER JOIN	HITO H
+			ON 			H.HITO_ID = HB.HITO_ID
+			INNER JOIN	ETAPA E
+			ON			E.ETA_ID = H.ETA_ID
+			WHERE 		B.BEN_ID = :id
+			ORDER BY 	H.ETA_ID DESC, HB.HITO_ID ASC
+		');
+
+		$query -> bindParam(':id', $id);
+
+		$query->execute();
+
+		if($query->execute()){
+			$datos['hitos'] = $query->fetchAll();	
+			$datos['respuesta'] = respuesta('success');
+		}else{
+			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'La consulta no se realizó correctamente');
 		}
 		return $datos;
 	}
