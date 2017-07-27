@@ -1,0 +1,1 @@
+<h1>Show GET un beneficio</h1>

@@ -120,13 +120,12 @@ $container['seeder'] = function($c){
         [3, 4, '2017/02/15 14:15:00', '2017/02/28 16:30:00', 2],
         [4, 4, '2017/02/28 14:15:00', '2017/03/31 16:30:00', 2],
         [5, 4, '2017/03/31 14:15:00', '2017/04/12 16:30:00', 2],
-        [6, 4, '2017/04/12 14:15:00', '2017/04/25 16:30:00', 2],
-        [7, 4, '2017/04/25 14:15:00', '2017/05/16 16:30:00', 2]
+        [6, 4, '2017/04/12 14:15:00', '2017/04/25 16:30:00', 2]
 
     ];
     $columnConfig = ['ETA_ID','BEN_ID','EB_FECHAINI','EB_FECHAFIN','EB_ESTADO']; //Estado: 1: Activo, 2: Terminado
 
-    $seeder->table('etapa_beneficio')->data($array, $columnConfig)->rowQuantity(17);
+    $seeder->table('etapa_beneficio')->data($array, $columnConfig)->rowQuantity(16);
 
     //Tabla Hito Beneficio
     $array =
