@@ -36,7 +36,7 @@ class BeneficioController{
 		include BENEFICIO . '/_show.php';
 		$datos['respuesta']['html'] = ob_get_clean();
 
-		return $datos;
+		return $datos['respuesta'];
 	}
 
 }

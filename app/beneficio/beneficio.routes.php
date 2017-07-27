@@ -9,6 +9,7 @@ $app->get('/beneficios', function ($request, $response, $args) {
 	return $response;
 });
 
+/* Ruta que trae un beneficio dado su id */
 $app->get('/beneficios/{id}', function ($request, $response, $args) {
 
 	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);

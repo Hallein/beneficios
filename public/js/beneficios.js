@@ -1,7 +1,7 @@
 function ListarBeneficios(){	
 	$.ajax({
 	    type: "GET",
-	    url : "api/beneficios",
+	    url : "../api/beneficios",
 	    dataType: "json",
 	    beforeSend: function() {
 	    	//$('#overlay-loader').fadeIn(400);
@@ -9,8 +9,8 @@ function ListarBeneficios(){
 	    complete:   function(){
 	    	//$('#overlay-loader').fadeOut(400);
 	    },
-	    success: function(resultado){	
-	    	//$('#d-content').html(resultado.html);
+	    success: function(resultado){
+	    	$('#d-content').html(resultado.html);
 			$('#listado-beneficios').DataTable( {
 			    			responsive: true,
 					        "language" : {

@@ -61,38 +61,7 @@
 								<div class="row">
 									<div class="col-xs-12">
 										<div id="d-content">
-											<table id="listado-beneficios" class="mdl-data-table dataTable" width="100%" cellspacing="0">
-										        <thead>
-										            <tr>
-										                <th>Rut</th>
-										                <th>Nombre</th>
-										                <th>Empresa</th>
-										                <th>Tipo beneficio</th>
-										                <th>Estado</th>
-										                <th class="all">Opcion</th>
-										            </tr>
-										        </thead>
-										        <tfoot>
-										            <tr>
-										                <th>Rut</th>
-										                <th>Nombre</th>
-										                <th>Empresa</th>
-										                <th>Tipo beneficio</th>
-										                <th>Estado</th>
-										                <th>Opcion</th>
-										            </tr>
-										        </tfoot>
-										        <tbody>
-										            <tr>
-										            	<td>asdsa</td>
-										                <td>asdsa</td>		                
-										                <td>asdasd</td>
-										                <td>asdasd</td>
-										                <td>sadas</td>
-										                <td>asdsa</td>
-										            </tr>
-										        </tbody>
-										    </table>
+										
 										</div>
 									</div>
 								</div>
@@ -227,5 +196,6 @@
 	<script src="../js/dataTables.material.min.js"></script>		
 	<script src="../js/j-form.js"></script>
 	<script src="../js/admin.js"></script>
+	<script src="../js/beneficios.js"></script>
 </body>
 </html>
