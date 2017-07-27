@@ -44,6 +44,13 @@ class BeneficioController{
 /* 
 	La idea es hacer un loop de etapas, dibujándolas una por una,
 	y por cada etapa, hacer un loop con los hitos, dibujándolos donde corresponda
+	ETAPA
+		HITO
+		HITO
+		HITO
+	ETAPA
+		HITO
+	ETAPA
 */
 
 /* Hitos de un beneficio
