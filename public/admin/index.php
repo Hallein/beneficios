@@ -12,6 +12,9 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Antofagasta Minerals</title>
 	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
+	<link rel="stylesheet" href="../css/material.min.css">
+	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
+	<link rel="stylesheet" href="../css/dataTables.material.min.css">	
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -46,7 +49,6 @@
 			<div class="row middle-xs center-xs introduction-title">
 				<div class="col-xs-12">
 					<div class="main-title text-primary-color">Lorem ipsum dolor sit amet</div>
-					<div class="subtitle text-primary-color">consectetur adipisicing elit.</div>
 				</div>				
 			</div>
 		</section>
@@ -57,35 +59,40 @@
 						<div class="card over-background">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-xs-2">
-										<div class="form-input">
-											<label for="input-prueba1">Prueba de input</label>
-											<input id="input-prueba1" type="text">
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="form-input">
-											<label for="input-prueba2">Prueba de input</label>
-											<input id="input-prueba2" type="text">
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="form-input">
-											<label for="select-prueba1">Prueba de input</label>
-											<select id="select-prueba1">
-												<option value="">1</option>
-												<option value="">2</option>
-											</select>
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-2">
-										<div class="form-input">
-											<label for="textarea-prueba1">Prueba de input</label>
-											<textarea id="textarea-prueba1"></textarea>
-											<div class="input-underline"></div>
+									<div class="col-xs-12">
+										<div id="d-content">
+											<table id="listado-beneficios" class="mdl-data-table dataTable" width="100%" cellspacing="0">
+										        <thead>
+										            <tr>
+										                <th>Rut</th>
+										                <th>Nombre</th>
+										                <th>Empresa</th>
+										                <th>Tipo beneficio</th>
+										                <th>Estado</th>
+										                <th class="all">Opcion</th>
+										            </tr>
+										        </thead>
+										        <tfoot>
+										            <tr>
+										                <th>Rut</th>
+										                <th>Nombre</th>
+										                <th>Empresa</th>
+										                <th>Tipo beneficio</th>
+										                <th>Estado</th>
+										                <th>Opcion</th>
+										            </tr>
+										        </tfoot>
+										        <tbody>
+										            <tr>
+										            	<td>asdsa</td>
+										                <td>asdsa</td>		                
+										                <td>asdasd</td>
+										                <td>asdasd</td>
+										                <td>sadas</td>
+										                <td>asdsa</td>
+										            </tr>
+										        </tbody>
+										    </table>
 										</div>
 									</div>
 								</div>
@@ -215,6 +222,10 @@
 		</footer>
 	</div>	
 	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.responsive.min.js"></script>
+	<script src="../js/dataTables.material.min.js"></script>		
 	<script src="../js/j-form.js"></script>
+	<script src="../js/admin.js"></script>
 </body>
 </html>
