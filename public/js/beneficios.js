@@ -76,6 +76,9 @@ function verBeneficio(id){
 	    	$('#btn-add').click(function(){
 		    	agregarHito(id);
 		    });
+		    $('#btn-end').click(function(){
+		    	finalizarEtapa(id);
+		    });
 		    $('.btn-back').click(function(){
 		    	ListarBeneficios();
 		    });
@@ -241,6 +244,28 @@ function ingresarHito(id){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		agregarHito(id);
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+	    }
+	});
+}
+
+function finalizarEtapa(id){
+		$.ajax({
+	    type: "POST",
+	    url : "../api/beneficios/etapa/finalizar/"+id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		verBeneficio(id);
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
