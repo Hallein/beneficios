@@ -4,10 +4,10 @@ function ListarBeneficios(){
 	    url : "../api/beneficios",
 	    dataType: "json",
 	    beforeSend: function() {
-	    	//$('#overlay-loader').fadeIn(400);
+	    	$('#floating-loader').fadeIn(200);
 	    },
 	    complete:   function(){
-	    	//$('#overlay-loader').fadeOut(400);
+	    	$('#floating-loader').fadeOut(200);
 	    },
 	    success: function(resultado){
 	    	$('#d-content').hide();
@@ -62,10 +62,28 @@ function verBeneficio(id){
 	    url : "../api/beneficios/"+id,
 	    dataType: "json",
 	    beforeSend: function() {
-	    	//$('#overlay-loader').fadeIn(400);
+	    	$('#floating-loader').fadeIn(200);
 	    },
 	    complete:   function(){
-	    	//$('#overlay-loader').fadeOut(400);
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	$('#d-content').hide();
+	    	$('#d-content').html(resultado.html).fadeIn();
+	    }
+	});
+}
+
+function modificarBeneficio(id){
+	$.ajax({
+	    type: "GET",
+	    url : "../api/beneficios/edit/"+id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
 	    },
 	    success: function(resultado){
 	    	$('#d-content').hide();

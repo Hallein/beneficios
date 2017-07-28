@@ -11,10 +11,10 @@ $(document).ready(function(){
 		    data : data,
 		    dataType: "json",
 		    beforeSend: function() {
-		    	//$('#overlay-loader').fadeIn(400);
+	    		$('#floating-loader').fadeIn(200);
 		    },
 		    complete:   function(){
-		    	//$('#overlay-loader').fadeOut(400);
+		    	$('#floating-loader').fadeOut(200);
 		    },
 		    success: function(respuesta){	
 		    	console.log(respuesta);
