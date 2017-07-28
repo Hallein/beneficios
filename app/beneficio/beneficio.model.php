@@ -117,6 +117,25 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function getUltimaEtapa($id){
+		$query = $this->db->prepare('
+			SELECT 		E.ETA_ID
+            FROM 		ETAPA E
+            WHERE 		E.ETA_ID = 	(
+                                        SELECT 		EB.ETA_ID
+                                        FROM 		ETAPA_BENEFICIO EB
+                                        WHERE		EB.BEN_ID = :id
+                                        ORDER BY	EB.ETA_ID DESC
+                                        LIMIT 1
+                                    )
+		');
+
+		$query->bindParam(':id', $id);
+		$datos = $query->fetch();	
+
+		return $datos['ETA_ID'];
+	}
+
 	public function showHitos($id){
 
 		$query = $this->db->prepare('
@@ -133,8 +152,6 @@ class Beneficio{
 		');
 
 		$query -> bindParam(':id', $id);
-
-		$query->execute();
 
 		if($query->execute()){
 			$datos['hitos'] = $query->fetchAll();	
