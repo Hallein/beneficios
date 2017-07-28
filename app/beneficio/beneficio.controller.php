@@ -12,9 +12,11 @@
 class BeneficioController{
 
 	private $beneficio; 
+	private $persona;
 
 	public function __construct($db){
 		$this->beneficio = new Beneficio($db);
+		$this->persona = new Persona($db);
 	}
 
 	public function index(){
@@ -60,56 +62,40 @@ class BeneficioController{
 		return $datos['respuesta'];
 	}
 
+	public function create(){
+		//devolver formulario
+	}
+
+	public function store($data){
+		//realizar tratamiento de rut
+		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
+		$data['tipo_beneficio'] = filter_var($data['tipo_beneficio'], FILTER_SANITIZE_STRING);
+		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
+		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
+		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
+		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
+
+		$datos = $this->beneficio->store($data);
+		$datos = $this->persona->store($data);
+		return $datos['respuesta'];
+	}
+
+	public function edit($id){
+		//devolver formulario
+	}
+
+	public function update($data){
+		//realizar tratamiento de rut
+		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
+		$data['tipo_beneficio'] = filter_var($data['tipo_beneficio'], FILTER_SANITIZE_STRING);
+		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
+		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
+		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
+		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
+
+		$datos = $this->beneficio->update($data);
+		$datos = $this->persona->update($data);
+		return $datos['respuesta'];
+	}
+
 }
-
-/* 
-	La idea es hacer un loop de etapas, dibujándolas una por una,
-	y por cada etapa, hacer un loop con los hitos, dibujándolos donde corresponda
-	ETAPA
-		HITO
-		HITO
-		HITO
-	ETAPA
-		HITO
-	ETAPA
-*/
-
-/* Hitos de un beneficio
-
-SELECT 		B.BEN_ID, H.ETA_ID, HB.HITO_ID, H.HITO_NOMBRE
-FROM 		BENEFICIO B
-INNER JOIN 	HITO_BENEFICIO HB
-ON			HB.BEN_ID = B.BEN_ID
-INNER JOIN	HITO H
-ON 			H.HITO_ID = HB.HITO_ID
-WHERE 		B.BEN_ID = 1
-ORDER BY 	H.ETA_ID ASC, HB.HITO_ID ASC
-
-*/
-
-/* Etapas de un beneficio
-
-SELECT 		B.BEN_ID, EB.ETA_ID, E.ETA_NOMBRE
-FROM 		BENEFICIO B
-INNER JOIN 	ETAPA_BENEFICIO EB
-ON 			EB.BEN_ID = B.BEN_ID
-INNER JOIN	ETAPA E
-ON 			E.ETA_ID = EB.ETA_ID
-WHERE		B.BEN_ID = 1
-
-*/
-
-/* ETAPAS E HITOS DE UN BENEFICIO
-
-SELECT 		B.BEN_ID, H.ETA_ID, E.ETA_NOMBRE, HB.HITO_ID, H.HITO_NOMBRE
-FROM 		BENEFICIO B
-INNER JOIN 	HITO_BENEFICIO HB
-ON			HB.BEN_ID = B.BEN_ID
-INNER JOIN	HITO H
-ON 			H.HITO_ID = HB.HITO_ID
-INNER JOIN	ETAPA E
-ON			E.ETA_ID = H.ETA_ID
-WHERE 		B.BEN_ID = 1
-ORDER BY 	H.ETA_ID ASC, HB.HITO_ID ASC
-
-*/

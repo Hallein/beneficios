@@ -60,7 +60,7 @@ $app->get('/test/{password}', function($request, $response, $args){
 	} catch(PDOException $e) {
 		echo "Error: " . $e->getMessage();
 	}
-});
+})->add($login);
 
 $app->get('/verify/{pass}/{hash}', function($request, $response, $args){
 	try {
@@ -82,7 +82,7 @@ $app->get('/verify/{pass}/{hash}', function($request, $response, $args){
 	} catch(PDOException $e) {
 		echo "Error: " . $e->getMessage();
 	}
-});
+})->add($login);
 /*========== FIN PRUEBAS PASSWORD HASH ==========*/
 
 $app->run();

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26-07-2017 15:10:59                          */
+/* Created on:     27-07-2017 20:48:31                          */
 /*==============================================================*/
 
 
@@ -25,7 +25,7 @@ drop table if exists USUARIO;
 /*==============================================================*/
 create table BENEFICIO
 (
-   BEN_ID               int not null,
+   BEN_ID               int not null auto_increment,
    TIPBEN_ID            int not null,
    PER_RUT              int not null,
    BEN_EMPRESA          varchar(100) not null,
@@ -38,7 +38,7 @@ create table BENEFICIO
 /*==============================================================*/
 create table ETAPA
 (
-   ETA_ID               int not null,
+   ETA_ID               int not null auto_increment,
    ETA_NOMBRE           varchar(100) not null,
    ETA_DETALLE          varchar(1000),
    primary key (ETA_ID)
@@ -62,7 +62,7 @@ create table ETAPA_BENEFICIO
 /*==============================================================*/
 create table HITO
 (
-   HITO_ID              int not null,
+   HITO_ID              int not null auto_increment,
    ETA_ID               int not null,
    HITO_NOMBRE          varchar(100) not null,
    HITO_ESTADO          smallint not null,
@@ -97,7 +97,7 @@ create table PERSONA
 /*==============================================================*/
 create table TIPO_BENEFICIO
 (
-   TIPBEN_ID            int not null,
+   TIPBEN_ID            int not null auto_increment,
    TIPBEN_NOMBRE        varchar(50) not null,
    primary key (TIPBEN_ID)
 );

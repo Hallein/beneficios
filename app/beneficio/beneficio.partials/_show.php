@@ -1,12 +1,12 @@
 <div class="steps-container">
 	<ul class="steps text-primary-color">
-	<?php for($i=0;$i<6;$i++): 
+	<?php for($i = 0; $i < 6; $i++): 
 			$class = '';
-			if($datos['beneficio']['ID_ETAPA_ACTUAL']>=($i+1)):
+			if($datos['beneficio']['ID_ETAPA_ACTUAL'] >= ($i + 1)):
 				$class = 'active-step';
 			endif;
 		?>
-		<li class="step <?php echo $class; ?>"><?php echo ($i+1); ?></li>
+		<li class="step <?php echo $class; ?>"><?php echo ($i + 1); ?></li>
 	<?php endfor; ?>
 	</ul>
 	<section class="container-fluid secondary-text-color">
@@ -30,7 +30,7 @@
 				$class='active-step';
 			endif;
 			?>
-			<div class="row row-separation">
+		<div class="row row-separation">
 			<div class="col-sm-2">
 				<div class="step-name <?php echo $class; ?>"><?php echo $etapa['nombre']; ?></div>
 			</div>
@@ -46,7 +46,7 @@
 			</div>
 			<div class="col-sm-3">
 			<?php foreach($etapa['hitos'] as $hito): ?>
-				<div class="step-observation"><?php ($hito['detalle']!='') ? print($hito['detalle']):print('Sin observaciones'); ?></div>
+				<div class="step-observation"><?php ($hito['detalle'] != '') ? print($hito['detalle']) : print('Sin observaciones'); ?></div>
 			<?php endforeach; ?>
 			</div>
 		</div>			
