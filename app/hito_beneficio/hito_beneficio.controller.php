@@ -31,6 +31,9 @@ class HitoBeneficioController{
 		$data['fecha'] 		= filter_var($data['fecha'], FILTER_SANITIZE_STRING);
 		$data['detalle'] 	= (isset($data['detalle'])) ? filter_var($data['detalle'], FILTER_SANITIZE_STRING) : '';
 
+		$fecha 				= DateTime::createFromFormat('d/m/Y', $data['fecha']);
+		$data['fecha']		= $fecha->format('Y-m-d');
+
 		$datos = $this->hito_beneficio->store($data);
 		return $datos['respuesta'];
 	}

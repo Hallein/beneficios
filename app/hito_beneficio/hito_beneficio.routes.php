@@ -10,6 +10,7 @@ $app->get('/hitos/{ben_id}', function ($request, $response, $args) {
 	return $response;
 });
 
+/* Registra un hito con el id del beneficio */
 $app->post('/hitos/store', function ($request, $response, $args) {
 
 	$data = $request->getParsedBody();
