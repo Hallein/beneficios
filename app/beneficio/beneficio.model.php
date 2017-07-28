@@ -131,6 +131,8 @@ class Beneficio{
 		');
 
 		$query->bindParam(':id', $id);
+
+		$query->execute();
 		$datos = $query->fetch();	
 
 		return $datos['ETA_ID'];

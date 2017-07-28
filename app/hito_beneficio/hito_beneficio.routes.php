@@ -9,3 +9,12 @@ $app->get('/hitos/{ben_id}', function ($request, $response, $args) {
 	$response->write(json_encode($json));	
 	return $response;
 });
+
+$app->post('/hitos/store', function ($request, $response, $args) {
+
+	$data = $request->getParsedBody();
+	$json = $this->hito_beneficio->store($data);
+
+	$response->write(json_encode($json));	
+	return $response;
+});
