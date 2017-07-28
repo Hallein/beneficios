@@ -50,6 +50,9 @@
                                         <?php if($beneficio['ESTADO'] == 'En Proceso'): ?>
                                         <button class="btn-round btn-danger reject" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-times" aria-hidden="true"></i>
                         </button>
+                                        <?php else: ?>
+                                            <button class="btn-round btn-disabled reject" disabled><i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
                                         <?php endif; ?>
                                         </td>
                                     </tr>

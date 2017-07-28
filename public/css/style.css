@@ -145,6 +145,14 @@ body{
 	width: 100%;
 }
 
+.form-input input:disabled{
+	color: #cfd8dc;	
+}
+
+.form-input input:disabled ~ .input-underline{
+	width: 0;
+}
+
 /*MAIN COMPONENTS*/
 nav{
 	position: fixed;
@@ -440,6 +448,16 @@ nav .secondary-logo::before{
 
 .btn-danger:focus{
 	background-color: #d32f2f;
+}
+
+.btn-disabled{
+	background-color: #bdbdbd;
+	color: #424242;
+	cursor: not-allowed;
+}
+
+.btn-disabled:hover{
+	background-color: #bdbdbd;
 }
 
 

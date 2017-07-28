@@ -123,7 +123,7 @@ function ingresarBeneficio(){
 	    complete:   function(){
 	    	$('#floating-loader').fadeOut(200);
 	    },
-	    success: function(resultado){
+	    success: function(resultado){	    	
 	    	$('#d-content').hide();
 	    	$('#d-content').html(resultado.html).fadeIn();
 	    	formInputsInit();
