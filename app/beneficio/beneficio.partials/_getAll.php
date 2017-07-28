@@ -12,6 +12,11 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-xs-12">
+                            <button id="new-button" class="btn btn-primary">Nuevo beneficio</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
                             <?php if(count($datos['beneficio']) > 0): ?>
                             <table id="listado-beneficios" class="mdl-data-table dataTable" width="100%" cellspacing="0">
                                 <thead>

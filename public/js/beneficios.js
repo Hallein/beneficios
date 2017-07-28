@@ -51,7 +51,7 @@ function ListarBeneficios(){
 		    	var id = $(this).attr('data-val');
 		    	verBeneficio(id);
 		    });
-		    formInputsInit();
+		    formInputsInit();		    
 	    }
 	});
 }
@@ -147,6 +147,8 @@ function agregarHito(id){
 	    	$('#create-button').click(function(){
 		    	ingresarHito(id);
 		    });
+		    moment.locale('es');
+		    $('#hito-date').datepicker();
 	    }
 	});
 }
@@ -155,9 +157,8 @@ function ingresarHito(id){
 	var data = {
 			ben_id	: id,
 			hito_id	: $('#hito').val(),
-			detalle	: $('#benefit-status').val(),
-			fecha	: '2017/07/28'
-			//fecha	: $('#hito-date').val();
+			detalle	: $('#observation').val(),
+			fecha	: $('#hito-date').val()
 		};
 	$.ajax({
 	    type: "POST",

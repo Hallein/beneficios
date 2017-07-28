@@ -71,7 +71,7 @@ body{
 	margin: 20px 0 0 0;
 	z-index: 1;
 }
-.form-input input, .form-input select, .form-input textarea{
+.form-input input, .form-input select, .form-input textarea,  .form-control{
 	position: relative;
 	z-index: 5;
 	width: 100%;
@@ -931,6 +931,16 @@ nav .secondary-logo::before{
 .mdl-button--colored{
 	background-color: #26c6da !important;
 }
+
+.dataTables_length{
+	max-width: 100px;
+}
+
+.dataTables_filter{
+	max-width: 200px;
+	float: right;
+}
+
 
 /*ANIMATIONS*/
 .fade-right-in{
