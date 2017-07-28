@@ -9,7 +9,9 @@
 
 		public function consultaBeneficio($empresa, $rut){
 			
-			$datos = $this->consulta->consultaBeneficio($empresa, $rut);
+			$datos = $this->consulta->show($empresa, $rut);
+			$etapas = $this->consulta->showEtapas($empresa, $rut);
+			$hitos = $this->consulta->showHitos2($empresa, $rut);
 
 			ob_start();
 			include CONSULTA . '/_consulta.php';
