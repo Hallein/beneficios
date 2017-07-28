@@ -327,6 +327,21 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function consultarBeneficioActivo($rut){
+
+		$query = $this->db->prepare('	SELECT 	B.BEN_ESTADO
+										FROM 	BENEFICIO B
+										WHERE 	B.PER_RUT = :rut
+										AND 	B.BEN_ESTADO = 1 ');
+
+		$query -> bindParam(':rut', $rut);
+
+		$query -> execute();
+		$activo = $query->fetch();
+
+		return $activo;
+	}
+
 		
 }
 

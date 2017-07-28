@@ -69,12 +69,25 @@ class BeneficioController{
 		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
 		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
 
-		//Verificar si la persona existe
-		
-		$datos = $this->persona->store($data);
-		if($datos['respuesta']['status'] === 'success'){
-			$datos = $this->beneficio->store($data);
+		//Verificar si la persona existe - show
+		$persona = $this->persona->show($data['rut']);
+
+		//Verificar beneficio activo
+		$activo = $this->beneficio->consultarBeneficioActivo($data['rut']);
+		if($activo['BEN_ESTADO'] == 1){
+			return $datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'La persona ya tiene un beneficio activo');
 		}
+
+		if($persona['PER_RUT'] != $data['rut']){
+			$datos = $this->persona->store($data);
+			if($datos['respuesta']['status'] === 'success'){
+				$datos = $this->beneficio->store($data);
+			}
+		}else{
+
+			$datos = $this->beneficio->store($data);
+		}	
+
 		return $datos['respuesta'];
 	}
 
