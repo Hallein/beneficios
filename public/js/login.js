@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	$('#rut-user').focus();
+	$(document).keypress(function(e){
+		var code = e.keyCode || e.which;
+		 if(code == 13) { 
+		   login();
+		 }
+	});
 	$('#login-button').on('click', login);
 	function login(){
 		var data = {
@@ -18,6 +25,7 @@ $(document).ready(function(){
 		    },
 		    success: function(resultado){	
 				if(resultado.status == 'success'){
+					$(document).off('keypress');
 		    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 		    		window.location.href = "../admin/";
 		    	}else{

@@ -3,10 +3,17 @@ $(document).ready(function(){
 	$('#send-button').click(function(){
     	verBeneficio();
     });
+    $('#user-rut').focus();
+	$(document).keypress(function(e){
+		var code = e.keyCode || e.which;
+		 if(code == 13) { 
+		   verBeneficio();
+		 }
+	});
 });
 
 function verBeneficio(){
-	var rut = $('#user-rut').val();
+	var rut 	= $('#user-rut').val();
 	var empresa	= $('#user-company').val();
 	$.ajax({
 	    type: "GET",
@@ -22,6 +29,7 @@ function verBeneficio(){
 	    	if(resultado.status == 'error'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}else{
+	    		$(document).off('keypress');
 	    		$('#d-content').hide();
 	    		$('#d-content').html(resultado.html).fadeIn();
 	    	}

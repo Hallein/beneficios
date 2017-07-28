@@ -38,3 +38,9 @@ $app->post('/login', function ($request, $response, $args){
 	return json_encode($datos['respuesta']);
  	
 });
+
+$app->post('/logout', function ($request, $response, $args){
+	session_unset();
+	session_destroy();
+	return json_encode(respuesta('success'));
+});

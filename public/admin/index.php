@@ -32,8 +32,9 @@
 		</div>
 		<div class="sidenav-content">
 			<ul class="navbar text-primary-color">
-				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios</li>
-				<li class="nav-element dark-primary-color">Mi cuenta</li>
+				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios <i class="fa fa-lg fa-usd" aria-hidden="true"></i></li>
+				<li class="nav-element dark-primary-color">Mi cuenta <i class="fa fa-lg fa-user-circle" aria-hidden="true"></i></li>
+				<li id="salir-nav" class="nav-element dark-primary-color">Cerrar sesión<i class="fa fa-lg fa-sign-out" aria-hidden="true"></i></li>
 			</ul>
 		</div>
 		<div class="secondary-logo"></div>
@@ -71,6 +72,7 @@
 	<script src="../js/dataTables.responsive.min.js"></script>
 	<script src="../js/dataTables.material.min.js"></script>
 	<script src="../js/moment.min.js"></script>
+	<script src="../js/locale/es.js"></script>
 	<script src="../js/knockout-3.2.0.js"></script>
 	<script src="../js/material.datepicker.js"></script>		
 	<script src="../js/init.js"></script>

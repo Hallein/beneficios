@@ -39,4 +39,27 @@ function navBarInit(){
 	$('#beneficios-nav').click(function(){
 		ListarBeneficios();
 	});
+	$('#salir-nav').click(function(){
+		cerrarSesion();
+	});
+
+}
+
+function cerrarSesion(){
+	$.ajax({
+	    type: "POST",
+	    url : "../api/logout",
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(resultado.status == 'success'){
+	    		window.location.href = '../login/';
+	    	}
+	    }
+	});
 }

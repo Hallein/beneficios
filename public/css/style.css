@@ -203,7 +203,7 @@ nav .sidenav-logo img{
 }
 
 nav .sidenav-content{
-margin-top: 30px;
+	margin-top: 30px;
 }
 
 nav .sidenav-content .navbar .nav-element{
@@ -219,6 +219,11 @@ nav .sidenav-content .navbar .nav-element{
 	-o-transition: margin-right 0.1s ease, padding-left 0.1s ease, background 0.2s ease;
 	transition: margin-right 0.1s ease, padding-left 0.1s ease, background 0.2s ease;
 	cursor: pointer;
+}
+
+nav .sidenav-content .navbar .nav-element i{
+	float: right;
+	line-height: 24px;
 }
 
 nav .sidenav-content .navbar .nav-element:hover, nav .sidenav-content .navbar .nav-element.nav-element-active{
@@ -270,6 +275,12 @@ nav .secondary-logo::before{
 	-webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
 	-moz-box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
 	box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+}
+
+.main-content header .logout{
+	font-size: 0.6em;
+	cursor: pointer;
+	line-height: 34px;
 }
 
 .main-content header .application-title-container{
@@ -493,6 +504,7 @@ nav .secondary-logo::before{
 /*STEPS*/
 .steps-container{
 	padding: 10px 0 30px 0;
+	text-align: left;
 }
 
 .steps-container .steps{	
@@ -574,8 +586,7 @@ nav .secondary-logo::before{
 	background-color: #26c6da;
 }
 
-.steps-container .step-description{
-	text-align: justify;
+.steps-container .step-description, .steps-container .step-observation{
 	word-break: break-word;
 }
 
@@ -963,6 +974,75 @@ nav .secondary-logo::before{
   	nav{
 		left: -240px;
   	}
+}
+
+
+@media (max-width: 967px) {
+	.steps-container .steps .step{
+		margin: 10px 10%;
+	}
+
+	.steps-container .steps .step::before{
+		display: none;
+	}
+
+	.steps-container .step-header{
+		display: none;
+	}
+
+	.steps-container .step-name::before{
+		display: none;
+	}
+
+	.steps-container .step-name{
+		text-align: center;
+		font-size: 1.4em;
+		font-weight: bold;
+	}
+
+	.steps-container .step-name.active-step::before{
+		display: block;
+		left: -22px;
+	}
+
+	.steps-container .row-separation{
+		border-left: 6px solid #b0bec5;
+	}
+
+	.steps-container .row-separation.active-step{
+		border-color: #26c6da;
+	}
+
+	.steps-container .row-separation .row-separation{
+		border-left: none;
+		border-bottom: 4px solid #eee;
+		margin-bottom: 0;
+		padding-top: 10px;
+	}
+	.steps-container .alert-message{
+		display: block;
+		text-align: center;
+	}
+	.step-observation::before{
+	  content: 'Observacion:';
+	  display:block;
+	  color: #212121;
+	  font-weight: bold;
+	}
+
+	.step-date::before{
+	  content: 'Fecha:';
+	  display:block;
+	  color: #212121;
+	  font-weight: bold;
+	}
+
+	.step-description::before{
+	  content: 'Hito:';
+	  display:block;
+	  color: #212121;
+	  font-weight: bold;
+	}
 }
 
 /*EDITION*/

@@ -15,7 +15,7 @@ $container['seeder'] = function($c){
      ];
     $columnConfig = ['TIPBEN_ID','TIPBEN_NOMBRE'];
 
-    $seeder->table('tipo_beneficio')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('TIPO_BENEFICIO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Persona
     $array =
@@ -27,7 +27,7 @@ $container['seeder'] = function($c){
      ];
      $columnConfig = ['PER_RUT','PER_NOMBRE'];
 
-     $seeder->table('persona')->data($array, $columnConfig)->rowQuantity(count($array));
+     $seeder->table('PERSONA')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Usuario
     $array =
@@ -37,7 +37,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['US_RUT','US_NOMBRE','US_CLAVE'];
 
-    $seeder->table('usuario')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('USUARIO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Etapa
     $array =
@@ -52,7 +52,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['ETA_ID','ETA_NOMBRE','ETA_DETALLE'];
 
-    $seeder->table('etapa')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('ETAPA')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Hito
     $array =
@@ -84,7 +84,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['HITO_ID', 'ETA_ID','HITO_NOMBRE','HITO_ESTADO']; //Estado: 1: Activo, 2: Inactivo
 
-    $seeder->table('hito')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('HITO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Beneficio
     $array =
@@ -97,7 +97,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['BEN_ID','TIPBEN_ID','PER_RUT','BEN_EMPRESA','BEN_ESTADO']; //Estado: 1: En Proceso, 2: Rechazado, 3: Finalizado
 
-    $seeder->table('beneficio')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('BENEFICIO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Etapa Beneficio
     $array =
@@ -125,7 +125,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['ETA_ID','BEN_ID','EB_FECHAINI','EB_FECHAFIN','EB_ESTADO']; //Estado: 1: Activo, 2: Terminado
 
-    $seeder->table('etapa_beneficio')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('ETAPA_BENEFICIO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     //Tabla Hito Beneficio
     $array =
@@ -202,7 +202,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['HITO_ID','US_RUT','BEN_ID','HB_FECHA','HB_DETALLE']; //Estado: 1: Activo, 2: Terminado
 
-    $seeder->table('hito_beneficio')->data($array, $columnConfig)->rowQuantity(count($array));
+    $seeder->table('HITO_BENEFICIO')->data($array, $columnConfig)->rowQuantity(count($array));
 
     return $seeder;
 };
