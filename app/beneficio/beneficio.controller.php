@@ -102,14 +102,20 @@ class BeneficioController{
 	public function update($data){
 		//realizar tratamiento de rut
 		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
-		$data['tipo_beneficio'] = filter_var($data['tipo_beneficio'], FILTER_SANITIZE_STRING);
+		$data['tipo_beneficio'] = filter_var($data['tipo'], FILTER_SANITIZE_STRING);
 		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
 		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
-		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
 		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
 
 		$datos = $this->beneficio->update($data);
-		$datos = $this->persona->update($data);
+
+		if($datos['respuesta']['status'] === 'success'){
+			$persona = $this->persona->showByBeneficio($data['id']);
+			$persona['PER_NOMBRE'] = $data['nombre'];
+			$datos['respuesta']['persona'] = $this->persona->update($persona);
+		}
+
+		
 		return $datos['respuesta'];
 	}
 

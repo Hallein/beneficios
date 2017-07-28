@@ -56,14 +56,14 @@ class Persona{
 		return $datos;
 	}
 
-	public function update($data){
+	public function update($persona){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	PERSONA 
 											SET 	PER_NOMBRE = :nombre
 											WHERE 	PER_RUT = :rut');
 
-			$query -> bindParam(':nombre', 	$data['nombre']);
-			$query -> bindParam(':rut', 	$data['rut']);
+			$query -> bindParam(':nombre', 	$persona['PER_NOMBRE']);
+			$query -> bindParam(':rut', 	$persona['PER_RUT']);
 
 			if($query -> execute()){
 				$datos['respuesta'] = respuesta('success', '', 'Persona actualizada correctamente');
