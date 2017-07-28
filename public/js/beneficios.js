@@ -88,6 +88,40 @@ function modificarBeneficio(id){
 	    success: function(resultado){
 	    	$('#d-content').hide();
 	    	$('#d-content').html(resultado.html).fadeIn();
+	    	formInputsInit();
+	    	$('#modify-button').click(function(){
+		    	ActualizarBeneficio(id);
+		    });
+	    }
+	});
+}
+
+function ActualizarBeneficio(id){
+	var data = {
+			id 		: id,
+			nombre	: $('#user-name').val(),
+			estado	: $('#benefit-status').val(),
+			tipo	: $('#benefit-type').val(),
+			empresa	: $('#user-company').val()
+		};
+	$.ajax({
+	    type: "POST",
+	    url : "../api/beneficios/update",
+	    data: data,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(respuesta.status == 'success'){
+	    		ShowToast(respuesta.status, respuesta.message.title, respuesta.message.body, respuesta.message.timeout);
+	    		ListarBeneficios();
+	    	}else{
+	    		ShowToast(respuesta.status, respuesta.message.title, respuesta.message.body, respuesta.message.timeout);
+	    	}
 	    }
 	});
 }

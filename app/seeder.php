@@ -199,7 +199,7 @@ $container['seeder'] = function($c){
     ];
     $columnConfig = ['HITO_ID','US_RUT','BEN_ID','HB_FECHA','HB_DETALLE']; //Estado: 1: Activo, 2: Terminado
 
-    $seeder->table('hito_beneficio')->data($array, $columnConfig)->rowQuantity(50);
+    $seeder->table('hito_beneficio')->data($array, $columnConfig)->rowQuantity(59);
 
     return $seeder;
 };

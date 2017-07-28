@@ -647,6 +647,34 @@ nav .secondary-logo::before{
 	text-align: center;
 }
 
+/*ALERTS*/
+.alert-message{
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px 30px;
+	background-color: #eee;
+	color: #757575;
+	-webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+	box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+	font-size: 1.2em;
+}
+
+.alert-yellow{
+	background-color: #ff9800;
+	color: #fff;
+}
+
+.alert-red{
+	background-color: #f44336;
+	color: #fff;
+}
+
+.alert-green{
+	background-color: #4caf50;
+	color: #fff;  
+}
+
 /*LOADER*/
 #floating-loader{
 	display: none;

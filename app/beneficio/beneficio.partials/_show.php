@@ -10,6 +10,24 @@
 	                </div>
 	            </div>
 				<div class="card-body steps-container">
+					<?php switch ($datos['beneficio']['BEN_ESTADO']):
+						case '1':
+							?>
+							<div class="alert-message alert-yellow">Estado del beneficio: <strong>En proceso</strong></div>
+							<?php
+							break;
+						case '2':
+							?>
+							<div class="alert-message alert-red">Estado del beneficio: <strong>Rechazado</strong></div>
+							<?php
+							break;
+						case '3':
+							?>
+							<div class="alert-message alert-green">Estado del beneficio: <strong>Finalizado</strong></div>
+							<?php
+							break;
+					endswitch;
+					?>				
 					<ul class="steps text-primary-color">
 					<?php for($i=0;$i<6;$i++): 
 							$class = '';
@@ -47,17 +65,17 @@
 							</div>
 							<div class="col-sm-4">
 							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-description"><?php echo $hito['nombre']; ?></div>
+								<div class="step-description">- <?php echo $hito['nombre']; ?></div><br>
 							<?php endforeach; ?>
 							</div>
 							<div class="col-sm-3">
 							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-date"><?php echo $hito['fecha']; ?></div>
+								<div class="step-date"><?php echo $hito['fecha']; ?></div><br>
 							<?php endforeach; ?>
 							</div>
 							<div class="col-sm-3">
 							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-observation"><?php ($hito['detalle']!='') ? print($hito['detalle']):print('Sin observaciones'); ?></div>
+								<div class="step-observation"><?php ($hito['detalle']!='') ? print($hito['detalle']):print('Sin observaciones'); ?></div><br>
 							<?php endforeach; ?>
 							</div>
 						</div>			

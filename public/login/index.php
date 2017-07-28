@@ -4,7 +4,6 @@
 		header('Location: ../admin/');
 	}
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
