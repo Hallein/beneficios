@@ -20,7 +20,7 @@ $app->get('/beneficios/{id}', function ($request, $response, $args) {
 });
 
 /* Ruta que trae el formulario para crear un beneficio */
-$app->get('/beneficios/create', function ($request, $response, $args) {
+$app->get('/beneficios/create/new', function ($request, $response, $args) {
 
 	$json = $this->beneficio->create();
 
@@ -52,6 +52,15 @@ $app->post('/beneficios/delete/{id}', function ($request, $response, $args) {
 
 	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
 	$json = $this->beneficio->destroy($id);
+
+	$response->write(json_encode($json));	
+	return $response;
+});
+
+/* Ruta que guarda un nuevo beneficio */
+$app->post('/beneficios/store', function ($request, $response, $args) {
+	$data = $request->getParsedBody();
+	$json = $this->beneficio->store($data);
 
 	$response->write(json_encode($json));	
 	return $response;

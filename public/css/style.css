@@ -549,8 +549,10 @@ nav .secondary-logo::before{
 /*LOGIN*/
 .login-background{
 	position: relative;
-	height: 100vh;
+	min-height: 100vh;
 	background-image: url(../img/background-login.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
 	position: relative;
 }
 
