@@ -175,9 +175,18 @@ class Beneficio{
 		$query -> bindParam(':empresa', 		$data['empresa']);
 
 		if($query -> execute()){
+
 			//Insertar primera etapa
-			$id_ben = $this->db->lastInsertId();
-			$datos['respuesta'] = respuesta('success', $id_ben, 'Beneficio registrado correctamente ');
+			$ben_id = $this->db->lastInsertId();
+
+			$query = $this->db->prepare(' 	
+					INSERT INTO ETAPA_BENEFICIO(ETA_ID, BEN_ID, EB_FECHAINI, EB_ESTADO) 
+					VALUES(1, :ben_id, sysdate(), 1) ');
+
+			$query -> bindParam(':ben_id', 		$ben_id);
+			$query -> execute();
+		
+			$datos['respuesta'] = respuesta('success', '', 'Beneficio registrado correctamente ');
 		}else{
 			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No se pudo registrar el beneficio');
 		}
@@ -251,6 +260,54 @@ class Beneficio{
 		$hitos = $query->fetchAll();
 
 		return $hitos;
+	}
+
+	public function finalizarEtapa($id, $etapa){
+		$datos = array();
+
+		if($etapa == 6){
+			//Finalizar beneficio
+			$query = $this->db->prepare('	UPDATE 	BENEFICIO 
+											SET 	BEN_ESTADO = 3 
+											WHERE 	BEN_ID = :id ');
+
+			$query -> bindParam(':id', 		$id);
+			if($query -> execute()){
+			$datos['respuesta'] = respuesta('success', '', 'Beneficio finalizado correctamente');
+			}else{
+				$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible finalizar el beneficio');
+			}
+
+			return $datos;
+		}
+
+		$query = $this->db->prepare('	UPDATE 	ETAPA_BENEFICIO 
+										SET 	EB_ESTADO = 2,
+												EB_FECHAFIN = sysdate()
+										WHERE 	BEN_ID = :id
+										AND 	ETA_ID = :etapa');
+
+		$query -> bindParam(':id', 		$id);
+		$query -> bindParam(':etapa', 	$etapa);
+
+		if($query -> execute()){
+
+			//Insertar siguiente etapa
+			$query = $this->db->prepare(' 	
+					INSERT INTO ETAPA_BENEFICIO(ETA_ID, BEN_ID, EB_FECHAINI, EB_ESTADO) 
+					VALUES(:etapa, :ben_id, sysdate(), 1) ');
+
+			$query -> bindParam(':etapa', 	($etapa + 1) );
+			$query -> bindParam(':ben_id', 	$ben_id);
+
+			$query -> execute();
+			$datos['respuesta'] = respuesta('success', '', 'Etapa finalizada correctamente');
+			
+		}else{
+			$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible finalizar la etapa');
+		}
+
+		return $datos;
 	}
 
 		
