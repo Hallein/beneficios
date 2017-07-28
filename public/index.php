@@ -55,7 +55,7 @@
 						<br>
 						<div class="row center-xs">
 							<div class="col-xs-12">
-								<button id="login-button" class="btn btn-primary">Consultar</button>
+								<button id="send-button" class="btn btn-primary">Consultar</button>
 							</div>
 						</div>
 						<br>

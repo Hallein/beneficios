@@ -116,11 +116,11 @@ function ActualizarBeneficio(id){
 	    	$('#floating-loader').fadeOut(200);
 	    },
 	    success: function(resultado){
-	    	if(respuesta.status == 'success'){
-	    		ShowToast(respuesta.status, respuesta.message.title, respuesta.message.body, respuesta.message.timeout);
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		ListarBeneficios();
 	    	}else{
-	    		ShowToast(respuesta.status, respuesta.message.title, respuesta.message.body, respuesta.message.timeout);
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
 	    }
 	});
