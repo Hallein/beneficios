@@ -40,45 +40,51 @@
 					</ul>
 					<section class="container-fluid secondary-text-color">
 						<div class="row">
-							<div class="col-sm-2">
+							<div class="col-xs-12 col-sm-2">
 								<div class="step-header primary-text-color">Etapa</div>
 							</div>
-							<div class="col-sm-4">
-								<div class="step-header primary-text-color">Estado del proceso</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="step-header primary-text-color">Fecha de creación</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="step-header primary-text-color">Observaciones</div>
+							<div class="col-xs-12 col-sm-10">
+								<div class="row">
+									<div class="col-xs-12 col-sm-5">
+										<div class="step-header primary-text-color">Estado del proceso</div>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<div class="step-header primary-text-color">Fecha de creación</div>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="step-header primary-text-color">Observaciones</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					<?php foreach($HE as $etapa): 
-							$class = '';
-							if($etapa['id'] == $datos['beneficio']['ID_ETAPA_ACTUAL']):
-								$class='active-step';
-							endif;
-							?>
-							<div class="row row-separation">
-							<div class="col-sm-2">
-								<div class="step-name <?php echo $class; ?>"><?php echo $etapa['nombre']; ?></div>
+						$class = '';
+						$options = '';
+						if($etapa['id'] == $datos['beneficio']['ID_ETAPA_ACTUAL'] && $datos['beneficio']['BEN_ESTADO']!=3 && $datos['beneficio']['BEN_ESTADO']!=2):
+							$class='active-step';
+							$options = '<div><button id="btn-add" class="btn-round btn-options btn-edit"><i class="fa fa-plus" aria-hidden="true"></i></button><button id="btn-end" class="btn-round btn-options btn-success"><i class="fa fa-check" aria-hidden="true"></i></button></div>';
+						endif;
+						?>
+						<div class="row row-separation">
+							<div class="col-xs-12 col-sm-2">
+								<div class="step-name <?php echo $class; ?>"><?php echo $etapa['nombre'].$options; ?></div>
 							</div>
-							<div class="col-sm-4">
-							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-description">- <?php echo $hito['nombre']; ?></div><br>
-							<?php endforeach; ?>
-							</div>
-							<div class="col-sm-3">
-							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-date"><?php echo $hito['fecha']; ?></div><br>
-							<?php endforeach; ?>
-							</div>
-							<div class="col-sm-3">
-							<?php foreach($etapa['hitos'] as $hito): ?>
-								<div class="step-observation"><?php ($hito['detalle']!='') ? print($hito['detalle']):print('Sin observaciones'); ?></div><br>
-							<?php endforeach; ?>
-							</div>
-						</div>			
+							<div class="col-xs-12 col-sm-10">
+							<?php foreach($etapa['hitos'] as $hito): ?>							
+								<div class="row row-separation">
+									<div class="col-xs-12 col-sm-5">									
+										<div class="step-description">- <?php echo $hito['nombre']; ?></div><br>
+									</div>
+									<div class="col-xs-12 col-sm-3">
+										<div class="step-date"><?php echo $hito['fecha']; ?></div><br>
+									</div>
+									<div class="col-xs-12 col-sm-4">
+										<div class="step-observation"><?php ($hito['detalle']!='') ? print($hito['detalle']):print('Sin observaciones'); ?></div><br>
+									</div>
+								</div>
+							<?php endforeach; ?>	
+							</div>		
+						</div>
 					<?php endforeach; ?>
 					</section>
 				</div>

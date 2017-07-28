@@ -379,6 +379,12 @@ nav .secondary-logo::before{
 	 background-color: #00838f;
 }
 
+.btn-options{
+	display: inline-block;
+	vertical-align: top;
+	margin: 5px;
+}
+
 .btn-primary{
 	background-color: #26c6da;
 	color: #fff;
@@ -403,6 +409,19 @@ nav .secondary-logo::before{
 
 .btn-edit:focus{
 	background-color: #f57c00;
+}
+
+.btn-success{
+	background-color: #4caf50;
+	color: #fff;
+}
+
+.btn-success:hover{
+	background-color: #81c784;
+}
+
+.btn-success:focus{
+	background-color: #388e3c;
 }
 
 

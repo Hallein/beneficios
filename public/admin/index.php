@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
 	<link rel="stylesheet" href="../css/dataTables.material.min.css">	
 	<link rel="stylesheet" href="../css/font-awesome.css">
+	<link rel="stylesheet" href="../css/j-toast.css">
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
