@@ -33,9 +33,7 @@
 		<div class="sidenav-content">
 			<ul class="navbar text-primary-color">
 				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios</li>
-				<li class="nav-element dark-primary-color">Opcion 2</li>
-				<li class="nav-element dark-primary-color">Opcion 3</li>
-				<li class="nav-element dark-primary-color">Opcion 4</li>
+				<li class="nav-element dark-primary-color">Mi cuenta</li>
 			</ul>
 		</div>
 		<div class="secondary-logo"></div>
@@ -51,7 +49,7 @@
 		<section class="main-image">
 			<div class="row middle-xs center-xs introduction-title">
 				<div class="col-xs-12">
-					<div class="main-title text-primary-color">Lorem ipsum dolor sit amet</div>
+					<div class="main-title text-primary-color">Beneficios habitacionales</div>
 				</div>				
 			</div>
 		</section>
