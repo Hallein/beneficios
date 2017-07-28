@@ -10,7 +10,8 @@ function ListarBeneficios(){
 	    	//$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){
-	    	$('#d-content').html(resultado.html);
+	    	$('#d-content').hide();
+	    	$('#d-content').html(resultado.html).fadeIn();
 			$('#listado-beneficios').DataTable( {
 			    			responsive: true,
 			    			"columnDefs": [
@@ -67,7 +68,8 @@ function verBeneficio(id){
 	    	//$('#overlay-loader').fadeOut(400);
 	    },
 	    success: function(resultado){
-	    	$('#d-content').html(resultado.html);
+	    	$('#d-content').hide();
+	    	$('#d-content').html(resultado.html).fadeIn();
 	    }
 	});
 }

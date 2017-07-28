@@ -13,7 +13,13 @@ function formInputsInit(){
 				label.removeClass('active-input');
 			}
 		}
-	});	
+	});
+	$('input, textarea').each(function(index){
+		if($(this).val() != ''){
+			var parent = $(this).parents('.form-input');
+			parent.find('label').addClass('active-input');
+		}
+	});
 	$('select').each(function(index){
 		var parent = $(this).parents('.form-input');
 		parent.find('label').addClass('active-input');
@@ -21,5 +27,16 @@ function formInputsInit(){
 	$('textarea').each(function(index){
 		var parent = $(this).parents('.form-input');
 		parent.find('label').addClass('label-select');
+	});
+}
+
+function navBarInit(){
+	var navbar_elements = $('.navbar').children();
+	navbar_elements.click(function(){
+		navbar_elements.removeClass('nav-element-active');
+		$(this).addClass('nav-element-active');
+	});
+	$('#beneficios-nav').click(function(){
+		ListarBeneficios();
 	});
 }

@@ -30,7 +30,7 @@
 		</div>
 		<div class="sidenav-content">
 			<ul class="navbar text-primary-color">
-				<li class="nav-element dark-primary-color">Opcion 1</li>
+				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios</li>
 				<li class="nav-element dark-primary-color">Opcion 2</li>
 				<li class="nav-element dark-primary-color">Opcion 3</li>
 				<li class="nav-element dark-primary-color">Opcion 4</li>
@@ -53,137 +53,7 @@
 				</div>				
 			</div>
 		</section>
-		<section>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="card over-background">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-xs-12">
-										<div id="d-content">
-										
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-md-6">
-						<div class="card">
-							<div class="card-title text-primary-color dark-primary-color">
-								<div class="row center-xs center-sm start-md">
-									<div class="col-xs-12">
-										Ingresar nuevo beneficio ministerial
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
-										<div class="form-input">
-											<label for="user-rut">Rut</label>
-											<input id="user-rut" type="text">
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-4">
-										<div class="form-input">
-											<label for="user-name">Nombre</label>
-											<input id="user-name" type="text">
-											<div class="input-underline"></div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
-										<div class="form-input">
-											<label for="user-company">Empresa</label>
-											<select id="user-company">
-												<option value="">1</option>
-												<option value="">2</option>
-											</select>
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-4">
-										<div class="form-input">
-											<label for="user-benefit">Tipo de beneficio</label>
-											<select id="user-benefit">
-												<option value="">1</option>
-												<option value="">2</option>
-											</select>
-											<div class="input-underline"></div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<br>
-								<div class="row center-xs">
-									<div class="col-xs-12">
-										<button id="login-button" class="btn btn-primary">Ingresar</button>
-									</div>
-								</div>
-								<br>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-md-6">
-						<div class="card">
-							<div class="card-title text-primary-color dark-primary-color">
-								<div class="row center-xs center-sm start-md">
-									<div class="col-xs-12">
-										Ingresar nuevo hito
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-										<div class="form-input">
-											<label for="user-company">Hito</label>
-											<select id="user-company">
-												<option value="">1</option>
-												<option value="">2</option>
-											</select>
-											<div class="input-underline"></div>
-										</div>
-									</div>
-									<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-										<div class="form-input">
-											<label for="textarea-prueba1">Detalle</label>
-											<textarea id="textarea-prueba1"></textarea>
-											<div class="input-underline"></div>
-										</div>
-									</div>
-								</div>
-								<br>
-								<br>
-								<div class="row center-xs">
-									<div class="col-xs-12">
-										<button id="login-button" class="btn btn-primary">Ingresar</button>
-									</div>
-								</div>
-								<br>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<section id="d-content"></section>
 		<footer class="dark-primary-color text-primary-color">
 			<div>Contacto Call Center</div>
 			<div>Lunes a Viernes 09:00 - 18:00 hrs</div>
@@ -195,8 +65,127 @@
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/dataTables.responsive.min.js"></script>
 	<script src="../js/dataTables.material.min.js"></script>		
-	<script src="../js/j-form.js"></script>
+	<script src="../js/init.js"></script>
+	<script src="../js/utilities.js"></script>	
 	<script src="../js/admin.js"></script>
 	<script src="../js/beneficios.js"></script>
 </body>
 </html>
+
+
+
+<!--
+
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="card">
+			<div class="card-title text-primary-color dark-primary-color">
+				<div class="row center-xs center-sm start-md">
+					<div class="col-xs-12">
+						Ingresar nuevo beneficio ministerial
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
+						<div class="form-input">
+							<label for="user-rut">Rut</label>
+							<input id="user-rut" type="text">
+							<div class="input-underline"></div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4">
+						<div class="form-input">
+							<label for="user-name">Nombre</label>
+							<input id="user-name" type="text">
+							<div class="input-underline"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
+						<div class="form-input">
+							<label for="user-company">Empresa</label>
+							<select id="user-company">
+								<option value="">1</option>
+								<option value="">2</option>
+							</select>
+							<div class="input-underline"></div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-4">
+						<div class="form-input">
+							<label for="user-benefit">Tipo de beneficio</label>
+							<select id="user-benefit">
+								<option value="">1</option>
+								<option value="">2</option>
+							</select>
+							<div class="input-underline"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row center-xs">
+					<div class="col-xs-12">
+						<button id="login-button" class="btn btn-primary">Ingresar</button>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-md-6">
+		<div class="card">
+			<div class="card-title text-primary-color dark-primary-color">
+				<div class="row center-xs center-sm start-md">
+					<div class="col-xs-12">
+						Ingresar nuevo hito
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+						<div class="form-input">
+							<label for="user-company">Hito</label>
+							<select id="user-company">
+								<option value="">1</option>
+								<option value="">2</option>
+							</select>
+							<div class="input-underline"></div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+						<div class="form-input">
+							<label for="textarea-prueba1">Detalle</label>
+							<textarea id="textarea-prueba1"></textarea>
+							<div class="input-underline"></div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="row center-xs">
+					<div class="col-xs-12">
+						<button id="login-button" class="btn btn-primary">Ingresar</button>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</div>
+-->
