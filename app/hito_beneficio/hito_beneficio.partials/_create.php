@@ -58,6 +58,13 @@
 				<br>
 				<div class="row start-xs">
 					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+						<div class="form-input" style="z-index: 2000;">
+							<label for="hito-date">Fecha</label>
+							<input id="hito-date" type="text">
+							<div class="input-underline"></div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
 						<div class="form-input">
 							<label for="hito">Hito</label>
 							<select id="hito">

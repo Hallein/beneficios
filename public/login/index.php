@@ -63,7 +63,7 @@
 		</svg>
 	</div>
 	<script src="../js/jquery.min.js"></script>
-	<script src="../js/j-toast.js"></script>
+	<script src="../js/utilities.js"></script>
 	<script src="../js/login.js"></script>
 </body>
 </html>
