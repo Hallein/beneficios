@@ -32,9 +32,9 @@ $app->get('/beneficios/edit/{id}', function ($request, $response, $args) {
 /* Ruta que actualiza un beneficio según su id */
 $app->post('/beneficios/update', function ($request, $response, $args) {
 	$data = $request->getParsedBody();
-	//$json = $this->beneficio->update($data);
+	$json = $this->beneficio->update($data);
 
-	$response->write(json_encode($data));	
+	$response->write(json_encode($json));	
 	return $response;
 });
 
