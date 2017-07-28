@@ -6,14 +6,11 @@ $(document).ready(function(){
 });
 
 function verBeneficio(){
-	var data = {
-			rut		: $('#user-rut').val(),
-			empresa	: $('#user-company').val()
-		};
+	var rut = $('#user-rut').val();
+	var empresa	= $('#user-company').val();
 	$.ajax({
-	    type: "POST",
-	    url : "../api/consulta/"+empresa+"/"+rut,
-	    data: data,
+	    type: "GET",
+	    url : "api/consulta/"+empresa+"/"+rut,
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#floating-loader').fadeIn(200);

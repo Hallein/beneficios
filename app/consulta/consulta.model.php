@@ -46,7 +46,7 @@ class Consulta{
 			ON 			T.TIPBEN_ID = B.TIPBEN_ID
 			INNER JOIN 	PERSONA P
 			ON 			P.PER_RUT = B.PER_RUT
-            WHERE 		B.BEN_EMPRESA LIKE ':empresa'
+            WHERE 		B.BEN_EMPRESA LIKE :empresa
             AND 		B.PER_RUT = :rut
 		');
 
@@ -78,7 +78,7 @@ class Consulta{
 				ON 			EB.BEN_ID = B.BEN_ID
 				INNER JOIN 	ETAPA E 
 				ON 			E.ETA_ID = EB.ETA_ID
-				WHERE 		B.BEN_EMPRESA LIKE ':empresa'
+				WHERE 		B.BEN_EMPRESA LIKE :empresa
             	AND 		B.PER_RUT = :rut
 				ORDER BY 	ETA_ID DESC
 		');
@@ -107,7 +107,7 @@ class Consulta{
 				ON 			E.ETA_ID = H.ETA_ID
                 INNER JOIN	BENEFICIO B 
                 ON 			B.BEN_ID = HB.BEN_ID
-				WHERE 		B.BEN_EMPRESA LIKE ':empresa'
+				WHERE 		B.BEN_EMPRESA LIKE :empresa
             	AND 		B.PER_RUT = :rut
 		');
 

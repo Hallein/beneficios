@@ -41,8 +41,10 @@
 											<div class="form-input">
 												<label for="user-company">Empresa</label>
 												<select id="user-company">
-													<option value="">1</option>
-													<option value="">2</option>
+													<option value="Los Pelambres">Los Pelambres</option>
+													<option value="Centinela">Centinela</option>
+													<option value="Antucoya">Antucoya</option>
+													<option value="Zaldívar">Zaldívar</option>
 												</select>
 												<div class="input-underline"></div>
 											</div>

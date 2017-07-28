@@ -12,7 +12,7 @@
 	<title>Antofagasta Minerals</title>
 	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="../css/font-awesome.css">
-	<link rel="stylesheet" href="../css/j-toast.css">
+	<link rel="stylesheet" href="../css/utilities.css">
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="login-background">
