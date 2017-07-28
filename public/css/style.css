@@ -694,6 +694,16 @@ nav .secondary-logo::before{
 	color: #fff;  
 }
 
+/*LISTS*/
+.hitos-list span{
+	font-size: 1.2em;
+}
+
+.hitos-list li{
+	margin-left: 20px;
+	font-size: 1.1em;
+}
+
 /*LOADER*/
 #floating-loader{
 	display: none;

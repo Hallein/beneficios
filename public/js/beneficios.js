@@ -70,6 +70,9 @@ function verBeneficio(id){
 	    success: function(resultado){
 	    	$('#d-content').hide();
 	    	$('#d-content').html(resultado.html).fadeIn();
+	    	$('#btn-add').click(function(){
+		    	agregarHito(id);
+		    });
 	    }
 	});
 }
@@ -90,13 +93,13 @@ function modificarBeneficio(id){
 	    	$('#d-content').html(resultado.html).fadeIn();
 	    	formInputsInit();
 	    	$('#modify-button').click(function(){
-		    	ActualizarBeneficio(id);
+		    	actualizarBeneficio(id);
 		    });
 	    }
 	});
 }
 
-function ActualizarBeneficio(id){
+function actualizarBeneficio(id){
 	var data = {
 			id 		: id,
 			nombre	: $('#user-name').val(),
@@ -119,6 +122,58 @@ function ActualizarBeneficio(id){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		ListarBeneficios();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+	    }
+	});
+}
+
+function agregarHito(id){
+	$.ajax({
+	    type: "GET",
+	    url : "../api/hitos/"+id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	$('#d-content').hide();
+	    	$('#d-content').html(resultado.html).fadeIn();
+	    	formInputsInit();
+	    	$('#create-button').click(function(){
+		    	ingresarHito(id);
+		    });
+	    }
+	});
+}
+
+function ingresarHito(id){
+	var data = {
+			ben_id	: id,
+			hito_id	: $('#hito').val(),
+			detalle	: $('#benefit-status').val(),
+			fecha	: '2017/07/28'
+			//fecha	: $('#hito-date').val();
+		};
+	$.ajax({
+	    type: "POST",
+	    url : "../api/hitos/store",
+	    data: data,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		agregarHito(id);
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}

@@ -55,7 +55,7 @@ class HitoBeneficio{
 				WHERE 		H.ETA_ID = :eta_id
 			');
 
-		$query -> bindParam(':eta_id', $eta_id);
+		$query -> bindParam(':eta_id', $etapa);
 		
 		$query -> execute();
 		$hitos = $query->fetchAll();
