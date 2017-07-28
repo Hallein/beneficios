@@ -164,11 +164,38 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function edit($id){
+		$datos = array();
+		$query = $this->db->prepare('	
+					SELECT 		B.BEN_ID,
+								B.TIPBEN_ID,
+								B.PER_RUT,
+								P.PER_NOMBRE,
+								B.BEN_EMPRESA,
+								B.BEN_ESTADO
+					FROM 		BENEFICIO B
+					INNER JOIN 	PERSONA P
+					ON 			P.PER_RUT = B.PER_RUT
+					WHERE 		B.BEN_ID = :id
+			');
+
+		$query -> bindParam(':id', $id);
+
+		if($query->execute()){
+			$datos['beneficio'] = $query->fetch();	
+			$datos['respuesta'] = respuesta('success');
+		}else{
+			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'La consulta no se realizó correctamente');
+		}
+
+		return $datos;
+	}
+
 	public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	BENEFICIO 
 											SET 	BEN_EMPRESA = :empresa, 
-													BEN_ESTADO = :estado, 
+													BEN_ESTADO = :estado 
 											WHERE 	BEN_ID = :id');
 
 			$query -> bindParam(':empresa', $data['empresa']);

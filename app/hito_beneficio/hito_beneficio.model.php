@@ -1,43 +1,11 @@
 <?php
 
-class Persona{
+class HitoBeneficio{
 
 	private $db;
 
 	public function __construct($db){
 		$this->db = $db;
-	}
-
-	public function show($rut){
-		$query = $this->db->prepare('	
-			SELECT 	PER_RUT,
-					PER_NOMBRE
-			FROM	PERSONA
-			WHERE 	PER_RUT = :rut
-		 ');
-
-		$query->bindParam(':rut', 	$rut);
-
-		$query->execute();
-		$datos = $query->fetch();
-		return $datos;
-	}
-
-	public function showByBeneficio($id){
-		$query = $this->db->prepare('	
-			SELECT 	B.PER_RUT,
-					P.PER_NOMBRE
-			FROM 	BENEFICIO B
-			INNER JOIN PERSONA P 
-			ON 		P.PER_RUT = B.PER_RUT
-			WHERE 	B.BEN_ID = :id
-		 ');
-
-		$query->bindParam(':id', 	$id);
-
-		$query->execute();
-		$datos = $query->fetch();
-		return $datos;
 	}
 
 	public function store($data){
@@ -59,11 +27,11 @@ class Persona{
 	public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	PERSONA 
-											SET 	PER_NOMBRE = :nombre
+											SET 	PER_NOMBRE = :nombre,
 											WHERE 	PER_RUT = :rut');
 
-			$query -> bindParam(':nombre', 	$data['nombre']);
-			$query -> bindParam(':rut', 	$data['rut']);
+			$query -> bindParam(':nombre', $data['nombre']);
+			$query -> bindParam(':rut', $data['rut']);
 
 			if($query -> execute()){
 				$datos['respuesta'] = respuesta('success', '', 'Persona actualizada correctamente');

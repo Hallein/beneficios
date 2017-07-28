@@ -13,10 +13,16 @@ class BeneficioController{
 
 	private $beneficio; 
 	private $persona;
+	private $tipo_beneficio;
+	private $hito_beneficio;
+	private $etapa_beneficio;
 
 	public function __construct($db){
-		$this->beneficio = new Beneficio($db);
-		$this->persona = new Persona($db);
+		$this->beneficio 		= new Beneficio($db);
+		$this->persona 			= new Persona($db);
+		$this->tipo_beneficio 	= new TipoBeneficio($db);
+		$this->hito_beneficio 	= new HitoBeneficio($db);
+		$this->etapa_beneficio 	= new EtapaBeneficio($db);
 	}
 
 	public function index(){
@@ -75,13 +81,22 @@ class BeneficioController{
 		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
 		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
 
-		$datos = $this->beneficio->store($data);
 		$datos = $this->persona->store($data);
+		if($datos['respuesta']['status'] === 'success'){
+			$datos = $this->beneficio->store($data);
+		}
 		return $datos['respuesta'];
 	}
 
 	public function edit($id){
-		//devolver formulario
+		$datos = $this->beneficio->show($id);
+		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll($id);
+
+		ob_start();
+		include BENEFICIO . '/_edit.php';
+		$datos['respuesta']['html'] = ob_get_clean();
+
+		return $datos['respuesta'];
 	}
 
 	public function update($data){
@@ -96,6 +111,13 @@ class BeneficioController{
 		$datos = $this->beneficio->update($data);
 		$datos = $this->persona->update($data);
 		return $datos['respuesta'];
+	}
+
+	public function destroy($id){
+		//Destruir los hito_beneficio
+		//Destruir las etapa_beneficio
+		//Destruir el beneficio
+
 	}
 
 }
