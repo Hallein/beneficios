@@ -13,7 +13,7 @@ class HitoBeneficio{
 		$query = $this->db->prepare('
 				SELECT 		HB.HITO_ID,
 							HB.BEN_ID,
-							HB.HB_FECHA,
+							DATE_FORMAT(HB.HB_FECHA, "%d/%m/%Y") AS HB_FECHA,
 							HB.HB_DETALLE,
 							H.HITO_NOMBRE
 				FROM 		HITO_BENEFICIO HB

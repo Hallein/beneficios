@@ -120,7 +120,13 @@ class Beneficio{
 	public function showHitos($id){
 
 		$query = $this->db->prepare('
-			SELECT 		B.BEN_ID, H.ETA_ID, E.ETA_NOMBRE, HB.HITO_ID, H.HITO_NOMBRE, HB.HB_FECHA, HB.HB_DETALLE
+			SELECT 		B.BEN_ID, 
+						H.ETA_ID, 
+						E.ETA_NOMBRE, 
+						HB.HITO_ID, 
+						H.HITO_NOMBRE, 
+						DATE_FORMAT(HB.HB_FECHA, "%d/%m/%Y") AS HB_FECHA,
+						HB.HB_DETALLE
 			FROM 		BENEFICIO B
 			INNER JOIN 	HITO_BENEFICIO HB
 			ON			HB.BEN_ID = B.BEN_ID
@@ -243,7 +249,7 @@ class Beneficio{
 				SELECT 		E.ETA_ID, 
 							H.HITO_ID, 
 							H.HITO_NOMBRE, 
-							HB.HB_FECHA, 
+							DATE_FORMAT(HB.HB_FECHA, "%d/%m/%Y") AS HB_FECHA,
 							HB.HB_DETALLE
 				FROM 		HITO_BENEFICIO HB
 				INNER JOIN 	HITO H
