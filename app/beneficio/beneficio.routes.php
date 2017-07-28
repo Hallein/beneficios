@@ -19,6 +19,15 @@ $app->get('/beneficios/{id}', function ($request, $response, $args) {
 	return $response;
 });
 
+/* Ruta que trae el formulario para crear un beneficio */
+$app->get('/beneficios/create', function ($request, $response, $args) {
+
+	$json = $this->beneficio->create();
+
+	$response->write(json_encode($json));	
+	return $response;
+});
+
 /* Ruta que trae el formulario para editar un beneficio dado su id */
 $app->get('/beneficios/edit/{id}', function ($request, $response, $args) {
 

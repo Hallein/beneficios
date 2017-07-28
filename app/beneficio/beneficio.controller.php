@@ -50,13 +50,20 @@ class BeneficioController{
 	}
 
 	public function create(){
-		//devolver formulario
+		$datos = array();
+		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll();
+
+		ob_start();
+		include BENEFICIO . '/_create.php';
+		$datos['respuesta']['html'] = ob_get_clean();
+
+		return $datos['respuesta'];
 	}
 
 	public function store($data){
 		//realizar tratamiento de rut
 		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
-		$data['tipo_beneficio'] = filter_var($data['tipo_beneficio'], FILTER_SANITIZE_STRING);
+		$data['tipo_beneficio'] = filter_var($data['tipo'], FILTER_SANITIZE_STRING);
 		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
 		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
 		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
@@ -70,8 +77,7 @@ class BeneficioController{
 	}
 
 	public function edit($id){
-		$datos = $this->beneficio->show($id);
-		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll($id);
+		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll();
 
 		ob_start();
 		include BENEFICIO . '/_edit.php';
