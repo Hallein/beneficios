@@ -117,27 +117,6 @@ class Beneficio{
 		return $datos;
 	}
 
-	public function getUltimaEtapa($id){
-		$query = $this->db->prepare('
-			SELECT 		E.ETA_ID
-            FROM 		ETAPA E
-            WHERE 		E.ETA_ID = 	(
-                                        SELECT 		EB.ETA_ID
-                                        FROM 		ETAPA_BENEFICIO EB
-                                        WHERE		EB.BEN_ID = :id
-                                        ORDER BY	EB.ETA_ID DESC
-                                        LIMIT 1
-                                    )
-		');
-
-		$query->bindParam(':id', $id);
-
-		$query->execute();
-		$datos = $query->fetch();	
-
-		return $datos['ETA_ID'];
-	}
-
 	public function showHitos($id){
 
 		$query = $this->db->prepare('
@@ -164,6 +143,27 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function getUltimaEtapa($id){
+		$query = $this->db->prepare('
+			SELECT 		E.ETA_ID
+            FROM 		ETAPA E
+            WHERE 		E.ETA_ID = 	(
+                                        SELECT 		EB.ETA_ID
+                                        FROM 		ETAPA_BENEFICIO EB
+                                        WHERE		EB.BEN_ID = :id
+                                        ORDER BY	EB.ETA_ID DESC
+                                        LIMIT 1
+                                    )
+		');
+
+		$query->bindParam(':id', $id);
+
+		$query->execute();
+		$datos = $query->fetch();	
+
+		return $datos['ETA_ID'];
+	}
+
 	public function store($data){
 		$datos = array();
 		$query = $this->db->prepare(' 	
@@ -184,65 +184,97 @@ class Beneficio{
 	}
 
 	public function update($data){
-			$datos = array();
-			$query = $this->db->prepare('	UPDATE 	BENEFICIO 
-											SET 	BEN_EMPRESA = :empresa, 
-													TIPBEN_ID = :tipo_beneficio, 
-													BEN_ESTADO = :estado 
-											WHERE 	BEN_ID = :id');
+		$datos = array();
+		$query = $this->db->prepare('	UPDATE 	BENEFICIO 
+										SET 	BEN_EMPRESA = :empresa, 
+												TIPBEN_ID = :tipo_beneficio, 
+												BEN_ESTADO = :estado 
+										WHERE 	BEN_ID = :id');
 
-			$query -> bindParam(':empresa', 		$data['empresa']);
-			$query -> bindParam(':tipo_beneficio', 	$data['tipo_beneficio']);
-			$query -> bindParam(':estado', 			$data['estado']);
-			$query -> bindParam(':id', 				$data['id']);
+		$query -> bindParam(':empresa', 		$data['empresa']);
+		$query -> bindParam(':tipo_beneficio', 	$data['tipo_beneficio']);
+		$query -> bindParam(':estado', 			$data['estado']);
+		$query -> bindParam(':id', 				$data['id']);
 
-			if($query -> execute()){
-				$datos['respuesta'] = respuesta('success', '', 'Beneficio actualizado correctamente');
-			}else{
-				$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible actualizar el beneficio');
-			}
-
-			return $datos;
+		if($query -> execute()){
+			$datos['respuesta'] = respuesta('success', '', 'Beneficio actualizado correctamente');
+		}else{
+			$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible actualizar el beneficio');
 		}
+
+		return $datos;
+	}
+
+	public function showEtapas($id){
+		$query = $this->db->prepare('
+				SELECT 		B.BEN_ID, 
+							E.ETA_ID, 
+							E.ETA_NOMBRE
+				FROM 		BENEFICIO B
+				INNER JOIN	ETAPA_BENEFICIO EB
+				ON 			EB.BEN_ID = B.BEN_ID
+				INNER JOIN 	ETAPA E 
+				ON 			E.ETA_ID = EB.ETA_ID
+				WHERE 		B.BEN_ID = :id
+				ORDER BY 	ETA_ID DESC
+		');
+
+		$query -> bindParam(':id', $id);
+
+		$query -> execute();
+
+		$etapas = $query->fetchAll();
+		
+		return $etapas;
+	}
+
+	public function showHitos2($id){
+		$query = $this->db->prepare('
+				SELECT 		E.ETA_ID, 
+							H.HITO_ID, 
+							H.HITO_NOMBRE, 
+							HB.HB_FECHA, 
+							HB.HB_DETALLE
+				FROM 		HITO_BENEFICIO HB
+				INNER JOIN 	HITO H
+				ON 			H.HITO_ID = HB.HITO_ID
+				INNER JOIN 	ETAPA E 
+				ON 			E.ETA_ID = H.ETA_ID
+				WHERE 		HB.BEN_ID = :id
+		');
+
+		$query -> bindParam(':id', $id);
+
+		$query -> execute();
+
+		$hitos = $query->fetchAll();
+
+		return $hitos;
+	}
 
 		
 }
 
-/* Obtiene la última etapa de un beneficio
+/* Obtener todas las etapas de un beneficio
 
-SELECT 		e.ETA_ID
-FROM 		ETAPA E
-WHERE 		E.ETA_ID = 	(
-                            SELECT 		EB.ETA_ID
-                            FROM 		ETAPA_BENEFICIO EB
-                            WHERE		EB.BEN_ID = :id
-                            ORDER BY	EB.ETA_ID DESC
-                            LIMIT 1
-						)
-
+SELECT 		B.BEN_ID, E.ETA_NOMBRE
+FROM 		BENEFICIO B
+INNER JOIN	ETAPA_BENEFICIO EB
+ON 			EB.BEN_ID = B.BEN_ID
+INNER JOIN 	ETAPA E 
+ON 			E.ETA_ID = EB.ETA_ID
+WHERE 		B.BEN_ID = 2
 
 */
 
-/*
+/* Obtener todos los hitos de un beneficio por etapa
 
-SELECT 		HB.*,
-			H.HITO_NOMBRE
+SELECT 		E.ETA_ID, H.HITO_ID, H.HITO_NOMBRE
 FROM 		HITO_BENEFICIO HB
 INNER JOIN 	HITO H
 ON 			H.HITO_ID = HB.HITO_ID
 INNER JOIN 	ETAPA E 
 ON 			E.ETA_ID = H.ETA_ID
-AND 		E.ETA_ID = (
-						SELECT 		E.ETA_ID
-                        FROM 		ETAPA E
-                        WHERE 		E.ETA_ID = 	(
-                                                    SELECT 		EB.ETA_ID
-                                                    FROM 		ETAPA_BENEFICIO EB
-                                                    WHERE		EB.BEN_ID = :id
-                                                    ORDER BY	EB.ETA_ID DESC
-                                                    LIMIT 1
-                                                )
-    )					
-WHERE 		HB.BEN_ID = :id
+WHERE 		HB.BEN_ID = 1
 
 */

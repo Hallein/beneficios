@@ -8,7 +8,10 @@
 		}
 
 		public function consultaBeneficio($empresa, $rut){
-			$query = $this->db->prepare('SELECT * FROM BENEFICIO');
+			$query = $this->db->prepare('
+						SELECT * 
+						FROM BENEFICIO
+					');
 			$query->execute();
 
 			if($query->execute()){
