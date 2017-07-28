@@ -5,7 +5,8 @@
             	<div class="card-title text-primary-color dark-primary-color">
 	                <div class="row center-xs center-sm start-md">
 	                    <div class="col-xs-12">
-	                        Beneficio otogado a <?php echo $datos['beneficio']['PER_NOMBRE']; ?> de la empresa <?php echo $datos['beneficio']['BEN_EMPRESA']; ?>
+	                        <span class="btn-back"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</span>Beneficio otogado a <?php echo $datos['beneficio']['PER_NOMBRE']; ?> de la empresa <?php echo $datos['beneficio']['BEN_EMPRESA']; ?>
 	                    </div>
 	                </div>
 	            </div>

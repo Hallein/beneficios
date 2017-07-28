@@ -4,14 +4,15 @@
 			<div class="card-title text-primary-color dark-primary-color">
 				<div class="row center-xs center-sm start-md">
 					<div class="col-xs-12">
-						Modificar beneficio habitacional
+						<span class="btn-back"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</span>Modificar beneficio habitacional
 					</div>
 				</div>
 			</div>
 			<div class="card-body">
 				<div class="row start-xs">
 					<div class="col-xs-12">
-						<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+						<div class="secondary-text-color"></div>
 					</div>
 				</div>
 				<div class="row">

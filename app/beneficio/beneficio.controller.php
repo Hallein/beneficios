@@ -79,6 +79,7 @@ class BeneficioController{
 	}
 
 	public function edit($id){
+		$datos= $this->beneficio->show($id);
 		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll();
 
 		ob_start();
