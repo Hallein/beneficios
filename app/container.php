@@ -9,3 +9,7 @@ $container['consulta'] = function ($c) {
 $container['beneficio'] = function ($c) {
     return new BeneficioController($c->db);
 };
+
+$container['hito_beneficio'] = function ($c) {
+    return new HitoBeneficioController($c->db);
+};

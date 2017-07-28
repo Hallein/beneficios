@@ -8,6 +8,44 @@ class HitoBeneficio{
 		$this->db = $db;
 	}
 
+	public function getAllByBeneficio($ben_id){
+		$datos = array();
+		$query = $this->db->prepare('
+				SELECT 		HB.HITO_ID,
+							HB.BEN_ID,
+							HB.HB_FECHA,
+							HB.HB_DETALLE,
+							H.HITO_NOMBRE
+				FROM 		HITO_BENEFICIO HB
+				INNER JOIN 	HITO H
+				ON 			H.HITO_ID = HB.HITO_ID
+				INNER JOIN 	ETAPA E 
+				ON 			E.ETA_ID = H.ETA_ID
+				AND 		E.ETA_ID = (
+										SELECT 		E.ETA_ID
+				                        FROM 		ETAPA E
+				                        WHERE 		E.ETA_ID = 	(
+				                                                    SELECT 		EB.ETA_ID
+				                                                    FROM 		ETAPA_BENEFICIO EB
+				                                                    WHERE		EB.BEN_ID = :ben_id
+				                                                    ORDER BY	EB.ETA_ID DESC
+				                                                    LIMIT 1
+				                                                )
+				    )					
+				WHERE 		HB.BEN_ID = :ben_id
+			');
+
+		$query -> bindParam(':ben_id', $ben_id);
+
+		if($query -> execute()){
+			$datos['respuesta'] = respuesta('success');
+		}else{
+			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No hay hitos');
+		}
+		return $datos;
+
+	}
+
 	public function store($data){
 		$datos = array();
 		$query = $this->db->prepare('	
