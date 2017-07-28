@@ -118,7 +118,7 @@ class BeneficioController{
 
 	public function finalizarEtapa($id){
 		$etapa = $this->beneficio->getUltimaEtapa($id);
-		$datos = $this->beneficio->finalizarEtapa($id, $etapa['ETA_ID']);
+		$datos = $this->beneficio->finalizarEtapa($id, $etapa);
 		return $datos['respuesta'];
 	}
 

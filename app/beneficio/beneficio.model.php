@@ -296,9 +296,9 @@ class Beneficio{
 			$query = $this->db->prepare(' 	
 					INSERT INTO ETAPA_BENEFICIO(ETA_ID, BEN_ID, EB_FECHAINI, EB_ESTADO) 
 					VALUES(:etapa, :ben_id, sysdate(), 1) ');
-
-			$query -> bindParam(':etapa', 	($etapa + 1) );
-			$query -> bindParam(':ben_id', 	$ben_id);
+			$nueva_etapa = ($etapa + 1);
+			$query -> bindParam(':etapa', 	$nueva_etapa);
+			$query -> bindParam(':ben_id', 	$id);
 
 			$query -> execute();
 			$datos['respuesta'] = respuesta('success', '', 'Etapa finalizada correctamente');
