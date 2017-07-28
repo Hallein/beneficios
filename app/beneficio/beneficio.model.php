@@ -104,7 +104,7 @@ class Beneficio{
 
 		if($query -> execute()){
 
-			$datos['beneficio'] = $query -> fetch();
+			$datos['beneficio'] = $query->fetch();
 
 			if($datos['beneficio']){
 				$datos['respuesta'] = respuesta('success');					
@@ -164,43 +164,18 @@ class Beneficio{
 		return $datos;
 	}
 
-	public function edit($id){
-		$datos = array();
-		$query = $this->db->prepare('	
-					SELECT 		B.BEN_ID,
-								B.TIPBEN_ID,
-								B.PER_RUT,
-								P.PER_NOMBRE,
-								B.BEN_EMPRESA,
-								B.BEN_ESTADO
-					FROM 		BENEFICIO B
-					INNER JOIN 	PERSONA P
-					ON 			P.PER_RUT = B.PER_RUT
-					WHERE 		B.BEN_ID = :id
-			');
-
-		$query -> bindParam(':id', $id);
-
-		if($query->execute()){
-			$datos['beneficio'] = $query->fetch();	
-			$datos['respuesta'] = respuesta('success');
-		}else{
-			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'La consulta no se realizó correctamente');
-		}
-
-		return $datos;
-	}
-
 	public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	BENEFICIO 
 											SET 	BEN_EMPRESA = :empresa, 
+													TIPBEN_ID = :tipo_beneficio, 
 													BEN_ESTADO = :estado 
 											WHERE 	BEN_ID = :id');
 
-			$query -> bindParam(':empresa', $data['empresa']);
-			$query -> bindParam(':estado', 	$data['estado']);
-			$query -> bindParam(':id', 		$data['id']);
+			$query -> bindParam(':empresa', 		$data['empresa']);
+			$query -> bindParam(':tipo_beneficio', 	$data['tipo_beneficio']);
+			$query -> bindParam(':estado', 			$data['estado']);
+			$query -> bindParam(':id', 				$data['id']);
 
 			if($query -> execute()){
 				$datos['respuesta'] = respuesta('success', '', 'Beneficio actualizado correctamente');
@@ -213,3 +188,42 @@ class Beneficio{
 
 		
 }
+
+/* Obtiene la última etapa de un beneficio
+
+SELECT 		e.ETA_ID
+FROM 		ETAPA E
+WHERE 		E.ETA_ID = 	(
+                            SELECT 		EB.ETA_ID
+                            FROM 		ETAPA_BENEFICIO EB
+                            WHERE		EB.BEN_ID = :id
+                            ORDER BY	EB.ETA_ID DESC
+                            LIMIT 1
+						)
+
+
+*/
+
+/*
+
+SELECT 		HB.*,
+			H.HITO_NOMBRE
+FROM 		HITO_BENEFICIO HB
+INNER JOIN 	HITO H
+ON 			H.HITO_ID = HB.HITO_ID
+INNER JOIN 	ETAPA E 
+ON 			E.ETA_ID = H.ETA_ID
+AND 		E.ETA_ID = (
+						SELECT 		E.ETA_ID
+                        FROM 		ETAPA E
+                        WHERE 		E.ETA_ID = 	(
+                                                    SELECT 		EB.ETA_ID
+                                                    FROM 		ETAPA_BENEFICIO EB
+                                                    WHERE		EB.BEN_ID = :id
+                                                    ORDER BY	EB.ETA_ID DESC
+                                                    LIMIT 1
+                                                )
+    )					
+WHERE 		HB.BEN_ID = :id
+
+*/
