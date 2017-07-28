@@ -65,6 +65,25 @@ class HitoBeneficio{
 
 	public function store($data){
 		$datos = array();
+		/* Verificar si el hito ingresado existe */
+		$query = $this->db->prepare('	
+				SELECT 	HB.HITO_ID
+				FROM 	HITO_BENEFICIO HB
+				WHERE	HB.HITO_ID = :hito_id
+				AND 	HB.BEN_ID = :ben_id 
+			');
+
+		$query -> bindParam(':hito_id', $data['hito_id']);
+		$query -> bindParam(':ben_id', 	$data['ben_id']);
+
+		$query -> execute();
+		$hito = $query->fetch();
+
+		if($hito['HITO_ID']){ //ya existe el hito
+			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'El hito para esta etapa ya existe');
+			return $datos;
+		}
+
 		$query = $this->db->prepare('	
 				INSERT INTO HITO_BENEFICIO(HITO_ID, US_RUT, BEN_ID, HB_FECHA, HB_DETALLE) 
 				VALUES(:hito_id, :rut, :ben_id, :fecha, :detalle) 

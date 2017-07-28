@@ -29,7 +29,7 @@ class HitoBeneficioController{
 		$data['hito_id'] 	= filter_var($data['hito_id'], FILTER_SANITIZE_STRING);
 		$data['ben_id'] 	= filter_var($data['ben_id'], FILTER_SANITIZE_STRING);
 		$data['fecha'] 		= filter_var($data['fecha'], FILTER_SANITIZE_STRING);
-		$data['detalle'] 	= filter_var($data['detalle'], FILTER_SANITIZE_STRING);
+		$data['detalle'] 	= (isset($data['detalle'])) ? filter_var($data['detalle'], FILTER_SANITIZE_STRING) : '';
 
 		$datos = $this->hito_beneficio->store($data);
 		return $datos['respuesta'];
