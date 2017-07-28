@@ -56,7 +56,7 @@ class HitoBeneficio{
 			');
 
 		$query -> bindParam(':eta_id', $etapa);
-		
+
 		$query -> execute();
 		$hitos = $query->fetchAll();
 
@@ -66,7 +66,7 @@ class HitoBeneficio{
 	public function store($data){
 		$datos = array();
 		$query = $this->db->prepare('	
-				INSERT INTO HITO_BENEFICIO(HITO_ID, UD_RUT, BEN_ID, HB_FECHA, HB_DETALLE) 
+				INSERT INTO HITO_BENEFICIO(HITO_ID, US_RUT, BEN_ID, HB_FECHA, HB_DETALLE) 
 				VALUES(:hito_id, :rut, :ben_id, :fecha, :detalle) 
 			');
 
