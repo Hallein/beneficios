@@ -51,6 +51,9 @@ function ListarBeneficios(){
 		    	var id = $(this).attr('data-val');
 		    	verBeneficio(id);
 		    });
+		    $('#new-button').click(function(){
+		    	ingresarBeneficio();
+		    });
 		    formInputsInit();		    
 	    }
 	});
@@ -73,6 +76,57 @@ function verBeneficio(id){
 	    	$('#btn-add').click(function(){
 		    	agregarHito(id);
 		    });
+	    }
+	});
+}
+
+function ingresarBeneficio(){
+	$.ajax({
+	    type: "GET",
+	    url : "../api/beneficios/create/new",
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	$('#d-content').hide();
+	    	$('#d-content').html(resultado.html).fadeIn();
+	    	formInputsInit();
+	    	$('#create-button').click(function(){
+		    	guardarBeneficio();
+		    });
+	    }
+	});
+}
+
+function guardarBeneficio(){
+	var data = {
+			rut		: $('#user-rut').val(),
+			nombre	: $('#user-name').val(),
+			tipo	: $('#benefit-type').val(),
+			empresa	: $('#user-company').val()
+		};
+	$.ajax({
+	    type: "POST",
+	    url : "../api/beneficios/update",
+	    data: data,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		ListarBeneficios();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
 	    }
 	});
 }

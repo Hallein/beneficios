@@ -20,7 +20,7 @@ $app->get('/beneficios/{id}', function ($request, $response, $args) {
 });
 
 /* Ruta que trae el formulario para crear un beneficio */
-$app->get('/beneficios/create', function ($request, $response, $args) {
+$app->get('/beneficios/create/new', function ($request, $response, $args) {
 
 	$json = $this->beneficio->create();
 
