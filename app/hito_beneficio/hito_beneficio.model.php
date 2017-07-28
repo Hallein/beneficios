@@ -31,19 +31,36 @@ class HitoBeneficio{
 				                                                    ORDER BY	EB.ETA_ID DESC
 				                                                    LIMIT 1
 				                                                )
-				    )					
+				    					)					
 				WHERE 		HB.BEN_ID = :ben_id
 			');
 
-		$query -> bindParam(':ben_id', $ben_id);
+		$query->bindParam(':ben_id', $ben_id);
 
 		if($query -> execute()){
+			$datos['hito_beneficio'] = $query->fetchAll();
 			$datos['respuesta'] = respuesta('success');
 		}else{
 			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No hay hitos');
 		}
 		return $datos;
 
+	}
+
+	public function getHitosByEtapa($etapa){
+		$query = $this->db->prepare('
+				SELECT 		H.HITO_ID,
+							H.HITO_NOMBRE
+				FROM 		HITO H
+				WHERE 		H.ETA_ID = :eta_id
+			');
+
+		$query -> bindParam(':eta_id', $eta_id);
+		
+		$query -> execute();
+		$hitos = $query->fetchAll();
+
+		return $hitos;
 	}
 
 	public function store($data){
