@@ -57,5 +57,14 @@ $app->post('/beneficios/delete/{id}', function ($request, $response, $args) {
 	return $response;
 });
 
+/* Ruta que guarda un nuevo beneficio */
+$app->post('/beneficios/store', function ($request, $response, $args) {
+	$data = $request->getParsedBody();
+	$json = $this->beneficio->store($data);
+
+	$response->write(json_encode($json));	
+	return $response;
+});
+
 //POST $data = $request->getParsedBody();
 //filter_var($data['user'], FILTER_SANITIZE_STRING);

@@ -111,7 +111,7 @@ function guardarBeneficio(){
 		};
 	$.ajax({
 	    type: "POST",
-	    url : "../api/beneficios/update",
+	    url : "../api/beneficios/store",
 	    data: data,
 	    dataType: "json",
 	    beforeSend: function() {
