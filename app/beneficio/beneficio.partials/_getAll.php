@@ -29,6 +29,7 @@
                                         <th>Estado</th>
                                         <th class="all"></th>
                                         <th class="all"></th>
+                                        <th class="all"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,12 @@
                         </button></td>
                                         <td><button class="btn-round btn-edit modify" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i>
                         </button></td>
+                                        <td>
+                                        <?php if($beneficio['ESTADO'] == 'En Proceso'): ?>
+                                        <button class="btn-round btn-danger reject" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-times" aria-hidden="true"></i>
+                        </button>
+                                        <?php endif; ?>
+                                        </td>
                                     </tr>
                                 	<?php endforeach; ?>
 

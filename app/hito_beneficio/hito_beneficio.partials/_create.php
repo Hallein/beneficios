@@ -4,7 +4,8 @@
 			<div class="card-title text-primary-color dark-primary-color">
 				<div class="row center-xs center-sm start-md">
 					<div class="col-xs-12">
-						Ingresar nuevo hito
+						<span class="btn-back"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+</span>Ingresar nuevo hito
 					</div>
 				</div>
 			</div>

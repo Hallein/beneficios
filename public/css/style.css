@@ -385,6 +385,11 @@ nav .secondary-logo::before{
 	margin: 5px;
 }
 
+.btn-back{
+	padding: 0 5px;
+	cursor: pointer;
+}
+
 .btn-primary{
 	background-color: #26c6da;
 	color: #fff;
@@ -422,6 +427,19 @@ nav .secondary-logo::before{
 
 .btn-success:focus{
 	background-color: #388e3c;
+}
+
+.btn-danger{
+	background-color: #f44336;
+	color: #fff;
+}
+
+.btn-danger:hover{
+	background-color: #e57373;
+}
+
+.btn-danger:focus{
+	background-color: #d32f2f;
 }
 
 
