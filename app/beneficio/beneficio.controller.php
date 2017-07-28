@@ -62,13 +62,15 @@ class BeneficioController{
 
 	public function store($data){
 		//realizar tratamiento de rut
-		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
+		//$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
 		$data['tipo_beneficio'] = filter_var($data['tipo'], FILTER_SANITIZE_STRING);
 		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
-		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
+		//$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
 		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
 		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
 
+		//Verificar si la persona existe
+		
 		$datos = $this->persona->store($data);
 		if($datos['respuesta']['status'] === 'success'){
 			$datos = $this->beneficio->store($data);
