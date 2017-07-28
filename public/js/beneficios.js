@@ -158,7 +158,7 @@ function ingresarHito(id){
 			ben_id	: id,
 			hito_id	: $('#hito').val(),
 			detalle	: $('#observation').val(),
-			fecha	: $('#hito-date').val();
+			fecha	: $('#hito-date').val()
 		};
 	$.ajax({
 	    type: "POST",
