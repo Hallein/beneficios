@@ -175,7 +175,9 @@ class Beneficio{
 		$query -> bindParam(':empresa', 		$data['empresa']);
 
 		if($query -> execute()){
-			$datos['respuesta'] = respuesta('success', '', 'Beneficio registrado correctamente');
+			//Insertar primera etapa
+			$id_ben = $this->db->lastInsertId();
+			$datos['respuesta'] = respuesta('success', $id_ben, 'Beneficio registrado correctamente ');
 		}else{
 			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No se pudo registrar el beneficio');
 		}
