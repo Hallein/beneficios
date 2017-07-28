@@ -1,4 +1,4 @@
 $(document).ready(function(){
-	formInputsInit();
 	ListarBeneficios();
+	navBarInit();
 });
