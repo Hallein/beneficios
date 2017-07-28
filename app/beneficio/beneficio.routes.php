@@ -66,11 +66,21 @@ $app->post('/beneficios/store', function ($request, $response, $args) {
 	return $response;
 });
 
-/* Ruta que guarda un nuevo beneficio */
+/* Ruta que cambia el estado de una etapa */
 $app->post('/beneficios/etapa/finalizar/{id}', function ($request, $response, $args) {
 
 	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
 	$json = $this->beneficio->finalizarEtapa($id);
+
+	$response->write(json_encode($json));	
+	return $response;
+});
+
+/* Ruta que cambia el estado de un beneficio */
+$app->post('/beneficios/rechazar/{id}', function ($request, $response, $args) {
+
+	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+	$json = $this->beneficio->rechazarBeneficio($id);
 
 	$response->write(json_encode($json));	
 	return $response;

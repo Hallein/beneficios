@@ -310,6 +310,23 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function rechazarBeneficio($id){
+		$datos = array();
+		//rechazar beneficio
+		$query = $this->db->prepare('	UPDATE 	BENEFICIO 
+										SET 	BEN_ESTADO = 2 
+										WHERE 	BEN_ID = :id ');
+
+		$query -> bindParam(':id', 		$id);
+		if($query -> execute()){
+		$datos['respuesta'] = respuesta('success', '', 'Beneficio rechazado correctamente');
+		}else{
+			$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible rechazar el beneficio');
+		}
+
+		return $datos;
+	}
+
 		
 }
 

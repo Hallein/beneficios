@@ -122,4 +122,9 @@ class BeneficioController{
 		return $datos['respuesta'];
 	}
 
+	public function rechazarBeneficio($id){
+		$datos = $this->beneficio->rechazarBeneficio($id);
+		return $datos['respuesta'];
+	}
+
 }
