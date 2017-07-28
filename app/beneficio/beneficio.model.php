@@ -145,4 +145,44 @@ class Beneficio{
 		return $datos;
 	}
 
+	public function store($data){
+		$datos = array();
+		$query = $this->db->prepare(' 	
+			INSERT INTO BENEFICIO(TIPBEN_ID, PER_RUT, BEN_EMPRESA, BEN_ESTADO) 
+			VALUES(:tipo_beneficio, :rut, :empresa, :estado) ');
+		
+		$query -> bindParam(':tipo_beneficio', 	$data['tipo_beneficio']);
+		$query -> bindParam(':rut', 			$data['rut']);
+		$query -> bindParam(':empresa', 		$data['empresa']);
+		$query -> bindParam(':estado', 			$data['estado']);
+
+		if($query -> execute()){
+			$datos['respuesta'] = respuesta('success', '', 'Beneficio registrado correctamente');
+		}else{
+			$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'No se pudo registrar el beneficio');
+		}
+		return $datos;
+	}
+
+	public function update($data){
+			$datos = array();
+			$query = $this->db->prepare('	UPDATE 	BENEFICIO 
+											SET 	BEN_EMPRESA = :empresa, 
+													BEN_ESTADO = :estado, 
+											WHERE 	BEN_ID = :id');
+
+			$query -> bindParam(':empresa', $data['empresa']);
+			$query -> bindParam(':estado', 	$data['estado']);
+			$query -> bindParam(':id', 		$data['id']);
+
+			if($query -> execute()){
+				$datos['respuesta'] = respuesta('success', '', 'Beneficio actualizado correctamente');
+			}else{
+				$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible actualizar el beneficio');
+			}
+
+			return $datos;
+		}
+
+		
 }
