@@ -66,5 +66,15 @@ $app->post('/beneficios/store', function ($request, $response, $args) {
 	return $response;
 });
 
+/* Ruta que guarda un nuevo beneficio */
+$app->post('/beneficios/etapa/finalizar/{id}', function ($request, $response, $args) {
+
+	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+	$json = $this->beneficio->finalizarEtapa($id);
+
+	$response->write(json_encode($json));	
+	return $response;
+});
+
 //POST $data = $request->getParsedBody();
 //filter_var($data['user'], FILTER_SANITIZE_STRING);
