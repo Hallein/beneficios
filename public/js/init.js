@@ -42,15 +42,21 @@ function navBarInit(){
 		navbar_elements.removeClass('nav-element-active');
 		$(this).addClass('nav-element-active');
 	});
+	$('#main-title').text('Beneficios habitacionales');
 	$('#beneficios-nav').click(function(){
 		ListarBeneficios();
+		$('#main-title').text('Beneficios habitacionales');
 	});
 	$('#salir-nav').click(function(){
 		cerrarSesion();
+		$('#main-title').text('Hasta pronto!');
+		
 	});
 	$('#cuenta-nav').click(function(){
 		formularioPassword();
+		$('#main-title').text('Gestión de cuenta');
 	});
+	$('#main-title').text('Beneficios habitacionales');
 }
 
 function cerrarSesion(){
