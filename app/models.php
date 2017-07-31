@@ -5,3 +5,4 @@
 	require 'tipo_beneficio/tipo_beneficio.model.php';
 	require 'etapa_beneficio/etapa_beneficio.model.php';
 	require 'hito_beneficio/hito_beneficio.model.php';
+	require 'usuario/usuario.model.php';

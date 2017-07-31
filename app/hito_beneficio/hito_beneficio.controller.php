@@ -35,6 +35,10 @@ class HitoBeneficioController{
 		
 		$data['rut'] 		= $_SESSION['session']['US_RUT'];
 
+		if(!valida_fecha($data['fecha'])){
+			return $datos['respuesta'] = respuesta('warning', '', 'La fecha ingresada es inválida');
+		}
+
 		$fecha 				= DateTime::createFromFormat('d/m/Y', $data['fecha']);
 		$data['fecha']		= $fecha->format('Y-m-d');
 

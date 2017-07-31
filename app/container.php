@@ -17,3 +17,7 @@ $container['hito_beneficio'] = function ($c) {
 $container['etapa_beneficio'] = function ($c) {
     return new EtapaBeneficioController($c->db);
 };
+
+$container['usuario'] = function ($c) {
+    return new UsuarioController($c->db);
+};

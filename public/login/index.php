@@ -33,7 +33,7 @@
 							<div class="container-fluid">
 								<div class="rut-user">
 									<label for="rut-user">RUT</label>
-									<input id="rut-user" type="text" placeholder="Ingrese su RUT" maxlength="8">
+									<input id="rut-user" type="text" placeholder="Ingrese su RUT" maxlength="12">
 									<div class="input-underline"></div>
 								</div>
 								<div class="pass-user">

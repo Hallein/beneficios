@@ -61,14 +61,15 @@ class BeneficioController{
 	}
 
 	public function store($data){
-		$data = filtrar_variables($data);
-
-		//realizar tratamiento de rut		
+		$data = filtrar_variables($data);	
 
 		$required = array('tipo', 'empresa', 'rut', 'nombre');
 		if(hay_variables_vacias($data, $required)){
 			return $datos['respuesta'] = respuesta('warning', '', 'Por favor complete todos los campos');
 		}
+
+		//realizar tratamiento de rut
+		$data['rut'] = ObtieneRutSinDigito($data['rut']);
 
 		//Verificar si la persona existe - show
 		$persona = $this->persona->show($data['rut']);

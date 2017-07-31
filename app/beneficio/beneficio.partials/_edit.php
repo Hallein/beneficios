@@ -20,7 +20,7 @@
 						<div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-2">
 							<div class="form-input">
 								<label for="user-rut">Rut</label>
-								<input id="user-rut" type="text" disabled value="<?php echo $datos['beneficio']['PER_RUT']; ?>">
+								<input id="user-rut" type="text" disabled value="<?php echo ObtieneRutFormateado($datos['beneficio']['PER_RUT']); ?>">
 								<div class="input-underline"></div>
 							</div>
 						</div>

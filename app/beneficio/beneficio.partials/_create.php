@@ -20,7 +20,7 @@
 						<div class="col-xs-12 col-sm-12 col-md-4">
 							<div class="form-input">
 								<label for="user-rut">Rut</label>
-								<input id="user-rut" type="text" maxlength="8">
+								<input id="user-rut" type="text" maxlength="12">
 								<div class="input-underline"></div>
 							</div>
 						</div>

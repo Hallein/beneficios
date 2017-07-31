@@ -6,6 +6,8 @@ $app->post('/login', function ($request, $response, $args){
 	$rut = filter_var($data['rut'], FILTER_SANITIZE_STRING);
 	$pass = filter_var($data['pass'], FILTER_SANITIZE_STRING);
 
+	$rut = ObtieneRutSinDigito($rut);
+
 	$sql = $this->db->prepare('	SELECT 	US_RUT, US_NOMBRE, US_CLAVE 
 								FROM 	USUARIO 
 								WHERE 	US_RUT = :rut ');
