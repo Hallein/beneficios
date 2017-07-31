@@ -367,6 +367,7 @@ nav .secondary-logo::before{
 
 .btn:hover{
 	background-color: #4dd0e1;
+	cursor: pointer;
 }
 
 .btn:focus{

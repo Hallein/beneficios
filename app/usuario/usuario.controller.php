@@ -32,7 +32,7 @@ class UsuarioController{
 		}
 
 		$hash = new passwordHash();
-		$data['rut'] = $_SESSION['session']['rut'];
+		$data['rut'] = $_SESSION['session']['US_RUT'];
 
 		//recibir dos contraseñas: la nueva y la nueva-confirmacion y ver si son iguales
 		if(strcmp($data['newpass1'], $data['newpass2']) !== 0){
@@ -41,7 +41,7 @@ class UsuarioController{
 
 		//recibir la contraseña actual y validarla
 		$pass = $this->usuario->getPass($data['rut']);
-		if(!check_password($data['pass'], $pass)){
+		if(!$hash->check_password($data['pass'], $pass['US_CLAVE'])){
 			return respuesta('error', '', 'La contraseña es incorrecta');
 		}
 

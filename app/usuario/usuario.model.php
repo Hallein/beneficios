@@ -7,13 +7,14 @@
 			$this->db = $db;
 		}
 
-		public function getPass($data){
+		public function getPass($rut){
 			$datos = array();
 			$query = $this->db->prepare(' 	SELECT 	US_CLAVE
 											FROM 	USUARIO
 											WHERE 	US_RUT = :rut ');
 
 			$query -> bindParam(':rut', $rut);
+			$query -> execute();
 			$pass = $query->fetch();
 			return $pass;
 		}

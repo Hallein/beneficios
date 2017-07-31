@@ -355,6 +355,9 @@ function cambiarPassword(){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    		ListarBeneficios();
+	    		var navbar_elements = $('.navbar').children();
+				navbar_elements.removeClass('nav-element-active');
+				navbar_elements.first().addClass('nav-element-active');
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
