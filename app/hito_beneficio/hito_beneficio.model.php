@@ -8,6 +8,30 @@ class HitoBeneficio{
 		$this->db = $db;
 	}
 
+	public function showHitos2($id){
+		$query = $this->db->prepare('
+				SELECT 		E.ETA_ID, 
+							H.HITO_ID, 
+							H.HITO_NOMBRE, 
+							DATE_FORMAT(HB.HB_FECHA, "%d/%m/%Y") AS HB_FECHA,
+							HB.HB_DETALLE
+				FROM 		HITO_BENEFICIO HB
+				INNER JOIN 	HITO H
+				ON 			H.HITO_ID = HB.HITO_ID
+				INNER JOIN 	ETAPA E 
+				ON 			E.ETA_ID = H.ETA_ID
+				WHERE 		HB.BEN_ID = :id
+		');
+
+		$query -> bindParam(':id', $id);
+
+		$query -> execute();
+
+		$hitos = $query->fetchAll();
+
+		return $hitos;
+	}
+
 	public function getAllByBeneficio($ben_id){
 		$datos = array();
 		$query = $this->db->prepare('

@@ -22,3 +22,26 @@ function desencriptar($cadena){
      $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($cadena), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
     return $decrypted;
 }	
+
+function filtrar_variables($data){
+	foreach($data as $key => $variable) {
+		$data[$key] = filter_var($variable, FILTER_SANITIZE_STRING);
+	}
+	
+	return $data;
+}
+
+function hay_variables_vacias($data, $required){
+	$error = false;
+	foreach($required as $field) {
+		if (empty($data[$field])) {
+		$error = true;
+		}
+	}
+
+	if ($error) {
+		return true;
+	} else {
+		return false;
+	}
+}

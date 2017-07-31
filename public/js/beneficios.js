@@ -280,7 +280,7 @@ function ingresarHito(id){
 function finalizarEtapa(id){
 	$.ajax({
 	    type: "POST",
-	    url : "../api/beneficios/etapa/finalizar/"+id,
+	    url : "../api/etapa/finalizar/"+id,
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#floating-loader').fadeIn(200);

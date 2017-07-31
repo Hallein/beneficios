@@ -13,3 +13,7 @@ $container['beneficio'] = function ($c) {
 $container['hito_beneficio'] = function ($c) {
     return new HitoBeneficioController($c->db);
 };
+
+$container['etapa_beneficio'] = function ($c) {
+    return new EtapaBeneficioController($c->db);
+};
