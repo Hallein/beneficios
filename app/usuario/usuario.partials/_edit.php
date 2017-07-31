@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="row center-xs">
-		<div class="col-xs-12 col-md-8">
+		<div class="col-xs-12 col-sm-8 col-md-4">
 			<div class="card over-background">
 				<div class="card-title text-primary-color dark-primary-color">
 					<div class="row center-xs center-sm start-md">
@@ -12,28 +12,28 @@
 				</div>
 				<div class="card-body">
 					<div class="row center-xs">
-						<div class="col-xs-12 col-sm-12 col-md-4">
+						<div class="col-xs-12 col-sm-12 col-md-8">
 							<div class="form-input">
 								<label for="pass">Contraseña anterior</label>
-								<input id="pass" type="text" maxlength="12">
+								<input id="pass" type="password" maxlength="12">
 								<div class="input-underline"></div>
 							</div>
 						</div>
 					</div>
 					<div class="row center-xs">
-						<div class="col-xs-12 col-sm-12 col-md-4">
+						<div class="col-xs-12 col-sm-12 col-md-8">
 							<div class="form-input">
 								<label for="newpass1">Nueva contraseña</label>
-								<input id="newpass1" type="text">
+								<input id="newpass1" type="password">
 								<div class="input-underline"></div>
 							</div>
 						</div>
 					</div>
 					<div class="row center-xs">
-						<div class="col-xs-12 col-sm-12 col-md-4">
+						<div class="col-xs-12 col-sm-12 col-md-8">
 							<div class="form-input">
 								<label for="newpass2">Repetir contraseña</label>
-								<input id="newpass2" type="text">
+								<input id="newpass2" type="password">
 								<div class="input-underline"></div>
 							</div>
 						</div>
@@ -42,7 +42,7 @@
 					<br>
 					<div class="row center-xs">
 						<div class="col-xs-12">
-							<button id="create-button" class="btn btn-primary">Cambiar</button>
+							<button id="create-button" class="btn btn-primary">Cambiar contraseña</button>
 						</div>
 					</div>
 					<br>

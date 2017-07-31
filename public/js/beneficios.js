@@ -338,7 +338,7 @@ function cambiarPassword(){
 	var data = {
 			pass		: $('#pass').val(),
 			newpass1	: $('#newpass1').val(),
-			newpass2	: $('#benefit-type').val()
+			newpass2	: $('#newpass2').val()
 		};
 	$.ajax({
 	    type: "POST",

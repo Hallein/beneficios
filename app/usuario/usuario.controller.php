@@ -16,9 +16,9 @@ class UsuarioController{
 		$this->usuario = new Usuario($db);
 	}
 
-	public function edit($id){			
+	public function edit(){			
 		ob_start();
-		include USUARIO . '/edit.php';
+		include USUARIO . '/_edit.php';
 		$datos['respuesta']['html'] = ob_get_clean();
 
 		return $datos['respuesta'];
