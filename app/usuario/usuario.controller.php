@@ -25,18 +25,28 @@ class UsuarioController{
 	}
 
 	public function update($data){
-		$data['nombre'] = filtrar_una_variable($data['nombre']);
 
-		$required = array('nombre', 'pass');
+		$required = array('pass', 'newpass1', 'newpass2');
 		if(hay_variables_vacias($data, $required)){
 			return $datos['respuesta'] = respuesta('warning', '', 'Por favor complete todos los campos');
 		}
 
-		//encriptar la pass
 		$hash = new passwordHash();
-		$data['pass'] = $hash->hash($data['pass']);
-
 		$data['rut'] = $_SESSION['session']['rut'];
+
+		//recibir dos contraseñas: la nueva y la nueva-confirmacion y ver si son iguales
+		if(strcmp($data['newpass1'], $data['newpass2']) !== 0){
+			return respuesta('error', '', 'Las contraseñas no coinciden');
+		}
+
+		//recibir la contraseña actual y validarla
+		$pass = $this->usuario->getPass($data['rut']);
+		if(!check_password($data['pass'], $pass)){
+			return respuesta('error', '', 'La contraseña es incorrecta');
+		}
+
+		//si son iguales, actualizar la contraseña
+		$data['pass'] = $hash->hash($data['newpass1']);
 
 		$datos = $this->usuario->update($data);
 		return $datos['respuesta'];
