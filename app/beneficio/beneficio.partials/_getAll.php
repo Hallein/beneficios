@@ -36,7 +36,7 @@
 
                             		<?php foreach($datos['beneficio'] as $beneficio): ?>
                                     <tr>
-                                    	<td><?php echo $beneficio['PER_RUT']; ?></td>
+                                    	<td><?php echo ObtieneRutFormateado($beneficio['PER_RUT']); ?></td>
                                         <td><?php echo $beneficio['PER_NOMBRE']; ?></td>		                
                                         <td><?php echo $beneficio['BEN_EMPRESA']; ?></td>
                                         <td><?php echo $beneficio['TIPBEN_NOMBRE']; ?></td>

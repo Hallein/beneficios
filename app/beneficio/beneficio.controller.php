@@ -39,8 +39,8 @@ class BeneficioController{
 	public function show($id){
 		
 		$datos = $this->beneficio->show($id);
-		$etapas = $this->beneficio->showEtapas($id);
-		$hitos = $this->beneficio->showHitos2($id);
+		$etapas = $this->etapa_beneficio->showEtapas($id);
+		$hitos = $this->hito_beneficio->showHitos2($id);
 
 		ob_start();
 		include BENEFICIO . '/_show.php';
@@ -61,13 +61,15 @@ class BeneficioController{
 	}
 
 	public function store($data){
+		$data = filtrar_variables($data);	
+
+		$required = array('tipo', 'empresa', 'rut', 'nombre');
+		if(hay_variables_vacias($data, $required)){
+			return $datos['respuesta'] = respuesta('warning', '', 'Por favor complete todos los campos');
+		}
+
 		//realizar tratamiento de rut
-		//$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
-		$data['tipo_beneficio'] = filter_var($data['tipo'], FILTER_SANITIZE_STRING);
-		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
-		//$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
-		$data['rut'] 			= filter_var($data['rut'], FILTER_SANITIZE_STRING);
-		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
+		$data['rut'] = ObtieneRutSinDigito($data['rut']);
 
 		//Verificar si la persona existe - show
 		$persona = $this->persona->show($data['rut']);
@@ -103,12 +105,14 @@ class BeneficioController{
 	}
 
 	public function update($data){
-		//realizar tratamiento de rut
-		$data['id'] 			= filter_var($data['id'], FILTER_SANITIZE_STRING);
-		$data['tipo_beneficio'] = filter_var($data['tipo'], FILTER_SANITIZE_STRING);
-		$data['empresa'] 		= filter_var($data['empresa'], FILTER_SANITIZE_STRING);
-		$data['estado'] 		= filter_var($data['estado'], FILTER_SANITIZE_STRING);
-		$data['nombre'] 		= filter_var($data['nombre'], FILTER_SANITIZE_STRING);
+		$data = filtrar_variables($data);
+		
+		//realizar tratamiento de rut		
+
+		$required = array('id', 'tipo', 'empresa', 'estado', 'nombre');
+		if(hay_variables_vacias($data, $required)){
+			return $datos['respuesta'] = respuesta('warning', '', 'Por favor complete todos los campos');
+		}
 
 		$datos = $this->beneficio->update($data);
 
@@ -127,12 +131,6 @@ class BeneficioController{
 		//Destruir las etapa_beneficio
 		//Destruir el beneficio
 
-	}
-
-	public function finalizarEtapa($id){
-		$etapa = $this->beneficio->getUltimaEtapa($id);
-		$datos = $this->beneficio->finalizarEtapa($id, $etapa);
-		return $datos['respuesta'];
 	}
 
 	public function rechazarBeneficio($id){

@@ -163,6 +163,10 @@ function modificarBeneficio(id){
 }
 
 function guardarBeneficio(){
+	if(!valida_rut($('#user-rut')[0])){
+		ShowToast('error', '', 'El rut no es válido', 2);
+		return;
+	}
 	var data = {
 			rut		: $('#user-rut').val(),
 			nombre	: $('#user-name').val(),
@@ -289,7 +293,7 @@ function ingresarHito(id){
 function finalizarEtapa(id){
 	$.ajax({
 	    type: "POST",
-	    url : "../api/beneficios/etapa/finalizar/"+id,
+	    url : "../api/etapa/finalizar/"+id,
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#floating-loader').fadeIn(200);

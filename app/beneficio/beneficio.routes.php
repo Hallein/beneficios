@@ -1,89 +1,82 @@
 <?php
 
-/* Ruta que trae todos los beneficios */
-$app->get('/beneficios', function ($request, $response, $args) {
+$app->group('/beneficios', function () {
 
-	$json = $this->beneficio->index();
+	/* Ruta que trae todos los beneficios */
+	$this->get('', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$json = $this->beneficio->index();
 
-/* Ruta que trae un beneficio dado su id */
-$app->get('/beneficios/{id}', function ($request, $response, $args) {
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
-	$json = $this->beneficio->show($id);
+	/* Ruta que trae un beneficio dado su id */
+	$this->get('/{id}', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+		$json = $this->beneficio->show($id);
 
-/* Ruta que trae el formulario para crear un beneficio */
-$app->get('/beneficios/create/new', function ($request, $response, $args) {
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$json = $this->beneficio->create();
+	/* Ruta que trae el formulario para crear un beneficio */
+	$this->get('/create/new', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$json = $this->beneficio->create();
 
-/* Ruta que trae el formulario para editar un beneficio dado su id */
-$app->get('/beneficios/edit/{id}', function ($request, $response, $args) {
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
-	$json = $this->beneficio->edit($id);
+	/* Ruta que trae el formulario para editar un beneficio dado su id */
+	$this->get('/edit/{id}', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+		$json = $this->beneficio->edit($id);
 
-/* Ruta que actualiza un beneficio según su id */
-$app->post('/beneficios/update', function ($request, $response, $args) {
-	$data = $request->getParsedBody();
-	$json = $this->beneficio->update($data);
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+	/* Ruta que actualiza un beneficio según su id */
+	$this->post('/update', function ($request, $response, $args) {
+		$data = $request->getParsedBody(); //Campos: empresa, estado, nombre, id, tipo
+		$json = $this->beneficio->update($data);
 
-/* Ruta que elimina un beneficio según su id */
-$app->post('/beneficios/delete/{id}', function ($request, $response, $args) {
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
-	$json = $this->beneficio->destroy($id);
+	/* Ruta que elimina un beneficio según su id */
+	$this->post('/delete/{id}', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+		$json = $this->beneficio->destroy($id);
 
-/* Ruta que guarda un nuevo beneficio */
-$app->post('/beneficios/store', function ($request, $response, $args) {
-	$data = $request->getParsedBody();
-	$json = $this->beneficio->store($data);
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+	/* Ruta que guarda un nuevo beneficio */
+	$this->post('/store', function ($request, $response, $args) {
+		$data = $request->getParsedBody(); //Campos: empresa, nombre, rut, tipo
+		$json = $this->beneficio->store($data);
 
-/* Ruta que cambia el estado de una etapa */
-$app->post('/beneficios/etapa/finalizar/{id}', function ($request, $response, $args) {
+		$response->write(json_encode($json));	
+		return $response;
+	});
 
-	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
-	$json = $this->beneficio->finalizarEtapa($id);
+	/* Ruta que cambia el estado de un beneficio */
+	$this->post('/rechazar/{id}', function ($request, $response, $args) {
 
-	$response->write(json_encode($json));	
-	return $response;
-});
+		$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+		$json = $this->beneficio->rechazarBeneficio($id);
 
-/* Ruta que cambia el estado de un beneficio */
-$app->post('/beneficios/rechazar/{id}', function ($request, $response, $args) {
-
-	$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
-	$json = $this->beneficio->rechazarBeneficio($id);
-
-	$response->write(json_encode($json));	
-	return $response;
+		$response->write(json_encode($json));	
+		return $response;
+	});
 });
 
 //POST $data = $request->getParsedBody();
