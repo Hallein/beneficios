@@ -1,15 +1,22 @@
 <?php
 
-$app->get('/consulta/{empresa}/{rut}', function ($request, $response, $args) {
+$app->group('/consulta', function () {
 
-	$empresa = $args['empresa'];
-	$rut = $args['rut'];
+	$this->get('/{empresa}/{rut}', function ($request, $response, $args) {
 
-	$json = $this->consulta->consultaBeneficio($empresa, $rut);
+		$empresa = $args['empresa'];
+		$rut = $args['rut'];
 
-	$response->write(json_encode($json));	
-	return $response;
+		$json = $this->consulta->consultaBeneficio($empresa, $rut); //Campos: empresa, rut
+
+		$response->write(json_encode($json));	
+		return $response;
+	});
+
+	$this->get('/{empresa}/', function ($request, $response, $args) {
+
+		return json_encode(respuesta('error', '', 'Por favor complete los campos solicitados'));
+	});
+
 });
 
-//POST $data = $request->getParsedBody();
-//filter_var($data['user'], FILTER_SANITIZE_STRING);

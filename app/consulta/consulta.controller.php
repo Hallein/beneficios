@@ -8,6 +8,16 @@
 		}
 
 		public function consultaBeneficio($empresa, $rut){
+
+			$empresa = filtrar_una_variable($empresa);	
+			$rut = filtrar_una_variable($rut);	
+
+			//validar rut
+			if(!valida_rut($rut)){
+				return respuesta('error', '', 'El rut no es válido');
+			}
+
+			$rut = ObtieneRutSinDigito($rut);
 			
 			$datos = $this->consulta->show($empresa, $rut);
 			$etapas = $this->consulta->showEtapas($empresa, $rut);
