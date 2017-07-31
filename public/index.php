@@ -12,8 +12,17 @@
 <body class="login-background">
 	<section>
 		<div class="container">
-			<div class="container-fluid center-xs center-sm start-md">
-				<div class="login-title text-primary-color"><strong>Beneficio habitacional</strong><br>Antofagasta Minerals S.A.</div>
+			<div class="container-fluid">
+				<div class="row center-xs center-sm start-md middle-xs">
+					<div class="col-md-6">
+						<div class="login-title text-primary-color"><strong>Beneficio habitacional</strong><br>Antofagasta Minerals S.A.</div>
+					</div>
+					<div class="col-md-6">
+						<div class="login-logo">
+							<img src="img/white-logo.png" alt="">
+						</div>	
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="d-content" class="container-fluid">

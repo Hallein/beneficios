@@ -3,6 +3,7 @@
 	if(!isset($_SESSION['session'])){
 		header('Location: ../login/');
 	}
+	require '../../app/libs/funciones.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,10 @@
 			</div>			
 		</div>
 		<div class="sidenav-content">
+			<div class="user-info">
+				<div class="info-rut"><?php echo ObtieneRutFormateado($_SESSION['session']['US_RUT']); ?></div>
+				<div class="info-name"><?php echo $_SESSION['session']['US_NOMBRE']; ?></div>
+			</div>
 			<ul class="navbar text-primary-color">
 				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios <i class="fa fa-lg fa-usd" aria-hidden="true"></i></li>
 				<li id="cuenta-nav" class="nav-element dark-primary-color">Mi cuenta <i class="fa fa-lg fa-user-circle" aria-hidden="true"></i></li>
@@ -51,7 +56,7 @@
 		<section class="main-image">
 			<div class="row middle-xs center-xs introduction-title">
 				<div class="col-xs-12">
-					<div class="main-title text-primary-color">Beneficios habitacionales</div>
+					<div id="main-title" class="main-title text-primary-color"></div>
 				</div>				
 			</div>
 		</section>
