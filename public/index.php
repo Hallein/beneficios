@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, inimum-scale=1.0">
 	<title>Antofagasta Minerals</title>
+	<link rel="icon" href="img/main-logo.png" type="image/png">
 	<link rel="stylesheet" href="css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="css/font-awesome.css">
 	<link rel="stylesheet" href="css/utilities.css">
@@ -33,7 +34,7 @@
 							Consultar por un beneficio
 						</div>
 						<div class="card-body over-background">
-							<div class="row">
+							<div class="row start-xs">
 								<div class="col-xs-12">
 									<div class="secondary-text-color">Ingrese sus datos para consultar por su beneficio habitacional activo.</div>
 								</div>

@@ -12,6 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<title>Antofagasta Minerals</title>
+	<link rel="icon" href="../img/main-logo.png" type="image/png">
 	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="../css/material.min.css">
 	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
