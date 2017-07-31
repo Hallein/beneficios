@@ -12,7 +12,7 @@ $app->group('/usuario', function(){
 
 	$this->post('/update', function ($request, $response, $args) {
 
-		$data = $request->getParsedBody(); //Campos: pass
+		$data = $request->getParsedBody(); //Campos: pass, newpass1, newpass2
 		$json = $this->usuario->update($data);
 
 		$response->write(json_encode($json));

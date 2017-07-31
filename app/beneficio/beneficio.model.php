@@ -168,7 +168,7 @@ class Beneficio{
 					INSERT INTO ETAPA_BENEFICIO(ETA_ID, BEN_ID, EB_FECHAINI, EB_ESTADO) 
 					VALUES(1, :ben_id, sysdate(), 1) ');
 
-			$query -> bindParam(':ben_id', 		$ben_id);
+			$query -> bindParam(':ben_id', $ben_id);
 			$query -> execute();
 		
 			$datos['respuesta'] = respuesta('success', '', 'Beneficio registrado correctamente ');

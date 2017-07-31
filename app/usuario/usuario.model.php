@@ -7,14 +7,23 @@
 			$this->db = $db;
 		}
 
+		public function getPass($data){
+			$datos = array();
+			$query = $this->db->prepare(' 	SELECT 	US_CLAVE
+											FROM 	USUARIO
+											WHERE 	US_RUT = :rut ');
+
+			$query -> bindParam(':rut', $rut);
+			$pass = $query->fetch();
+			return $pass;
+		}
+
 		public function update($data){
 			$datos = array();
 			$query = $this->db->prepare('	UPDATE 	USUARIO 
-											SET 	US_NOMBRE = :nombre, 
-													US_CLAVE = :pass
+											SET 	US_CLAVE = :pass
 											WHERE 	US_RUT = :rut');
 
-			$query -> bindParam(':nombre', 	$data['nombre']);
 			$query -> bindParam(':pass', 	$data['pass']);
 			$query -> bindParam(':rut', 	$data['rut']);
 
