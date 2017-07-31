@@ -1248,6 +1248,7 @@ nav .secondary-logo::before{
 
 .picker__holder{
 	overflow: hidden;
+	background: rgba(0, 0, 0, 0.5);
 }
 
 /*ANIMATIONS*/

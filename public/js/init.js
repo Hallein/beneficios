@@ -48,7 +48,9 @@ function navBarInit(){
 	$('#salir-nav').click(function(){
 		cerrarSesion();
 	});
-
+	$('#cuenta-nav').click(function(){
+		formularioPassword();
+	});
 }
 
 function cerrarSesion(){

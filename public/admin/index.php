@@ -15,12 +15,8 @@
 	<link rel="stylesheet" href="../css/material.min.css">
 	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
 	<link rel="stylesheet" href="../css/dataTables.material.min.css">	
-
-
 	<link rel="stylesheet" href="../css/datepicker/default.css">
-	<link rel="stylesheet" href="../css/datepicker/default.date.css">
-
-	
+	<link rel="stylesheet" href="../css/datepicker/default.date.css">	
 	<link rel="stylesheet" href="../css/font-awesome.css">
 	<link rel="stylesheet" href="../css/utilities.css">
 	<link rel="stylesheet" href="../css/style.css">
@@ -38,7 +34,7 @@
 		<div class="sidenav-content">
 			<ul class="navbar text-primary-color">
 				<li id="beneficios-nav" class="nav-element dark-primary-color nav-element-active">Beneficios <i class="fa fa-lg fa-usd" aria-hidden="true"></i></li>
-				<li class="nav-element dark-primary-color">Mi cuenta <i class="fa fa-lg fa-user-circle" aria-hidden="true"></i></li>
+				<li id="cuenta-nav" class="nav-element dark-primary-color">Mi cuenta <i class="fa fa-lg fa-user-circle" aria-hidden="true"></i></li>
 				<li id="salir-nav" class="nav-element dark-primary-color">Cerrar sesión<i class="fa fa-lg fa-sign-out" aria-hidden="true"></i></li>
 			</ul>
 		</div>
@@ -76,14 +72,10 @@
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/dataTables.responsive.min.js"></script>
 	<script src="../js/dataTables.material.min.js"></script>
-
-	
 	<script src="../js/datepicker/picker.js"></script>
     <script src="../js/datepicker/picker.date.js"></script>
     <script src="../js/datepicker/legacy.js"></script>
     <script src="../js/datepicker/translations/es_ES.js"></script>
-
-
 	<script src="../js/init.js"></script>
 	<script src="../js/utilities.js"></script>	
 	<script src="../js/admin.js"></script>
