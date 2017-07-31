@@ -37,6 +37,8 @@ class BeneficioController{
 	}
 
 	public function show($id){
+
+		//$id = desencriptar($id);
 		
 		$datos = $this->beneficio->show($id);
 		$etapas = $this->etapa_beneficio->showEtapas($id);
@@ -94,6 +96,9 @@ class BeneficioController{
 	}
 
 	public function edit($id){
+
+		//$id = desencriptar($id);
+
 		$datos= $this->beneficio->show($id);
 		$datos['tipo_beneficio'] = $this->tipo_beneficio->getAll();
 
@@ -105,6 +110,9 @@ class BeneficioController{
 	}
 
 	public function update($data){
+
+		//$data['id'] = desencriptar($data['id']);
+
 		$data = filtrar_variables($data);
 		
 		//realizar tratamiento de rut		
@@ -134,6 +142,9 @@ class BeneficioController{
 	}
 
 	public function rechazarBeneficio($id){
+
+		//$id = desencriptar($id);
+
 		$datos = $this->beneficio->rechazarBeneficio($id);
 		return $datos['respuesta'];
 	}

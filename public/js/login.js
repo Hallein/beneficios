@@ -7,10 +7,16 @@ $(document).ready(function(){
 		 }
 	});
 	$('#login-button').on('click', login);
+
 	function login(){
+		if($('#pass-user').val()!=''){
+			var pass = base64Encode($('#pass-user').val());
+		}else{
+			var pass= '';
+		}
 		var data = {
 			rut: $('#rut-user').val(),
-			pass: $('#pass-user').val()
+			pass: pass
 		};
 		$.ajax({
 		    type: "POST",

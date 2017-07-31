@@ -14,6 +14,9 @@ class HitoBeneficioController{
 
 	/* Retorna los hitos de la última etapa de un beneficio*/
 	public function getAllByBeneficio($ben_id){
+
+		//$ben_id = desencriptar($ben_id);
+
 		$datos = $this->hito_beneficio->getAllByBeneficio($ben_id);
 		$ultima_etapa = $this->etapa_beneficio->getUltimaEtapa($ben_id);
 		$hitos = $this->hito_beneficio->getHitosByEtapa($ultima_etapa);
@@ -26,9 +29,12 @@ class HitoBeneficioController{
 	}
 
 	public function store($data){
+
+		//$data['ben_id'] = desencriptar($data['ben_id']);
+
 		$data = filtrar_variables($data);
 
-		$required = array('ben_id', 'detalle', 'fecha', 'hito_id');
+		$required = array('ben_id', 'fecha', 'hito_id');
 		if(hay_variables_vacias($data, $required)){
 			return $datos['respuesta'] = respuesta('warning', '', 'Por favor complete todos los campos');
 		}
