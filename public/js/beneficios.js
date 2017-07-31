@@ -239,11 +239,20 @@ function agregarHito(id){
 	    	$('#create-button').click(function(){
 		    	ingresarHito(id);
 		    });
-		    moment.locale('es');
-		    $('#hito-date').datepicker();
-		     $('.btn-back').click(function(){
+		    var $input = $('#hito-date').pickadate({
+	            format: 'dd/mm/yyyy',
+				format_submit: false,
+	            closeOnSelect: false,
+	            closeOnClear: false,
+	        });
+	        var picker = $input.pickadate('picker')
+		    $('.btn-back').click(function(){
 		    	verBeneficio(id);
 		    });
+		    $('#hito-date').click(function(){
+				var parent = $(this).parents('.form-input');
+				parent.find('label').addClass('active-input');
+			});
 	    }
 	});
 }

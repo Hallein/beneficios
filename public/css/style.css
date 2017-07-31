@@ -257,6 +257,7 @@ nav .secondary-logo::before{
 	background-image: url(../img/crecer-logo.jpg);
 	background-size: 100%;
 	background-repeat: no-repeat;
+	background-color: #fff;
 }
 
 .main-content{
@@ -1059,6 +1060,195 @@ nav .secondary-logo::before{
 	float: right;
 }
 
+/*DATEPICKER*/
+.picker__box{
+	padding: 0;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.picker__header{
+	text-transform: uppercase;
+	margin: 0;
+	background-color: #2e4053;
+}
+
+.picker__frame{
+	max-width: 320px;
+}
+
+.picker__month{
+	display: block;
+	padding: 20px 0;
+	color: #fff;
+}
+
+.picker__year{
+	display: block;
+	padding: 10px 0;
+	background-color: #5d6d7e;
+	margin: 0;
+	color: #fff;
+	font-style: normal;
+}
+
+.picker__weekday{
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.picker__day{
+	font-size: 14px;
+}
+
+.picker__table{
+	margin: 0;
+	background-color: 
+}
+
+.picker__weekday{
+	padding-top: 20px;
+}
+
+.picker__day--today{
+	color:#26c6da;
+}
+
+.picker__day--today::before{
+	display: none;
+}
+
+.picker--focused .picker__day--selected, .picker__day--highlighted{
+	background-color: transparent;
+	border-color: transparent;
+	color: black;
+	position: relative;
+	z-index: 1000;
+}
+
+.picker--focused .picker__day--selected{
+	color: #fff !important;
+}
+
+.picker__day--highlighted{
+	color: #26c6da;
+}
+
+.picker__day--highlighted::before{
+	display: none;
+}
+
+.picker--focused .picker__day--selected::before{
+	content: '';
+	display: block;
+	background-color: #26c6da;
+	height: 26px;
+	width: 26px;
+	left: 50%;
+	margin-left: -13px;
+	top: 0;
+	position: absolute;
+	z-index: -1;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.picker__day--infocus:hover{
+	background-color: transparent;
+	color: #26c6da;
+}
+
+.picker__day--outfocus:hover{
+	background: transparent;
+}
+
+.picker__button--today, .picker__button--clear, .picker__button--close{
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.picker__button--today:hover, .picker__button--clear:hover, .picker__button--close:hover{
+	background: transparent;
+	color: #26c6da;
+}
+
+.picker__button--today::before, .picker__button--clear::before, .picker__button--close::before{
+	display: none;  
+}
+
+.picker__nav--prev, .picker__nav--next{
+	width: 18px; 
+	height: 24px; 
+	padding: 0;
+}
+
+.picker__nav--prev::before{
+	border-top: .35em solid transparent;
+	border-bottom: .35em solid transparent;
+	border-right: 0.4em solid #fff;
+}
+
+.picker__nav--next::before{
+	border-top: .35em solid transparent;
+	border-bottom: .35em solid transparent;
+	border-left: 0.4em solid #fff;
+}
+
+.picker__nav--prev{
+	left: 10px;
+	top: 20px;
+}
+
+.picker__nav--next{
+	right: 10px;
+	top: 20px;
+}
+
+.picker__nav--next:hover, .picker__nav--prev:hover{
+	background-color: transparent;
+}
+
+.picker__nav--next:hover::before{
+	border-left-color: #26c6da;
+}
+
+.picker__nav--prev:hover::before{
+	border-right-color: #26c6da;
+}
+
+.picker__button--today:focus, .picker__button--clear:focus, .picker__button--close:focus, .picker--focused .picker__day--highlighted{
+	background: transparent;
+	border-color: transparent;
+}
+
+.picker__day--today::before{
+	border: none;
+}
+
+.picker__frame{
+	margin: 0 auto;  
+	max-height: 360px;
+	overflow: hidden;
+	transition: opacity 0.3s ease;
+	opacity: 0;
+}
+
+.picker--opened .picker__frame{
+	top: 40px !important;
+	opacity: 1;
+}
+
+.picker__wrap{
+	height: 100%;
+	width: auto;
+}
+
+.picker__holder{
+	overflow: hidden;
+}
 
 /*ANIMATIONS*/
 .fade-right-in{

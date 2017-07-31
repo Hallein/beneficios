@@ -13,9 +13,14 @@
 	<title>Antofagasta Minerals</title>
 	<link rel="stylesheet" href="../css/flexboxgrid.min.css">
 	<link rel="stylesheet" href="../css/material.min.css">
-	<link rel="stylesheet" href="../css/material.datepicker.css">
 	<link rel="stylesheet" href="../css/responsive.dataTables.min.css">
 	<link rel="stylesheet" href="../css/dataTables.material.min.css">	
+
+
+	<link rel="stylesheet" href="../css/datepicker/default.css">
+	<link rel="stylesheet" href="../css/datepicker/default.date.css">
+
+	
 	<link rel="stylesheet" href="../css/font-awesome.css">
 	<link rel="stylesheet" href="../css/utilities.css">
 	<link rel="stylesheet" href="../css/style.css">
@@ -71,10 +76,14 @@
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/dataTables.responsive.min.js"></script>
 	<script src="../js/dataTables.material.min.js"></script>
-	<script src="../js/moment.min.js"></script>
-	<script src="../js/locale/es.js"></script>
-	<script src="../js/knockout-3.2.0.js"></script>
-	<script src="../js/material.datepicker.js"></script>		
+
+	
+	<script src="../js/datepicker/picker.js"></script>
+    <script src="../js/datepicker/picker.date.js"></script>
+    <script src="../js/datepicker/legacy.js"></script>
+    <script src="../js/datepicker/translations/es_ES.js"></script>
+
+
 	<script src="../js/init.js"></script>
 	<script src="../js/utilities.js"></script>	
 	<script src="../js/admin.js"></script>

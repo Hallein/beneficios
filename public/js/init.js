@@ -1,4 +1,8 @@
 function formInputsInit(){
+	$('input, textarea').focusin(function(){
+		var parent = $(this).parents('.form-input');
+		parent.find('label').addClass('active-input');
+	});
 	$('input, textarea').off('focusin');
 	$('input, textarea').focusin(function(){
 		var parent = $(this).parents('.form-input');
@@ -8,9 +12,11 @@ function formInputsInit(){
 	$('input, textarea').focusout(function(){
 		var parent = $(this).parents('.form-input');
 		var label = parent.find('label');
-		if($(this).val() == ''){
-			if(label.hasClass('active-input')){
-				label.removeClass('active-input');
+		if(this.id != 'hito-date'){
+			if($(this).val() == ''){
+				if(label.hasClass('active-input')){
+					label.removeClass('active-input');
+				}
 			}
 		}
 	});

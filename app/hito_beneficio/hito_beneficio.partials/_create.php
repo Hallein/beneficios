@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<div class="row start-xs">
 						<div class="col-xs-12">
-							<div class="secondary-text-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus vitae et cupiditate, eum accusamus quas suscipit vel ex fugiat voluptate illo dolorum repellendus debitis dolore, laboriosam incidunt, ullam ratione. Officiis.</div>
+							<div class="secondary-text-color">Ingrese los datos para agregar un nuevo hito a esta etapa.</div>
 						</div>
 					</div>
 					<br>
