@@ -18,6 +18,9 @@ class EtapaBeneficioController{
 	}
 
 	public function finalizarEtapa($id){
+
+		//$id = desencriptar($id); 
+
 		$etapa = $this->etapa_beneficio->getUltimaEtapa($id);
 		$datos = $this->etapa_beneficio->finalizarEtapa($id, $etapa);
 		return $datos['respuesta'];

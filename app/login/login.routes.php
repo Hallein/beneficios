@@ -4,7 +4,7 @@ $app->post('/login', function ($request, $response, $args){
 	$data = $request->getParsedBody();
 
 	$rut = filter_var($data['rut'], FILTER_SANITIZE_STRING);
-	$pass = filter_var($data['pass'], FILTER_SANITIZE_STRING);
+	$pass = filter_var(base64_decode($data['pass']), FILTER_SANITIZE_STRING);
 
 	$rut = ObtieneRutSinDigito($rut);
 
