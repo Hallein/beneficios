@@ -9,6 +9,10 @@ $(document).ready(function(){
 	$('#login-button').on('click', login);
 
 	function login(){
+		if(!valida_rut($('#rut-user')[0])){
+			ShowToast('error', '', 'El rut no es válido', 2);
+			return;
+		}
 		if($('#pass-user').val()!=''){
 			var pass = base64Encode($('#pass-user').val());
 		}else{

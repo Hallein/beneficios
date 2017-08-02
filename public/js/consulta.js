@@ -13,8 +13,15 @@ $(document).ready(function(){
 });
 
 function verBeneficio(){
+	if(!valida_rut($('#user-rut')[0])){
+		ShowToast('error', '', 'El rut no es válido', 2);
+		return;
+	}
 	var rut 	= $('#user-rut').val();
 	var empresa	= $('#user-company').val();
+
+
+
 	$.ajax({
 	    type: "GET",
 	    url : "api/consulta/"+empresa+"/"+rut,
