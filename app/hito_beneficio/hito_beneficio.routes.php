@@ -22,4 +22,4 @@ $app->group('/hitos', function () {
 		return $response;
 	});
 
-});
+})->add($login);

@@ -19,4 +19,4 @@ $app->group('/usuario', function(){
 		return $response;
 	});
 
-});
+})->add($login);

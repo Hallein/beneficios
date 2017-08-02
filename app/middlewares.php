@@ -14,5 +14,6 @@
 		//seguir con la ruta
 			$response = $next($request, $response);
 		}
+		
 		return $response;
 	};

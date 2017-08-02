@@ -8,4 +8,4 @@ $app->post('/etapa/finalizar/{id}', function ($request, $response, $args) {
 
 	$response->write(json_encode($json));	
 	return $response;
-});
+})->add($login);

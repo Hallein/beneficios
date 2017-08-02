@@ -77,7 +77,7 @@ $app->group('/beneficios', function () {
 		$response->write(json_encode($json));	
 		return $response;
 	});
-});
+})->add($login);
 
 //POST $data = $request->getParsedBody();
 //filter_var($data['user'], FILTER_SANITIZE_STRING);

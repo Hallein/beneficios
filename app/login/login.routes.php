@@ -24,7 +24,7 @@ $app->post('/login', function ($request, $response, $args){
 			if($pass_correcta){
 				//Si la contraseña es correcta, guardamos el usuario en una sesión
 				$_SESSION['session'] = $usuario;
-				$datos['respuesta'] = respuesta('success', 'OK', 'Identificación exitosa');
+				$datos['respuesta'] = respuesta('success', '', 'Identificación exitosa');
 				
 			}else{
 				$datos['respuesta'] = respuesta('error', 'Ocurrió un error', 'Usuario o contraseña incorrectos');
