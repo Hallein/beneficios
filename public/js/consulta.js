@@ -38,6 +38,7 @@ function verBeneficio(){
 	    	}else{
 	    		$(document).off('keypress');
 	    		$('#d-content').hide();
+	    		$('body').scrollTop();
 	    		$('#d-content').html(resultado.html).fadeIn();
 	    	}
 	    }

@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="container-fluid">
 				<div class="row center-xs center-sm start-md middle-xs">
-					<div class="col-md-6">
+					<div class="col-md-6 last-xs last-sm first-md">
 						<div class="login-title text-primary-color"><strong>Beneficio habitacional</strong><br>Antofagasta Minerals S.A.</div>
 					</div>
 					<div class="col-md-6">
