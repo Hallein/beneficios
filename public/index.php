@@ -88,8 +88,9 @@
 		</svg>
 	</div>
 	<script src="js/jquery.min.js"></script>
-	<script src="js/utilities.js"></script>
+	<script src="dist/app-consulta.js"></script>
+	<!-- <script src="js/utilities.js"></script>
 	<script src="js/init.js"></script>
-	<script src="js/consulta.js"></script>
+	<script src="js/consulta.js"></script> -->
 </body>
 </html>
