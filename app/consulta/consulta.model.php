@@ -98,7 +98,7 @@ class Consulta{
 				SELECT 		E.ETA_ID, 
 							H.HITO_ID, 
 							H.HITO_NOMBRE, 
-							HB.HB_FECHA, 
+							DATE_FORMAT(HB.HB_FECHA, "%d/%m/%Y") AS HB_FECHA, 
 							HB.HB_DETALLE
 				FROM 		HITO_BENEFICIO HB
 				INNER JOIN 	HITO H
