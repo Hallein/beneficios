@@ -52,4 +52,10 @@ class HitoBeneficioController{
 		return $datos['respuesta'];
 	}
 
+	public function destroy($ben_id, $hito_id){
+
+		$datos = $this->hito_beneficio->destroy($ben_id, $hito_id);
+		return $datos['respuesta'];
+	}
+
 }

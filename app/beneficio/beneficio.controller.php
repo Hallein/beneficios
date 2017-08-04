@@ -149,4 +149,17 @@ class BeneficioController{
 		return $datos['respuesta'];
 	}
 
+	public function eliminarBeneficio($id){
+		$this->hito_beneficio->deleteHitosByBeneficio($id);
+		$this->etapa_beneficio->deleteEtapasByBeneficio($id);
+
+		//Verificar si hay hitos asociados, si es asi eliminarlos
+
+		//Siempre hay al menos una etapa, asi que hay que eliminarla
+
+		//Eliminar el beneficio
+		$datos = $this->beneficio->eliminarBeneficio($id);
+		return $datos['respuesta'];
+	}
+
 }

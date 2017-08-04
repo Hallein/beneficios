@@ -149,4 +149,35 @@ class HitoBeneficio{
 		return $datos;
 	}
 
+	public function deleteHitosByBeneficio($ben_id){
+		$query = $this->db->prepare('
+						DELETE FROM HITO_BENEFICIO		
+						WHERE 		BEN_ID = :ben_id
+			');
+
+		$query -> bindParam(':ben_id', $ben_id);
+		$query -> execute();
+
+		return;
+	}
+
+	public function destroy($ben_id, $hito_id){
+		$query = $this->db->prepare('
+						DELETE FROM HITO_BENEFICIO		
+						WHERE 		BEN_ID = :ben_id
+						AND 		HITO_ID = :hito_id
+			');
+
+		$query -> bindParam(':ben_id', $ben_id);
+		$query -> bindParam(':hito_id', $hito_id);
+
+		if($query -> execute()){
+			$datos['respuesta'] = respuesta('success', '', 'Hito eliminado correctamente');
+		}else{
+			$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible eliminar el hito');
+		}
+
+		return $datos;
+	}
+
 }

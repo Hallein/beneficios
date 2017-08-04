@@ -77,6 +77,17 @@ $app->group('/beneficios', function () {
 		$response->write(json_encode($json));	
 		return $response;
 	});
+
+	/* Ruta que elimina un beneficio */
+	$this->post('/eliminar/{id}', function ($request, $response, $args) {
+
+		$id = filter_var($args['id'], FILTER_SANITIZE_STRING);
+		$json = $this->beneficio->eliminarBeneficio($id);
+
+		$response->write(json_encode($json));	
+		return $response;
+	});
+
 })->add($login);
 
 //POST $data = $request->getParsedBody();

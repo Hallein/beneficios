@@ -134,4 +134,16 @@ class EtapaBeneficio{
 		return $datos;
 	}
 
+	public function deleteEtapasByBeneficio($ben_id){
+		$query = $this->db->prepare('
+						DELETE FROM ETAPA_BENEFICIO		
+						WHERE 		BEN_ID = :ben_id
+			');
+
+		$query -> bindParam(':ben_id', $ben_id);
+		$query -> execute();
+
+		return;
+	}
+
 }

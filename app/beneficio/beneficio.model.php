@@ -232,6 +232,23 @@ class Beneficio{
 		return $activo;
 	}
 
+	public function eliminarBeneficio($id){
+		$datos = array();
+
+		//eliminar beneficio
+		$query = $this->db->prepare('	DELETE FROM BENEFICIO
+										WHERE BEN_ID = :id ');
+
+		$query -> bindParam(':id', 	$id);
+		if($query -> execute()){
+		$datos['respuesta'] = respuesta('success', '', 'Beneficio eliminado correctamente');
+		}else{
+			$datos['respuesta'] = respuesta('success', 'Ocurrió un error', 'No fue posible eliminar el beneficio');
+		}
+
+		return $datos;
+	}
+
 		
 }
 

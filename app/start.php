@@ -2,7 +2,7 @@
 
 require '../../vendor/autoload.php';	// industrial/public/api
 
-$config['displayErrorDetails'] = false;
+$config['displayErrorDetails'] = true;
 
 $config['db']['host']   = "localhost";
 $config['db']['user']   = "root";
