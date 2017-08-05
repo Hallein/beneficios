@@ -30,34 +30,36 @@
                                         <th class="all"></th>
                                         <th class="all"></th>
                                         <th class="all"></th>
+                                        <th class="all"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
                             		<?php foreach($datos['beneficio'] as $beneficio): ?>
                                     <tr>
                                     	<td><?php echo ObtieneRutFormateado($beneficio['PER_RUT']); ?></td>
-                                        <td><?php echo $beneficio['PER_NOMBRE']; ?></td>		                
+                                        <td><?php echo $beneficio['PER_NOMBRE']; ?></td>	                
                                         <td><?php echo $beneficio['BEN_EMPRESA']; ?></td>
                                         <td><?php echo $beneficio['TIPBEN_NOMBRE']; ?></td>
                                         <td><?php echo $beneficio['ETAPA_ACTUAL']; ?></td>
                                         <td><?php echo $beneficio['ESTADO']; ?></td>
-                                        <td><button class="btn-round view" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-eye" aria-hidden="true"></i>
-                        </button></td>
-                                        <td><button class="btn-round btn-edit modify" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i>
-                        </button></td>
                                         <td>
-                                        <?php if($beneficio['ESTADO'] == 'En Proceso'): ?>
-                                        <button class="btn-round btn-danger reject" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                                        <?php else: ?>
-                                            <button class="btn-round btn-disabled reject" disabled><i class="fa fa-times" aria-hidden="true"></i>
-                        </button>
-                                        <?php endif; ?>
+                                            <button class="btn-round view" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                                        </td>
+                                        <td>
+                                            <button class="btn-round btn-edit modify" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                        </td>
+                                        <td>
+                                            <?php if($beneficio['ESTADO'] == 'En Proceso'): ?>
+                                            <button class="btn-round btn-reject reject" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                            <?php else: ?>
+                                            <button class="btn-round btn-disabled reject" disabled><i class="fa fa-times" aria-hidden="true"></i></button>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <button class="btn-round btn-danger delete" data-val="<?php echo $beneficio['BEN_ID']; ?>"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                 	<?php endforeach; ?>
-
                                 </tbody>
                             </table>
                         <?php else: ?>

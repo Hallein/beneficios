@@ -82,13 +82,12 @@
     <script src="../js/datepicker/picker.date.js"></script>
     <script src="../js/datepicker/legacy.js"></script>
     <script src="../js/datepicker/translations/es_ES.js"></script>
-	<script src="../dist/app-admin.js"></script>
-    
-	<!-- <script src="../js/init.js"></script>
+	<!--<script src="../dist/app-admin.js"></script>-->
+	<script src="../js/init.js"></script>
 	<script src="../js/utilities.js"></script>	
 	<script src="../js/admin.js"></script>
 	<script src="../js/beneficios.js"></script>
 	<script src="../js/hitos.js"></script>
-	<script src="../js/usuarios.js"></script> -->
+	<script src="../js/usuarios.js"></script>
 </body>
 </html>

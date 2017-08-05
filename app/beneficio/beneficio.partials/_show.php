@@ -63,12 +63,14 @@
 						$options = '';
 						if($etapa['ETA_ID'] == $datos['beneficio']['ID_ETAPA_ACTUAL'] && $datos['beneficio']['BEN_ESTADO'] == 1):
 							$class='active-step';
-							$options = '<div><button id="btn-add" class="btn-round btn-options btn-edit"><i class="fa fa-plus" aria-hidden="true"></i></button><button id="btn-end" class="btn-round btn-options btn-success"><i class="fa fa-check" aria-hidden="true"></i></button></div>';
+							$options = '<button id="btn-end" class="btn-round btn-options btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>';
 						endif;
 						?>
 						<div class="row row-separation <?php echo $class; ?>">
 							<div class="col-xs-12 col-sm-2">
-								<div class="step-name <?php echo $class; ?>"><?php echo $etapa['ETA_NOMBRE'].$options; ?></div>
+								<div class="step-name <?php echo $class; ?>"><?php echo $etapa['ETA_NOMBRE']; ?>
+									<div><button class="btn-round btn-options btn-edit btn-add"><i class="fa fa-plus" aria-hidden="true"></i></button><?php echo $options; ?></div>
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-10">
 							<?php foreach($hitos as $hito): 

@@ -475,6 +475,19 @@ nav .secondary-logo::before{
 	background-color: #d32f2f;
 }
 
+.btn-reject{
+	background-color: #673ab7;
+	color: #fff;
+}
+
+.btn-reject:hover{
+	background-color: #9575cd;
+}
+
+.btn-reject:focus{
+	background-color: #512da8;
+}
+
 .btn-disabled{
 	background-color: #bdbdbd;
 	color: #424242;
@@ -484,7 +497,6 @@ nav .secondary-logo::before{
 .btn-disabled:hover{
 	background-color: #bdbdbd;
 }
-
 
 /*CARD*/
 .card{
@@ -1026,6 +1038,10 @@ nav .secondary-logo::before{
 		text-align: center;
 		font-size: 1.4em;
 		font-weight: bold;
+	}
+
+	.steps-container .step-option{
+		display: inline-block;
 	}
 
 	.steps-container .step-name.active-step::before{

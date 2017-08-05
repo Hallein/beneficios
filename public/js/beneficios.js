@@ -55,6 +55,10 @@ function ListarBeneficios(){
 		    	var id = $(this).attr('data-val');
 		    	rechazarBeneficio(id);
 		    });
+		    $('.delete').click(function(){
+		    	var id = $(this).attr('data-val');
+		    	eliminarBeneficio(id);
+		    });
 		    $('#new-button').click(function(){
 		    	ingresarBeneficio();
 		    });
@@ -77,7 +81,7 @@ function verBeneficio(id){
 	    success: function(resultado){
 	    	$('#d-content').hide();
 	    	$('#d-content').html(resultado.html).fadeIn();
-	    	$('#btn-add').click(function(){
+	    	$('.btn-add').click(function(){
 		    	agregarHito(id);
 		    });
 		    $('#btn-end').click(function(){
@@ -94,6 +98,28 @@ function rechazarBeneficio(id){
 	$.ajax({
 	    type: "POST",
 	    url : "../api/beneficios/rechazar/"+id,
+	    dataType: "json",
+	    beforeSend: function() {
+	    	$('#floating-loader').fadeIn(200);
+	    },
+	    complete:   function(){
+	    	$('#floating-loader').fadeOut(200);
+	    },
+	    success: function(resultado){
+	    	if(resultado.status == 'success'){
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    		ListarBeneficios();
+	    	}else{
+	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
+	    	}
+	    }
+	});
+}
+
+function eliminarBeneficio(id){
+	$.ajax({
+	    type: "POST",
+	    url : "../api/beneficios/eliminar/"+id,
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#floating-loader').fadeIn(200);
