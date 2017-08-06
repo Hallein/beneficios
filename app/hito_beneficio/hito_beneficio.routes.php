@@ -2,12 +2,13 @@
 
 $app->group('/hitos', function () {
 
-	/* Muestra los hitos de la última etapa de un beneficio*/
-	$this->get('/{ben_id}', function ($request, $response, $args) {
+	/* Muestra los hitos de una etapa de un beneficio*/
+	$this->get('/{ben_id}/{eta_id}', function ($request, $response, $args) {
 
 		$ben_id = filter_var($args['ben_id'], FILTER_SANITIZE_STRING);
+		$eta_id = filter_var($args['eta_id'], FILTER_SANITIZE_STRING);
 
-		$json = $this->hito_beneficio->getAllByBeneficio($ben_id);
+		$json = $this->hito_beneficio->getAllByBeneficio($ben_id, $eta_id);
 
 		$response->write(json_encode($json));	
 		return $response;

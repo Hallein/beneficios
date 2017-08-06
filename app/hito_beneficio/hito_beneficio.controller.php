@@ -13,13 +13,13 @@ class HitoBeneficioController{
 	}
 
 	/* Retorna los hitos de la última etapa de un beneficio*/
-	public function getAllByBeneficio($ben_id){
+	public function getAllByBeneficio($ben_id, $eta_id){
 
 		//$ben_id = desencriptar($ben_id);
 
 		$datos = $this->hito_beneficio->getAllByBeneficio($ben_id);
-		$ultima_etapa = $this->etapa_beneficio->getUltimaEtapa($ben_id);
-		$hitos = $this->hito_beneficio->getHitosByEtapa($ultima_etapa);
+		//$ultima_etapa = $this->etapa_beneficio->getUltimaEtapa($ben_id);
+		$hitos = $this->hito_beneficio->getHitosByEtapa($eta_id);
 
 		ob_start();
 		include HITO_BENEFICIO . '/_create.php';
