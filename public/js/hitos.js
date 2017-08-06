@@ -1,8 +1,8 @@
 
-function agregarHito(id){
+function agregarHito(id,etapa){
 	$.ajax({
 	    type: "GET",
-	    url : "../api/hitos/"+id,
+	    url : "../api/hitos/"+id+"/"+etapa,
 	    dataType: "json",
 	    beforeSend: function() {
 	    	$('#floating-loader').fadeIn(200);
