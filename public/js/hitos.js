@@ -15,7 +15,7 @@ function agregarHito(id,etapa){
 	    	$('#d-content').html(resultado.html).fadeIn();
 	    	formInputsInit();
 	    	$('#create-button').click(function(){
-		    	ingresarHito(id);
+		    	ingresarHito(id,etapa);
 		    });
 		    var $input = $('#hito-date').pickadate({
 	            format: 'dd/mm/yyyy',
@@ -33,13 +33,13 @@ function agregarHito(id,etapa){
 			});
 			$('.delete').click(function(){
 		    	var hito = $(this).attr('data-val');
-		    	eliminarHito(id,hito);
+		    	eliminarHito(id,hito,etapa);
 		    });			
 	    }
 	});
 }
 
-function ingresarHito(id){
+function ingresarHito(id,etapa){
 	var data = {
 			ben_id	: id,
 			hito_id	: $('#hito').val(),
@@ -60,7 +60,7 @@ function ingresarHito(id){
 	    success: function(resultado){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
-	    		agregarHito(id);
+	    		agregarHito(id,etapa);
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
@@ -68,7 +68,7 @@ function ingresarHito(id){
 	});
 }
 
-function eliminarHito(id,hito){
+function eliminarHito(id,hito,etapa){
 	$.ajax({
 	    type: "GET",
 	    url : "../api/hitos/destroy/"+id+"/"+hito,
@@ -82,7 +82,7 @@ function eliminarHito(id,hito){
 	    success: function(resultado){
 	    	if(resultado.status == 'success'){
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
-	    		agregarHito(id);
+	    		agregarHito(id,etapa);
 	    	}else{
 	    		ShowToast(resultado.status, resultado.message.title, resultado.message.body, resultado.message.timeout);
 	    	}
