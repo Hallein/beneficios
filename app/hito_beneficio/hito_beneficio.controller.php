@@ -17,7 +17,7 @@ class HitoBeneficioController{
 
 		//$ben_id = desencriptar($ben_id);
 
-		$datos = $this->hito_beneficio->getAllByBeneficio($ben_id);
+		$datos = $this->hito_beneficio->getAllByBeneficio($ben_id, $eta_id);
 		$ultima_etapa = $this->etapa_beneficio->getUltimaEtapa($ben_id);
 		$hitos = $this->hito_beneficio->getHitosByEtapa($eta_id);
 

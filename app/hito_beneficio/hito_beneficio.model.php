@@ -32,7 +32,7 @@ class HitoBeneficio{
 		return $hitos;
 	}
 
-	public function getAllByBeneficio($ben_id){
+	public function getAllByBeneficio($ben_id, $eta_id){
 		$datos = array();
 		$query = $this->db->prepare('
 				SELECT 		HB.HITO_ID,
@@ -48,18 +48,23 @@ class HitoBeneficio{
 				AND 		E.ETA_ID = (
 										SELECT 		E.ETA_ID
 				                        FROM 		ETAPA E
-				                        WHERE 		E.ETA_ID = 	(
-				                                                    SELECT 		EB.ETA_ID
-				                                                    FROM 		ETAPA_BENEFICIO EB
-				                                                    WHERE		EB.BEN_ID = :ben_id
-				                                                    ORDER BY	EB.ETA_ID DESC
-				                                                    LIMIT 1
-				                                                )
+				                        WHERE 		E.ETA_ID = 	:eta_id
 				    					)					
 				WHERE 		HB.BEN_ID = :ben_id
 			');
+		/*
+		SELECT 		H.HITO_ID,
+			H.HITO_NOMBRE,
+            HB.HB_FECHA,
+            HB.HB_DETALLE
+FROM 		HITO H
+INNER JOIN 	HITO_BENEFICIO HB
+ON 			HB.HITO_ID = H.HITO_ID
+WHERE 		H.ETA_ID = 6
+AND 		HB.BEN_ID = 1*/
 
 		$query->bindParam(':ben_id', $ben_id);
+		$query->bindParam(':eta_id', $eta_id);
 
 		if($query -> execute()){
 			$datos['hito_beneficio'] = $query->fetchAll();

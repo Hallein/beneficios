@@ -44,7 +44,7 @@
 								<div class="step-name active-step">Etapa <?php echo $eta_id; ?></div>
 							</div>
 							<div class="col-xs-12 col-sm-10">
-							<?php foreach($hitos as $hito): ?>							
+							<?php foreach($datos['hito_beneficio'] as $hito): ?>							
 								<div class="row row-separation start-xs">
 									<div class="col-xs-12 col-sm-12 col-md-4">									
 										<div class="step-description">- <?php echo $hito['HITO_NOMBRE']; ?></div><br>
