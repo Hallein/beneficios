@@ -82,7 +82,8 @@ function verBeneficio(id){
 	    	$('#d-content').hide();
 	    	$('#d-content').html(resultado.html).fadeIn();
 	    	$('.btn-add').click(function(){
-		    	agregarHito(id);
+	    		var etapa = $(this).attr('data-val');
+		    	agregarHito(id,etapa);
 		    });
 		    $('#btn-end').click(function(){
 		    	finalizarEtapa(id);

@@ -69,7 +69,7 @@
 						<div class="row row-separation <?php echo $class; ?>">
 							<div class="col-xs-12 col-sm-2">
 								<div class="step-name <?php echo $class; ?>"><?php echo $etapa['ETA_NOMBRE']; ?>
-									<div><button class="btn-round btn-options btn-edit btn-add"><i class="fa fa-plus" aria-hidden="true"></i></button><?php echo $options; ?></div>
+									<div><button class="btn-round btn-options btn-edit btn-add" data-val="<?php echo $etapa['ETA_ID']; ?>"><i class="fa fa-plus" aria-hidden="true"></i></button><?php echo $options; ?></div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-10">

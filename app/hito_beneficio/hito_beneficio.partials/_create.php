@@ -41,10 +41,10 @@
 						</div>
 						<div class="row start-xs row-separation">
 							<div class="col-xs-12 col-sm-2">
-								<div class="step-name active-step">Etapa <?php echo $ultima_etapa; ?></div>
+								<div class="step-name active-step">Etapa <?php echo $eta_id; ?></div>
 							</div>
 							<div class="col-xs-12 col-sm-10">
-							<?php foreach($datos['hito_beneficio'] as $hito): ?>							
+							<?php foreach($hitos as $hito): ?>							
 								<div class="row row-separation start-xs">
 									<div class="col-xs-12 col-sm-12 col-md-4">									
 										<div class="step-description">- <?php echo $hito['HITO_NOMBRE']; ?></div><br>
