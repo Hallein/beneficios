@@ -63,8 +63,8 @@
 		<div class="login-footer text-primary-color">
 			<div>Contacto Call Center</div>
 			<div>Lunes a Viernes 09:00 - 18:00 hrs</div>
-			<div>(+56) 9 93093404 - (+56) 572 440 483</div>
-			<div>contacto@crecerconsultoresltda.cl</div>
+			<div>Teléfono: 572 443 111 - Celular: (+56) 9 4212 3285</div>
+			<div>habitacionalamsa@crecerconsultoresltda.cl</div>
 		</div>
 	</section>
 	<div id="floating-loader">
